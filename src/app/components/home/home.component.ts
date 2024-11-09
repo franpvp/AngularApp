@@ -1,7 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+// Injección de Servicios
+import { JuegosService } from '../../services/juegos/juegos.service';
+import { AuthService } from '../../services/auth/auth.service';
+
+interface Juego {
+  id: number;
+  titulo: string;
+  precio: number;
+  resena: string;
+  especificaciones: {
+      formato: string;
+      condicion: string;
+      idioma: string;
+      cant_jugadores: string;
+      edad?: string;
+      tiempo?: string;
+  };
+  stock: number;
+  imagen: string
+
+}
 
 @Component({
   selector: 'app-home',
@@ -10,20 +32,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  usernameEnviado: string = '';
-  contrasenaEnviada: string = '';
+  username: string | null = null;
+  // Crear variable para llamar en el componente Home
+  juegos: Juego[] = [];
 
+  constructor(private router: Router, private juegosService: JuegosService, private authService: AuthService) {
+    
+  }
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.queryParams.subscribe(param => {
-      if(this.router.getCurrentNavigation()?.extras.state) {
-        this.usernameEnviado = this.router.getCurrentNavigation()?.extras?.state?.['usernameEnviado'];
-        this.contrasenaEnviada = this.router.getCurrentNavigation()?.extras?.state?.['contrasenaEnviada'];
-      }
-    })
-
+  goToPerfil(): void {
+    this.router.navigate(['perfil']);
   }
 
   goToHome(): void {
@@ -34,7 +54,22 @@ export class HomeComponent {
     this.router.navigate(['login']);
   }
 
-  ngOnInit(): void {
+  goToContacto(): void {
+    this.router.navigate(['contacto']);
+  }
 
+
+  ngOnInit(): void {
+    this.username = localStorage.getItem('username');
+
+    this.juegosService.obtenerJuegos().subscribe(juegos => {
+      this.juegos = juegos;
+    });
+  }
+
+  cerrarSesion():void {
+    this.username = null;
+    this.router.navigate(['home']);
+    localStorage.removeItem('username')
   }
 }

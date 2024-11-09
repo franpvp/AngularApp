@@ -2,8 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" (click)="goToHome()">
-                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 120px; height: auto; margin-right: 10px;">
-                Table Space
+                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 120px; height: auto; margin-right: 10px;"> <!-- Ajusta el tamaño del logo aquí -->
+                Todo Libros
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,18 +14,14 @@
                         <a class="nav-link" (click)="goToHome()">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categorías
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item">Estrategia</a></li>
-                                    <li><a class="dropdown-item">Familiar</a></li>
-                                    <li><a class="dropdown-item">Partida Rápida</a></li>
-                                    <li><a class="dropdown-item">Cooperativo</a></li>
-                                </ul>
-                            </li>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item">Estrategia</a></li>
+                            <li><a class="dropdown-item">Familiar</a></li>
+                            <li><a class="dropdown-item">Partida Rápida</a></li>
+                            <li><a class="dropdown-item">Cooperativo</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -41,7 +37,9 @@
                             <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
-                            <li><a class="dropdown-item" style="font-size: 15px;  color: black !important; border-radius: 16px; padding: 12px 30px 12px 30px;" (click)="goToLogin()">Iniciar sesión</a></li>
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar sesión</a></li>
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToPerfil()">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToHome()" onclick="cerrarSesion()">Cerrar sesión</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown-carrito">
@@ -66,37 +64,46 @@
     </nav>
 </div>
 
+<!-- Formulario de Contacto -->
 <div class="container login">
     <div class="row">
         <div class="col">
-            <div class="login-title">Iniciar Sesión</div>
+            <div class="login-title">Contacto</div>
         </div>
     </div>
         <div class="row justify-content-center">
             <div class="col-lg-6 m-4">
-                <form class="formulario-login" (ngSubmit)="login()">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com" [(ngModel)] = "username" required>
-                        <label for="floatingInput">Nombre de usuario</label>
+                <form class="formulario-login">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombre" oninput="validarNombres()" required>
+                        <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="row mb-1">
+                    <div class="invalid-feedback" id="invalid-nombres" style="display: none;">
+                        Por favor, ingrese un nombre válido.
+                    </div>
+                    <div class="form-floating mt-3">
+                        <input type="email" class="form-control" id="correo" placeholder="name@example.com" oninput="validarCorreo()" required>
+                        <label for="floatingInput">Correo Electrónico</label>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-correo" style="display: none;">
+                        Por favor, ingrese un correo electrónico válido.
+                    </div>
+                    <div class="form-floating mt-3">
+                        <input type="text" class="form-control" id="asunto" placeholder="Ingrese asunto" required>
+                        <label for="floatingInput">Asunto</label>
+                    </div>
+                    <div class="row">
                         <div class="col">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="contraseña1" placeholder="Password" name="contrasena" [(ngModel)] = "contrasena" required>
-                                <label for="floatingPassword">Contraseña</label>
+                            <div class="mt-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensaje" rows="3" required></textarea>
                             </div>
                         </div>
                     </div>
-                    <a style="text-decoration: none; margin-left: 10px;">Restablecer contraseña</a>
-
                     <div class="d-flex justify-content-center align-items-center pt-3">
-                        <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
+                        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
                     </div>
-                    
                 </form>
             </div>
         </div>
-    
 </div>
-
-

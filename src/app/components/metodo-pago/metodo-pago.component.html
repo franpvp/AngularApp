@@ -1,0 +1,161 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="/template/index.html">
+                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 120px; height: auto; margin-right: 10px;"> <!-- Ajusta el tamaño del logo aquí -->
+                Todo Libros
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToHome()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item">Estrategia</a></li>
+                            <li><a class="dropdown-item">Familiar</a></li>
+                            <li><a class="dropdown-item">Partida Rápida</a></li>
+                            <li><a class="dropdown-item">Cooperativo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToContacto()">Contacto</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToRegistro()">Registro</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-carrito" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
+                            <li *ngIf="username == null "><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar sesión</a></li>
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToPerfil()">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important; background-color: red;" (click)="cerrarSesion()">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown-carrito">
+                        <a class="nav-carrito" style="cursor: pointer;">
+                            <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
+                        </a>
+                        <div class="dropdown-content">
+                            <div class="carrito-items">
+                                <!-- Aquí se agregarán los productos -->
+                            </div>
+                            <div class="carrito-total text-center mt-4">
+                                <strong></strong>
+                            </div>
+                            
+                            <button class="btn-limpiar-carrito" onclick="limpiarCarrito()">Limpiar Carrito</button>
+                            <button class="btn-ver-carrito" onclick="location.href='/template/metodo-pago.html'">Ir a Pagar</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- Formulario método de pago -->
+<div class="container-fluid" style="margin-top: 40px;">
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="line">
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="title-recomendados" style="text-align: center; font-size: 40px;">Método de Pago</div>
+        </div>
+        <div class="col">
+            <div class="line">
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto m-4">
+                <div class="tarjeta">
+                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Nombre</p>
+                    <div class="titulo-tarjeta">
+                        <strong>Nombre Titular</strong>
+                    </div>
+                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Número</p>
+                    <div class="digitos-tarjeta" style="font-size: 22px;">
+                        <strong>XXXX XXXX XXXX XXXX</strong>
+                    </div>
+        
+                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Vencimiento</p>
+                    <div class="digitos-tarjeta">
+                        <strong id="fecha-vencimiento-tarjeta">MM/YY</strong>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+    <form class="formulario-pago" id="formularioPago">
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nombres" placeholder="name@example.com" oninput="actualizarNombre()" required>
+                    <label for="floatingInputGrid">Nombre Titular</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="input-digitos" placeholder="1234 5678 9012 3456" 
+                        maxlength="19" oninput="validarYActualizarDigitos(this)" required>
+                    <label for="input-digitos">Dígitos Tarjeta</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                    <label for="expiration-date" class="form-label">Fecha de Vencimiento</label>
+                    <input type="text" id="expiration-date" name="expiration-date" class="form-control" placeholder="MM/AA" maxlength="5" oninput="formatearYActualizarFecha(this)" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">CVC</label>
+                <input type="text" id="cvc" name="cvc" class="form-control" maxlength="3" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
+            </div>
+        </div>
+
+        <!-- Detalle de la compra -->
+        <div class="container-fluid">
+            <div class="contenedor-detalle-compra">
+                <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;">Resumen Carrito</h1>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <div class="detalle-items">
+                        </div>
+                        <div class="envio" id="envio">
+                            Envio: $3.990
+                        </div>
+                        <div id="carrito-total" class="carrito-total text-center mt-4" style="font-size: 25px;">
+                            <strong></strong>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Boton Efectuar Pago -->
+        <div class="container-fluid">
+            <div class="row justify-content-center mb-4">
+                <div class="col-auto">
+                    <button type="submit" id="submit-btn" class="btn-ver-carrito" style="padding: 16px 50px 16px 50px; font-size: 18px; border-radius: 40px;">Pagar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

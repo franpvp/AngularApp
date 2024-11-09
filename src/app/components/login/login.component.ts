@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +11,47 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
+
 export class LoginComponent {
+
   username: string = '';
   contrasena: string = '';
-  edad: number = 25;
-  listaElementos: string[] = ['Elemento 1', 'Elemento 2'];
+  errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService ,private router: Router) {}
 
   goToHome(): void {
-    console.log("hola: " + this.username);
     let navigationExtras: NavigationExtras = {
       state: {
         usernameEnviado: this.username,
         contrasenaEnviada: this.contrasena
       }
     }
-
     this.router.navigate(['home'], navigationExtras);
+  }
+
+  goToLogin():void {
+    this.router.navigate(['login']);
+  }
+
+  goToRegistro():void {
+    this.router.navigate(['registro']);
+  }
+
+  goToContacto(): void {
+    this.router.navigate(['contacto']);
+  }
+
+  login(): void {
+    this.authService.authenticate(this.username, this.contrasena).subscribe(usuario => {
+      if (usuario) {
+        localStorage.setItem('username', usuario.username);
+        this.router.navigate(['home']);
+      } else {
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
 
 }

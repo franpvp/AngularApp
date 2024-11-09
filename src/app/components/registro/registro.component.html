@@ -1,0 +1,146 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" (click)="goToHome()">
+                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 120px; height: auto; margin-right: 10px;"> <!-- Ajusta el tamaño del logo aquí -->
+                Todo Libros
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToHome()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item">Estrategia</a></li>
+                            <li><a class="dropdown-item">Familiar</a></li>
+                            <li><a class="dropdown-item">Partida Rápida</a></li>
+                            <li><a class="dropdown-item">Cooperativo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToContacto()">Contacto</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item mr-2">
+                        <a class="nav-link" (click)="goToRegistro()">Registro</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-carrito" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
+                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container registro"> 
+    <div class="row">
+        <div class="col">
+            <div class="registro-title">Registro</div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 m-4">
+            <!-- Formulario de registro -->
+            <form class="formulario-registro">
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" class="form-control mb-2" id="nombres" name="nombres" [(ngModel)]="nombres" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-nombres" style="display: none;">
+                        Por favor ingrese nombres válidos
+                    </div>
+                </div>
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control mb-2" id="apellidos" oninput="validarApellidos()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-apellidos" style="display: none;">
+                        Por favor ingrese apellidos válidos
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Nombre de usuario</label>
+                        <input type="text" class="form-control mb-2" id="username" oninput="validarUsuario()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-username" style="display: none;">
+                        Por favor ingrese un nombre de usuario
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control mb-2" id="correo" oninput="validarCorreo()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-correo" style="display: none;">
+                        Por favor ingrese un correo electrónico válido
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control mb-2" id="fecha-nacimiento" oninput="validarFechaNacimiento()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-fecha" style="display: none;">
+                        Debes tener al menos 13 años para registrarte.
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Domicilio (Opcional)</label>
+                        <input type="text" class="form-control mb-2" id="domicilio">
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control mb-2" id="contrasena1" oninput="validarContrasena()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-contrasena1" style="display: none;">
+                        * La contraseña debe contener al menos un número y al menos una letra en mayúscula.
+                    </div>
+                    <div class="invalid-feedback" id="invalid-contrasena2" style="display: none;">
+                        * La contraseña debe tener un rango de longitud entre 6 y 18 caracteres.
+                    </div>
+                </div>
+
+                <div class="has-validation">
+                    <div class="is-invalid">
+                        <label class="form-label">Repita Contraseña</label>
+                        <input type="password" class="form-control mb-2" id="contrasena2" oninput="validarContrasenasIguales()" required>
+                    </div>
+                    <div class="invalid-feedback" id="invalid-contrasena-coinciden" style="display: none;">
+                        La contraseñas deben coincidir.
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="d-grid gap-2 d-md-block mt-3">
+                        <button id="clean-btn" type="button" class="btn btn-primary">Limpiar</button>
+                        <button id="submit-btn" type="submit" class="btn btn-primary">Registrarse</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
