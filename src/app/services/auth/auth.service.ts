@@ -1,17 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-interface Usuario {
-  rol: string;
-  username: string;
-  contrasena: string;
-  nombres: string;
-  apellidos: string;
-  correo: string;
-  fecha_nacimiento: string;
-  domicilio: string;
-  puntos?: number;
-}
+// Interfaces
+import { Usuario } from '../../models/interfaces';
 
 @Injectable({
   providedIn: 'root'

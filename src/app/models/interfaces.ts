@@ -1,4 +1,4 @@
-interface Usuario {
+export interface Usuario {
     rol: string;
     username: string;
     contrasena: string;
@@ -10,11 +10,11 @@ interface Usuario {
     puntos?: number;
 }
 
-interface Juego {
+export interface Juego {
     id: number;
     titulo: string;
     precio: number;
-    resena: string;
+    descripcion: string;
     especificaciones: {
         formato: string;
         condicion: string;

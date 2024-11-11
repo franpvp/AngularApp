@@ -12,7 +12,15 @@ import { CommonModule } from '@angular/common';
 })
 export class ContactoComponent {
 
+  nombre: string = '';
+  correo: string = '';
+  asunto: string = '';
   mensaje: string = '';
+
+  nombreTouched: boolean = false;
+  correoTouched: boolean = false;
+  asuntoTouched: boolean = false;
+  mensajeTouched: boolean = false;
 
   constructor(private router: Router) {
 
@@ -37,5 +45,19 @@ export class ContactoComponent {
   goToContacto(): void {
     this.router.navigate(['contacto']);
   }
+
+  // Validaciones de formulario
+  isNombreValido(): boolean {
+    const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)?$/;
+    return !namePattern.test(this.nombre.trim()) && this.nombreTouched;
+    
+  }
+
+  isCorreoValido(): boolean {
+    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/;
+    return !regexCorreo.test(this.correo.trim()) && this.correoTouched;
+  }
+
+
 
 }

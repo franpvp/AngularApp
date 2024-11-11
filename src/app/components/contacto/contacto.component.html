@@ -75,28 +75,28 @@
             <div class="col-lg-6 m-4">
                 <form class="formulario-login">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombre" oninput="validarNombres()" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" [(ngModel)] = "nombre" (blur)="nombreTouched = true" required>
                         <label for="floatingInput">Nombre</label>
                     </div>
-                    <div class="invalid-feedback" id="invalid-nombres" style="display: none;">
+                    <div class="invalid-feedback" id="invalid-nombres" *ngIf="isNombreValido()">
                         Por favor, ingrese un nombre válido.
                     </div>
                     <div class="form-floating mt-3">
-                        <input type="email" class="form-control" id="correo" placeholder="name@example.com" oninput="validarCorreo()" required>
+                        <input type="email" class="form-control" id="correo" placeholder="name@example.com" name="correo" [(ngModel)] = "correo" (blur)="correoTouched = true" required>
                         <label for="floatingInput">Correo Electrónico</label>
                     </div>
-                    <div class="invalid-feedback" id="invalid-correo" style="display: none;">
+                    <div class="invalid-feedback" id="invalid-correo" *ngIf="isCorreoValido()">
                         Por favor, ingrese un correo electrónico válido.
                     </div>
                     <div class="form-floating mt-3">
-                        <input type="text" class="form-control" id="asunto" placeholder="Ingrese asunto" required>
+                        <input type="text" class="form-control" id="asunto" placeholder="Ingrese asunto" name="asunto" [(ngModel)] = "asunto" (blur)="asuntoTouched = true" required>
                         <label for="floatingInput">Asunto</label>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="mt-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
-                                <textarea class="form-control" id="mensaje" rows="3" required></textarea>
+                                <textarea class="form-control" id="mensaje" rows="3" name="mensaje" [(ngModel)] = "mensaje" (blur)="mensajeTouched = true" required></textarea>
                             </div>
                         </div>
                     </div>

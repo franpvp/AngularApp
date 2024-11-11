@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-// Injección de Servicios
+// Servicios
 import { JuegosService } from '../../services/juegos/juegos.service';
 import { AuthService } from '../../services/auth/auth.service';
-
 // Interfaces
 import { Juego } from '../../models/interfaces';
 
-// Componentes
-import { NavComponent } from "../nav/nav.component";
-
 @Component({
-  selector: 'app-home',
+  selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [CommonModule],
+  templateUrl: './nav.component.html',
+  styleUrl: './nav.component.css'
 })
-export class HomeComponent implements OnInit {
+export class NavComponent {
 
   username: string | null = null;
   // Crear variable para llamar en el componente Home
@@ -46,18 +42,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['contacto']);
   }
 
-
-  ngOnInit(): void {
-    this.username = localStorage.getItem('username');
-
-    this.juegosService.obtenerJuegos().subscribe(juegos => {
-      this.juegos = juegos;
-    });
-  }
-
   cerrarSesion():void {
     this.username = null;
     this.router.navigate(['home']);
     localStorage.removeItem('username')
   }
+
 }
