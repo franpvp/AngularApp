@@ -26,8 +26,19 @@ export class HomeComponent implements OnInit {
   // Crear variable para llamar en el componente Home
   juegos: Juego[] = [];
 
+  productosEnCarrito: Juego[] = [];
+
   constructor(private router: Router, private juegosService: JuegosService, private authService: AuthService) {
     
+  }
+
+  agregarAlCarrito(juego: Juego): void {
+    this.productosEnCarrito.push(juego);
+    localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
+  } 
+
+  calcularTotal(): number {
+    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
   }
 
   goToPerfil(): void {
@@ -44,6 +55,10 @@ export class HomeComponent implements OnInit {
 
   goToContacto(): void {
     this.router.navigate(['contacto']);
+  }
+
+  verDetalles(juegoId: number) {
+    this.router.navigate(['/producto', juegoId]);
   }
 
 

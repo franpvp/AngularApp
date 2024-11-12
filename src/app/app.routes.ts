@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path: 'contacto', component: ContactoComponent },
     { path: 'nosotros', component: NosotrosComponent },
     { path: 'detalle-carro/metodo-pago', component: MetodoPagoComponent },
-    { path: 'detalle-carro', component: DetalleCarroComponent },
+    { path: 'producto/:id', component: DetalleCarroComponent },
     { path: 'perfil', component: PerfilComponent },
     { path: 'promociones', component: PromocionesComponent },
     { path: 'registro', component: RegistroComponent },

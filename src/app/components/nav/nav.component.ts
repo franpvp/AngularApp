@@ -19,12 +19,15 @@ import { Juego } from '../../models/interfaces';
 export class NavComponent {
 
   username: string | null = null;
-  // Crear variable para llamar en el componente Home
+  productosEnCarrito: Juego[] = [];
+  totalCarrito: number = 0;
   juegos: Juego[] = [];
 
   constructor(private router: Router, private juegosService: JuegosService, private authService: AuthService) {
     
   }
+
+  
 
   goToPerfil(): void {
     this.router.navigate(['perfil']);
@@ -38,6 +41,14 @@ export class NavComponent {
     this.router.navigate(['login']);
   }
 
+  goToRegistro():void {
+    this.router.navigate(['registro']);
+  }
+
+  goToPromociones(): void {
+    this.router.navigate(['promociones']);
+  }
+
   goToContacto(): void {
     this.router.navigate(['contacto']);
   }
@@ -46,6 +57,36 @@ export class NavComponent {
     this.username = null;
     this.router.navigate(['home']);
     localStorage.removeItem('username')
+  }
+
+  limpiarCarrito(): void {
+    this.productosEnCarrito = [];
+    localStorage.removeItem('productosEnCarrito');
+  }
+
+  cargarCarrito(): void {
+    // Obtener los productos del carrito desde localStorage
+    const carritoData = localStorage.getItem('productosEnCarrito');
+    if (carritoData) {
+      this.productosEnCarrito = JSON.parse(carritoData);
+      this.calcularTotal();
+    }
+  }
+
+  calcularTotal(): number {
+    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
+  }
+
+
+  ngOnInit(): void {
+    this.username = localStorage.getItem('username');
+
+
+    this.juegosService.obtenerJuegos().subscribe(juegos => {
+      this.juegos = juegos;
+    });
+
+    this.cargarCarrito();
   }
 
 }

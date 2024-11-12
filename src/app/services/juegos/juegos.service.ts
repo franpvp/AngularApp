@@ -85,7 +85,12 @@ export class JuegosService {
             "id": 5,
             "titulo": "Pathfinder: El Juego de Cartas de Aventuras",
             "precio": 42990,
-            "descripcion": ``,
+            "descripcion": `¡La aventura comienza aquí!
+                            La torre de Belhaim se ha derrumbado, su mago ha desaparecido y los kóbolds susurran el nombre de una némesis dracónica que lleva muerto mucho tiempo. Y no es más que su primer día en la ciudad…
+
+                            Este completo juego cooperativo de estrategia enfrenta de 1 a 4 jugadores contra monstruos, peligros y trampas, a medida que se convierten en los héroes de Belhaim. Como los nuevos campeones del pueblo, se encontrarán con un interminable mundo de aventuras aguardándolos. Elijan la clase de sus personajes: creen un mazo de equipo, magia y aliados; y exploren localizaciones letales mientras viajan a través de una emocionante historia de fantasía. A medida que sus aventuras avancen, sus personajes añadirán equipo extraordinario y magia asombrosa a sus mazos conforme vayan adquiriendo increíbles poderes… poderes que necesitarán para hacer frente a amenazas cada vez más peligrosas.
+
+                            Este juego incluye el libro de historias y las cartas para la Senda de aventuras La exigencia del dragón, así como una base modular para escenarios infinitos que les permitirá controlar la dificultad y la velocidad del juego.`,
             "especificaciones": {
                 "formato": "Juego de Mesa",
                 "condicion": "Nuevo Sellado",
@@ -94,7 +99,7 @@ export class JuegosService {
                 "edad": "13+",
                 "tiempo": "90 min aprox"
             },
-            "stock": 5,
+            "stock": 0,
             "imagen": "/assets/img/games/pathfinder-el-juego-de-cartas-de-aventuras.jpg"
         },
         {
@@ -354,5 +359,10 @@ export class JuegosService {
 
     obtenerJuegos(): Observable<Juego[]> {
         return of(this.juegos);
+    }
+
+    obtenerJuegoPorId(id: number): Observable<Juego | undefined> {
+        const juego = this.juegos.find((juego) => juego.id === id);
+        return of(juego);
     }
 }

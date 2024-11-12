@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
+import { NavComponent } from "../nav/nav.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NavComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -19,7 +20,7 @@ export class LoginComponent {
   contrasena: string = '';
   errorMessage: string = '';
 
-  constructor(private authService: AuthService ,private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   goToHome(): void {
     let navigationExtras: NavigationExtras = {

@@ -18,29 +18,23 @@
                             Categorías
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item">Estrategia</a></li>
-                            <li><a class="dropdown-item">Familiar</a></li>
-                            <li><a class="dropdown-item">Partida Rápida</a></li>
-                            <li><a class="dropdown-item">Cooperativo</a></li>
+                            <li><a class="dropdown-item">Juegos de Mesa</a></li>
+                            <li><a class="dropdown-item">Accesorios</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="goToPromociones()">Promociones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" (click)="goToContacto()">Contacto</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
+                    <li class="nav-item" *ngIf="username == null">
+                        <a class="nav-link" (click)="goToRegistro()">Registro</a>
+                    </li>
                     <li *ngIf="username != null" class="nav-item" style="background: none !important;">
                         <a class="nav-link" id="nombre-usuario">{{ username }}</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-carrito" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
-                            <li *ngIf="username == null"><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToPerfil()">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="cerrarSesion()">Cerrar sesión</a></li>
-                        </ul>
                     </li>
                     <li class="nav-item dropdown-carrito">
                         <a class="nav-carrito" style="cursor: pointer;">
@@ -48,13 +42,16 @@
                         </a>
                         <div class="dropdown-content">
                             <div class="carrito-items">
-                                <!-- Aquí se agregarán los productos -->
+                                <!-- Aquí se agregarán los productos en el carrito -->
+                                <div *ngFor="let producto of productosEnCarrito">
+                                    <p>{{ producto.titulo }} - {{ producto.precio | currency }}</p>
+                                </div>
                             </div>
                             <div class="carrito-total text-center mt-4">
-                                <strong></strong>
+                                <strong>Total: {{ calcularTotal() | currency }}</strong>
                             </div>
                             
-                            <button class="btn-limpiar-carrito">Limpiar Carrito</button>
+                            <button class="btn-limpiar-carrito" (click)="limpiarCarrito()">Limpiar Carrito</button>
                             <button class="btn-ver-carrito">Ir a Pagar</button>
                         </div>
                     </li>

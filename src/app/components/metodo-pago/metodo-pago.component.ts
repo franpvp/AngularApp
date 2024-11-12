@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NavComponent } from "../nav/nav.component";
 
 @Component({
   selector: 'app-metodo-pago',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NavComponent],
   templateUrl: './metodo-pago.component.html',
   styleUrl: './metodo-pago.component.css'
 })

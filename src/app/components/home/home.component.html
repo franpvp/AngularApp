@@ -39,13 +39,15 @@
 <!-- Juegos -->
 <div class="contenedor">
     <div *ngFor="let juego of juegos" class="card">
-        <div class="box-1">
-            <img [src]="juego.imagen" alt="{{ juego.titulo }}">
-        </div>
+        <a (click)="verDetalles(juego.id)">
+            <div class="box-1">
+                <img [src]="juego.imagen" alt="{{ juego.titulo }}">
+            </div>
+        </a>
         <div class="card-content">
             <h3 class="card-title">{{ juego.titulo }}</h3>
             <p class="card-price">{{ juego.precio }}</p>
-            <button class="add-to-cart-btn">Agregar al Carrito</button>
+            <button class="add-to-cart-btn" (click)="agregarAlCarrito(juego)">Agregar al Carrito</button>
         </div>
     </div>
 

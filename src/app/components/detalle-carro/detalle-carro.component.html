@@ -1,1 +1,33 @@
-<p>detalle-carro works!</p>
+<app-nav></app-nav>
+
+<div *ngIf="juego" class="container-fluid p-4">
+    <div class="row justify-content-center" style="margin-bottom: 150px;">
+        <div class="col-auto mt-4 mb-4">
+            <div id="detalle-libro" style="display: flex; justify-content: center;">
+                <img [src]="juego.imagen" [alt]="juego.titulo" width="400px" height="400px">
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="contenedor-detalles text-center">
+                <h3 id="detalle-titulo">{{ juego.titulo }}</h3>
+                <p id="detalle-precio">{{ juego.precio | currency }}</p>
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 col-md-8 col-lg-6">
+                        <p id="detalle-resena" style="text-align: justify;">{{ juego.descripcion }}</p>
+                    </div>
+                </div>
+                <p id="detalle-idioma">{{ juego.especificaciones.idioma }}</p>
+                <p *ngIf="juego.especificaciones.edad">Edad recomendada: {{ juego.especificaciones.edad }}</p>
+                <p *ngIf="juego.stock > 0; else sinStock">Stock: {{ juego.stock }}</p>
+                <ng-template #sinStock><p>No hay Stock</p></ng-template>
+            </div>
+            <div class="text-center mt-3">
+                <button 
+                    class="btn-ver-carrito add-to-cart-btn col-md-4 mx-auto" 
+                    (click)="agregarAlCarrito(juego)">
+                    Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
