@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 // Componentes
 import { NavComponent } from "../nav/nav.component";
+import { AuthService } from '../../services/auth/auth.service';
+import { Usuario } from '../../models/interfaces';
 
 @Component({
   selector: 'app-perfil',
@@ -14,4 +16,19 @@ import { NavComponent } from "../nav/nav.component";
 })
 export class PerfilComponent {
 
+  usuarioLogeado: Usuario | undefined;
+
+  constructor(private authService: AuthService) {
+    
+  }
+  ngOnInit() {
+    const usuarioLogeado = localStorage.getItem('username');
+    
+    this.authService.obtenerUsuarios().subscribe(usuarios => {
+      if (usuarioLogeado) {
+        this.usuarioLogeado = usuarios.find(user => user.username === usuarioLogeado);
+      }
+    });
+  }
+  
 }

@@ -34,8 +34,17 @@
                         <a class="nav-link" (click)="goToRegistro()">Registro</a>
                     </li>
                     <li *ngIf="username != null" class="nav-item" style="background: none !important;">
-                        <a class="nav-link" id="nombre-usuario">{{ username }}</a>
+                        <a class="nav-link" id="nombre-usuario" (click)="goToPerfil()">{{ username }}</a>
                     </li>
+                    <a class="nav-carrito" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
+                    </a>
+                    <ul *ngIf="username == null" class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
+                        <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar sesión</a></li>
+                    </ul>
+                    <ul *ngIf="username != null" class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
+                        <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="cerrarSesion()">Cerrar Sesión</a></li>
+                    </ul>
                     <li class="nav-item dropdown-carrito">
                         <a class="nav-carrito" style="cursor: pointer;">
                             <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">

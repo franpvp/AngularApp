@@ -50,4 +50,9 @@ export class AuthService {
     const user = this.usuarios.find(u => u.username === username && u.contrasena === password);
     return of(user ? user : null);
   }
+
+  // Método para obtener lista de usuarios
+  obtenerUsuarios(): Observable<Usuario[]> {
+    return of(this.usuarios);
+  }
 }

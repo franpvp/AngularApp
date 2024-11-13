@@ -39,7 +39,7 @@
 <!-- Juegos -->
 <div class="contenedor">
     <div *ngFor="let juego of juegos" class="card">
-        <a (click)="verDetalles(juego.id)">
+        <a (click)="verDetalles(juego.id)" style="cursor: pointer;">
             <div class="box-1">
                 <img [src]="juego.imagen" alt="{{ juego.titulo }}">
             </div>

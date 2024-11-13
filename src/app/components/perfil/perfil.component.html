@@ -12,9 +12,9 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-auto">
             <div class="logo-perfil">
-                <img src="/assets/img/usuario.png" alt="perfil-logo">
+                <img src="assets/img/nav/usuario.png" alt="perfil-logo">
             </div>
-            <div id="username" class="txt-username"></div>
+            <div id="username" class="txt-username">{{ usuarioLogeado?.username }}</div>
         </div>
     </div>
     <!-- Datos de perfil -->
@@ -22,11 +22,11 @@
         <div class="row g-3 justify-content-center">
             <div class="col-auto">
                 <p>Nombres</p>
-                <div id="nombres-usuario" class="campos-perfil"></div>
+                <div id="nombres-usuario" class="campos-perfil">{{ usuarioLogeado?.nombres }}</div>
             </div>
             <div class="col-auto">
                 <p>Apellidos</p>
-                <div id="apellidos-usuario" class="campos-perfil"></div>
+                <div id="apellidos-usuario" class="campos-perfil">{{ usuarioLogeado?.apellidos }}</div>
             </div>
             
         </div>
@@ -34,15 +34,15 @@
     <div class="row g-3 justify-content-center" style="margin-bottom: 180px;">
         <div class="col-auto">
             <p>Correo</p>
-            <div id="correo" class="campos-perfil"></div>
+            <div id="correo" class="campos-perfil">{{ usuarioLogeado?.correo }}</div>
         </div>
         <div class="col-auto">
             <p>Fecha Nacimiento</p>
-            <div id="fecha-nacimiento" class="campos-perfil"></div>
+            <div id="fecha-nacimiento" class="campos-perfil">{{ usuarioLogeado?.fecha_nacimiento }}</div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto" *ngIf="usuarioLogeado?.domicilio != ''">
             <p>Domicilio</p>
-            <div id="domicilio" class="campos-perfil"></div>
+            <div id="domicilio" class="campos-perfil">{{ usuarioLogeado?.domicilio }}</div>
         </div>
     </div>
 </div>

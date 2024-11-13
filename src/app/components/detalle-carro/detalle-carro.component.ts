@@ -18,7 +18,6 @@ import { Juego } from '../../models/interfaces';
 export class DetalleCarroComponent {
 
   juego: Juego | undefined;
-
   productosEnCarrito: Juego[] = [];
 
   constructor(private route: ActivatedRoute, private juegosService: JuegosService) {
@@ -34,10 +33,10 @@ export class DetalleCarroComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.juegosService.obtenerJuegoPorId(id).subscribe((juego) => {
       this.juego = juego;
-    });
+  });
 
-    const carritoData = localStorage.getItem('productosEnCarrito');
-    this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
+  const carritoData = localStorage.getItem('productosEnCarrito');
+  this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
 
 
 
