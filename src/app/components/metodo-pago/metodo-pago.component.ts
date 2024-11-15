@@ -17,6 +17,11 @@ export class MetodoPagoComponent {
   username: string | null = localStorage.getItem('username');
   productosEnCarrito: Juego[] = [];
 
+  nombre_titular: string = '';
+  digitos_tarjeta: string = '';
+  fecha_vencimiento: string = '';
+  digitos_cvc :string = '';
+
   constructor(private router: Router, route: ActivatedRoute) {
 
   }
@@ -57,6 +62,67 @@ export class MetodoPagoComponent {
     if (carritoData) {
       this.productosEnCarrito = JSON.parse(carritoData);
       this.calcularTotal();
+    }
+  }
+
+  validarNombreTitular(event: KeyboardEvent): void {
+    const regex = /^[a-zA-Z\s]*$/;
+    const key = String.fromCharCode(event.keyCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+    }
+  }
+
+  formatoDigitosTarjeta(event: KeyboardEvent): void {
+    const regex = /^[0-9]*$/;
+    const key = String.fromCharCode(event.keyCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+    }
+
+    // Remueve cualquier caracter no numérico
+    this.digitos_tarjeta = this.digitos_tarjeta.replace(/\D/g, '');
+    // Añadir espacio cada 4 digitos
+    if (this.digitos_tarjeta.length >= 4) {
+      this.digitos_tarjeta = this.digitos_tarjeta.slice(0, 4) + ' ' + this.digitos_tarjeta.slice(4, 8) + ' ' + this.digitos_tarjeta.slice(8, 12) + ' ' + this.digitos_tarjeta.slice(12, 16);
+    }
+
+    if (this.digitos_tarjeta.length > 19) {
+      this.digitos_tarjeta = this.digitos_tarjeta.slice(0, 19);
+    }
+  }
+
+  formatoFechaVencimiento(event: KeyboardEvent): void {
+    const regex = /^[0-9]*$/;
+    const key = String.fromCharCode(event.keyCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+    }
+    // Remueve cualquier caracter no numérico
+    this.fecha_vencimiento = this.fecha_vencimiento.replace(/\D/g, '');
+
+    // Agrega '/' automáticamente después de los primeros dos dígitos
+    if (this.fecha_vencimiento.length >= 2) {
+      this.fecha_vencimiento = this.fecha_vencimiento.slice(0, 2) + '/' + this.fecha_vencimiento.slice(2, 4);
+    }
+
+    // Limita la longitud a 5 caracteres (MM/YY)
+    if (this.fecha_vencimiento.length > 5) {
+      this.fecha_vencimiento = this.fecha_vencimiento.slice(0, 5);
+    }
+  }
+
+  validarCVC(event: KeyboardEvent): void {
+    const regex = /^[0-9]*$/;
+    const key = String.fromCharCode(event.keyCode);
+    if (!regex.test(key)) {
+      event.preventDefault();
+    }
+
+    this.digitos_cvc = this.digitos_cvc.replace(/\D/g, '');
+
+    if (this.digitos_cvc.length > 4) {
+      this.digitos_cvc = this.digitos_cvc.slice(0, 4);
     }
   }
 

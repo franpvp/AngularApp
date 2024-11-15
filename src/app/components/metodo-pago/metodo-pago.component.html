@@ -23,11 +23,11 @@
                 <div class="tarjeta">
                     <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Nombre</p>
                     <div class="titulo-tarjeta">
-                        <strong>Nombre Titular</strong>
+                        <strong>{{ nombre_titular || 'Nombre Titular' }}</strong>
                     </div>
                     <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Número</p>
                     <div class="digitos-tarjeta" style="font-size: 22px;">
-                        <strong>XXXX XXXX XXXX XXXX</strong>
+                        <strong>{{ digitos_tarjeta || 'XXXX XXXX XXXX XXXX'}}</strong>
                     </div>
         
                     <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Vencimiento</p>
@@ -44,24 +44,24 @@
         <div class="row g-2 justify-content-center">
             <div class="col-md-4">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="nombres" placeholder="name@example.com" oninput="actualizarNombre()" required>
+                    <input type="text" class="form-control" name="nombre-titular" id="nombre-titular" placeholder="name@example.com" [(ngModel)]="nombre_titular" (keypress)="validarNombreTitular($event)" required>
                     <label for="floatingInputGrid">Nombre Titular</label>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="input-digitos" placeholder="1234 5678 9012 3456" 
-                        maxlength="19" oninput="validarYActualizarDigitos(this)" required>
+                    <input type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
+                        [(ngModel)]="digitos_tarjeta" (keypress)="formatoDigitosTarjeta($event)" maxlength="19" required>
                     <label for="input-digitos">Dígitos Tarjeta</label>
                 </div>
             </div>
             <div class="col-md-4">
-                    <label for="expiration-date" class="form-label">Fecha de Vencimiento</label>
-                    <input type="text" id="expiration-date" name="expiration-date" class="form-control" placeholder="MM/AA" maxlength="5" oninput="formatearYActualizarFecha(this)" required>
+                    <label for="fecha-vencimiento" class="form-label">Fecha de Vencimiento</label>
+                    <input type="text" name="fecha-vencimiento" id="fecha-vencimiento" name="fecha-vencimiento" class="form-control" placeholder="MM/AA" maxlength="5" [(ngModel)]="fecha_vencimiento" (keypress)="formatoFechaVencimiento($event)" required>
             </div>
             <div class="col-md-4">
                 <label class="form-label">CVC</label>
-                <input type="text" id="cvc" name="cvc" class="form-control" maxlength="3" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
+                <input type="text" id="digitos_cvc" name="digitos_cvc" [(ngModel)]="digitos_cvc" (keypress)="validarCVC($event)" class="form-control" maxlength="4" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
             </div>
         </div>
 
