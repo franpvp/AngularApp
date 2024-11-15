@@ -8,11 +8,13 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { DetalleCarroComponent } from './components/detalle-carro/detalle-carro.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 export const routes: Routes = [
     { path: 'contacto', component: ContactoComponent },
     { path: 'nosotros', component: NosotrosComponent },
-    { path: 'detalle-carro/metodo-pago', component: MetodoPagoComponent },
+    { path: 'carrito', component: CarritoComponent },
+    { path: 'metodo-pago', component: MetodoPagoComponent },
     { path: 'producto/:id', component: DetalleCarroComponent },
     { path: 'perfil', component: PerfilComponent },
     { path: 'promociones', component: PromocionesComponent },

@@ -46,7 +46,7 @@
                         <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="cerrarSesion()">Cerrar Sesión</a></li>
                     </ul>
                     <li class="nav-item dropdown-carrito">
-                        <a class="nav-carrito" style="cursor: pointer;">
+                        <a class="nav-carrito" style="cursor: pointer;" (click)="goToCarrito()">
                             <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
                         </a>
                         <div class="dropdown-content">
@@ -61,7 +61,7 @@
                             </div>
                             
                             <button class="btn-limpiar-carrito" (click)="limpiarCarrito()">Limpiar Carrito</button>
-                            <button class="btn-ver-carrito">Ir a Pagar</button>
+                            <button class="btn-ver-carrito" (click)="goToPago()">Ir a Pagar</button>
                         </div>
                     </li>
                 </ul>

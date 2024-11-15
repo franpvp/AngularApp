@@ -21,13 +21,12 @@ export class DetalleCarroComponent {
   productosEnCarrito: Juego[] = [];
 
   constructor(private route: ActivatedRoute, private juegosService: JuegosService) {
-
   }
 
   agregarAlCarrito(juego: Juego): void {
     this.productosEnCarrito.push(juego);
     localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
-  } 
+  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -37,8 +36,6 @@ export class DetalleCarroComponent {
 
   const carritoData = localStorage.getItem('productosEnCarrito');
   this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
-
-
 
   }
 }

@@ -80,6 +80,7 @@ export class RegistroComponent {
     const inputContrasena2 = this.contrasena2;
 
     if(inputContrasena !== inputContrasena2) {
+      console.log("Las constraseñas no coinciden")
     }
   }
 

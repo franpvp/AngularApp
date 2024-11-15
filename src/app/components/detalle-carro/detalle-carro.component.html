@@ -10,13 +10,14 @@
         <div class="col-auto">
             <div class="contenedor-detalles text-center">
                 <h3 id="detalle-titulo">{{ juego.titulo }}</h3>
-                <p id="detalle-precio">{{ juego.precio | currency }}</p>
+                <p id="detalle-precio">Precio: {{ juego.precio | currency }}</p>
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6">
+                        <div style="font-size: 25px; margin-bottom: 20px;">Descripción</div>
                         <p id="detalle-resena" style="text-align: justify;">{{ juego.descripcion }}</p>
                     </div>
                 </div>
-                <p id="detalle-idioma">{{ juego.especificaciones.idioma }}</p>
+                <p id="detalle-idioma">Idioma: {{ juego.especificaciones.idioma }}</p>
                 <p *ngIf="juego.especificaciones.edad">Edad recomendada: {{ juego.especificaciones.edad }}</p>
                 <p *ngIf="juego.stock > 0; else sinStock">Stock: {{ juego.stock }}</p>
                 <ng-template #sinStock><p>No hay Stock</p></ng-template>

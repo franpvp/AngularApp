@@ -27,8 +27,6 @@ export class NavComponent {
     
   }
 
-  
-
   goToPerfil(): void {
     this.router.navigate(['perfil']);
   }
@@ -53,6 +51,10 @@ export class NavComponent {
     this.router.navigate(['contacto']);
   }
 
+  goToPago() {
+    this.router.navigate(['metodo-pago']);
+  }
+
   cerrarSesion():void {
     this.username = null;
     this.router.navigate(['home']);
@@ -62,6 +64,10 @@ export class NavComponent {
   limpiarCarrito(): void {
     this.productosEnCarrito = [];
     localStorage.removeItem('productosEnCarrito');
+  }
+
+  goToCarrito(): void {
+    this.router.navigate(['carrito'])
   }
 
   cargarCarrito(): void {
@@ -80,7 +86,6 @@ export class NavComponent {
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
-
 
     this.juegosService.obtenerJuegos().subscribe(juegos => {
       this.juegos = juegos;
