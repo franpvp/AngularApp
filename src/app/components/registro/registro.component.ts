@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AbstractControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { FormBuilder ,ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { NavComponent } from "../nav/nav.component";
@@ -90,6 +90,42 @@ export class RegistroComponent {
   }
 
 
+  
+
+  // Validación para edad mínima de 13 años
+  validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
+    const fechaNacimiento = new Date(control.value);
+    const hoy = new Date();
+    const edadMinima = new Date(hoy.getFullYear() - 13, hoy.getMonth(), hoy.getDate());
+
+    return fechaNacimiento > edadMinima ? { menorDeEdad: true } : null;
+  }
+
+  // Validación para contraseñas iguales
+  validarContrasenasIguales(formGroup: FormGroup) {
+    const contrasena1 = formGroup.get('contrasena1')?.value;
+    const contrasena2 = formGroup.get('contrasena2')?.value;
+    return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
+  }
+
+  // Métodos de validación individuales para simplificar en la plantilla
+  validarCampo(campo: string): boolean {
+    return !!this.formularioRegistro.get(campo)?.invalid && 
+        (this.formularioRegistro.get(campo)?.touched || false);
+  } 
+
+  submitForm() {
+    if (this.formularioRegistro.valid) {
+      console.log("Resultado", this.formularioRegistro.value);
+    } else {
+      this.formularioRegistro.markAllAsTouched();
+    }
+  }
+
+  limpiarFormulario(): void {
+    this.formularioRegistro.reset();
+  }
+
   ngOnInit(): void {
     this.formularioRegistro = this.fb.group({
       nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
@@ -109,40 +145,6 @@ export class RegistroComponent {
       ],
       contrasena2: ['', Validators.required]
     }, { validator: this.validarContrasenasIguales });
-  }
-
-  // Validación para edad mínima de 13 años
-  validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
-    const fechaNacimiento = new Date(control.value);
-    const hoy = new Date();
-    const edadMinima = new Date(hoy.getFullYear() - 13, hoy.getMonth(), hoy.getDate());
-
-    return fechaNacimiento > edadMinima ? { menorDeEdad: true } : null;
-  }
-
-  // Validación para contraseñas iguales
-  validarContrasenasIguales(formGroup: FormGroup) {
-    const contrasena1 = formGroup.get('contrasena1')?.value;
-    const contrasena2 = formGroup.get('contrasena2')?.value;
-    return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
-  }
-
-  // Métodos de validación individuales para simplificar en la plantilla
-  validarCampo(field: string): boolean {
-    return !!this.formularioRegistro.get(field)?.invalid && 
-        (this.formularioRegistro.get(field)?.touched || false);
-  } 
-
-  submitForm() {
-    if (this.formularioRegistro.valid) {
-      console.log("Resultado", this.formularioRegistro.value);
-    } else {
-      this.formularioRegistro.markAllAsTouched();
-    }
-  }
-
-  limpiarFormulario(): void {
-    this.formularioRegistro.reset();
   }
 
 }

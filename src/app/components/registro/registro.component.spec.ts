@@ -46,7 +46,42 @@ describe('RegistroComponent', () => {
     expect(component.formularioRegistro.invalid).toBeTrue();
   });
 
+  it('deberia validar que el campo correo acepte valores compatibles a un email', () => {
+    let correoControl = component.formularioRegistro.get('correo');
+    correoControl?.setValue('invalid-email');
+    expect(correoControl?.valid).toBeFalse();
 
+    correoControl?.setValue('valid@example.com');
+    expect(correoControl?.valid).toBeTrue();
+  });
 
+  it('deberia verificar que las contraseñas coincidan', () => {
+    component.formularioRegistro.get('contrasena1')?.setValue('password123');
+    component.formularioRegistro.get('contrasena2')?.setValue('password123');
+    expect(component.formularioRegistro.valid).toBeTrue();
+
+    component.formularioRegistro.get('contrasena2')?.setValue('differentPassword');
+    expect(component.formularioRegistro.valid).toBeFalse();
+  });
+
+  it('deberia enviar el formulario si todos los campos son válidos', () => {
+    component.formularioRegistro.setValue({
+      nombres: 'Juan',
+      apellidos: 'Pérez',
+      username: 'juanperez',
+      correo: 'juan@example.com',
+      fecha_nacimiento: '1990-01-01',
+      contrasena1: 'Password123',
+      contrasena2: 'Password123'
+    });
+
+    spyOn(component, 'submitForm');
+    fixture.detectChanges();
+
+    let formElement = fixture.nativeElement.querySelector('form');
+    formElement.dispatchEvent(new Event('submit'));
+
+    expect(component.submitForm).toHaveBeenCalled();
+  });
 
 });

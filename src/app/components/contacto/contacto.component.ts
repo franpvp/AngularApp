@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from "../nav/nav.component";
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent],
+  imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
   templateUrl: './contacto.component.html',
   styleUrl: './contacto.component.css'
 })
@@ -23,7 +24,9 @@ export class ContactoComponent {
   asuntoTouched: boolean = false;
   mensajeTouched: boolean = false;
 
-  constructor(private router: Router) {
+  formularioContacto!: FormGroup;
+
+  constructor(private router: Router, private fb: FormBuilder) {
 
   }
 
@@ -85,6 +88,25 @@ export class ContactoComponent {
     }
   }
 
+  submitForm() {
+    if (this.formularioContacto.valid) {
+      console.log("Resultado", this.formularioContacto.value);
+    } else {
+      this.formularioContacto.markAllAsTouched();
+    }
+  }
 
+  validarCampo(campo: string): boolean {
+    return !!this.formularioContacto.get(campo)?.invalid && 
+        (this.formularioContacto.get(campo)?.touched || false);
+  }
 
+  ngOnInit(): void {
+    this.formularioContacto = this.fb.group({
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
+      correo: ['', [Validators.required, Validators.email]],
+      asunto: ['', Validators.required],
+      mensaje: ['', Validators.required]
+    }
+  )}
 }
