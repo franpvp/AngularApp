@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
 import { Juego } from '../../models/interfaces';
+import { AsyncLocalStorage } from 'async_hooks';
 
 @Component({
   selector: 'app-metodo-pago',
