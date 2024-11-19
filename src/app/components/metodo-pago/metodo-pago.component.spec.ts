@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MetodoPagoComponent } from './metodo-pago.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('MetodoPagoComponent', () => {
   let component: MetodoPagoComponent;
@@ -8,7 +9,15 @@ describe('MetodoPagoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MetodoPagoComponent]
+      imports: [MetodoPagoComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({ get: (key: string) => '123' })
+          }
+        }
+      ]
     })
     .compileComponents();
     

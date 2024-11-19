@@ -8,8 +8,7 @@ describe('RegistroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegistroComponent, ReactiveFormsModule],
-      declarations: [RegistroComponent]
+      imports: [RegistroComponent, ReactiveFormsModule]
     })
     .compileComponents();
     
@@ -40,6 +39,7 @@ describe('RegistroComponent', () => {
       username: '',
       correo: '',
       fecha_nacimiento: '',
+      domicilio: '',
       contrasena1: '',
       contrasena2: ''
     });
@@ -55,13 +55,13 @@ describe('RegistroComponent', () => {
     expect(correoControl?.valid).toBeTrue();
   });
 
-  it('deberia verificar que las contraseñas coincidan', () => {
-    component.formularioRegistro.get('contrasena1')?.setValue('password123');
-    component.formularioRegistro.get('contrasena2')?.setValue('password123');
-    expect(component.formularioRegistro.valid).toBeTrue();
-
-    component.formularioRegistro.get('contrasena2')?.setValue('differentPassword');
-    expect(component.formularioRegistro.valid).toBeFalse();
+  it('debería verificar que las contraseñas coincidan', () => {
+    component.formularioRegistro.get('contrasena1')?.setValue('contrasena123');
+    component.formularioRegistro.get('contrasena2')?.setValue('contrasena123');
+    expect(component.formularioRegistro.errors).toBeNull();
+    
+    component.formularioRegistro.get('contrasena2')?.setValue('otraContrasena');
+    expect(component.formularioRegistro.errors).toEqual({ contrasenasNoCoinciden: true });
   });
 
   it('deberia enviar el formulario si todos los campos son válidos', () => {
@@ -71,6 +71,7 @@ describe('RegistroComponent', () => {
       username: 'juanperez',
       correo: 'juan@example.com',
       fecha_nacimiento: '1990-01-01',
+      domicilio: '',
       contrasena1: 'Password123',
       contrasena2: 'Password123'
     });

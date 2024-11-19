@@ -69,7 +69,7 @@ export class ContactoComponent {
     return this.mensaje.trim() === '' && this.mensajeTouched;
   }
 
-  // Método para procesar el formulario
+  // Método para procesar el formulario de contacto
   onSubmit() {
     // Verifica que cada campo es válido antes de enviar
     if (
