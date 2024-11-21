@@ -6,7 +6,9 @@ import { CommonModule } from '@angular/common';
 
 // Servicios
 import { JuegosService } from '../../services/juegos/juegos.service';
+import { LibrosService } from '../../services/libros/libros.service';
 import { Juego } from '../../models/interfaces';
+import { Libro } from '../../models/interfaces';
 
 @Component({
   selector: 'app-detalle-carro',
@@ -17,21 +19,21 @@ import { Juego } from '../../models/interfaces';
 })
 export class DetalleCarroComponent {
 
-  juego: Juego | undefined;
-  productosEnCarrito: Juego[] = [];
+  libro: Libro | undefined;
+  productosEnCarrito: Libro[] = [];
 
-  constructor(private route: ActivatedRoute, private juegosService: JuegosService) {
+  constructor(private route: ActivatedRoute, private librosService: LibrosService) {
   }
 
-  agregarAlCarrito(juego: Juego): void {
-    this.productosEnCarrito.push(juego);
+  agregarAlCarrito(libro: Libro): void {
+    this.productosEnCarrito.push(libro);
     localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
   }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.juegosService.obtenerJuegoPorId(id).subscribe((juego) => {
-      this.juego = juego;
+    this.librosService.obtenerLibroPorId(id).subscribe((libro) => {
+      this.libro = libro;
   });
 
   const carritoData = localStorage.getItem('productosEnCarrito');

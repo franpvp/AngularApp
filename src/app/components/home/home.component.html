@@ -1,4 +1,6 @@
 <app-nav></app-nav>
+<!-- Componente encuesta -->
+<!-- <app-encuesta></app-encuesta> -->
 
 <div class="container-fluid">
     <div class="row" style="background-color: black; color: white; font-size: 16px; padding: 8px;">
@@ -38,16 +40,16 @@
 </div>
 <!-- Juegos -->
 <div class="contenedor">
-    <div *ngFor="let juego of juegos" class="card">
-        <a (click)="verDetalles(juego.id)" style="cursor: pointer;">
+    <div *ngFor="let libro of libros" class="card">
+        <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
             <div class="box-1">
-                <img [src]="juego.imagen" alt="{{ juego.titulo }}">
+                <img [src]="libro.imagen" alt="{{ libro.titulo }}">
             </div>
         </a>
         <div class="card-content">
-            <h3 class="card-title">{{ juego.titulo }}</h3>
-            <p class="card-price">Precio: {{ juego.precio | currency }}</p>
-            <button class="add-to-cart-btn" (click)="agregarAlCarrito(juego)">Agregar al Carrito</button>
+            <h3 class="card-title">{{ libro.titulo }}</h3>
+            <p class="card-price">Precio: {{ libro.precio | currency }}</p>
+            <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
         </div>
     </div>
 
@@ -67,3 +69,4 @@
     <div id="contenedor-productos-promo">
     </div>
 </div>
+

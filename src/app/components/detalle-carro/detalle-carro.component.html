@@ -1,31 +1,30 @@
 <app-nav></app-nav>
 
-<div *ngIf="juego" class="container-fluid p-4">
+<div *ngIf="libro" class="container-fluid p-4">
     <div class="row justify-content-center" style="margin-bottom: 150px;">
         <div class="col-auto mt-4 mb-4">
             <div id="detalle-libro" style="display: flex; justify-content: center;">
-                <img [src]="juego.imagen" [alt]="juego.titulo" width="400px" height="400px">
+                <img [src]="libro.imagen" [alt]="libro.titulo" width="400px" height="400px">
             </div>
         </div>
         <div class="col-auto">
             <div class="contenedor-detalles text-center">
-                <h3 id="detalle-titulo">{{ juego.titulo }}</h3>
-                <p id="detalle-precio">Precio: {{ juego.precio | currency }}</p>
+                <h3 id="detalle-titulo">{{ libro.titulo }}</h3>
+                <p id="detalle-precio">Precio: {{ libro.precio | currency }}</p>
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div style="font-size: 25px; margin-bottom: 20px;">Descripción</div>
-                        <p id="detalle-resena" style="text-align: justify;">{{ juego.descripcion }}</p>
+                        <p id="detalle-resena" style="text-align: justify;">{{ libro.resena }}</p>
                     </div>
                 </div>
-                <p id="detalle-idioma">Idioma: {{ juego.especificaciones.idioma }}</p>
-                <p *ngIf="juego.especificaciones.edad">Edad recomendada: {{ juego.especificaciones.edad }}</p>
-                <p *ngIf="juego.stock > 0; else sinStock">Stock: {{ juego.stock }}</p>
+                <p id="detalle-idioma">Idioma: {{ libro.especificaciones.idioma }}</p>
+                <p *ngIf="libro.stock > 0; else sinStock">Stock: {{ libro.stock }}</p>
                 <ng-template #sinStock><p>No hay Stock</p></ng-template>
             </div>
             <div class="text-center mt-3">
                 <button 
                     class="btn-ver-carrito add-to-cart-btn col-md-4 mx-auto" 
-                    (click)="agregarAlCarrito(juego)">
+                    (click)="agregarAlCarrito(libro)">
                     Agregar al carrito
                 </button>
             </div>

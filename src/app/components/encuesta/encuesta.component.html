@@ -1,0 +1,70 @@
+<div
+    id="encuesta-container"
+    class="encuesta-overlay"
+    *ngIf="encuestaVisible"
+>
+    <div class="encuesta-content">
+        <button id="cerrar-encuesta" class="btn-cerrar" (click)="cerrarEncuesta()">✖</button>
+        <h2 class="text-center my-4">Encuesta de Preferencias de Lectura</h2>
+        <form #encuestaForm="ngForm" (ngSubmit)="onSubmit(encuestaForm.value)">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                name="nombre"
+                ngModel
+                required
+            />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            ngModel
+            required
+            />
+        </div>
+        <div class="mb-3">
+            <label for="categoria-preferencia" class="form-label"
+            >Categoría de Preferencia</label
+            >
+            <select
+            class="form-select"
+            id="categoria-preferencia"
+            name="categoriaPreferencia"
+            ngModel
+            required
+            >
+            <option value="">Selecciona una categoría</option>
+            <option value="novelas">Novelas</option>
+            <option value="comics-mangas">Comics y Mangas</option>
+            <option value="literatura">Literatura</option>
+            <option value="informatica">Computación e Informática</option>
+            <option value="autoayuda">Autoayuda</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="feedback" class="form-label">Comentarios Adicionales</label>
+            <textarea
+            class="form-control"
+            id="feedback"
+            name="feedback"
+            ngModel
+            rows="4"
+            ></textarea>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <button type="submit" class="btn btn-primary" [disabled]="!encuestaForm.valid">
+                Enviar
+            </button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

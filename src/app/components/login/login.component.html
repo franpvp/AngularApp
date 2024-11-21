@@ -21,11 +21,16 @@
                             </div>
                         </div>
                     </div>
-                    <a style="text-decoration: none; margin-left: 10px;">Restablecer contraseña</a>
+                    <a style="margin-left: 10px; cursor: pointer; color: #0d6efd;" (click)="goToHome()">Restablecer contraseña</a>
 
                     <div class="d-flex justify-content-center align-items-center pt-3">
                         <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
                     </div>
+
+                    <!-- Mostrar mensaje autenticación incorrecta -->
+                     <div>
+                        Credenciales Incorrectas
+                     </div>
                     
                 </form>
             </div>

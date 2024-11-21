@@ -26,3 +26,21 @@ export interface Juego {
     stock: number;
     imagen: string
 }
+
+export interface Libro {
+    id: number;
+    titulo: string;
+    autor: string;
+    editorial: string;
+    precio: number;
+    resena: string;
+    especificaciones: {
+        categoria: string;
+        sub_categoria: string;
+        idioma: string;
+        formato: string;
+        paginas: number;
+    };
+    stock: number;
+    imagen: string
+}

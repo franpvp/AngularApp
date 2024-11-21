@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 // Servicios
 import { JuegosService } from '../../services/juegos/juegos.service';
 import { AuthService } from '../../services/auth/auth.service';
 // Interfaces
-import { Juego } from '../../models/interfaces';
+import { Juego, Libro } from '../../models/interfaces';
+import { LibrosService } from '../../services/libros/libros.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,8 +22,9 @@ export class NavComponent {
   productosEnCarrito: Juego[] = [];
   totalCarrito: number = 0;
   juegos: Juego[] = [];
+  libros: Libro[] = [];
 
-  constructor(private router: Router, private juegosService: JuegosService, private authService: AuthService) {
+  constructor(private router: Router, private juegosService: JuegosService, private librosService: LibrosService, private authService: AuthService) {
     
   }
 
@@ -87,8 +88,8 @@ export class NavComponent {
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
 
-    this.juegosService.obtenerJuegos().subscribe(juegos => {
-      this.juegos = juegos;
+    this.librosService.obtenerLibros().subscribe(libros => {
+      this.libros = libros;
     });
 
     this.cargarCarrito();
