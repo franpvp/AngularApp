@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Juego } from '../../models/interfaces';
-import { JuegosService } from '../../services/juegos/juegos.service';
+import { Libro } from '../../models/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
+import { LibrosService } from '../../services/libros/libros.service';
 
 @Component({
   selector: 'app-carrito',
@@ -15,11 +15,11 @@ import { NavComponent } from "../nav/nav.component";
 export class CarritoComponent {
 
   username: string | null = null;
-  productosEnCarrito: Juego[] = [];
+  productosEnCarrito: Libro[] = [];
   totalCarrito: number = 0;
-  juegos: Juego[] = [];
+  libros: Libro[] = [];
 
-  constructor(private router: Router, private juegosService: JuegosService) {
+  constructor(private router: Router, private librosService: LibrosService) {
   }
 
   goToPago(): void {

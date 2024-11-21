@@ -10,23 +10,6 @@ export interface Usuario {
     puntos?: number;
 }
 
-export interface Juego {
-    id: number;
-    titulo: string;
-    precio: number;
-    descripcion: string;
-    especificaciones: {
-        formato: string;
-        condicion: string;
-        idioma: string;
-        cant_jugadores: string;
-        edad?: string;
-        tiempo?: string;
-    };
-    stock: number;
-    imagen: string
-}
-
 export interface Libro {
     id: number;
     titulo: string;

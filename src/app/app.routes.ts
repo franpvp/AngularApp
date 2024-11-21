@@ -9,8 +9,26 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { PromocionesComponent } from './components/promociones/promociones.component';
 import { DetalleCarroComponent } from './components/detalle-carro/detalle-carro.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { LiteraturaComponent } from './components/categorias/literatura/literatura.component';
+import { NovelasComponent } from './components/categorias/novelas/novelas.component';
+import { ComicsMangasComponent } from './components/categorias/comics-mangas/comics-mangas.component';
+import { InformaticaComponent } from './components/categorias/informatica/informatica.component';
+import { AutoAyudaComponent } from './components/categorias/auto-ayuda/auto-ayuda.component';
+import { GestionUsuariosComponent } from './components/administracion/gestion-usuarios/gestion-usuarios.component';
+import { GestionProductosComponent } from './components/administracion/gestion-productos/gestion-productos.component';
+import { AdminHomeComponent } from './components/administracion/admin-home/admin-home.component';
+import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 
 export const routes: Routes = [
+    { path: 'admin-home', component: AdminHomeComponent },
+    { path: 'gestion-usuarios', component: GestionUsuariosComponent },
+    { path: 'gestion-productos', component: GestionProductosComponent },
+    { path: 'literatura', component: LiteraturaComponent },
+    { path: 'novelas', component: NovelasComponent },
+    { path: 'comics-mangas', component: ComicsMangasComponent },
+    { path: 'informatica', component: InformaticaComponent },
+    { path: 'auto-ayuda', component: AutoAyudaComponent },
+    { path: 'recuperacion', component: RecuperacionComponent },
     { path: 'contacto', component: ContactoComponent },
     { path: 'nosotros', component: NosotrosComponent },
     { path: 'carrito', component: CarritoComponent },

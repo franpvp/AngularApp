@@ -1,1 +1,55 @@
-<p>literatura works!</p>
+<app-nav></app-nav>
+
+<!-- Sección Libros Literatura -->
+<div class="container-fluid" style="margin-top: 20px;">
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="line"></div>
+        </div>
+        <div class="col-auto">
+            <div class="title-recomendados" style="text-align: center;">Literatura</div>
+        </div>
+        <div class="col">
+            <div class="line"></div>
+        </div>
+    </div>
+</div>
+<!-- Navegación -->
+<div class="container-fluid" style="padding: 25px 15px 15px 50px;">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item" (click)="goToHome()"><a style="cursor: pointer; color: blue;">Inicio</a></li>
+                    <li class="breadcrumb-item"><a id="categoria-libro"></a>Literatura</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Libros -->
+<div class="contenedor">
+    <div id="contenedor-productos">
+        <!-- Aquí se mostrarán los productos desde el JSON libro-->
+    </div>
+</div>
+
+<!-- Paginación -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

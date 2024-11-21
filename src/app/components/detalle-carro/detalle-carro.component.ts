@@ -5,9 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // Servicios
-import { JuegosService } from '../../services/juegos/juegos.service';
 import { LibrosService } from '../../services/libros/libros.service';
-import { Juego } from '../../models/interfaces';
 import { Libro } from '../../models/interfaces';
 
 @Component({

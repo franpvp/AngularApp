@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // Servicios
-import { JuegosService } from '../../services/juegos/juegos.service';
 import { AuthService } from '../../services/auth/auth.service';
 // Interfaces
-import { Juego, Libro } from '../../models/interfaces';
+import { Libro } from '../../models/interfaces';
 import { LibrosService } from '../../services/libros/libros.service';
 
 @Component({
@@ -19,12 +18,11 @@ import { LibrosService } from '../../services/libros/libros.service';
 export class NavComponent {
 
   username: string | null = null;
-  productosEnCarrito: Juego[] = [];
+  productosEnCarrito: Libro[] = [];
   totalCarrito: number = 0;
-  juegos: Juego[] = [];
   libros: Libro[] = [];
 
-  constructor(private router: Router, private juegosService: JuegosService, private librosService: LibrosService, private authService: AuthService) {
+  constructor(private router: Router, private librosService: LibrosService, private authService: AuthService) {
     
   }
 
@@ -84,6 +82,26 @@ export class NavComponent {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
   }
 
+  // Enlaces Categorías
+  goToCateAutoAyuda(): void {
+    this.router.navigate(['auto-ayuda']);
+  }
+
+  goToCateNovelas(): void {
+    this.router.navigate(['novelas']);
+  }
+
+  goToCateLiteratura(): void {
+    this.router.navigate(['literatura']);
+  }
+
+  goToCateComicsMangas(): void {
+    this.router.navigate(['comics-mangas']);
+  }
+
+  goToCateInformatica(): void {
+    this.router.navigate(['informatica']);
+  }
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');

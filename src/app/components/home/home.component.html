@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<!-- Juegos -->
+<!-- Libros -->
 <div class="contenedor">
     <div *ngFor="let libro of libros" class="card">
         <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
@@ -67,6 +67,41 @@
 <div class="contenedor">
     <!-- Libros en promocion -->
     <div id="contenedor-productos-promo">
+    </div>
+</div>
+
+<!-- Selección de Categorías -->
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a (click)="goToCateAutoAyuda()">
+                <div class="contenedor-promocion">
+                    <img src="/assets/img/img-categorias/Autoayuda.png" alt="comics-mangas" class="img-fluid imagen-promocion">
+                </div>
+            </a>
+        </div>
+        <div class="col-auto">
+            <a (click)="goToCateLiteratura()">
+                <div class="contenedor-promocion">
+                    <img src="/assets/img/img-categorias/Literatura.png" alt="novelas" class="img-fluid imagen-promocion">
+                </div>
+            </a>
+        </div>
+        <div class="col-auto">
+            <a (click)="goToCateNovelas()">
+                <div class="contenedor-promocion">
+                    <img src="/assets/img/img-categorias/Novelas.png" alt="autoayuda" class="img-fluid imagen-promocion">
+                </div>
+            </a>
+        </div>
+        <div class="col-auto">
+            <a (click)="goToCateComicsMangas()">
+                <div class="contenedor-promocion">
+                    <img src="/assets/img/img-categorias/Comics-mangas.png" alt="literatura" class="img-fluid imagen-promocion">
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
-import { Juego } from '../../models/interfaces';
+import { Libro } from '../../models/interfaces';
 
 @Component({
   selector: 'app-metodo-pago',
@@ -15,12 +15,12 @@ import { Juego } from '../../models/interfaces';
 export class MetodoPagoComponent {
 
   username: string | null = localStorage.getItem('username');
-  productosEnCarrito: Juego[] = [];
+  productosEnCarrito: Libro[] = [];
 
   nombre_titular: string = '';
   digitos_tarjeta: string = '';
   fecha_vencimiento: string = '';
-  digitos_cvc :string = '';
+  digitos_cvc: string = '';
 
   constructor(private router: Router, route: ActivatedRoute) {
 

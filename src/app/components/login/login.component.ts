@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth/auth.service';
+
+// Componentes
 import { NavComponent } from "../nav/nav.component";
 
+// Servicios
+import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -42,6 +45,10 @@ export class LoginComponent {
 
   goToContacto(): void {
     this.router.navigate(['contacto']);
+  }
+
+  goToRecuperacion(): void {
+    this.router.navigate(['recuperacion']);
   }
 
   login(): void {

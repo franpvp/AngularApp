@@ -17,7 +17,7 @@ import { EncuestaComponent } from "../encuesta/encuesta.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent, EncuestaComponent],
+  imports: [CommonModule, FormsModule, NavComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -59,15 +59,38 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['contacto']);
   }
 
+  // Enlaces Categorías
+  goToCateAutoAyuda(): void {
+    this.router.navigate(['auto-ayuda']);
+  }
+
+  goToCateNovelas(): void {
+    this.router.navigate(['novelas']);
+  }
+
+  goToCateLiteratura(): void {
+    this.router.navigate(['literatura']);
+  }
+
+  goToCateComicsMangas(): void {
+    this.router.navigate(['comics-mangas']);
+  }
+
+  goToCateInformatica(): void {
+    this.router.navigate(['informatica']);
+  }
+
   verDetalles(libroId: number) {
     this.router.navigate(['/producto', libroId]);
   }
 
-  cerrarSesion():void {
+  cerrarSesion(): void {
     this.username = null;
     this.router.navigate(['home']);
     localStorage.removeItem('username')
   }
+
+  
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
