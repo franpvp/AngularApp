@@ -1,0 +1,29 @@
+<app-nav></app-nav>
+<div class="container">
+    <h2>Restablecer Contraseña</h2>
+    <form [formGroup]="formularioNuevaContrasena" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="nuevaContrasena">Nueva Contraseña</label>
+            <input
+            formControlName="nuevaContrasena"
+            type="password"
+            class="form-control"
+            id="nuevaContrasena"
+            placeholder="Nueva contraseña"
+            required
+            />
+        </div>
+        <div class="form-group">
+            <label for="confirmarContrasena">Confirmar Contraseña</label>
+            <input
+            formControlName="confirmarContrasena"
+            type="password"
+            class="form-control"
+            id="confirmarContrasena"
+            placeholder="Confirmar contraseña"
+            required
+            />
+        </div>
+    <button type="submit" class="btn btn-success mt-3">Guardar Contraseña</button>
+    </form>
+</div>

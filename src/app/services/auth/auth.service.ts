@@ -55,4 +55,9 @@ export class AuthService {
   obtenerUsuarios(): Observable<Usuario[]> {
     return of(this.usuarios);
   }
+
+  validarCorreo(correo: string): Observable<boolean> {
+    const existeCorreo = this.usuarios.some((usuario) => usuario.correo === correo);
+    return of(existeCorreo);
+  }
 }

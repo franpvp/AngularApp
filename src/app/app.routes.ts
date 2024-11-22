@@ -18,6 +18,7 @@ import { GestionUsuariosComponent } from './components/administracion/gestion-us
 import { GestionProductosComponent } from './components/administracion/gestion-productos/gestion-productos.component';
 import { AdminHomeComponent } from './components/administracion/admin-home/admin-home.component';
 import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
+import { RestablecerContrasenaComponent } from './components/restablecer-contrasena/restablecer-contrasena.component';
 
 export const routes: Routes = [
     { path: 'admin-home', component: AdminHomeComponent },
@@ -28,6 +29,7 @@ export const routes: Routes = [
     { path: 'comics-mangas', component: ComicsMangasComponent },
     { path: 'informatica', component: InformaticaComponent },
     { path: 'auto-ayuda', component: AutoAyudaComponent },
+    { path: 'restablecer-contrasena', component: RestablecerContrasenaComponent },
     { path: 'recuperacion', component: RecuperacionComponent },
     { path: 'contacto', component: ContactoComponent },
     { path: 'nosotros', component: NosotrosComponent },
