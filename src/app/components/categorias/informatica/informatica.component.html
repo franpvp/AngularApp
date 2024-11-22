@@ -30,63 +30,20 @@
     </div>
 </div>
 
-<!-- Libros -->
+<!-- Libros Filtrados -->
 <div class="contenedor">
-    <div class="card" style="padding: 15px 5px 5px 5px;">
-        <a onclick="verDetalles(10)" style="cursor: pointer;">
+    <div *ngFor="let libro of librosFiltrados" class="card" style="padding: 15px 5px 5px 5px;">
+        <a style="cursor: pointer;">
             <div class="box-1">
-                <img src="/assets/img/Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M.webp" alt="Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M">
+                <img [src]="libro.imagen" [alt]="libro.titulo" />
             </div>
         </a>
         <div class="card-content">
-            <h3 class="card-title">Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M</h3>
-            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">CARRASCO, LUIS</h5>
-            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">Imp. Macro Peru Macro Peru</h5>
-            <p class="card-price">$15.990</p>
-            <button class="add-to-cart-btn">Agregar al Carrito</button>
-        </div>
-    </div>
-    <div class="card" style="padding: 15px 5px 5px 5px;">
-        <a onclick="verDetalles(11)" style="cursor: pointer;">
-            <div class="box-1">
-                <img src="/assets/img/Administracion-hardware-de-un-sistema-informatico.webp" alt="Administracion-hardware-de-un-sistema-informatico">
-            </div>
-        </a>
-        <div class="card-content">
-            <h3 class="card-title">Administracion Hardware De Un Sistema Informatico</h3>
-            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">RAMOS PEREZ, ARTURO FRANCISCO</h5>
-            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">Imp. Macro Peru Macro Peru</h5>
-            <p class="card-price">$24.990</p>
-            <button class="add-to-cart-btn">Agregar al Carrito</button>
-        </div>
-    </div>
-    <div class="card" style="padding: 15px 5px 5px 5px;">
-        <a onclick="verDetalles(12)" style="cursor: pointer;">
-            <div class="box-1">
-                <img src="/assets/img/Sistemas-operativos.webp" alt="Sistemas-operativos">
-            </div>
-        </a>
-        <div class="card-content">
-            <h3 class="card-title">Sistemas Operativos</h3>
-            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">ELMASRI, RAMEZ</h5>
-            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">Mcgraw Hill</h5>
-            <p class="card-price">$33.990</p>
-            <button class="add-to-cart-btn">Agregar al Carrito</button>
-        </div>
-    </div>
-    <div class="card" style="padding: 15px 5px 5px 5px;">
-        <a onclick="verDetalles(13)" style="cursor: pointer;">
-            <div class="box-1">
-                <img src="/assets/img/Todo-Sobre-Los-NFT.webp" alt="Todo-Sobre-Los-NFT">
-            </div>
-        </a>
-        <div class="card-content">
-            <h3 class="card-title">Todo Sobre Los NFT</h3>
-            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">GARAVAGLIA, ROBERTO</h5>
-            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">Hoepli Ediciones</h5>
-            <p class="card-price">$33.990</p>
-            <p class="card-price">$22.990</p>
-            <button class="add-to-cart-btn">Agregar al Carrito</button>
+            <h3 class="card-title">{{ libro.titulo }}</h3>
+            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">{{ libro.autor }}</h5>
+            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">{{ libro.editorial }}</h5>
+            <p class="card-price">Precio: ${{ libro.precio }}</p>
+            <button (click)="agregarAlCarrito(libro)" class="add-to-cart-btn">Agregar al Carrito</button>
         </div>
     </div>
 </div>

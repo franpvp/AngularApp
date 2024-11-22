@@ -30,15 +30,22 @@
     </div>
 </div>
 
-<!-- Libros -->
+<!-- Libros Filtrados -->
 <div class="contenedor">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div id="contenedor-productos">
+    <div *ngFor="let libro of librosFiltrados" class="card" style="padding: 15px 5px 5px 5px;">
+        <a style="cursor: pointer;">
+            <div class="box-1">
+                <img [src]="libro.imagen" [alt]="libro.titulo" />
             </div>
+        </a>
+        <div class="card-content">
+            <h3 class="card-title">{{ libro.titulo }}</h3>
+            <h5 class="card-title" style="font-size: 14px; color: rgb(15, 137, 143);">{{ libro.autor }}</h5>
+            <h5 class="card-title" style="font-size: 10px; color: rgb(15, 137, 143);">{{ libro.editorial }}</h5>
+            <p class="card-price">Precio: ${{ libro.precio }}</p>
+            <button (click)="agregarAlCarrito(libro)" class="add-to-cart-btn">Agregar al Carrito</button>
         </div>
     </div>
-    
 </div>
 
 <!-- Paginación -->
