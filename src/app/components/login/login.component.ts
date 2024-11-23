@@ -20,6 +20,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class LoginComponent {
 
   username: string = '';
+  rolUsuario: string = '';
   contrasena: string = '';
   errorMessage: string = '';
 
@@ -55,7 +56,12 @@ export class LoginComponent {
     this.authService.authenticate(this.username, this.contrasena).subscribe(usuario => {
       if (usuario) {
         localStorage.setItem('username', usuario.username);
-        this.router.navigate(['home']);
+        localStorage.setItem('rol', usuario.rol);
+        if(usuario.rol === 'admin') {
+          this.router.navigate(['admin-home']); 
+        } else if(usuario.rol === 'cliente') {
+          this.router.navigate(['home']);
+        }
       } else {
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }

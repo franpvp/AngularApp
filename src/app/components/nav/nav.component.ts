@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 // Servicios
 import { AuthService } from '../../services/auth/auth.service';
 // Interfaces
-import { Libro } from '../../models/interfaces';
+import { Libro, Usuario } from '../../models/interfaces';
 import { LibrosService } from '../../services/libros/libros.service';
 
 @Component({
@@ -18,6 +18,8 @@ import { LibrosService } from '../../services/libros/libros.service';
 export class NavComponent {
 
   username: string | null = null;
+  usuarios: Usuario[] = [];
+  rolUsuario: string | null = null;
   productosEnCarrito: Libro[] = [];
   totalCarrito: number = 0;
   libros: Libro[] = [];
@@ -103,8 +105,20 @@ export class NavComponent {
     this.router.navigate(['informatica']);
   }
 
+  goToAdminHome(): void {
+    this.router.navigate(['admin-home']);
+  }
+  goToGestionUsuario(): void {
+    this.router.navigate(['gestion-usuarios']);
+  } 
+
+  goToGestionProductos(): void {
+    this.router.navigate(['gestion-productos']);
+  }
+
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
+    this.rolUsuario = localStorage.getItem('rol');
 
     this.librosService.obtenerLibros().subscribe(libros => {
       this.libros = libros;

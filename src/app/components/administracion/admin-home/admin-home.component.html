@@ -1,1 +1,34 @@
-<p>admin-home works!</p>
+<app-nav></app-nav>
+
+<div class="container-fluid" style="margin-top: 20px;">
+    <div class="row align-items-center">
+        <div class="col">
+            <div class="line">
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="title-recomendados" style="text-align: center; font-size: 50px; margin-top: 30px; margin-bottom: 30px;">Administración</div>
+        </div>
+        <div class="col">
+            <div class="line">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Gestión Administrador -->
+<div class="container-fluid p-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 text-center">
+            <a style="cursor: pointer;" (click)="goToGestionUsuario()">
+                <img src="/assets/img/img-categorias/gestion-usuario.jpeg" alt="gestion-usuario" class="img-fluid imagen-promocion">
+            </a>
+            <div style="font-size: 30px;">Gestion Usuarios</div>
+        </div>
+        <div class="col-lg-5 text-center">
+            <a style="cursor: pointer;" (click)="goToGestionProductos()">
+                <img src="/assets/img/img-categorias/gestion-productos.jpg" alt="gestion-productos" class="img-fluid imagen-promocion">
+            </a>
+            <div style="font-size: 30px;">Gestion Productos</div>
+        </div>
+    </div>
+</div>

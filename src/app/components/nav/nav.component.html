@@ -10,10 +10,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="rolUsuario === 'cliente' ">
                         <a class="nav-link" (click)="goToHome()">Inicio</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item" *ngIf="rolUsuario === 'admin' ">
+                        <a class="nav-link" (click)="goToAdminHome()">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown" *ngIf="rolUsuario === 'cliente' ">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
                         </a>
@@ -25,10 +28,21 @@
                             <li (click)="goToCateNovelas()"><a class="dropdown-item">Novelas</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <!-- Dropdown Admin -->
+                    <li class="nav-item dropdown" *ngIf="rolUsuario === 'admin'">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
+                            <li (click)="goToGestionUsuario()"><a class="dropdown-item">Gestión Usuarios</a></li>
+                            <li (click)="goToGestionProductos()"><a class="dropdown-item">Gestión Productos</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item" *ngIf="rolUsuario === 'cliente'">
                         <a class="nav-link" (click)="goToPromociones()">Promociones</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="rolUsuario === 'cliente'">
                         <a class="nav-link" (click)="goToContacto()">Contacto</a>
                     </li>
                 </ul>
