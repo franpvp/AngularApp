@@ -20,19 +20,70 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Imagen</th>
+                <th scope="col">Id</th>
                 <th scope="col">Título</th>
                 <th scope="col">Autor</th>
                 <th scope="col">Editorial</th>
                 <th scope="col">Precio</th>
-                <th scope="col">Reseña</th>
-                <th scope="col">Categoria</th>
-                <th scope="col">Stock</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
-        <tbody id="tabla-productos">
-            
+        <tbody>
+            <tr *ngFor="let libro of libros">
+                <td>{{ libro.id }}</td>
+                <td>
+                    <input 
+                        *ngIf="libro.enEdicion" 
+                        [(ngModel)]="libro.titulo" 
+                        type="text" 
+                        class="form-control"
+                    />
+                    <span *ngIf="!libro.enEdicion">{{ libro.titulo }}</span>
+                </td>
+                <td>
+                    <input 
+                        *ngIf="libro.enEdicion" 
+                        [(ngModel)]="libro.autor" 
+                        type="text" 
+                        class="form-control"
+                    />
+                    <span *ngIf="!libro.enEdicion">{{ libro.autor }}</span>
+                </td>
+                <td>
+                    <input 
+                        *ngIf="libro.enEdicion" 
+                        [(ngModel)]="libro.editorial" 
+                        type="text" 
+                        class="form-control"
+                    />
+                    <span *ngIf="!libro.enEdicion">{{ libro.editorial }}</span>
+                </td>
+                <td>
+                    <input 
+                        *ngIf="libro.enEdicion" 
+                        [(ngModel)]="libro.precio" 
+                        type="text" 
+                        class="form-control"
+                    />
+                    <span *ngIf="!libro.enEdicion">{{ libro.precio }}</span>
+                </td>
+                <td>
+                    <button 
+                        *ngIf="!libro.enEdicion" 
+                        (click)="editarLibro(libro)" 
+                        class="btn btn-primary btn-sm"
+                    >
+                        Editar
+                    </button>
+                    <button 
+                        *ngIf="libro.enEdicion" 
+                        (click)="guardarLibro(libro)" 
+                        class="btn btn-success btn-sm"
+                    >
+                        Guardar
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

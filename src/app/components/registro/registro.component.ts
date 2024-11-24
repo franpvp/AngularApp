@@ -89,9 +89,6 @@ export class RegistroComponent {
     }
   }
 
-
-  
-
   // Validación para edad mínima de 13 años
   validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
     const fechaNacimiento = new Date(control.value);
@@ -131,7 +128,7 @@ export class RegistroComponent {
       nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
       apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
       username: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
       fecha_nacimiento: ['', [Validators.required, this.validarEdadMinima]],
       domicilio: [''],
       contrasena1: [

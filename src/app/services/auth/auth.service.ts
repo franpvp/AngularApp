@@ -18,7 +18,8 @@ export class AuthService {
       apellidos: "Valdivia Palma",
       correo: "fr.valdiviap@gmail.com",
       fecha_nacimiento: "1998-03-30",
-      domicilio: ""
+      domicilio: "",
+      enEdicion: false
     },
     {
       rol: "cliente",
@@ -29,7 +30,8 @@ export class AuthService {
       correo: "jperez@example.com",
       fecha_nacimiento: "1980-11-12",
       domicilio: "",
-      puntos: 0
+      puntos: 0,
+      enEdicion: false
     },
     {
       rol: "cliente",
@@ -40,7 +42,8 @@ export class AuthService {
       correo: "mgarcia@example.com",
       fecha_nacimiento: "1993-05-12",
       domicilio: "",
-      puntos: 0
+      puntos: 0,
+      enEdicion: false
     }
   ];
 

@@ -68,4 +68,8 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit() {
+    
+  }
+
 }

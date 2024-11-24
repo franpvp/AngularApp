@@ -25,7 +25,8 @@ export class LibrosService {
                 "paginas": 352
             },
             "stock": 10,
-            "imagen": "/assets/img/libros/literatura/harry-potter2.webp"
+            "imagen": "/assets/img/libros/literatura/harry-potter2.webp",
+            "enEdicion": false
         },
         {
             "id": 2,
@@ -42,7 +43,8 @@ export class LibrosService {
                 "paginas": 880
             },
             "stock": 15,
-            "imagen": "/assets/img/libros/literatura/Alas-De-Hierro.webp"
+            "imagen": "/assets/img/libros/literatura/Alas-De-Hierro.webp",
+            "enEdicion": false
         },
         {
             "id": 3,
@@ -59,7 +61,8 @@ export class LibrosService {
                 "paginas": 640
             },
             "stock": 20,
-            "imagen": "/assets/img/libros/novelas/el-niño-que-perdio-la-guerra.webp"
+            "imagen": "/assets/img/libros/novelas/el-niño-que-perdio-la-guerra.webp",
+            "enEdicion": false
         },
         {
             "id": 4,
@@ -76,7 +79,8 @@ export class LibrosService {
                 "paginas": 544
             },
             "stock": 10,
-            "imagen": "/assets/img/libros/novelas/La-Chica-Oculta.webp"
+            "imagen": "/assets/img/libros/novelas/La-Chica-Oculta.webp",
+            "enEdicion": false
         },
         {
             "id": 5,
@@ -93,7 +97,8 @@ export class LibrosService {
                 "paginas": 240
             },
             "stock": 5,
-            "imagen": "/assets/img/libros/auto-ayuda/Si-Lo-Crees-Lo-Creas.webp"
+            "imagen": "/assets/img/libros/auto-ayuda/Si-Lo-Crees-Lo-Creas.webp",
+            "enEdicion": false
         },
         {
             "id": 6,
@@ -110,7 +115,8 @@ export class LibrosService {
                 "paginas": 352
             },
             "stock": 12,
-            "imagen": "/assets/img/libros/auto-ayuda/Deja-De-Ser-Tu.webp"
+            "imagen": "/assets/img/libros/auto-ayuda/Deja-De-Ser-Tu.webp",
+            "enEdicion": false
         },
         {
             "id": 7,
@@ -127,7 +133,8 @@ export class LibrosService {
                 "paginas": 256
             },
             "stock": 10,
-            "imagen": "/assets/img/libros/novelas/El-Gato-Que-Cuidaba-Las-Bibliotecas.webp"
+            "imagen": "/assets/img/libros/novelas/El-Gato-Que-Cuidaba-Las-Bibliotecas.webp",
+            "enEdicion": false
         },
         {
             "id": 8,
@@ -144,7 +151,8 @@ export class LibrosService {
                 "paginas": 160
             },
             "stock": 4,
-            "imagen": "/assets/img/libros/literatura/Un-Buen-Dia-Para-Estar-Sola.webp"
+            "imagen": "/assets/img/libros/literatura/Un-Buen-Dia-Para-Estar-Sola.webp",
+            "enEdicion": false
         },
         {
             "id": 9,
@@ -161,7 +169,8 @@ export class LibrosService {
                 "paginas": 188
             },
             "stock": 12,
-            "imagen": "/assets/img/libros/auto-ayuda/Deten-El-Estres.webp"
+            "imagen": "/assets/img/libros/auto-ayuda/Deten-El-Estres.webp",
+            "enEdicion": false
         },
         {
             "id": 10,
@@ -178,7 +187,8 @@ export class LibrosService {
                 "paginas": 592
             },
             "stock": 9,
-            "imagen": "/assets/img/libros/informatica/Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M.webp"
+            "imagen": "/assets/img/libros/informatica/Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M.webp",
+            "enEdicion": false
         },
         {
             "id": 11,
@@ -195,7 +205,8 @@ export class LibrosService {
                 "paginas": 208
             },
             "stock": 7,
-            "imagen": "/assets/img/libros/informatica/Administracion-hardware-de-un-sistema-informatico.webp"
+            "imagen": "/assets/img/libros/informatica/Administracion-hardware-de-un-sistema-informatico.webp",
+            "enEdicion": false
         },
         {
             "id": 12,
@@ -212,7 +223,8 @@ export class LibrosService {
                 "paginas": 544
             },
             "stock": 13,
-            "imagen": "/assets/img/libros/informatica/Sistemas-operativos.webp"
+            "imagen": "/assets/img/libros/informatica/Sistemas-operativos.webp",
+            "enEdicion": false
         },
         {
             "id": 13,
@@ -229,7 +241,8 @@ export class LibrosService {
                 "paginas": 196
             },
             "stock": 25,
-            "imagen": "/assets/img/libros/informatica/Todo-Sobre-Los-NFT.webp"
+            "imagen": "/assets/img/libros/informatica/Todo-Sobre-Los-NFT.webp",
+            "enEdicion": false
         },
         {
             "id": 14,
@@ -246,7 +259,8 @@ export class LibrosService {
                 "paginas": 200
             },
             "stock": 4,
-            "imagen": "/assets/img/libros/comics-mangas/Vinland Saga Nº 27.webp"
+            "imagen": "/assets/img/libros/comics-mangas/Vinland Saga Nº 27.webp",
+            "enEdicion": false
         },
         {
             "id": 15,
@@ -263,7 +277,8 @@ export class LibrosService {
                 "paginas": 200
             },
             "stock": 8,
-            "imagen": "/assets/img/libros/comics-mangas/Attack-On-Titan-21.webp"
+            "imagen": "/assets/img/libros/comics-mangas/Attack-On-Titan-21.webp",
+            "enEdicion": false
         },
         {
             "id": 16,
@@ -280,7 +295,8 @@ export class LibrosService {
                 "paginas": 136
             },
             "stock": 15,
-            "imagen": "/assets/img/libros/comics-mangas/Star-Wars-Darth-Vader-Tomo-Nº-03:04.webp"
+            "imagen": "/assets/img/libros/comics-mangas/Star-Wars-Darth-Vader-Tomo-Nº-03:04.webp",
+            "enEdicion": false
         },
         {
             "id": 17,
@@ -297,7 +313,8 @@ export class LibrosService {
                 "paginas": 200
             },
             "stock": 14,
-            "imagen": "/assets/img/libros/comics-mangas/Spy-X-Family-10.webp"
+            "imagen": "/assets/img/libros/comics-mangas/Spy-X-Family-10.webp",
+            "enEdicion": false
         },
         {
             "id": 18,
@@ -314,7 +331,8 @@ export class LibrosService {
                 "paginas": 192
             },
             "stock": 6,
-            "imagen": "/assets/img/libros/comics-mangas/Guardianes-De-La-Noche-8.webp"
+            "imagen": "/assets/img/libros/comics-mangas/Guardianes-De-La-Noche-8.webp",
+            "enEdicion": false
         }
     ]
 
