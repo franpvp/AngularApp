@@ -19,7 +19,7 @@ export class NavComponent {
 
   username: string | null = null;
   usuarios: Usuario[] = [];
-  rolUsuario: string | null = null;
+  rolUsuario: string = '';
   productosEnCarrito: Libro[] = [];
   totalCarrito: number = 0;
   libros: Libro[] = [];
@@ -59,7 +59,8 @@ export class NavComponent {
   cerrarSesion():void {
     this.username = null;
     this.router.navigate(['home']);
-    localStorage.removeItem('username')
+    localStorage.removeItem('username');
+    localStorage.removeItem('rol');
   }
 
   limpiarCarrito(): void {
@@ -68,7 +69,7 @@ export class NavComponent {
   }
 
   goToCarrito(): void {
-    this.router.navigate(['carrito'])
+    this.router.navigate(['carrito']);
   }
 
   cargarCarrito(): void {
@@ -118,7 +119,7 @@ export class NavComponent {
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
-    this.rolUsuario = localStorage.getItem('rol');
+    this.rolUsuario = localStorage.getItem('rol') || 'cliente';
 
     this.librosService.obtenerLibros().subscribe(libros => {
       this.libros = libros;

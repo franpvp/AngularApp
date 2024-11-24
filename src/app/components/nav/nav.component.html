@@ -13,9 +13,6 @@
                     <li class="nav-item" *ngIf="rolUsuario === 'cliente' ">
                         <a class="nav-link" (click)="goToHome()">Inicio</a>
                     </li>
-                    <li class="nav-item" *ngIf="rolUsuario === 'admin' ">
-                        <a class="nav-link" (click)="goToAdminHome()">Inicio</a>
-                    </li>
                     <li class="nav-item dropdown" *ngIf="rolUsuario === 'cliente' ">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
@@ -27,6 +24,9 @@
                             <li (click)="goToCateInformatica()"><a class="dropdown-item">Informática</a></li>
                             <li (click)="goToCateNovelas()"><a class="dropdown-item">Novelas</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item" *ngIf="rolUsuario === 'admin' ">
+                        <a class="nav-link" (click)="goToAdminHome()">Inicio</a>
                     </li>
                     <!-- Dropdown Admin -->
                     <li class="nav-item dropdown" *ngIf="rolUsuario === 'admin'">

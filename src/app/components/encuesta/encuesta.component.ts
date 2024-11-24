@@ -11,46 +11,24 @@ import { FormsModule } from '@angular/forms';
 })
 export class EncuestaComponent {
 
-  intentosActuales: number = 0;
   encuestaVisible: boolean = false;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
-
-  ngOnInit(): void {
-    this.intentosActuales = parseInt(localStorage.getItem('intentosEncuesta') || '0', 10);
-
-    // Verificar si se debe mostrar la encuesta
-    if (this.intentosActuales !== 1) {
-      setTimeout(() => {
-        this.mostrarEncuesta();
-      }, 10000);
-    }
-
-    // Cerrar encuesta al hacer clic fuera del contenido
-    const encuestaContainer = this.el.nativeElement.querySelector('#encuesta-container');
-    this.renderer.listen(encuestaContainer, 'click', (event: MouseEvent) => {
-      if (event.target === encuestaContainer) {
-        this.cerrarEncuesta();
-      }
-    });
+  ngOnInit() {
+    this.verificarEncuesta();
   }
 
-  mostrarEncuesta(): void {
-    this.encuestaVisible = true;
-    this.intentosActuales++;
-    localStorage.setItem('intentosEncuesta', this.intentosActuales.toString());
+  verificarEncuesta() {
+    const encuestaMostrada = localStorage.getItem('encuestaMostrada');
+    this.encuestaVisible = !encuestaMostrada;
   }
 
-  cerrarEncuesta(): void {
+  cerrarEncuesta() {
     this.encuestaVisible = false;
+    localStorage.setItem('encuestaMostrada', 'true');
   }
 
-  onSubmit(formValues: { nombre: string; email: string; categoriaPreferencia: string; feedback: string }): void {
-    const encuestas = JSON.parse(localStorage.getItem('encuestas') || '[]');
-    encuestas.push(formValues);
-    localStorage.setItem('encuestas', JSON.stringify(encuestas));
-
-    alert('¡Gracias por tu feedback! Utilizaremos esta información para recomendarte libros.');
+  onSubmit(formValue: any) {
+    console.log('Datos enviados:', formValue);
     this.cerrarEncuesta();
   }
 

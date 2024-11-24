@@ -17,7 +17,7 @@ import { EncuestaComponent } from "../encuesta/encuesta.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent],
+  imports: [CommonModule, FormsModule, NavComponent, EncuestaComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
