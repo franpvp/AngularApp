@@ -13,14 +13,19 @@ import { NavComponent } from "../nav/nav.component";
 })
 export class RestablecerContrasenaComponent {
 
-  formularioNuevaContrasena: FormGroup;
+  
   correo: string | null = null;
+  correoTouched: boolean = false;
+  nuevaContrasena: string | null = null;
+  nuevaContrasenaTouched: boolean = false;
+  confirmarContrasena: string | null = null;
+  confirmarContrasenaTouched: boolean = false;
+  mensajeError: string = '';
+
+  formularioNuevaContrasena!: FormGroup;
 
   constructor( private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
-    this.formularioNuevaContrasena = this.fb.group({
-      nuevaContrasena: ['', [Validators.required, Validators.minLength(6)]],
-      confirmarContrasena: ['', [Validators.required]],
-    });
+    
   }
 
   submitForm(): void {
@@ -41,9 +46,19 @@ export class RestablecerContrasenaComponent {
     this.router.navigate(['/login']); // Redirige al login
   }
 
+  validarCampo(campo: string): boolean {
+    return !!this.formularioNuevaContrasena.get(campo)?.invalid && 
+        (this.formularioNuevaContrasena.get(campo)?.touched || false);
+  }
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.correo = params['correo'] || null;
+    });
+
+    this.formularioNuevaContrasena = this.fb.group({
+      nuevaContrasena: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(18), Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]],
+      confirmarContrasena: ['', [Validators.required]],
     });
   }
 

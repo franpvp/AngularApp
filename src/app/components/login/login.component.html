@@ -1,6 +1,9 @@
 <app-nav></app-nav>
 
 <div class="container login">
+    <div class="alert alert-danger text-center" *ngIf="mensajeError">
+        {{ mensajeError }}
+    </div>
     <div class="row">
         <div class="col">
             <div class="login-title">Iniciar Sesión</div>
@@ -25,11 +28,6 @@
 
                     <div class="d-flex justify-content-center align-items-center pt-3">
                         <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
-                    </div>
-
-                    <!-- Mostrar mensaje autenticación incorrecta -->
-                    <div class="mensaje-error" *ngIf="errorMessage">
-                        {{ errorMessage }}
                     </div>
                     
                 </form>

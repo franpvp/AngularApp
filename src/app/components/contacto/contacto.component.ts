@@ -18,6 +18,7 @@ export class ContactoComponent {
   correo: string = '';
   asunto: string = '';
   mensaje: string = '';
+  mensajeEnviado: boolean = false;
 
   nombreTouched: boolean = false;
   correoTouched: boolean = false;
@@ -90,9 +91,14 @@ export class ContactoComponent {
 
   submitForm() {
     if (this.formularioContacto.valid) {
-      console.log("Resultado", this.formularioContacto.value);
-    } else {
-      this.formularioContacto.markAllAsTouched();
+      this.mensajeEnviado = true; // Muestra el mensaje
+      console.log(this.formularioContacto.value);
+
+      setTimeout(() => {
+        this.mensajeEnviado = false;
+      }, 3000);
+
+      this.formularioContacto.reset();
     }
   }
 
@@ -104,7 +110,7 @@ export class ContactoComponent {
   ngOnInit(): void {
     this.formularioContacto = this.fb.group({
       nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
       asunto: ['', Validators.required],
       mensaje: ['', Validators.required]
     }

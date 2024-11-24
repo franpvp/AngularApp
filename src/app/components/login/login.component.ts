@@ -22,8 +22,8 @@ export class LoginComponent {
   username: string = '';
   rolUsuario: string = '';
   contrasena: string = '';
-  errorMessage: string = '';
-
+  mensajeError: string = '';
+  
   constructor(private authService: AuthService, private router: Router) {}
 
   goToHome(): void {
@@ -57,15 +57,27 @@ export class LoginComponent {
       if (usuario) {
         localStorage.setItem('username', usuario.username);
         localStorage.setItem('rol', usuario.rol);
-        if(usuario.rol === 'admin') {
-          this.router.navigate(['admin-home']); 
-        } else if(usuario.rol === 'cliente') {
+  
+        if (usuario.rol === 'admin') {
+          this.router.navigate(['admin-home']);
+        } else if (usuario.rol === 'cliente') {
           this.router.navigate(['home']);
         }
       } else {
-        this.errorMessage = 'Usuario o contraseña incorrectos';
+        // Mostrar mensaje de error si las credenciales son incorrectas
+        this.mostrarMensajeError('El nombre de usuario o la contraseña son incorrectos.');
       }
+    }, error => {
+      // Manejo de errores en caso de problemas con la llamada al servicio
+      this.mostrarMensajeError('Hubo un problema con el inicio de sesión. Intenta nuevamente más tarde.');
     });
+  }
+
+  mostrarMensajeError(mensaje: string): void {
+    this.mensajeError = mensaje;
+    setTimeout(() => {
+      this.mensajeError = '';
+    }, 3000);
   }
 
   ngOnInit() {

@@ -16,7 +16,7 @@ export class RecuperacionComponent {
 
   correo: string = '';
   correoTouched: boolean = false;
-  errorMensaje: string | null = null;
+  mensajeError: string = '';
 
   formularioRecuperacion!: FormGroup;
   
@@ -30,17 +30,18 @@ export class RecuperacionComponent {
   }
 
   submitForm(): void {
-    const correo = this.formularioRecuperacion.get('correo')?.value;
-
-    this.authService.validarCorreo(correo).subscribe((existe) => {
+    const correoControl = this.formularioRecuperacion.get('correo')?.value;
+    this.authService.validarCorreo(correoControl).subscribe((existe) => {
       if (existe) {
         // Redirige al formulario para ingresar la nueva contraseña
         this.router.navigate(['restablecer-contrasena'], {
-          queryParams: { correo },
+          queryParams: { correoControl },
         });
       } else {
-        this.errorMensaje = 'El correo ingresado no existe en el sistema.';
+        this.mostrarMensajeError('El correo ingresado no está registrado');
       }
+    }, error => {
+      this.mostrarMensajeError('Hubo un problema al validar el correo. Intente nuevamente.');
     });
   }
 
@@ -49,9 +50,16 @@ export class RecuperacionComponent {
         (this.formularioRecuperacion.get(campo)?.touched || false);
   }
 
+  mostrarMensajeError(mensaje: string): void {
+    this.mensajeError = mensaje;
+    setTimeout(() => {
+      this.mensajeError = '';
+    }, 3000);
+  }
+
   ngOnInit(): void {
     this.formularioRecuperacion = this.fb.group({
-      correo: ['', [Validators.required, Validators.email]],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
     }
   )}
 }

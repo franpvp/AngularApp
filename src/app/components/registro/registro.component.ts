@@ -79,7 +79,6 @@ export class RegistroComponent {
     return !regexContrasena.test(this.contrasena1.trim()) && this.contrasenaTouched;
   }
 
-
   validarContrasenas(): void {
     const inputContrasena = this.contrasena1;
     const inputContrasena2 = this.contrasena2;
