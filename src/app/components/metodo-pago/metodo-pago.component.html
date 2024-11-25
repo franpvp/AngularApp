@@ -1,104 +1,107 @@
-<app-nav></app-nav>
-
-<!-- Formulario método de pago -->
-<div class="container-fluid" style="margin-top: 40px;">
-    <div class="row align-items-center">
-        <div class="col">
-            <div class="line">
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="title-recomendados" style="text-align: center; font-size: 40px;">Método de Pago</div>
-        </div>
-        <div class="col">
-            <div class="line">
-            </div>
-        </div>
-
-        
-    </div>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-auto m-4">
-                <div class="tarjeta">
-                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Nombre</p>
-                    <div class="titulo-tarjeta">
-                        <strong>{{ nombre_titular || 'Nombre Titular' }}</strong>
-                    </div>
-                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Número</p>
-                    <div class="digitos-tarjeta" style="font-size: 22px;">
-                        <strong>{{ digitos_tarjeta || 'XXXX XXXX XXXX XXXX'}}</strong>
-                    </div>
-        
-                    <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Vencimiento</p>
-                    <div class="digitos-tarjeta">
-                        <strong id="fecha-vencimiento-tarjeta">MM/YY</strong>
-                    </div>
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <!-- Formulario método de pago -->
+    <div class="container-fluid flex-grow-1" style="margin-top: 40px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="line">
                 </div>
             </div>
+            <div class="col-auto">
+                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Método de Pago</div>
+            </div>
+            <div class="col">
+                <div class="line">
+                </div>
+            </div>
+
             
         </div>
-
-    </div>
-    <form class="formulario-pago" id="formularioPago" (ngSubmit)="submitForm()">
-        <div class="row g-2 justify-content-center">
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="nombre-titular" id="nombre-titular" placeholder="name@example.com" [(ngModel)]="nombre_titular" (keypress)="validarNombreTitular($event)" required>
-                    <label for="floatingInputGrid">Nombre Titular</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-floating">
-                    <input formControlName="digitos_tarjeta" type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
-                        [(ngModel)]="digitos_tarjeta" (keypress)="formatoDigitosTarjeta($event)" maxlength="19" required>
-                    <label for="input-digitos">Dígitos Tarjeta</label>
-                </div>
-            </div>
-            <div class="col-md-4">
-                    <label for="fecha-vencimiento" class="form-label">Fecha de Vencimiento</label>
-                    <input type="text" name="fecha-vencimiento" id="fecha-vencimiento" name="fecha-vencimiento" class="form-control" placeholder="MM/AA" maxlength="5" [(ngModel)]="fecha_vencimiento" (keypress)="formatoFechaVencimiento($event)" required>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">CVC</label>
-                <input type="text" id="digitos_cvc" name="digitos_cvc" [(ngModel)]="digitos_cvc" (keypress)="validarCVC($event)" class="form-control" maxlength="4" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
-            </div>
-        </div>
-
-        <!-- Detalle de la compra -->
         <div class="container-fluid">
-            <div class="contenedor-detalle-compra">
-                <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;">Resumen Carrito</h1>
-                <div class="row justify-content-center">
-                    <div class="col-auto">
-                        <div class="text-center" *ngFor="let producto of productosEnCarrito">
-                            <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                            <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>
+            <div class="row justify-content-center">
+                <div class="col-auto m-4">
+                    <div class="tarjeta">
+                        <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Nombre</p>
+                        <div class="titulo-tarjeta">
+                            <strong>{{ nombre_titular || 'Nombre Titular' }}</strong>
                         </div>
-                        <div class="envio" id="envio" *ngIf="calcularTotal() >= 30000">
-                            <strong>Envio: $3.990</strong>
+                        <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Número</p>
+                        <div class="digitos-tarjeta" style="font-size: 22px;">
+                            <strong>{{ digitos_tarjeta || 'XXXX XXXX XXXX XXXX'}}</strong>
                         </div>
-                        <div class="envio text-center" id="envio" *ngIf="calcularTotal() < 30000">
-                            <strong style="color: brown;">Envio: Gratis</strong>
-                        </div>
-                        <div class="carrito-total text-center mt-4">
-                            <strong style="text-align: center;">Total: {{ calcularTotal() | currency }}</strong>
+            
+                        <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Vencimiento</p>
+                        <div class="digitos-tarjeta">
+                            <strong id="fecha-vencimiento-tarjeta">MM/YY</strong>
                         </div>
                     </div>
                 </div>
                 
             </div>
+
         </div>
-        
-        <!-- Boton Efectuar Pago -->
-        <div class="container-fluid">
-            <div class="row justify-content-center mb-4">
-                <div class="col-auto">
-                    <button type="submit" id="submit-btn" class="btn-ver-carrito" style="padding: 16px 50px 16px 50px; font-size: 18px; border-radius: 40px;">Pagar</button>
+        <form class="formulario-pago" id="formularioPago" (ngSubmit)="submitForm()">
+            <div class="row g-2 justify-content-center">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="nombre-titular" id="nombre-titular" placeholder="name@example.com" [(ngModel)]="nombre_titular" (keypress)="validarNombreTitular($event)" required>
+                        <label for="floatingInputGrid">Nombre Titular</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input formControlName="digitos_tarjeta" type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
+                            [(ngModel)]="digitos_tarjeta" (keypress)="formatoDigitosTarjeta($event)" maxlength="19" required>
+                        <label for="input-digitos">Dígitos Tarjeta</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <label for="fecha-vencimiento" class="form-label">Fecha de Vencimiento</label>
+                        <input type="text" name="fecha-vencimiento" id="fecha-vencimiento" name="fecha-vencimiento" class="form-control" placeholder="MM/AA" maxlength="5" [(ngModel)]="fecha_vencimiento" (keypress)="formatoFechaVencimiento($event)" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">CVC</label>
+                    <input type="text" id="digitos_cvc" name="digitos_cvc" [(ngModel)]="digitos_cvc" (keypress)="validarCVC($event)" class="form-control" maxlength="4" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
                 </div>
             </div>
-        </div>
-    </form>
+
+            <!-- Detalle de la compra -->
+            <div class="container-fluid">
+                <div class="contenedor-detalle-compra">
+                    <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;">Resumen Carrito</h1>
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <div class="text-center" *ngFor="let producto of productosEnCarrito">
+                                <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
+                                <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>
+                            </div>
+                            <div class="envio" id="envio" *ngIf="calcularTotal() >= 35000">
+                                <strong>Envio: $3.990</strong>
+                            </div>
+                            <div class="envio text-center" id="envio" *ngIf="calcularTotal() < 35000">
+                                <strong style="color: brown;">Envio: Gratis</strong>
+                            </div>
+                            <div class="carrito-total text-center mt-4">
+                                <strong style="text-align: center;">Total: {{ calcularTotal() | currency }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Boton Efectuar Pago -->
+            <div class="container-fluid">
+                <div class="row justify-content-center mb-4">
+                    <div class="col-auto">
+                        <button type="submit" id="submit-btn" class="btn-ver-carrito" style="padding: 16px 50px 16px 50px; font-size: 18px; border-radius: 40px;">Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer class="footer">Todos los derechos reservados</footer>
 </div>
 
-<footer class="footer">Todos los derechos reservados</footer>
+

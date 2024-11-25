@@ -1,62 +1,71 @@
-<app-nav></app-nav>
-
-<div class="container">
-    <div class="container login" style="margin-top: 180px; margin-bottom: 200px;">
-        <div class="alert alert-danger text-center" *ngIf="mensajeError">
-            {{ mensajeError }}
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="login-title">Restablecer Contraseña</div>
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <div class="container flex-grow-1">
+        <div class="container login" style="margin-top: 150px; margin-bottom: 200px;">
+            <div class="row">
+                <div class="col">
+                    <div class="login-title"><strong>Restablecer Contraseña</strong></div>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 m-4">
-                <form class="formulario-login" [formGroup]="formularioNuevaContrasena" (ngSubmit)="submitForm()">
-                    <div class="has-validation">
-                        <div class="is-invalid">
-                            <div class="form-group">
-                                <label for="nuevaContrasena">Nueva Contraseña</label>
-                                <input
-                                    formControlName="nuevaContrasena"
-                                    type="password"
-                                    class="form-control"
-                                    id="nuevaContrasena"
-                                    name="nuevaContrasena"
-                                    placeholder="Nueva contraseña"
-                                    (blur)="nuevaContrasenaTouched = true"
-                                    required
-                                />
+            <div class="row justify-content-center">
+                <div class="col-lg-6 m-4">
+                    <form class="formulario-login" [formGroup]="formularioNuevaContrasena" (ngSubmit)="submitForm()">
+                        <div class="has-validation">
+                            <div class="is-invalid">
+                                <div class="form-group">
+                                    <label for="nuevaContrasena">Nueva Contraseña</label>
+                                    <input
+                                        formControlName="nuevaContrasena"
+                                        type="password"
+                                        class="form-control"
+                                        id="nuevaContrasena"
+                                        name="nuevaContrasena"
+                                        placeholder="Nueva contraseña"
+                                        (blur)="nuevaContrasenaTouched = true"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div class="invalid-feedback" style="font-weight: 500;" *ngIf="validarCampo('nuevaContrasena')">
+                                * La contraseña debe contener al menos un número y al menos una letra en mayúscula, y tener entre 6 y 18 caracteres.
                             </div>
                         </div>
-                        <div class="invalid-feedback" *ngIf="validarCampo('nuevaContrasena')">
-                            * La contraseña debe contener al menos un número y al menos una letra en mayúscula, y tener entre 6 y 18 caracteres.
-                        </div>
-                        <div class="is-invalid">
-                            <div class="form-group">
-                                <label for="confirmarContrasena">Confirmar Contraseña</label>
-                                <input
-                                    formControlName="confirmarContrasena"
-                                    type="password"
-                                    class="form-control"
-                                    id="confirmarContrasena"
-                                    name="confirmarContrasena"
-                                    placeholder="Confirmar contraseña"
-                                    (blur)="confirmarContrasenaTouched = true"
-                                    required
-                                />
+                        <div class="has-validation mt-3">
+                            <div class="is-invalid">
+                                <div class="form-group">
+                                    <label for="confirmarContrasena">Confirmar Contraseña</label>
+                                    <input
+                                        formControlName="confirmarContrasena"
+                                        type="password"
+                                        class="form-control"
+                                        id="confirmarContrasena"
+                                        name="confirmarContrasena"
+                                        placeholder="Confirmar contraseña"
+                                        (blur)="confirmarContrasenaTouched = true"
+                                        required
+                                    />
+                                </div>
+                            </div> 
+                            <div class="invalid-feedback" *ngIf="obtenerErrorContrasenas()">
+                                Las contraseñas no coinciden.
                             </div>
-                        </div> 
-                        <div class="invalid-feedback" id="invalid-contrasena-coinciden" *ngIf="formularioNuevaContrasena.hasError('contrasenasNoCoinciden')">
-                            La contraseñas deben coincidir.
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center align-items-center">
-                        <button type="submit" class="btn btn-success mt-3">Guardar Contraseña</button>
-                    </div>
-                </form>
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <button type="submit" class="btn btn-success mt-3">Restablecer</button>
+                        </div>
+                        <div class="alert alert-success text-center" *ngIf="mensajeExitoso">
+                            ¡Contraseña actualizada exitosamente!
+                        </div>
+                          <div class="alert alert-danger" *ngIf="mensajeError">
+                            {{ mensajeError }}
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        
     </div>
-    
+    <footer class="footer">Todos los derechos reservados</footer>
 </div>
+
+

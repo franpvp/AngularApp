@@ -1,32 +1,37 @@
-<app-nav></app-nav>
-
-<div class="container login" style="margin-top: 180px; margin-bottom: 200px;">
-    <div class="alert alert-danger text-center" *ngIf="mensajeError">
-        {{ mensajeError }}
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="login-title">Restablecer Contraseña</div>
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <div class="container login flex-grow-1" style="margin-top: 180px; margin-bottom: 200px;">
+        <div class="alert alert-danger text-center" *ngIf="mensajeError">
+            {{ mensajeError }}
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-6 m-4">
-            <form class="formulario-login" [formGroup]="formularioRecuperacion" (ngSubmit)="submitForm()">
-                <div class="has-validation">
-                    <div class="is-invalid">
-                        <div class="form-floating mb-3">
-                            <input formControlName="correo" type="email" class="form-control" id="email" placeholder="name@example.com" (blur)="correoTouched = true" required>
-                            <label for="floatingInput">Email</label>
+        <div class="row">
+            <div class="col">
+                <div class="login-title">Restablecer Contraseña</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-4">
+                <form class="formulario-login" [formGroup]="formularioRecuperacion" (ngSubmit)="submitForm()">
+                    <div class="has-validation">
+                        <div class="is-invalid">
+                            <div class="form-floating mb-3">
+                                <input formControlName="correo" type="email" class="form-control" id="email" placeholder="name@example.com" (blur)="correoTouched = true" required>
+                                <label for="floatingInput">Email</label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" *ngIf="validarCampo('correo')">
+                            * Por favor, ingrese un correo electrónico válido.
                         </div>
                     </div>
-                    <div class="invalid-feedback" *ngIf="validarCampo('correo')">
-                        * Por favor, ingrese un correo electrónico válido.
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary mt-3">Enviar</button>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <button type="submit" class="btn btn-primary mt-3">Enviar</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
+    <footer class="footer">Todos los derechos reservados</footer>
 </div>
+
+
+

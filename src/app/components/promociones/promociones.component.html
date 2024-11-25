@@ -1,34 +1,38 @@
-<app-nav></app-nav>
-
-<div class="container-fluid" style="margin-top: 20px;">
-    <div class="row align-items-center">
-        <div class="col">
-            <div class="line">
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="line">
+                </div>
             </div>
-        </div>
-        <div class="col-auto">
-            <div class="title-recomendados" style="text-align: center; font-size: 60px; margin-top: 30px;">Promociones</div>
-        </div>
-        <div class="col">
-            <div class="line">
+            <div class="col-auto">
+                <div class="title-recomendados" style="text-align: center; font-size: 60px; margin-top: 30px;">Promociones</div>
+            </div>
+            <div class="col">
+                <div class="line">
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="contenedor">
-    <div *ngFor="let libro of libros" class="card">
-        <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
-            <div class="box-1">
-                <img [src]="libro.imagen" alt="{{ libro.titulo }}">
+    
+    <div class="contenedor flex-grow-1">
+        <div *ngFor="let libro of libros" class="card">
+            <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
+                <div class="box-1">
+                    <img [src]="libro.imagen" alt="{{ libro.titulo }}">
+                </div>
+            </a>
+            <div class="card-content">
+                <h3 class="card-title">{{ libro.titulo }}</h3>
+                <p class="card-price">Precio: {{ libro.precio | currency }}</p>
+                <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
             </div>
-        </a>
-        <div class="card-content">
-            <h3 class="card-title">{{ libro.titulo }}</h3>
-            <p class="card-price">Precio: {{ libro.precio | currency }}</p>
-            <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
         </div>
     </div>
+    
+    <footer class="footer">Todos los derechos reservados</footer>
+    
 </div>
 
-<footer class="footer">Todos los derechos reservados</footer>
+

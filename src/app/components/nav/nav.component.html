@@ -1,9 +1,13 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" style="cursor: pointer;" (click)="goToHome()">
-                <img src="/assets/img/nav/juego-de-mesa.png" alt="Logo" style="width: 50px; height: auto; margin-right: 10px;"> <!-- Ajusta el tamaño del logo aquí -->
-                Table Space
+            <a class="navbar-brand d-flex align-items-center" style="cursor: pointer;" (click)="goToHome()" *ngIf="rolUsuario === 'cliente' ">
+                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 100px; height: auto; margin-right: 10px;">
+                Todo Libros
+            </a>
+            <a class="navbar-brand d-flex align-items-center" style="cursor: pointer;" (click)="goToAdminHome()" *ngIf="rolUsuario === 'admin' ">
+                <img src="/assets/img/nav/logo.png" alt="Logo" style="width: 100px; height: auto; margin-right: 10px;">
+                Todo Libros
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,7 +66,7 @@
                     <ul *ngIf="username != null" class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
                         <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="cerrarSesion()">Cerrar Sesión</a></li>
                     </ul>
-                    <li class="nav-item dropdown-carrito">
+                    <li class="nav-item dropdown-carrito" *ngIf="rolUsuario === 'cliente'">
                         <a class="nav-carrito" style="cursor: pointer;" (click)="goToCarrito()">
                             <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
                         </a>
@@ -73,8 +77,11 @@
                                     <p>{{ producto.titulo }} - {{ producto.precio | currency }}</p>
                                 </div>
                             </div>
-                            <div class="carrito-total text-center mt-4">
+                            <div class="carrito-total text-center mt-4" *ngIf="calcularTotal() !== 0">
                                 <strong>Total: {{ calcularTotal() | currency }}</strong>
+                            </div>
+                            <div class="carrito-total text-center mt-4 mb-4" *ngIf="calcularTotal() === 0">
+                                <strong>No hay productos</strong>
                             </div>
                             
                             <button class="btn-limpiar-carrito" (click)="limpiarCarrito()">Limpiar Carrito</button>

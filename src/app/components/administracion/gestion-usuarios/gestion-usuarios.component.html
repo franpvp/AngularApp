@@ -1,119 +1,122 @@
-<app-nav></app-nav>
-
-<div class="container-fluid" style="margin-top: 20px;">
-    <div class="row align-items-center">
-        <div class="col">
-            <div class="line">
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="line">
+                </div>
             </div>
-        </div>
-        <div class="col-auto">
-            <div class="title-recomendados" style="text-align: center;">Lista de Usuarios</div>
-        </div>
-        <div class="col">
-            <div class="line">
+            <div class="col-auto">
+                <div class="title-recomendados" style="text-align: center;">Lista de Usuarios</div>
+            </div>
+            <div class="col">
+                <div class="line">
+                </div>
             </div>
         </div>
     </div>
+    
+    <div class="table-responsive flex-grow-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Domicilio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-usuarios" *ngFor="let usuario of usuarios; let i = index">
+                <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.rol" 
+                            type="text" 
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.rol }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.username"
+                            type="text"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.username }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.nombres"
+                            type="text"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.nombres }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.apellidos"
+                            type="text"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.apellidos }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.correo"
+                            type="text"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.correo }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.fecha_nacimiento"
+                            type="date"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.fecha_nacimiento }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="usuario.enEdicion" 
+                            [(ngModel)]="usuario.domicilio"
+                            type="text"
+                            class="form-control"
+                        />
+                        <span *ngIf="!usuario.enEdicion">{{ usuario.domicilio }}</span>
+                    </td>
+                    <td>
+                        <button 
+                            *ngIf="!usuario.enEdicion" 
+                            (click)="editarUsuario(usuario)" 
+                            class="btn btn-primary btn-sm"
+                        >
+                            Editar
+                        </button>
+                        <button 
+                            *ngIf="usuario.enEdicion" 
+                            (click)="guardarUsuario(usuario)" 
+                            class="btn btn-success btn-sm"
+                        >
+                            Guardar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Rol</th>
-                <th scope="col">Username</th>
-                <th scope="col">Nombres</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Fecha Nacimiento</th>
-                <th scope="col">Domicilio</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="tabla-usuarios" *ngFor="let usuario of usuarios; let i = index">
-            <tr>
-                <th scope="row">{{ i + 1 }}</th>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.rol" 
-                        type="text" 
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.rol }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.username"
-                        type="text"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.username }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.nombres"
-                        type="text"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.nombres }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.apellidos"
-                        type="text"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.apellidos }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.correo"
-                        type="text"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.correo }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.fecha_nacimiento"
-                        type="date"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.fecha_nacimiento }}</span>
-                </td>
-                <td>
-                    <input 
-                        *ngIf="usuario.enEdicion" 
-                        [(ngModel)]="usuario.domicilio"
-                        type="text"
-                        class="form-control"
-                    />
-                    <span *ngIf="!usuario.enEdicion">{{ usuario.domicilio }}</span>
-                </td>
-                <td>
-                    <button 
-                        *ngIf="!usuario.enEdicion" 
-                        (click)="editarUsuario(usuario)" 
-                        class="btn btn-primary btn-sm"
-                    >
-                        Editar
-                    </button>
-                    <button 
-                        *ngIf="usuario.enEdicion" 
-                        (click)="guardarUsuario(usuario)" 
-                        class="btn btn-success btn-sm"
-                    >
-                        Guardar
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+

@@ -1,39 +1,41 @@
-<app-nav></app-nav>
-
-<div class="container login">
-    <div class="alert alert-danger text-center" *ngIf="mensajeError">
-        {{ mensajeError }}
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="login-title">Iniciar Sesión</div>
-        </div>
-    </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 m-4">
-                <form class="formulario-login" (ngSubmit)="login()">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com" [(ngModel)] = "username" required>
-                        <label for="floatingInput">Nombre de usuario</label>
-                    </div>
-                    <div class="row mb-1">
-                        <div class="col">
-                            <div class="form-floating">
-                                <input type="password" class="form-control" id="contraseña1" placeholder="Password" name="contrasena" [(ngModel)] = "contrasena" required>
-                                <label for="floatingPassword">Contraseña</label>
-                            </div>
-                        </div>
-                    </div>
-                    <a style="margin-left: 10px; cursor: pointer; color: #0d6efd;" (click)="goToRecuperacion()">Restablecer contraseña</a>
-
-                    <div class="d-flex justify-content-center align-items-center pt-3">
-                        <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
-                    </div>
-                    
-                </form>
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <div class="container login flex-grow-1">
+        <div class="row">
+            <div class="col">
+                <div class="login-title">Iniciar Sesión</div>
             </div>
         </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 m-4">
+                    <form class="formulario-login" (ngSubmit)="login()">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com" [(ngModel)] = "username" required>
+                            <label for="floatingInput">Nombre de usuario</label>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="contraseña1" placeholder="Password" name="contrasena" [(ngModel)] = "contrasena" required>
+                                    <label for="floatingPassword">Contraseña</label>
+                                </div>
+                            </div>
+                        </div>
+                        <a style="margin-left: 10px; cursor: pointer; color: #0d6efd;" (click)="goToRecuperacion()">Restablecer contraseña</a>
     
+                        <div class="d-flex justify-content-center align-items-center pt-3">
+                            <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            <div class="alert alert-danger text-center" *ngIf="mensajeError">
+                {{ mensajeError }}
+            </div>
+    </div>
+    
+    <footer class="footer">Todos los derechos reservados</footer>
 </div>
 
-<footer class="footer">Todos los derechos reservados</footer>
+

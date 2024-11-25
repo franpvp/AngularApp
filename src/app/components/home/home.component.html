@@ -1,103 +1,122 @@
-<app-nav></app-nav>
-<!-- Componente encuesta -->
-<app-encuesta></app-encuesta>
-
-<div class="container-fluid">
-    <div class="row" style="background-color: black; color: white; font-size: 16px; padding: 8px;">
-        <div class="col text-center">
-            DESPACHO GRATIS EN COMPRAS SOBRE LOS $35.000
-        </div>
-    </div>
-</div>
-<!-- Buscador Libros -->
-<div class="container-fluid" style="padding: 20px; margin-top: 10px;">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-4">
-            <input class="form-control p-2" list="datalistOptions" id="exampleDataList" placeholder="Ingrese búsqueda">
-            <datalist id="datalistOptions">
-            <option value="Alas De Hierro">
-            <option value="El Niño Que Perdio La Guerra">
-            </datalist>
-        </div>
-    </div>
-</div>
-
-<!-- Sección Juegos Destacados -->
-<div class="container-fluid" style="margin-top: 10px;">
-    <div class="row align-items-center">
-        <div class="col">
-            <div class="line">
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="title-recomendados" style="text-align: center; font-size: 40px;">Juegos Destacados</div>
-        </div>
-        <div class="col">
-            <div class="line">
+<div class="d-flex flex-column min-vh-100">
+    <app-nav></app-nav>
+    <!-- Componente encuesta -->
+    <app-encuesta></app-encuesta>
+    <div class="container-fluid flex-grow-1">
+        <div class="row" style="background-color: black; color: white; font-size: 16px; padding: 8px;">
+            <div class="col text-center">
+                DESPACHO GRATIS EN COMPRAS SOBRE LOS $35.000
             </div>
         </div>
     </div>
-</div>
-<!-- Libros -->
-<div class="contenedor">
-    <div *ngFor="let libro of libros" class="card">
-        <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
-            <div class="box-1">
-                <img [src]="libro.imagen" alt="{{ libro.titulo }}">
+    <!-- Buscador Libros -->
+    <div class="container-fluid flex-grow-1" style="padding: 20px; margin-top: 10px;">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <input class="form-control p-2" list="datalistOptions" id="exampleDataList" placeholder="Ingrese búsqueda">
+                <datalist id="datalistOptions">
+                <option value="Alas De Hierro">
+                <option value="El Niño Que Perdio La Guerra">
+                </datalist>
             </div>
-        </a>
-        <div class="card-content">
-            <h3 class="card-title">{{ libro.titulo }}</h3>
-            <p class="card-price">Precio: {{ libro.precio | currency }}</p>
-            <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
         </div>
     </div>
-</div>
-
-<!-- Sección Promociones -->
-<div class="title-recomendados" style="font-size: 40px;">Promociones</div>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7">
-            <img src="/assets/img/nav/Promo-web.png" alt="promo" class="img-fluid" style="border-radius: 16px;">
+    
+    <div class="container-fluid" style="margin-top: 10px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="line">
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Libros Destacados</div>
+            </div>
+            <div class="col">
+                <div class="line">
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Selección de Categorías -->
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-auto">
-            <a (click)="goToCateAutoAyuda()">
-                <div class="contenedor-promocion">
-                    <img src="/assets/img/img-categorias/Autoayuda.png" alt="comics-mangas" class="img-fluid imagen-promocion">
+    <!-- Libros -->
+    <div class="contenedor">
+        <div *ngFor="let libro of libros" class="card">
+            <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
+                <div class="box-1">
+                    <img [src]="libro.imagen" alt="{{ libro.titulo }}">
                 </div>
             </a>
-        </div>
-        <div class="col-auto">
-            <a (click)="goToCateLiteratura()">
-                <div class="contenedor-promocion">
-                    <img src="/assets/img/img-categorias/Literatura.png" alt="novelas" class="img-fluid imagen-promocion">
-                </div>
-            </a>
-        </div>
-        <div class="col-auto">
-            <a (click)="goToCateNovelas()">
-                <div class="contenedor-promocion">
-                    <img src="/assets/img/img-categorias/Novelas.png" alt="autoayuda" class="img-fluid imagen-promocion">
-                </div>
-            </a>
-        </div>
-        <div class="col-auto">
-            <a (click)="goToCateComicsMangas()">
-                <div class="contenedor-promocion">
-                    <img src="/assets/img/img-categorias/Comics-mangas.png" alt="literatura" class="img-fluid imagen-promocion">
-                </div>
-            </a>
+            <div class="card-content">
+                <h3 class="card-title">{{ libro.titulo }}</h3>
+                <p class="card-price">Precio: {{ libro.precio | currency }}</p>
+                <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>
+            </div>
         </div>
     </div>
+    
+    <!-- Sección Promociones -->
+    <div class="title-recomendados" style="font-size: 40px;">Promociones</div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-7">
+                <img src="/assets/img/nav/Promo-web.png" alt="promo" class="img-fluid" style="border-radius: 16px;">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Selección de Categorías -->
+    <div class="container-fluid" style="margin-top: 10px;">
+        <div class="row align-items-center">
+            <div class="col">
+                <div class="line">
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Nuestras Categorías Destacadas</div>
+            </div>
+            <div class="col">
+                <div class="line">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a (click)="goToCateAutoAyuda()">
+                    <div class="contenedor-promocion">
+                        <img src="/assets/img/img-categorias/Autoayuda.png" alt="comics-mangas" class="img-fluid imagen-promocion">
+                    </div>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a (click)="goToCateLiteratura()">
+                    <div class="contenedor-promocion">
+                        <img src="/assets/img/img-categorias/Literatura.png" alt="novelas" class="img-fluid imagen-promocion">
+                    </div>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a (click)="goToCateNovelas()">
+                    <div class="contenedor-promocion">
+                        <img src="/assets/img/img-categorias/Novelas.png" alt="autoayuda" class="img-fluid imagen-promocion">
+                    </div>
+                </a>
+            </div>
+            <div class="col-auto">
+                <a (click)="goToCateComicsMangas()">
+                    <div class="contenedor-promocion">
+                        <img src="/assets/img/img-categorias/Comics-mangas.png" alt="literatura" class="img-fluid imagen-promocion">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">Todos los derechos reservados</footer>
+    
 </div>
 
-<footer class="footer">Todos los derechos reservados</footer>
+
+
 

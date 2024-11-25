@@ -21,6 +21,7 @@ export class RestablecerContrasenaComponent {
   confirmarContrasena: string | null = null;
   confirmarContrasenaTouched: boolean = false;
   mensajeError: string = '';
+  mensajeExitoso: boolean = false;
 
   formularioNuevaContrasena!: FormGroup;
 
@@ -29,21 +30,19 @@ export class RestablecerContrasenaComponent {
   }
 
   submitForm(): void {
-    const nuevaContrasena = this.formularioNuevaContrasena.get(
-      'nuevaContrasena'
-    )?.value;
-    const confirmarContrasena = this.formularioNuevaContrasena.get(
-      'confirmarContrasena'
-    )?.value;
+    if (this.formularioNuevaContrasena.valid) {
+      this.mensajeExitoso = true;
+      console.log('Resultado', this.formularioNuevaContrasena.value);
 
-    if (nuevaContrasena !== confirmarContrasena) {
-      this.mostrarMensajeError('Las contraseñas no coinciden.');
-      return;
+      // Mostrar mensaje y redirigir
+      setTimeout(() => {
+        this.mensajeExitoso = false;
+        this.router.navigate(['login']);
+      }, 3000);
+    } else {
+      // Marcar todos los campos como tocados para mostrar errores
+      this.formularioNuevaContrasena.markAllAsTouched();
     }
-
-    // Lógica para guardar la nueva contraseña
-    this.mostrarMensajeError(`Contraseña restablecida para ${this.correo}`);
-    this.router.navigate(['/login']);
   }
 
   validarCampo(campo: string): boolean {
@@ -58,15 +57,41 @@ export class RestablecerContrasenaComponent {
     }, 3000);
   }
 
+  // Validador personalizado para comparar contraseñas
+  validarContrasenasIguales(group: FormGroup): { [key: string]: boolean } | null {
+    const nuevaContrasena = group.get('nuevaContrasena')?.value;
+    const confirmarContrasena = group.get('confirmarContrasena')?.value;
+    return nuevaContrasena === confirmarContrasena ? null : { noCoinciden: true };
+  }
+
+  obtenerErrorContrasenas(): boolean {
+    return !!this.formularioNuevaContrasena.hasError('noCoinciden');
+  }
+
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.correo = params['correo'] || null;
     });
 
-    this.formularioNuevaContrasena = this.fb.group({
-      nuevaContrasena: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(18), Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)]],
-      confirmarContrasena: ['', [Validators.required]],
-    });
+    // Formulario con validaciones
+    this.formularioNuevaContrasena = this.fb.group(
+      {
+        nuevaContrasena: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(18),
+            Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)
+          ],
+        ],
+        confirmarContrasena: ['', Validators.required],
+      },
+      { validators: this.validarContrasenasIguales }
+    );
   }
 
 }
+
+
