@@ -72,8 +72,8 @@
                         </a>
                         <div class="dropdown-content">
                             <div class="carrito-items">
-                                <!-- Aquí se agregarán los productos en el carrito -->
-                                <div *ngFor="let producto of productosEnCarrito">
+                                <div class="text-align" *ngFor="let producto of productosEnCarrito">
+                                    <img [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
                                     <p>{{ producto.titulo }} - {{ producto.precio | currency }}</p>
                                 </div>
                             </div>

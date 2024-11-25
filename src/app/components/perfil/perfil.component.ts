@@ -30,6 +30,9 @@ export class PerfilComponent {
       this.authService.actualizarUsuario(this.usuarioLogeado).subscribe((resultado) => {
         if (resultado) {
           this.mensajeExitoso = true;
+          setTimeout(() => {
+            this.mensajeExitoso = false;
+          }, 3000);
         } else {
           alert('No se pudo actualizar el perfil');
         }

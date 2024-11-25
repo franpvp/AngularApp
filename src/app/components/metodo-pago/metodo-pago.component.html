@@ -32,7 +32,7 @@
             
                         <p style="padding: 20px 10px 0px 30px; color: white; margin: 0; font-family: Arial, Helvetica, sans-serif;">Vencimiento</p>
                         <div class="digitos-tarjeta">
-                            <strong id="fecha-vencimiento-tarjeta">MM/YY</strong>
+                            <strong id="fecha-vencimiento-tarjeta">{{ fecha_vencimiento || 'MM/YY'}}</strong>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input formControlName="digitos_tarjeta" type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
+                        <input type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
                             [(ngModel)]="digitos_tarjeta" (keypress)="formatoDigitosTarjeta($event)" maxlength="19" required>
                         <label for="input-digitos">Dígitos Tarjeta</label>
                     </div>
@@ -61,12 +61,12 @@
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">CVC</label>
-                    <input type="text" id="digitos_cvc" name="digitos_cvc" [(ngModel)]="digitos_cvc" (keypress)="validarCVC($event)" class="form-control" maxlength="4" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
+                    <input type="password" id="digitos_cvc" name="digitos_cvc" [(ngModel)]="digitos_cvc" (keypress)="validarCVC($event)" class="form-control" maxlength="4" minlength="3" pattern="\d{3}" title="Por favor, ingrese solo números de 3 dígitos." required>
                 </div>
             </div>
 
             <!-- Detalle de la compra -->
-            <div class="container-fluid">
+            <div class="container mt-4 mb-4">
                 <div class="contenedor-detalle-compra">
                     <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;">Resumen Carrito</h1>
                     <div class="row justify-content-center">

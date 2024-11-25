@@ -3,18 +3,17 @@
     <div class="container-fluid flex-grow-1" style="margin-top: 40px;">
         <div class="row align-items-center">
             <div class="col">
-                <div class="line">
-                </div>
+                <div class="line"></div>
             </div>
             <div class="col-auto">
                 <div class="title-recomendados" style="text-align: center; font-size: 40px;">Carrito de Compras</div>
             </div>
             <div class="col">
-                <div class="line">
-                </div>
+                <div class="line"></div>
             </div>
         </div>
-        <div class="container-fluid" *ngIf="totalCarrito !== 0">
+        <!-- Mostrar productos si el total es distinto de cero -->
+        <div class="container-fluid" *ngIf="productosEnCarrito.length > 0; else carritoVacio">
             <div class="row justify-content-center">
                 <div class="col-auto m-4">
                     <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">
@@ -24,7 +23,7 @@
                             <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>
                         </div>
                         <div class="carrito-total text-center mt-4">
-                            <strong style="text-align: center;">Total: {{ calcularTotal() | currency }}</strong>
+                            <strong>Total: {{ calcularTotal() | currency }}</strong>
                         </div>
                     </div>
                 </div>
@@ -38,18 +37,17 @@
             </div>
         </div>
         <!-- Mostrar mensaje si no hay productos en el carrito -->
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-auto m-4" *ngIf="totalCarrito === 0">
-                    <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">
-                        <strong class="text-center">No hay productos en el carrito</strong>
+        <ng-template #carritoVacio>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-auto m-4">
+                        <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">
+                            <strong class="text-center">No hay productos en el carrito</strong>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ng-template>
     </div>
-    
     <footer class="footer">Todos los derechos reservados</footer>
 </div>
-
-

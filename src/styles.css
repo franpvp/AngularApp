@@ -417,15 +417,12 @@ ul li:hover ul.dropdown {
     color: white;
 }
 
-.contenedor-detalle-compra{
-    margin-top: 50px !important;
-    margin-bottom: 100px !important;
-    width: 500px;
-    height: auto;
-    border-radius: 16px;
-    border: #D9D9D9 1px solid;
+.contenedor-detalle-compra {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin: 0 auto;
+    background-color: #fff;
 }
 
 .msg-restablecer {
