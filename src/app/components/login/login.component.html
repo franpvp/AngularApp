@@ -6,36 +6,59 @@
                 <div class="login-title">Iniciar Sesión</div>
             </div>
         </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-6 m-4">
-                    <form class="formulario-login" (ngSubmit)="login()">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com" [(ngModel)] = "username" required>
-                            <label for="floatingInput">Nombre de usuario</label>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 m-4">
+                <!-- Vinculación del formulario reactivo -->
+                <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+                    <div class="form-floating mb-3">
+                        <!-- Vinculación del control username -->
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="username" 
+                            placeholder="name@example.com" 
+                            formControlName="username" 
+                            required>
+                        <label for="username">Nombre de usuario</label>
+                        <!-- Mensaje de error para username -->
+                        <div *ngIf="formularioLogin.get('username')?.invalid && formularioLogin.get('username')?.touched" class="text-danger">
+                            Nombre de usuario es obligatorio.
                         </div>
-                        <div class="row mb-1">
-                            <div class="col">
-                                <div class="form-floating">
-                                    <input type="password" class="form-control" id="contraseña1" placeholder="Password" name="contrasena" [(ngModel)] = "contrasena" required>
-                                    <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col">
+                            <div class="form-floating">
+                                <!-- Vinculación del control contrasena -->
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="contraseña1" 
+                                    placeholder="Password" 
+                                    formControlName="contrasena" 
+                                    required>
+                                <label for="contraseña1">Contraseña</label>
+                                <!-- Mensaje de error para contrasena -->
+                                <div *ngIf="formularioLogin.get('contrasena')?.invalid && formularioLogin.get('contrasena')?.touched" class="text-danger">
+                                    Contraseña es obligatoria.
                                 </div>
                             </div>
                         </div>
-                        <a style="margin-left: 10px; cursor: pointer; color: #0d6efd;" (click)="goToRecuperacion()">Restablecer contraseña</a>
-    
-                        <div class="d-flex justify-content-center align-items-center pt-3">
-                            <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
-                        </div>
-                        
-                    </form>
-                </div>
+                    </div>
+                    <a style="margin-left: 10px; cursor: pointer; color: #0d6efd;" (click)="goToRecuperacion()">Restablecer contraseña</a>
+                    <div class="d-flex justify-content-center align-items-center pt-3">
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary mt-3" 
+                            [disabled]="formularioLogin.invalid">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="alert alert-danger text-center" *ngIf="mensajeError">
-                {{ mensajeError }}
-            </div>
+        </div>
+        <div class="alert alert-danger text-center" *ngIf="mensajeError">
+            {{ mensajeError }}
+        </div>
     </div>
-    
     <footer class="footer">Todos los derechos reservados</footer>
 </div>
-
-

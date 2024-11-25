@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { RestablecerContrasenaComponent } from './restablecer-contrasena.component';
 
 describe('RestablecerContrasenaComponent', () => {
@@ -8,7 +8,7 @@ describe('RestablecerContrasenaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RestablecerContrasenaComponent]
+      imports: [RestablecerContrasenaComponent, RouterTestingModule]
     })
     .compileComponents();
     

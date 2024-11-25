@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetalleCarroComponent } from './detalle-carro.component';
 import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
 describe('DetalleCarroComponent', () => {
@@ -9,7 +10,7 @@ describe('DetalleCarroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetalleCarroComponent]
+      imports: [DetalleCarroComponent, RouterTestingModule]
     })
     .compileComponents();
     

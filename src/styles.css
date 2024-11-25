@@ -245,6 +245,11 @@ ul li:hover ul.dropdown {
     margin-bottom: 30px;
 }
 
+
+.btn-registro:hover{
+    background-color: orange !important;
+}
+
 .registro-title{
     font-size: 35px;
     display: flex;
