@@ -44,6 +44,10 @@ export class ComicsMangasComponent {
     );
   }
 
+  verDetalles(libroId: number) {
+    this.router.navigate(['/producto', libroId]);
+  }
+
   ngOnInit() {
     this.librosService.obtenerLibros().subscribe((libros) => {
       this.libros = libros;

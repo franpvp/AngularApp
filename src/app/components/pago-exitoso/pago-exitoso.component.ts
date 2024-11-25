@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from "../nav/nav.component";
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pago-exitoso',

@@ -31,7 +31,7 @@
 <!-- Libros Filtrados -->
 <div class="contenedor">
     <div *ngFor="let libro of librosFiltrados" class="card" style="padding: 15px 5px 5px 5px;">
-        <a style="cursor: pointer;">
+        <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
             <div class="box-1">
                 <img [src]="libro.imagen" [alt]="libro.titulo" />
             </div>

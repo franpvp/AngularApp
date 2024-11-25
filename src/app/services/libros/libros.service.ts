@@ -27,7 +27,7 @@ export class LibrosService {
             "stock": 10,
             "imagen": "/assets/img/libros/literatura/harry-potter2.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 2,
@@ -84,7 +84,7 @@ export class LibrosService {
             "stock": 10,
             "imagen": "/assets/img/libros/novelas/La-Chica-Oculta.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 5,
@@ -122,7 +122,7 @@ export class LibrosService {
             "stock": 12,
             "imagen": "/assets/img/libros/auto-ayuda/Deja-De-Ser-Tu.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 7,
@@ -160,7 +160,7 @@ export class LibrosService {
             "stock": 4,
             "imagen": "/assets/img/libros/literatura/Un-Buen-Dia-Para-Estar-Sola.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 9,
@@ -198,7 +198,7 @@ export class LibrosService {
             "stock": 9,
             "imagen": "/assets/img/libros/informatica/Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 11,
@@ -236,7 +236,7 @@ export class LibrosService {
             "stock": 13,
             "imagen": "/assets/img/libros/informatica/Sistemas-operativos.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 13,
@@ -293,7 +293,7 @@ export class LibrosService {
             "stock": 8,
             "imagen": "/assets/img/libros/comics-mangas/Attack-On-Titan-21.webp",
             "enEdicion": false,
-            "enPromo": false
+            "enPromo": true
         },
         {
             "id": 16,

@@ -29,7 +29,7 @@ export class PerfilComponent {
       // Guardar cambios
       this.authService.actualizarUsuario(this.usuarioLogeado).subscribe((resultado) => {
         if (resultado) {
-          alert('Perfil actualizado correctamente');
+          this.mensajeExitoso = true;
         } else {
           alert('No se pudo actualizar el perfil');
         }

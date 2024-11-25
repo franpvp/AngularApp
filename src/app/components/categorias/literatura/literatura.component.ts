@@ -43,6 +43,10 @@ export class LiteraturaComponent {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
   }
 
+  verDetalles(libroId: number) {
+    this.router.navigate(['/producto', libroId]);
+  }
+
   ngOnInit() {
     this.librosService.obtenerLibros().subscribe((libros) => {
       this.libros = libros;

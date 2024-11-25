@@ -130,9 +130,7 @@ export class MetodoPagoComponent {
   }
 
   submitForm(): void {
-    if(this.formularioPago.valid){
-      this.router.navigate(['pago-exitoso']);
-    }
+    this.router.navigate(['pago-exitoso']);
   }
 
   ngOnInit(): void {

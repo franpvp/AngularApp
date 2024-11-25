@@ -21,8 +21,8 @@
             <div class="col-auto m-4">
                 <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">
                     <div style="margin-bottom: 10px;"><strong>Detalles:</strong></div>
-                    <div *ngFor="let producto of productosEnCarrito">
-                        <img [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
+                    <div class="text-center" *ngFor="let producto of productosEnCarrito">
+                        <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
                         <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>
                     </div>
                     <div class="carrito-total text-center mt-4">
