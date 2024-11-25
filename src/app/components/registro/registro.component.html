@@ -1,16 +1,6 @@
 <app-nav></app-nav>
 
 <div class="container registro">
-    <div
-        class="alert alert-success text-center mt-3"
-        role="alert"
-        *ngIf="mensajeExitoso"
-    >
-        ¡Registro Exitoso!
-    </div>
-    <div class="alert alert-danger text-center" *ngIf="mensajeError">
-        {{ mensajeError }}
-    </div>
     <div class="row">
         <div class="col">
             <div class="registro-title">Registro</div>
@@ -42,28 +32,28 @@
 
                 <div class="has-validation">
                     <div class="is-invalid">
-                      <label for="username" class="form-label">Nombre de usuario</label>
-                      <input
-                        formControlName="username"
-                        type="text"
-                        class="form-control mb-2"
-                        id="username"
-                        name="username"
-                        (blur)="usernameTouched = true"
-                        required
-                      />
+                        <label for="username" class="form-label">Nombre de usuario</label>
+                        <input
+                            formControlName="username"
+                            type="text"
+                            class="form-control mb-2"
+                            id="username"
+                            name="username"
+                            (blur)="usernameTouched = true"
+                            required
+                        />
                     </div>
                     <div *ngIf="formularioRegistro.get('username')?.touched" class="invalid-feedback" id="invalid-username">
-                      <!-- Error por campo vacío -->
-                      <span *ngIf="formularioRegistro.get('username')?.hasError('required')">
-                        Por favor, ingrese un nombre de usuario.
-                      </span>
-                      <!-- Error por patrón inválido -->
-                      <span *ngIf="formularioRegistro.get('username')?.hasError('pattern')">
-                        El nombre de usuario debe tener al menos 5 caracteres, incluir una mayúscula y un número.
-                      </span>
+                        <!-- Error por campo vacío -->
+                        <span *ngIf="formularioRegistro.get('username')?.hasError('required')">
+                            Por favor, ingrese un nombre de usuario.
+                        </span>
+                        <!-- Error por patrón inválido -->
+                        <span *ngIf="formularioRegistro.get('username')?.hasError('pattern')">
+                            El nombre de usuario debe tener al menos 5 caracteres, incluir una mayúscula y un número.
+                        </span>
                     </div>
-                  </div>
+                </div>
 
                 <div class="has-validation">
                     <div class="is-invalid">
@@ -116,6 +106,16 @@
                         <button id="clean-btn" type="button" class="btn btn-primary" (click)="limpiarFormulario()">Limpiar</button>
                         <button id="submit-btn" type="submit" class="btn btn-primary" [disabled]="formularioRegistro.invalid">Registrarse</button>
                     </div>
+                </div>
+                <div
+                    class="alert alert-success text-center mt-3"
+                    role="alert"
+                    *ngIf="mensajeExitoso"
+                >
+                    ¡Registro Exitoso!
+                </div>
+                <div class="alert alert-danger text-center" *ngIf="mensajeError">
+                    {{ mensajeError }}
                 </div>
             </form>
         </div>

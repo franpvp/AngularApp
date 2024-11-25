@@ -40,7 +40,7 @@
         </div>
 
     </div>
-    <form class="formulario-pago" id="formularioPago">
+    <form class="formulario-pago" id="formularioPago" (ngSubmit)="submitForm()">
         <div class="row g-2 justify-content-center">
             <div class="col-md-4">
                 <div class="form-floating">
@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-floating">
-                    <input type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
+                    <input formControlName="digitos_tarjeta" type="text" class="form-control" name="digitos-tarjeta" id="digitos-tarjeta" placeholder="1234 5678 9012 3456" 
                         [(ngModel)]="digitos_tarjeta" (keypress)="formatoDigitosTarjeta($event)" maxlength="19" required>
                     <label for="input-digitos">Dígitos Tarjeta</label>
                 </div>
@@ -96,3 +96,5 @@
         </div>
     </form>
 </div>
+
+<footer class="footer">Todos los derechos reservados</footer>

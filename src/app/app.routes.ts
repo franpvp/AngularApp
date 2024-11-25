@@ -19,6 +19,7 @@ import { GestionProductosComponent } from './components/administracion/gestion-p
 import { AdminHomeComponent } from './components/administracion/admin-home/admin-home.component';
 import { RecuperacionComponent } from './components/recuperacion/recuperacion.component';
 import { RestablecerContrasenaComponent } from './components/restablecer-contrasena/restablecer-contrasena.component';
+import { PagoExitosoComponent } from './components/pago-exitoso/pago-exitoso.component';
 
 export const routes: Routes = [
     { path: 'admin-home', component: AdminHomeComponent },

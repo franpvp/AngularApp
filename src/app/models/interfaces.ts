@@ -28,4 +28,5 @@ export interface Libro {
     stock: number;
     imagen: string;
     enEdicion: boolean;
+    enPromo: boolean;
 }

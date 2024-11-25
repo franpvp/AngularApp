@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
 import { Libro } from '../../models/interfaces';
@@ -8,7 +9,7 @@ import { Libro } from '../../models/interfaces';
 @Component({
   selector: 'app-metodo-pago',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent],
+  imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
   templateUrl: './metodo-pago.component.html',
   styleUrl: './metodo-pago.component.css'
 })
@@ -22,7 +23,9 @@ export class MetodoPagoComponent {
   fecha_vencimiento: string = '';
   digitos_cvc: string = '';
 
-  constructor(private router: Router, route: ActivatedRoute) {
+  formularioPago!: FormGroup;
+
+  constructor(private router: Router, route: ActivatedRoute, private fb: FormBuilder) {
 
   }
 
@@ -123,6 +126,12 @@ export class MetodoPagoComponent {
 
     if (this.digitos_cvc.length > 4) {
       this.digitos_cvc = this.digitos_cvc.slice(0, 4);
+    }
+  }
+
+  submitForm(): void {
+    if(this.formularioPago.valid){
+      this.router.navigate(['pago-exitoso']);
     }
   }
 

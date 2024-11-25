@@ -7,42 +7,89 @@
         </div>
     </div>
 </div>
-<!-- Logo perfil -->
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col-auto">
             <div class="logo-perfil">
                 <img src="assets/img/nav/usuario.png" alt="perfil-logo">
             </div>
-            <div id="username" class="txt-username">{{ usuarioLogeado?.username }}</div>
+            <div id="username" class="txt-username"><strong>{{ usuarioLogeado?.username }}</strong></div>
         </div>
     </div>
-    <!-- Datos de perfil -->
+
+    <div class="text-center my-3">
+        <button class="btn btn-primary" (click)="toggleEditar()">
+            {{ editando ? 'Guardar Cambios' : 'Editar Perfil' }}
+        </button>
+        <button class="btn btn-secondary ms-2" *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>
+    </div>
+
     <div class="container contenedor-perfil">
         <div class="row g-3 justify-content-center">
             <div class="col-auto">
-                <p>Nombres</p>
-                <div id="nombres-usuario" class="campos-perfil">{{ usuarioLogeado?.nombres }}</div>
+                <p style="font-weight: 500;">Nombres</p>
+                <div id="nombres-usuario" class="campos-perfil">
+                    <strong *ngIf="!editando">{{ usuarioLogeado?.nombres }}</strong>
+                    <input
+                        *ngIf="editando && usuarioLogeado"
+                        type="text"
+                        [(ngModel)]="usuarioLogeado.nombres"
+                        class="form-control"
+                    />
+                </div>
             </div>
             <div class="col-auto">
                 <p>Apellidos</p>
-                <div id="apellidos-usuario" class="campos-perfil">{{ usuarioLogeado?.apellidos }}</div>
+                <div id="apellidos-usuario" class="campos-perfil">
+                    <strong *ngIf="!editando">{{ usuarioLogeado?.apellidos }}</strong>
+                    <input
+                        *ngIf="editando && usuarioLogeado"
+                        type="text"
+                        [(ngModel)]="usuarioLogeado.apellidos"
+                        class="form-control"
+                    />
+                </div>
             </div>
-            
         </div>
-    </div>
-    <div class="row g-3 justify-content-center" style="margin-bottom: 180px;">
-        <div class="col-auto">
-            <p>Correo</p>
-            <div id="correo" class="campos-perfil">{{ usuarioLogeado?.correo }}</div>
-        </div>
-        <div class="col-auto">
-            <p>Fecha Nacimiento</p>
-            <div id="fecha-nacimiento" class="campos-perfil">{{ usuarioLogeado?.fecha_nacimiento }}</div>
-        </div>
-        <div class="col-auto" *ngIf="usuarioLogeado?.domicilio != ''">
-            <p>Domicilio</p>
-            <div id="domicilio" class="campos-perfil">{{ usuarioLogeado?.domicilio }}</div>
+
+        <div class="row g-3 justify-content-center" style="margin-bottom: 180px;">
+            <div class="col-auto">
+                <p>Correo</p>
+                <div id="correo" class="campos-perfil">
+                    <strong *ngIf="!editando">{{ usuarioLogeado?.correo }}</strong>
+                    <input
+                        *ngIf="editando && usuarioLogeado"
+                        type="email"
+                        [(ngModel)]="usuarioLogeado.correo"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+            <div class="col-auto">
+                <p>Fecha Nacimiento</p>
+                <div id="fecha-nacimiento" class="campos-perfil">
+                    <strong *ngIf="!editando">{{ usuarioLogeado?.fecha_nacimiento }}</strong>
+                    <input
+                        *ngIf="editando && usuarioLogeado"
+                        type="date"
+                        [(ngModel)]="usuarioLogeado.fecha_nacimiento"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+            <div class="col-auto" *ngIf="usuarioLogeado?.domicilio != ''">
+                <p>Domicilio</p>
+                <div id="domicilio" class="campos-perfil">
+                    <strong *ngIf="!editando">{{ usuarioLogeado?.domicilio }}</strong>
+                    <input
+                        *ngIf="editando && usuarioLogeado"
+                        type="text"
+                        [(ngModel)]="usuarioLogeado.domicilio"
+                        class="form-control"
+                    />
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -59,6 +59,18 @@ export class AuthService {
     return of(this.usuarios);
   }
 
+  actualizarUsuario(usuarioActualizado: Usuario): Observable<boolean> {
+    const index = this.usuarios.findIndex(u => u.username === usuarioActualizado.username);
+  
+    if (index !== -1) {
+      // Actualiza los datos del usuario sin perder las credenciales
+      this.usuarios[index] = { ...this.usuarios[index], ...usuarioActualizado };
+      return of(true);
+    }
+  
+    return of(false);
+  }
+
   validarCorreo(correo: string): Observable<boolean> {
     const existeCorreo = this.usuarios.some((usuario) => usuario.correo === correo);
     return of(existeCorreo);

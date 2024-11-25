@@ -26,7 +26,8 @@ export class LibrosService {
             },
             "stock": 10,
             "imagen": "/assets/img/libros/literatura/harry-potter2.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 2,
@@ -44,7 +45,8 @@ export class LibrosService {
             },
             "stock": 15,
             "imagen": "/assets/img/libros/literatura/Alas-De-Hierro.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 3,
@@ -62,7 +64,8 @@ export class LibrosService {
             },
             "stock": 20,
             "imagen": "/assets/img/libros/novelas/el-niño-que-perdio-la-guerra.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 4,
@@ -80,7 +83,8 @@ export class LibrosService {
             },
             "stock": 10,
             "imagen": "/assets/img/libros/novelas/La-Chica-Oculta.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 5,
@@ -98,7 +102,8 @@ export class LibrosService {
             },
             "stock": 5,
             "imagen": "/assets/img/libros/auto-ayuda/Si-Lo-Crees-Lo-Creas.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 6,
@@ -116,7 +121,8 @@ export class LibrosService {
             },
             "stock": 12,
             "imagen": "/assets/img/libros/auto-ayuda/Deja-De-Ser-Tu.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 7,
@@ -134,7 +140,8 @@ export class LibrosService {
             },
             "stock": 10,
             "imagen": "/assets/img/libros/novelas/El-Gato-Que-Cuidaba-Las-Bibliotecas.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 8,
@@ -152,7 +159,8 @@ export class LibrosService {
             },
             "stock": 4,
             "imagen": "/assets/img/libros/literatura/Un-Buen-Dia-Para-Estar-Sola.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 9,
@@ -170,7 +178,8 @@ export class LibrosService {
             },
             "stock": 12,
             "imagen": "/assets/img/libros/auto-ayuda/Deten-El-Estres.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 10,
@@ -188,7 +197,8 @@ export class LibrosService {
             },
             "stock": 9,
             "imagen": "/assets/img/libros/informatica/Metodos Numericos Aplicados A La Ingenieria. Problemas En Polymath Y M.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 11,
@@ -206,7 +216,8 @@ export class LibrosService {
             },
             "stock": 7,
             "imagen": "/assets/img/libros/informatica/Administracion-hardware-de-un-sistema-informatico.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 12,
@@ -224,7 +235,8 @@ export class LibrosService {
             },
             "stock": 13,
             "imagen": "/assets/img/libros/informatica/Sistemas-operativos.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 13,
@@ -242,7 +254,8 @@ export class LibrosService {
             },
             "stock": 25,
             "imagen": "/assets/img/libros/informatica/Todo-Sobre-Los-NFT.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 14,
@@ -260,7 +273,8 @@ export class LibrosService {
             },
             "stock": 4,
             "imagen": "/assets/img/libros/comics-mangas/Vinland Saga Nº 27.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 15,
@@ -278,7 +292,8 @@ export class LibrosService {
             },
             "stock": 8,
             "imagen": "/assets/img/libros/comics-mangas/Attack-On-Titan-21.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 16,
@@ -296,7 +311,8 @@ export class LibrosService {
             },
             "stock": 15,
             "imagen": "/assets/img/libros/comics-mangas/Star-Wars-Darth-Vader-Tomo-Nº-03:04.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 17,
@@ -314,7 +330,8 @@ export class LibrosService {
             },
             "stock": 14,
             "imagen": "/assets/img/libros/comics-mangas/Spy-X-Family-10.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         },
         {
             "id": 18,
@@ -332,7 +349,8 @@ export class LibrosService {
             },
             "stock": 6,
             "imagen": "/assets/img/libros/comics-mangas/Guardianes-De-La-Noche-8.webp",
-            "enEdicion": false
+            "enEdicion": false,
+            "enPromo": false
         }
     ]
 
