@@ -7,6 +7,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 // Componentes
 import { NavComponent } from "../nav/nav.component";
 
+
 @Component({
   selector: 'app-registro',
   standalone: true,
@@ -24,6 +25,8 @@ export class RegistroComponent {
   domicilio: string = '';
   contrasena1: string = '';
   contrasena2: string = '';
+  mensajeError: string = '';
+  mensajeExitoso: boolean = false;
 
   nombreTouched: boolean = false;
   apellidosTouched: boolean = false;
@@ -112,9 +115,16 @@ export class RegistroComponent {
 
   submitForm() {
     if (this.formularioRegistro.valid) {
+      this.mensajeExitoso = true;
       console.log("Resultado", this.formularioRegistro.value);
+      // Quitar mensaje en 3 segundos
+      setTimeout(() => {
+        this.mensajeExitoso = false;
+        this.router.navigate(['login']);
+      }, 3000);
     } else {
       this.formularioRegistro.markAllAsTouched();
+      this.mostrarMensajeError('Debe ingresar campos obligatorios.');
     }
   }
 
@@ -122,10 +132,17 @@ export class RegistroComponent {
     this.formularioRegistro.reset();
   }
 
+  mostrarMensajeError(mensaje: string): void {
+    this.mensajeError = mensaje;
+    setTimeout(() => {
+      this.mensajeError = '';
+    }, 3000);
+  }
+
   ngOnInit(): void {
     this.formularioRegistro = this.fb.group({
-      nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
-      apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/)]],
+      nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
+      apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
       username: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
       fecha_nacimiento: ['', [Validators.required, this.validarEdadMinima]],

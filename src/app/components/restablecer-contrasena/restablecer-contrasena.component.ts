@@ -37,18 +37,25 @@ export class RestablecerContrasenaComponent {
     )?.value;
 
     if (nuevaContrasena !== confirmarContrasena) {
-      alert('Las contraseñas no coinciden.');
+      this.mostrarMensajeError('Las contraseñas no coinciden.');
       return;
     }
 
     // Lógica para guardar la nueva contraseña
-    alert(`Contraseña restablecida para ${this.correo}`);
-    this.router.navigate(['/login']); // Redirige al login
+    this.mostrarMensajeError(`Contraseña restablecida para ${this.correo}`);
+    this.router.navigate(['/login']);
   }
 
   validarCampo(campo: string): boolean {
     return !!this.formularioNuevaContrasena.get(campo)?.invalid && 
         (this.formularioNuevaContrasena.get(campo)?.touched || false);
+  }
+
+  mostrarMensajeError(mensaje: string): void {
+    this.mensajeError = mensaje;
+    setTimeout(() => {
+      this.mensajeError = '';
+    }, 3000);
   }
 
   ngOnInit(): void {
