@@ -217,10 +217,14 @@ ul li:hover ul.dropdown {
 
 
 .login{
-    margin: 40px 40px 40px 40px;
-    border: #D9D9D9 1px solid;
-    border-radius: 20px;
-    padding: 50px 100px 15px 50px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 100px;
+    background-color: #fff;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
 }
 
 .login-title{
@@ -232,18 +236,22 @@ ul li:hover ul.dropdown {
 }
 
 .registro{
-    margin: 40px 40px 40px 40px;
-    border: #D9D9D9 1px solid;
-    border-radius: 20px;
-    padding: 50px 100px 15px 50px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 100px;
+    background-color: #fff;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .registro-title{
-    font-size: 30px;
+    font-size: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .carrito-contenedor{
@@ -532,6 +540,14 @@ ul li:hover ul.dropdown {
     border-radius: 16px;
     text-align: center;
     color: rgb(15, 137, 143);
+}
+
+.vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado entre botones */
+    margin-top: 20px; /* Separación superior */
 }
 
 @media (min-width: 1200px) {
