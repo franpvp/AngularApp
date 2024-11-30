@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [NavComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './admin-home.component.html',
-  styleUrl: './admin-home.component.css'
+  styleUrl: './admin-home.component.css',
+  providers: [
+    AuthService
+  ],
 })
 export class AdminHomeComponent {
 

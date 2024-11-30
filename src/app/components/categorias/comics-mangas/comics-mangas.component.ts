@@ -6,12 +6,17 @@ import { Router } from '@angular/router';
 import { Libro } from '../../../models/interfaces';
 import { LibrosService } from '../../../services/libros/libros.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-comics-mangas',
   standalone: true,
-  imports: [NavComponent, CommonModule, FormsModule],
+  imports: [NavComponent, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './comics-mangas.component.html',
-  styleUrl: './comics-mangas.component.css'
+  styleUrl: './comics-mangas.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class ComicsMangasComponent {
 
@@ -49,10 +54,16 @@ export class ComicsMangasComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibros().subscribe((libros) => {
-      this.libros = libros;
-      this.filtrarPorCategoria(this.categoriaSeleccionada);
-    })
+    this.librosService.obtenerLibrosJson().subscribe(
+      (data) => {
+        this.libros = data;
+        this.filtrarPorCategoria(this.categoriaSeleccionada);
+        console.log(this.libros);
+      },
+      (error) => {
+        console.error('Error al cargar los datos', error);
+      }
+    );
   }
 
 }

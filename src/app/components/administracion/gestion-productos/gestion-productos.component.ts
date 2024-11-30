@@ -7,12 +7,17 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { LibrosService } from '../../../services/libros/libros.service';
 import { Libro } from '../../../models/interfaces';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-gestion-productos',
   standalone: true,
-  imports: [NavComponent, CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [NavComponent, CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   templateUrl: './gestion-productos.component.html',
-  styleUrl: './gestion-productos.component.css'
+  styleUrl: './gestion-productos.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class GestionProductosComponent {
 
@@ -31,9 +36,15 @@ export class GestionProductosComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibros().subscribe(libros => {
-      this.libros = libros;
-    })
+    this.librosService.obtenerLibrosJson().subscribe(
+      (data) => {
+        this.libros = data;
+        console.log(this.libros);
+      },
+      (error) => {
+        console.error('Error al cargar los datos', error);
+      }
+    );
   }
 
 }

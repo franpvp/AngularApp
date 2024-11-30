@@ -6,16 +6,22 @@ import { Router } from '@angular/router';
 import { Libro } from '../../../models/interfaces';
 import { LibrosService } from '../../../services/libros/libros.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-auto-ayuda',
   standalone: true,
-  imports: [NavComponent, CommonModule, FormsModule],
+  imports: [NavComponent, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './auto-ayuda.component.html',
-  styleUrl: './auto-ayuda.component.css'
+  styleUrl: './auto-ayuda.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class AutoAyudaComponent {
 
   libros: Libro[] = [];
+  librosJson: Libro[] = [];
   librosFiltrados: Libro[] = [];
   categoriaSeleccionada: string = 'Autoayuda';
 
@@ -39,7 +45,7 @@ export class AutoAyudaComponent {
   }
 
   filtrarPorCategoria(categoria: string): void {
-    this.librosFiltrados = this.libros.filter(
+    this.librosFiltrados = this.librosJson.filter(
       (libro) => libro.especificaciones.categoria === categoria
     );
   }
@@ -49,9 +55,20 @@ export class AutoAyudaComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibros().subscribe((libros) => {
-      this.libros = libros;
-      this.filtrarPorCategoria(this.categoriaSeleccionada);
-    })
+    // this.librosService.obtenerLibros().subscribe((libros) => {
+    //   this.libros = libros;
+    //   this.filtrarPorCategoria(this.categoriaSeleccionada);
+    // })
+    // Libros obtenidos mediante servidor
+    this.librosService.obtenerLibrosJson().subscribe(
+      (data: Libro[]) => {
+        this.librosJson = data;
+        this.filtrarPorCategoria(this.categoriaSeleccionada);
+        console.log('Libros recibidos:', this.librosJson);
+      },
+      (error) => {
+        console.error('Error al obtener los libros:', error);
+      }
+    );
   }
 }

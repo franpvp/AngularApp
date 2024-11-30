@@ -10,7 +10,10 @@ import { LibrosService } from '../../services/libros/libros.service';
   standalone: true,
   imports: [CommonModule, NavComponent],
   templateUrl: './carrito.component.html',
-  styleUrl: './carrito.component.css'
+  styleUrl: './carrito.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class CarritoComponent {
 

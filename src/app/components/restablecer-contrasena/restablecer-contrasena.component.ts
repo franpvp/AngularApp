@@ -4,12 +4,18 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormsModule } 
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
 
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../services/auth/auth.service';
+
 @Component({
   selector: 'app-restablecer-contrasena',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, NavComponent, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, NavComponent, FormsModule, HttpClientModule],
   templateUrl: './restablecer-contrasena.component.html',
-  styleUrl: './restablecer-contrasena.component.css'
+  styleUrl: './restablecer-contrasena.component.css',
+  providers: [
+    AuthService
+  ],
 })
 export class RestablecerContrasenaComponent {
 

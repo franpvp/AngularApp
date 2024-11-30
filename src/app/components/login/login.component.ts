@@ -7,36 +7,41 @@ import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms'
 // Componentes
 import { NavComponent } from "../nav/nav.component";
 
+import { HttpClientModule } from '@angular/common/http';
+
 // Servicios
 import { AuthService } from '../../services/auth/auth.service';
+import { Usuario } from '../../models/interfaces';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule, HttpClientModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  providers: [
+    AuthService
+  ],
 })
 
 
 export class LoginComponent {
 
-  username: string = '';
-  rolUsuario: string = '';
+  usuario: Usuario | null = null;
+  usuarios: Usuario[] = [];
   contrasena: string = '';
   mensajeError: string = '';
   
   formularioLogin!: FormGroup;
+
+  private usuarioSubject = new BehaviorSubject<Usuario | null>(null);
+
+  usuario$: Observable<Usuario | null> = this.usuarioSubject.asObservable();
   
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) {}
 
   goToHome(): void {
-    let navigationExtras: NavigationExtras = {
-      state: {
-        usernameEnviado: this.username,
-        contrasenaEnviada: this.contrasena
-      }
-    }
-    this.router.navigate(['home'], navigationExtras);
+    this.router.navigate(['home']);
   }
 
   goToLogin():void {
@@ -56,39 +61,27 @@ export class LoginComponent {
   }
 
   login(): void {
-    // Validar que el formulario sea válido antes de proceder
-    if (this.formularioLogin.valid) {
-      const { username, contrasena } = this.formularioLogin.value;
-  
-      this.authService.authenticate(username, contrasena).subscribe(
-        usuario => {
-          if (usuario) {
-            // Guardar datos del usuario en localStorage
-            localStorage.setItem('username', usuario.username);
-            localStorage.setItem('rol', usuario.rol);
-  
-            // Redirigir según el rol del usuario
-            if (usuario.rol === 'admin') {
-              this.router.navigate(['admin-home']);
-            } else if (usuario.rol === 'cliente') {
-              this.router.navigate(['home']);
-            }
-          } else {
-            // Mostrar mensaje de error si las credenciales son incorrectas
-            this.mostrarMensajeError('El nombre de usuario o la contraseña son incorrectos.');
-          }
-        },
-        error => {
-          // Manejo de errores en caso de problemas con la llamada al servicio
-          this.mostrarMensajeError('Hubo un problema con el inicio de sesión. Intenta nuevamente más tarde.');
+    const { username, contrasena } = this.formularioLogin.value;
+
+    this.authService.authenticateJson(username, contrasena).subscribe((usuario) => {
+      if (usuario) {
+        // Guarda el usuario autenticado en el servicio
+        console.log('Componente login usuario:', usuario);
+        this.authService.setUsuario(usuario);
+
+        // Redirige según el rol
+        if (usuario.rol === 'admin') {
+          this.router.navigate(['admin-home']);  // Redirige al home de admin
+        } else if (usuario.rol === 'cliente') {
+          this.router.navigate(['home']);  // Redirige al home de cliente
         }
-      );
-    } else {
-      // Marcar todos los campos como tocados para que se muestren los mensajes de error
-      this.formularioLogin.markAllAsTouched();
-      this.mostrarMensajeError('Por favor, completa todos los campos del formulario.');
-    }
+      } else {
+        this.mostrarMensajeError('Usuario o contraseña incorrectos.');
+      }
+    });
   }
+
+  
 
   mostrarMensajeError(mensaje: string): void {
     this.mensajeError = mensaje;
@@ -102,6 +95,7 @@ export class LoginComponent {
       username: ['', Validators.required],
       contrasena: ['', Validators.required],  
     });
+
   }
 
 }

@@ -5,13 +5,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
 import { Libro } from '../../models/interfaces';
+import { LibrosService } from '../../services/libros/libros.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-metodo-pago',
   standalone: true,
   imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
   templateUrl: './metodo-pago.component.html',
-  styleUrl: './metodo-pago.component.css'
+  styleUrl: './metodo-pago.component.css',
+  providers: [
+    LibrosService,
+    AuthService
+  ],
 })
 export class MetodoPagoComponent {
 

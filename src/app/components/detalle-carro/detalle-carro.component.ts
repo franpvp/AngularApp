@@ -7,13 +7,17 @@ import { CommonModule } from '@angular/common';
 // Servicios
 import { LibrosService } from '../../services/libros/libros.service';
 import { Libro } from '../../models/interfaces';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-detalle-carro',
   standalone: true,
-  imports: [CommonModule, NavComponent, FormsModule],
+  imports: [CommonModule, NavComponent, FormsModule, HttpClientModule],
   templateUrl: './detalle-carro.component.html',
-  styleUrl: './detalle-carro.component.css'
+  styleUrl: './detalle-carro.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class DetalleCarroComponent {
 

@@ -39,7 +39,7 @@
     </div>
     <!-- Libros -->
     <div class="contenedor">
-        <div *ngFor="let libro of libros" class="card">
+        <div *ngFor="let libro of librosJson" class="card">
             <a (click)="verDetalles(libro.id)" style="cursor: pointer;">
                 <div class="box-1">
                     <img [src]="libro.imagen" alt="{{ libro.titulo }}">

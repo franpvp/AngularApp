@@ -6,12 +6,17 @@ import { NavComponent } from "../../nav/nav.component";
 import { Libro } from '../../../models/interfaces';
 import { LibrosService } from '../../../services/libros/libros.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-literatura',
   standalone: true,
-  imports: [NavComponent, CommonModule, FormsModule],
+  imports: [NavComponent, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './literatura.component.html',
-  styleUrl: './literatura.component.css'
+  styleUrl: './literatura.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class LiteraturaComponent {
   libros: Libro[] = [];
@@ -48,9 +53,15 @@ export class LiteraturaComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibros().subscribe((libros) => {
-      this.libros = libros;
-      this.filtrarPorCategoria(this.categoriaSeleccionada);
-    })
+    this.librosService.obtenerLibrosJson().subscribe(
+      (data) => {
+        this.libros = data;
+        this.filtrarPorCategoria(this.categoriaSeleccionada);
+        console.log(this.libros);
+      },
+      (error) => {
+        console.error('Error al cargar los datos', error);
+      }
+    );
   }
 }

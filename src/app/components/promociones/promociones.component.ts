@@ -4,13 +4,17 @@ import { NavComponent } from "../nav/nav.component";
 import { Router } from '@angular/router';
 import { Libro } from '../../models/interfaces';
 import { LibrosService } from '../../services/libros/libros.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-promociones',
   standalone: true,
-  imports: [NavComponent, CommonModule],
+  imports: [NavComponent, CommonModule, HttpClientModule],
   templateUrl: './promociones.component.html',
-  styleUrl: './promociones.component.css'
+  styleUrl: './promociones.component.css',
+  providers: [
+    LibrosService
+  ],
 })
 export class PromocionesComponent {
 
@@ -25,14 +29,13 @@ export class PromocionesComponent {
     this.router.navigate(['/producto', libroId]);
   }
 
-
   agregarAlCarrito(libro: Libro): void {
     this.productosEnCarrito.push(libro);
     localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
   } 
 
   ngOnInit(): void {
-    this.librosService.obtenerLibros().subscribe((data: Libro[]) => {
+    this.librosService.obtenerLibrosJson().subscribe((data: Libro[]) => {
       // Filtrar los libros que tienen enPromo = true
       this.libros = data.filter(libro => libro.enPromo);
     });

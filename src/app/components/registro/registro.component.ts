@@ -6,14 +6,18 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { NavComponent } from "../nav/nav.component";
-
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
   imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
   templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  styleUrl: './registro.component.css',
+  providers: [
+    AuthService
+  ],
 })
 export class RegistroComponent {
 
@@ -37,7 +41,7 @@ export class RegistroComponent {
 
   formularioRegistro!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient) {
 
   }
 

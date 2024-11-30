@@ -5,12 +5,17 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-recuperacion',
   standalone: true,
-  imports: [NavComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [NavComponent, CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './recuperacion.component.html',
-  styleUrl: './recuperacion.component.css'
+  styleUrl: './recuperacion.component.css',
+  providers: [
+    AuthService
+  ],
 })
 export class RecuperacionComponent {
 
@@ -29,21 +34,21 @@ export class RecuperacionComponent {
     return !regexCorreo.test(this.correo.trim()) && this.correoTouched;
   }
 
-  submitForm(): void {
-    const correoControl = this.formularioRecuperacion.get('correo')?.value;
-    this.authService.validarCorreo(correoControl).subscribe((existe) => {
-      if (existe) {
-        // Redirige al formulario para ingresar la nueva contraseña
-        this.router.navigate(['restablecer-contrasena'], {
-          queryParams: { correoControl },
-        });
-      } else {
-        this.mostrarMensajeError('El correo ingresado no está registrado');
-      }
-    }, error => {
-      this.mostrarMensajeError('Hubo un problema al validar el correo. Intente nuevamente.');
-    });
-  }
+  // submitForm(): void {
+  //   const correoControl = this.formularioRecuperacion.get('correo')?.value;
+  //   this.authService.validarCorreo(correoControl).subscribe((existe) => {
+  //     if (existe) {
+  //       // Redirige al formulario para ingresar la nueva contraseña
+  //       this.router.navigate(['restablecer-contrasena'], {
+  //         queryParams: { correoControl },
+  //       });
+  //     } else {
+  //       this.mostrarMensajeError('El correo ingresado no está registrado');
+  //     }
+  //   }, error => {
+  //     this.mostrarMensajeError('Hubo un problema al validar el correo. Intente nuevamente.');
+  //   });
+  // }
 
   validarCampo(campo: string): boolean {
     return !!this.formularioRecuperacion.get(campo)?.invalid && 

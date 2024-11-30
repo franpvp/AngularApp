@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // Servicios
 import { AuthService } from '../../services/auth/auth.service';
+import { LibrosService } from '../../services/libros/libros.service';
+
 // Interfaces
 import { Libro, Usuario } from '../../models/interfaces';
-import { LibrosService } from '../../services/libros/libros.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrl: './nav.component.css',
+  providers: [
+    LibrosService,
+    AuthService
+  ],
 })
 export class NavComponent {
 
-  username: string | null = null;
-  usuarios: Usuario[] = [];
-  rolUsuario: string = '';
+  usuario: Usuario | null = null;
   productosEnCarrito: Libro[] = [];
   totalCarrito: number = 0;
   libros: Libro[] = [];
+  librosJson: Libro[] = [];
 
-  constructor(private router: Router, private librosService: LibrosService, private authService: AuthService) {
+  constructor(private router: Router, private route: ActivatedRoute, private cd: ChangeDetectorRef, private authService: AuthService) {
     
   }
 
@@ -56,11 +62,10 @@ export class NavComponent {
     this.router.navigate(['metodo-pago']);
   }
 
-  cerrarSesion():void {
-    this.username = null;
-    this.router.navigate(['home']);
-    localStorage.removeItem('username');
-    localStorage.removeItem('rol');
+  cerrarSesion(): void {
+    // Elimina el usuario del servicio y localStorage
+    this.authService.setUsuario(null);
+    this.usuario = null;  // Actualiza el valor localmente
   }
 
   limpiarCarrito(): void {
@@ -118,13 +123,12 @@ export class NavComponent {
   }
 
   ngOnInit(): void {
-    this.username = localStorage.getItem('username');
-    this.rolUsuario = localStorage.getItem('rol') || 'cliente';
+    const usuarioGuardado = localStorage.getItem('usuario');
 
-    this.librosService.obtenerLibros().subscribe(libros => {
-      this.libros = libros;
-    });
-
+    if (usuarioGuardado) {
+      // Parsear el usuario si existe
+      this.usuario = JSON.parse(usuarioGuardado);
+    }
     this.cargarCarrito();
   }
 
