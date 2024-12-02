@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { Usuario } from '../../../models/interfaces';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gestion-usuarios',
@@ -19,6 +20,21 @@ import { HttpClient } from '@angular/common/http';
 export class GestionUsuariosComponent {
 
   usuarios: Usuario[] = [];
+  // Creación de un usuario nuevo
+  nuevoUsuario: Usuario = {
+    rol: '',
+    username: '',
+    contrasena: '',
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    fecha_nacimiento: '',
+    domicilio: '',
+    enEdicion: false,
+  };
+
+  mostrarFormulario: boolean = false;
+  mensajeExitoso = false;
 
   constructor(private authService: AuthService, private http: HttpClient) {
 
@@ -32,8 +48,37 @@ export class GestionUsuariosComponent {
     usuario.enEdicion = false;
   }
 
+  agregarUsuario() {
+    this.authService.crearUsuario(this.nuevoUsuario).subscribe(
+      (usuariosActualizados) => {
+        console.log('Usuario creado con éxito:', usuariosActualizados);
+      },
+      (error) => {
+        console.error('Error al crear el usuario', error);
+      }
+    );
+  }
+
+  limpiarFormulario() {
+    this.nuevoUsuario = {
+      rol: '',
+      username: '',
+      contrasena: '',
+      nombres: '',
+      apellidos: '',
+      correo: '',
+      fecha_nacimiento: '',
+      domicilio: '',
+      enEdicion: false,
+    };
+  }
+
+  toggleFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
   ngOnInit() {
-    this.authService.obtenerUsuariosJson().subscribe({
+    this.authService.obtenerUsuarios().subscribe({
       next: (data) => {
         this.usuarios = data;
         console.log("Resultados usuarios: ", this.usuarios);

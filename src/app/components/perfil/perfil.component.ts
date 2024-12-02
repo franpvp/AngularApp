@@ -65,7 +65,7 @@ export class PerfilComponent {
     const usuarioLogeado = localStorage.getItem('usuario');
 
     if (usuarioLogeado) {
-      this.authService.obtenerUsuariosJson().subscribe(usuarios => {
+      this.authService.obtenerUsuarios().subscribe(usuarios => {
         const usuario = usuarios.find(user => user.username === JSON.parse(usuarioLogeado)?.username);
         if (usuario) {
           this.usuarioLogeado = usuario;

@@ -1,13 +1,13 @@
 <div class="d-flex flex-column min-vh-100">
     <app-nav></app-nav>
-    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">
+    <div class="container-fluid" style="margin-top: 20px;">
         <div class="row align-items-center">
             <div class="col">
                 <div class="line">
                 </div>
             </div>
             <div class="col-auto">
-                <div class="title-recomendados" style="text-align: center;">Lista de Usuarios</div>
+                <div class="title-recomendados" style="text-align: center; font-size: 40px; margin-top: 25px;">Usuarios</div>
             </div>
             <div class="col">
                 <div class="line">
@@ -16,107 +16,89 @@
         </div>
     </div>
     
-    <div class="table-responsive flex-grow-1">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Rol</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Fecha Nacimiento</th>
-                    <th scope="col">Domicilio</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tabla-usuarios" *ngFor="let usuario of usuarios; let i = index">
-                <tr>
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.rol" 
-                            type="text" 
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.rol }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.username"
-                            type="text"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.username }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.nombres"
-                            type="text"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.nombres }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.apellidos"
-                            type="text"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.apellidos }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.correo"
-                            type="text"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.correo }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.fecha_nacimiento"
-                            type="date"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.fecha_nacimiento }}</span>
-                    </td>
-                    <td>
-                        <input 
-                            *ngIf="usuario.enEdicion" 
-                            [(ngModel)]="usuario.domicilio"
-                            type="text"
-                            class="form-control"
-                        />
-                        <span *ngIf="!usuario.enEdicion">{{ usuario.domicilio }}</span>
-                    </td>
-                    <td>
-                        <button 
-                            *ngIf="!usuario.enEdicion" 
-                            (click)="editarUsuario(usuario)" 
-                            class="btn btn-primary btn-sm"
-                        >
-                            Editar
-                        </button>
-                        <button 
-                            *ngIf="usuario.enEdicion" 
-                            (click)="guardarUsuario(usuario)" 
-                            class="btn btn-success btn-sm"
-                        >
-                            Guardar
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <h2>Agregar Usuario</h2>
+      
+        <form (ngSubmit)="agregarUsuario()">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" [(ngModel)]="nuevoUsuario.username" name="username" class="form-control" required />
+          </div>
+      
+          <div class="form-group">
+            <label for="rol">Rol</label>
+            <select id="rol" [(ngModel)]="nuevoUsuario.rol" name="rol" class="form-control" required>
+              <option value="admin">Admin</option>
+              <option value="cliente">Cliente</option>
+            </select>
+          </div>
+      
+          <div class="form-group">
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" [(ngModel)]="nuevoUsuario.nombres" name="nombres" class="form-control" required />
+          </div>
+      
+          <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" [(ngModel)]="nuevoUsuario.apellidos" name="apellidos" class="form-control" required />
+          </div>
+      
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" [(ngModel)]="nuevoUsuario.correo" name="correo" class="form-control" required />
+          </div>
+      
+          <div class="form-group">
+            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+            <input type="date" id="fecha_nacimiento" [(ngModel)]="nuevoUsuario.fecha_nacimiento" name="fecha_nacimiento" class="form-control" required />
+          </div>
+      
+          <div class="form-group">
+            <label for="domicilio">Domicilio</label>
+            <input type="text" id="domicilio" [(ngModel)]="nuevoUsuario.domicilio" name="domicilio" class="form-control" />
+          </div>
+      
+          <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+        </form>
+      
+        <div *ngIf="mensajeExitoso" class="alert alert-success mt-3">
+          Usuario creado exitosamente.
+        </div>
+      </div>
+        <!-- Tabla de usuarios -->
+        <div class="table-responsive mt-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rol</th>
+                        <th>Username</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>Domicilio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuarios; let i = index">
+                        <th>{{ i + 1 }}</th>
+                        <td>{{ usuario.rol }}</td>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.nombres }}</td>
+                        <td>{{ usuario.apellidos }}</td>
+                        <td>{{ usuario.correo }}</td>
+                        <td>{{ usuario.fecha_nacimiento }}</td>
+                        <td>{{ usuario.domicilio }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
+    
 
 
