@@ -68,7 +68,7 @@ export class GestionUsuariosComponent {
     usuario.enEdicion = false;
   }
 
-  agregarUsuario() {
+  agregarUsuario(): void {
     this.submitted = true;
     if (this.usuarioForm.invalid) {
       return;
@@ -105,7 +105,7 @@ export class GestionUsuariosComponent {
   }
 
 
-  limpiarFormulario() {
+  limpiarFormulario(): void {
     this.nuevoUsuario = {
       rol: '',
       username: '',
@@ -119,7 +119,7 @@ export class GestionUsuariosComponent {
     };
   }
 
-  toggleFormulario() {
+  toggleFormulario(): void {
     this.mostrarFormulario = !this.mostrarFormulario;
     this.mensajeExitoso = false; // Resetear mensaje
   }

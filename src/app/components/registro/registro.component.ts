@@ -22,6 +22,7 @@ import { Usuario } from '../../models/interfaces';
 })
 export class RegistroComponent {
 
+  usuarios: Usuario[] = [];
   nombres: string = '';
   apellidos: string = '';
   username: string = '';
@@ -122,13 +123,26 @@ export class RegistroComponent {
 
   submitForm() {
     if (this.formularioRegistro.valid) {
-      this.mensajeExitoso = true;
-      console.log("Resultado", this.formularioRegistro.value);
-      // Quitar mensaje en 3 segundos
-      setTimeout(() => {
-        this.mensajeExitoso = false;
-        this.router.navigate(['login']);
-      }, 3000);
+      const nuevoUsuario: Usuario = {
+        ...this.formularioRegistro.value,
+        rol: 'cliente',
+        contrasena: this.formularioRegistro.value.contrasena1,
+      };
+
+      this.authService.crearUsuario(nuevoUsuario).subscribe({
+        next: (usuarios) => {
+          this.mensajeExitoso = true;
+          console.log('Usuario registrado con éxito:', usuarios);
+          setTimeout(() => {
+            this.mensajeExitoso = false;
+            this.router.navigate(['login']);
+          }, 3000);
+        },
+        error: (error) => {
+          console.error('Error al registrar el usuario:', error);
+          this.mostrarMensajeError('Hubo un error al registrar el usuario. Intente nuevamente.');
+        },
+      });
     } else {
       this.formularioRegistro.markAllAsTouched();
       this.mostrarMensajeError('Debe ingresar campos obligatorios.');
@@ -158,10 +172,6 @@ export class RegistroComponent {
       },
       error: () => console.error('Error al crear el usuario')
     });
-  }
-
-  toggleFormulario() {
-    this.mostrarFormulario = !this.mostrarFormulario;
   }
 
   ngOnInit(): void {
