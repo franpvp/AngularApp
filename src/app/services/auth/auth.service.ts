@@ -82,6 +82,25 @@ export class AuthService {
     );
   }
 
+  eliminarUsuario(username: string): Observable<any> {
+    // Carga el archivo JSON, filtra el usuario y reescribe el archivo.
+    return new Observable(observer => {
+      this.obtenerUsuarios().subscribe({
+        next: (usuarios) => {
+          const usuariosActualizados = usuarios.filter(user => user.username !== username);
+          this.http.put(this.jsonUrl, usuariosActualizados).subscribe({
+            next: () => {
+              observer.next();
+              observer.complete();
+            },
+            error: (err) => observer.error(err)
+          });
+        },
+        error: (err) => observer.error(err)
+      });
+    });
+  }
+
   authenticateJson(username: string, contrasena: string): Observable<Usuario | null> {
     return this.obtenerUsuarios().pipe(
       map((usuarios: Usuario[]) => {

@@ -17,54 +17,143 @@
     </div>
     
     <div class="container">
-        <h2>Agregar Usuario</h2>
-      
-        <form (ngSubmit)="agregarUsuario()">
-          <div class="form-group">
+      <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <button class="btn btn-success mb-3" (click)="toggleFormulario()">Agregar Usuario</button>
+      </div>
+      <div *ngIf="mostrarFormulario">
+        <h2 style="text-align: center; font-weight: 500;">Agregar Usuario</h2>
+        <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
+          <div class="form-group" style="margin-top: 20px;">
             <label for="username">Username</label>
-            <input type="text" id="username" [(ngModel)]="nuevoUsuario.username" name="username" class="form-control" required />
+            <input 
+              type="text" 
+              id="username" 
+              formControlName="username" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['username'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['username'].invalid" class="invalid-feedback">
+              Username es obligatorio.
+            </div>
           </div>
-      
-          <div class="form-group">
+    
+          <div class="form-group" style="margin-top: 10px;">
             <label for="rol">Rol</label>
-            <select id="rol" [(ngModel)]="nuevoUsuario.rol" name="rol" class="form-control" required>
+            <select 
+              id="rol" 
+              formControlName="rol" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['rol'].invalid}">
+              <option value="">Seleccione un rol</option>
               <option value="admin">Admin</option>
               <option value="cliente">Cliente</option>
             </select>
+            <div *ngIf="submitted && usuarioForm.controls['rol'].invalid" class="invalid-feedback">
+              Seleccione un rol.
+            </div>
           </div>
-      
-          <div class="form-group">
+    
+          <div class="form-group" style="margin-top: 10px;">
             <label for="nombres">Nombres</label>
-            <input type="text" id="nombres" [(ngModel)]="nuevoUsuario.nombres" name="nombres" class="form-control" required />
+            <input 
+              type="text" 
+              id="nombres" 
+              formControlName="nombres" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['nombres'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['nombres'].invalid" class="invalid-feedback">
+              Nombres son obligatorios.
+            </div>
           </div>
-      
-          <div class="form-group">
+    
+          <div class="form-group" style="margin-top: 10px;">
             <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" [(ngModel)]="nuevoUsuario.apellidos" name="apellidos" class="form-control" required />
+            <input 
+              type="text" 
+              id="apellidos" 
+              formControlName="apellidos" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['apellidos'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['apellidos'].invalid" class="invalid-feedback">
+              Apellidos son obligatorios.
+            </div>
           </div>
-      
-          <div class="form-group">
+          <!-- Contraseña 1 -->
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="contrasena1">Contraseña</label>
+            <input 
+              type="password" 
+              id="contrasena1" 
+              formControlName="contrasena1" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['contrasena1'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['contrasena1'].invalid" class="invalid-feedback">
+              La contraseña debe tener entre 6 y 18 caracteres, incluir al menos una mayúscula y un número.
+            </div>
+          </div>
+          <!-- Contraseña 2 -->
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="contrasena2">Confirmar Contraseña</label>
+            <input 
+              type="password" 
+              id="contrasena2" 
+              formControlName="contrasena2" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['contrasena2'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['contrasena2'].invalid" class="invalid-feedback">
+              Debe confirmar la contraseña.
+            </div>
+            <div *ngIf="submitted && usuarioForm.hasError('contrasenasNoCoinciden')" class="invalid-feedback">
+              Las contraseñas no coinciden.
+            </div>
+          </div>
+    
+          <div class="form-group" style="margin-top: 10px;">
             <label for="correo">Correo</label>
-            <input type="email" id="correo" [(ngModel)]="nuevoUsuario.correo" name="correo" class="form-control" required />
+            <input 
+              type="email" 
+              id="correo" 
+              formControlName="correo" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['correo'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['correo'].invalid" class="invalid-feedback">
+              Correo válido es obligatorio.
+            </div>
           </div>
-      
+    
           <div class="form-group">
             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-            <input type="date" id="fecha_nacimiento" [(ngModel)]="nuevoUsuario.fecha_nacimiento" name="fecha_nacimiento" class="form-control" required />
+            <input 
+              type="date" 
+              id="fecha_nacimiento" 
+              formControlName="fecha_nacimiento" 
+              class="form-control"
+              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['fecha_nacimiento'].invalid}" 
+            />
+            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].invalid" class="invalid-feedback">
+              Fecha de nacimiento es obligatoria.
+            </div>
           </div>
-      
-          <div class="form-group">
-            <label for="domicilio">Domicilio</label>
-            <input type="text" id="domicilio" [(ngModel)]="nuevoUsuario.domicilio" name="domicilio" class="form-control" />
+    
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="domicilio">Domicilio (Opcional)</label>
+            <input type="text" id="domicilio" formControlName="domicilio" class="form-control" />
           </div>
-      
-          <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+          <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Crear</button>
+          </div>
         </form>
-      
-        <div *ngIf="mensajeExitoso" class="alert alert-success mt-3">
+    
+        <div *ngIf="mensajeExitoso" class="alert alert-success mt-3" style="display: flex; justify-content: center;">
           Usuario creado exitosamente.
         </div>
       </div>
+    </div>
         <!-- Tabla de usuarios -->
         <div class="table-responsive mt-4">
             <table class="table">
@@ -92,12 +181,14 @@
                         <td>{{ usuario.fecha_nacimiento }}</td>
                         <td>{{ usuario.domicilio }}</td>
                         <td>
-                            <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+                          <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
+                          <button class="btn btn-danger btn-sm ms-2" (click)="eliminarUsuario(usuario)">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        
     </div>
     
 

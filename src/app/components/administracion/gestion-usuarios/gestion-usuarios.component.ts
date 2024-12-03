@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NavComponent } from "../../nav/nav.component";
 import { AuthService } from '../../../services/auth/auth.service';
 import { Usuario } from '../../../models/interfaces';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule, AbstractControl} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gestion-usuarios',
   standalone: true,
-  imports: [NavComponent, CommonModule, FormsModule],
+  imports: [NavComponent, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './gestion-usuarios.component.html',
   styleUrl: './gestion-usuarios.component.css',
   providers: [
@@ -20,6 +20,8 @@ import { Observable } from 'rxjs';
 export class GestionUsuariosComponent {
 
   usuarios: Usuario[] = [];
+  usuarioForm!: FormGroup;
+  submitted = false;
   // Creación de un usuario nuevo
   nuevoUsuario: Usuario = {
     rol: '',
@@ -36,8 +38,26 @@ export class GestionUsuariosComponent {
   mostrarFormulario: boolean = false;
   mensajeExitoso = false;
 
-  constructor(private authService: AuthService, private http: HttpClient) {
-
+  constructor(private authService: AuthService, private http: HttpClient, private fb: FormBuilder) {
+    this.usuarioForm = this.fb.group({
+      username: ['', Validators.required],
+      rol: ['', Validators.required],
+      nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
+      apellidos: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
+      correo: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
+      fecha_nacimiento: ['', [Validators.required, this.validarEdadMinima]],
+      domicilio: [''],
+      contrasena1: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(18),
+          Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)
+        ]
+      ],
+      contrasena2: ['', Validators.required]
+    }, { validator: this.validarContrasenasIguales });
   }
 
   editarUsuario(usuario: any): void {
@@ -49,15 +69,41 @@ export class GestionUsuariosComponent {
   }
 
   agregarUsuario() {
-    this.authService.crearUsuario(this.nuevoUsuario).subscribe(
-      (usuariosActualizados) => {
-        console.log('Usuario creado con éxito:', usuariosActualizados);
+    this.submitted = true;
+    if (this.usuarioForm.invalid) {
+      return;
+    }
+
+    const nuevoUsuario: Usuario = {
+      ...this.usuarioForm.value,
+      contrasena: this.usuarioForm.value.contrasena1,
+    };
+
+    this.authService.crearUsuario(nuevoUsuario).subscribe({
+      next: (usuarios) => {
+        this.mensajeExitoso = true;
+        console.log('Usuario agregado correctamente:', usuarios);
+        this.usuarioForm.reset();
+        this.submitted = false;
       },
-      (error) => {
-        console.error('Error al crear el usuario', error);
-      }
-    );
+      error: (error) => {
+        console.error('Error al agregar el usuario:', error);
+      },
+    });
   }
+
+  eliminarUsuario(usuario: Usuario) {
+    if (confirm(`¿Está seguro de que desea eliminar al usuario ${usuario.username}?`)) {
+      this.authService.eliminarUsuario(usuario.username).subscribe({
+        next: () => {
+          this.usuarios = this.usuarios.filter(u => u.username !== usuario.username);
+          alert('Usuario eliminado exitosamente');
+        },
+        error: () => alert('Error al eliminar el usuario')
+      });
+    }
+  }
+
 
   limpiarFormulario() {
     this.nuevoUsuario = {
@@ -75,6 +121,21 @@ export class GestionUsuariosComponent {
 
   toggleFormulario() {
     this.mostrarFormulario = !this.mostrarFormulario;
+    this.mensajeExitoso = false; // Resetear mensaje
+  }
+
+  validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
+    const fechaNacimiento = new Date(control.value);
+    const hoy = new Date();
+    const edadMinima = new Date(hoy.getFullYear() - 13, hoy.getMonth(), hoy.getDate());
+
+    return fechaNacimiento > edadMinima ? { menorDeEdad: true } : null;
+  }
+
+  validarContrasenasIguales(formGroup: FormGroup) {
+    const contrasena1 = formGroup.get('contrasena1')?.value;
+    const contrasena2 = formGroup.get('contrasena2')?.value;
+    return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
   }
 
   ngOnInit() {

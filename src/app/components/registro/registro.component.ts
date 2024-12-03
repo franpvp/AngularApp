@@ -8,6 +8,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from "../nav/nav.component";
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth/auth.service';
+import { Usuario } from '../../models/interfaces';
 
 @Component({
   selector: 'app-registro',
@@ -31,6 +32,8 @@ export class RegistroComponent {
   contrasena2: string = '';
   mensajeError: string = '';
   mensajeExitoso: boolean = false;
+  submitted = false;
+  mostrarFormulario = false;
 
   nombreTouched: boolean = false;
   apellidosTouched: boolean = false;
@@ -41,7 +44,7 @@ export class RegistroComponent {
 
   formularioRegistro!: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient) {
+  constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private authService: AuthService) {
 
   }
 
@@ -141,6 +144,24 @@ export class RegistroComponent {
     setTimeout(() => {
       this.mensajeError = '';
     }, 3000);
+  }
+
+  agregarUsuario() {
+    this.submitted = true;
+    if (this.formularioRegistro.invalid) return;
+    const nuevoUsuario: Usuario = this.formularioRegistro.value;
+    this.authService.crearUsuario(nuevoUsuario).subscribe({
+      next: () => {
+        this.mensajeExitoso = true;
+        this.formularioRegistro.reset();
+        this.submitted = false;
+      },
+      error: () => console.error('Error al crear el usuario')
+    });
+  }
+
+  toggleFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
   }
 
   ngOnInit(): void {
