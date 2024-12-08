@@ -157,42 +157,114 @@
         </div>
       </div>
     </div>
-        <!-- Tabla de usuarios -->
-        <div class="table-responsive mt-4">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Rol</th>
-                        <th>Username</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Fecha Nacimiento</th>
-                        <th>Domicilio</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let usuario of usuarios; let i = index">
-                        <th>{{ i + 1 }}</th>
-                        <td>{{ usuario.rol }}</td>
-                        <td>{{ usuario.username }}</td>
-                        <td>{{ usuario.nombres }}</td>
-                        <td>{{ usuario.apellidos }}</td>
-                        <td>{{ usuario.correo }}</td>
-                        <td>{{ usuario.fecha_nacimiento }}</td>
-                        <td>{{ usuario.domicilio }}</td>
-                        <td>
-                          <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>
-                          <button class="btn btn-danger btn-sm ms-2" (click)="eliminarUsuario(usuario)">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Tabla de usuarios -->
+    <form [formGroup]="edicionUsuarioForm">
+      <div class="table-responsive mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rol</th>
+              <th>Username</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Correo</th>
+              <th>Fecha Nacimiento</th>
+              <th>Domicilio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios; let i = index">
+              <th>{{ i + 1 }}</th>
+              <td>
+                <ng-container *ngIf="usuarioEnEdicion?.username === usuario.username">
+                  <select formControlName="rol" class="form-control">
+                    <option value="admin" [selected]="usuario.rol === 'admin'">Admin</option>
+                    <option value="cliente" [selected]="usuario.rol === 'cliente'">Cliente</option>
+                  </select>
+                </ng-container>
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.rol }}
+                </span>
+              </td>
+              <td>{{ usuario.username }}</td>
+              <td>
+                <input
+                  *ngIf="usuarioEnEdicion?.username === usuario.username"
+                  formControlName="nombres"
+                  class="form-control"
+                />
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.nombres }}
+                </span>
+              </td>
+              <td>
+                <input
+                  *ngIf="usuarioEnEdicion?.username === usuario.username"
+                  formControlName="apellidos"
+                  class="form-control"
+                />
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.apellidos }}
+                </span>
+              </td>
+              <td>
+                <input
+                  *ngIf="usuarioEnEdicion?.username === usuario.username"
+                  formControlName="correo"
+                  class="form-control"
+                />
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.correo }}
+                </span>
+              </td>
+              <td>
+                <input
+                  *ngIf="usuarioEnEdicion?.username === usuario.username"
+                  formControlName="fecha_nacimiento"
+                  type="date"
+                  class="form-control"
+                />
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.fecha_nacimiento }}
+                </span>
+              </td>
+              <td>
+                <input
+                  *ngIf="usuarioEnEdicion?.username === usuario.username"
+                  formControlName="domicilio"
+                  class="form-control"
+                />
+                <span *ngIf="!usuarioEnEdicion || usuarioEnEdicion.username !== usuario.username">
+                  {{ usuario.domicilio }}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex flex-wrap justify-content-center">
+                  <button
+                    [ngClass]="{
+                      'btn-warning': usuarioEnEdicion?.username !== usuario.username,
+                      'btn-success': usuarioEnEdicion?.username === usuario.username
+                    }"
+                    class="btn btn-sm"
+                    [ngStyle]="{
+                      'color': usuarioEnEdicion?.username !== usuario.username ? 'white' : 'white'
+                    }"
+                    (click)="usuarioEnEdicion?.username === usuario.username ? guardarCambios() : editarUsuario(usuario)"
+                  >
+                    {{ usuarioEnEdicion?.username === usuario.username ? 'Guardar' : 'Editar' }}
+                  </button>
+                  <button class="btn btn-danger btn-sm ms-2" (click)="eliminarUsuario(usuario)">Eliminar</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
         
-    </div>
+</div>
     
 
 

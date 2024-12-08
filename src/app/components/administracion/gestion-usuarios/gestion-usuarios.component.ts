@@ -20,8 +20,9 @@ import { Observable } from 'rxjs';
 export class GestionUsuariosComponent {
 
   usuarios: Usuario[] = [];
-  usuarioEditando: Usuario | null = null; 
+  usuarioEnEdicion: Usuario | null = null;
   usuarioForm: FormGroup;
+  edicionUsuarioForm!: FormGroup;
   submitted = false;
   // Creación de un usuario nuevo
   nuevoUsuario: Usuario = {
@@ -59,6 +60,16 @@ export class GestionUsuariosComponent {
       ],
       contrasena2: ['', Validators.required]
     }, { validator: this.validarContrasenasIguales });
+
+    this.edicionUsuarioForm = this.fb.group({
+      rol: ['', Validators.required],
+      username: ['', Validators.required],
+      nombres: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      fecha_nacimiento: ['', Validators.required],
+      domicilio: [''],
+    });
   }
 
   obtenerUsuarios(): void {
@@ -73,38 +84,24 @@ export class GestionUsuariosComponent {
     });
   }
 
-  createUsuarioForm(usuario: Usuario): FormGroup {
-    return this.fb.group({
-      username: [usuario.username],
-      nombres: [usuario.nombres],
-      apellidos: [usuario.apellidos],
-      correo: [usuario.correo]
+  guardarCambios(): void {
+    if (this.edicionUsuarioForm.invalid || !this.usuarioEnEdicion) return;
+
+    const datosActualizados = { ...this.usuarioEnEdicion, ...this.edicionUsuarioForm.value };
+
+    this.authService.editarUsuarioActualizado(datosActualizados).subscribe({
+      next: () => {
+        console.log('Usuario actualizado correctamente');
+        this.usuarioEnEdicion = null;
+        this.obtenerUsuarios(); // Refrescar la lista.
+      },
+      error: (error) => console.error('Error al actualizar usuario:', error),
     });
   }
 
-  habilitarEdicion(usuario: Usuario): void {
-    this.usuarioForm = this.createUsuarioForm(usuario);
-  }
-
-  guardarCambios(): void {
-    if (this.usuarioForm && this.usuarioForm.valid) {
-      const usuarioActualizado: Usuario = this.usuarioForm.value;
-
-      this.authService.editarUsuarioActualizado(usuarioActualizado).subscribe(
-        (response) => {
-          console.log('Usuario actualizado correctamente:', response);
-          this.obtenerUsuarios(); // Actualizar la lista de usuarios
-          this.limpiarFormulario();
-        },
-        (error) => {
-          console.error('Error al actualizar el usuario:', error);
-        }
-      );
-    }
-  }
-
   cancelarEdicion(): void {
-    this.limpiarFormulario();
+    this.usuarioEnEdicion = null;
+    this.edicionUsuarioForm.reset();
   }
 
   agregarUsuario(): void {
@@ -131,27 +128,6 @@ export class GestionUsuariosComponent {
     });
   }
 
-  actualizarUsuario() {
-    if (this.usuarioEditando) {
-      const usuarioActualizado: Usuario = {
-        ...this.usuarioEditando, // Datos originales del usuario
-        ...this.usuarioForm.value, // Datos actualizados desde el formulario
-      };
-  
-      this.authService.editarUsuarioActualizado(usuarioActualizado).subscribe({
-        next: () => {
-          this.mostrarFormulario = false;
-          this.usuarioEditando = null;
-          alert('Usuario actualizado correctamente');
-        },
-        error: (error) => {
-          console.error('Error al actualizar el usuario en S3:', error);
-          alert('Hubo un error al actualizar el usuario');
-        },
-      });
-    }
-  }
-
   eliminarUsuario(usuario: Usuario) {
     if (confirm(`¿Está seguro de que desea eliminar al usuario ${usuario.username}?`)) {
       this.authService.eliminarUsuario(usuario.username).subscribe({
@@ -162,21 +138,6 @@ export class GestionUsuariosComponent {
         error: () => alert('Error al eliminar el usuario')
       });
     }
-  }
-
-
-  limpiarFormulario(): void {
-    this.nuevoUsuario = {
-      rol: '',
-      username: '',
-      contrasena: '',
-      nombres: '',
-      apellidos: '',
-      correo: '',
-      fecha_nacimiento: '',
-      domicilio: '',
-      enEdicion: false,
-    };
   }
 
   toggleFormulario(): void {
@@ -214,20 +175,14 @@ export class GestionUsuariosComponent {
     return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
   }
 
-  editarUsuario(usuario: Usuario) {
-    this.usuarioEditando = usuario; // Asignar el usuario actual para edición.
-    this.usuarioForm.patchValue({
-      username: usuario.username,
-      rol: usuario.rol,
-      nombres: usuario.nombres,
-      apellidos: usuario.apellidos,
-      contrasena1: '', // Contraseñas no deben precargarse por seguridad.
-      contrasena2: '',
-      correo: usuario.correo,
-      fecha_nacimiento: usuario.fecha_nacimiento,
-      domicilio: usuario.domicilio,
-    });
-    this.mostrarFormulario = true; // Mostrar el formulario para edición.
+  editarUsuario(usuario: Usuario): void {
+    if (this.usuarioEnEdicion && this.usuarioEnEdicion.username === usuario.username) {
+      this.guardarCambios();
+      return;
+    }
+
+    this.usuarioEnEdicion = usuario;
+    this.edicionUsuarioForm.patchValue(usuario);
   }
 
   ngOnInit() {
