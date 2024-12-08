@@ -63,9 +63,9 @@ export class NavComponent {
   }
 
   cerrarSesion(): void {
-    // Elimina el usuario del servicio y localStorage
     this.authService.setUsuario(null);
     this.usuario = null;  // Actualiza el valor localmente
+    this.router.navigate(['home']);
   }
 
   limpiarCarrito(): void {

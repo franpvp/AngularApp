@@ -31,23 +31,29 @@ export class RestablecerContrasenaComponent {
 
   formularioNuevaContrasena!: FormGroup;
 
-  constructor( private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
+  constructor( private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private authService: AuthService) {
     
   }
 
   submitForm(): void {
-    if (this.formularioNuevaContrasena.valid) {
-      this.mensajeExitoso = true;
-      console.log('Resultado', this.formularioNuevaContrasena.value);
+    if (this.formularioNuevaContrasena.valid && this.correo) {
+      const nuevaContrasena = this.formularioNuevaContrasena.get('nuevaContrasena')?.value;
 
-      // Mostrar mensaje y redirigir
-      setTimeout(() => {
-        this.mensajeExitoso = false;
-        this.router.navigate(['login']);
-      }, 3000);
+      this.authService.cambiarContrasena(this.correo, nuevaContrasena).subscribe({
+        next: () => {
+          this.mensajeExitoso = true;
+          setTimeout(() => {
+            this.mensajeExitoso = false;
+            this.router.navigate(['/login']); // Redirigir al login después de actualizar la contraseña
+          }, 3000);
+        },
+        error: (err: any) => {
+          this.mostrarMensajeError('Hubo un error al actualizar la contraseña. Intente nuevamente.');
+          console.error('Error al cambiar la contraseña:', err);
+        },
+      });
     } else {
-      // Marcar todos los campos como tocados para mostrar errores
-      this.formularioNuevaContrasena.markAllAsTouched();
+      this.formularioNuevaContrasena.markAllAsTouched(); // Marcar campos como tocados para mostrar errores
     }
   }
 
@@ -76,11 +82,12 @@ export class RestablecerContrasenaComponent {
 
 
   ngOnInit(): void {
+    // Obtener el correo desde los queryParams
     this.route.queryParams.subscribe((params) => {
       this.correo = params['correo'] || null;
     });
 
-    // Formulario con validaciones
+    // Inicializar el formulario con validaciones
     this.formularioNuevaContrasena = this.fb.group(
       {
         nuevaContrasena: [
@@ -89,7 +96,7 @@ export class RestablecerContrasenaComponent {
             Validators.required,
             Validators.minLength(6),
             Validators.maxLength(18),
-            Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/)
+            Validators.pattern(/^(?=.*[A-Z])(?=.*\d).+$/),
           ],
         ],
         confirmarContrasena: ['', Validators.required],
@@ -97,7 +104,6 @@ export class RestablecerContrasenaComponent {
       { validators: this.validarContrasenasIguales }
     );
   }
-
 }
 
 

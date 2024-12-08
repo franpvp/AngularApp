@@ -1,0 +1,1561 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>app-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">app-angular documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  GestionUsuariosComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gestion-usuarios</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/NavComponent.html" target="_self" >NavComponent</a></code>
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gestion-usuarios.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./gestion-usuarios.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#mensajeExitoso" >mensajeExitoso</a>
+                            </li>
+                            <li>
+                                <a href="#mostrarFormulario" >mostrarFormulario</a>
+                            </li>
+                            <li>
+                                <a href="#nuevoUsuario" >nuevoUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#submitted" >submitted</a>
+                            </li>
+                            <li>
+                                <a href="#usuarioForm" >usuarioForm</a>
+                            </li>
+                            <li>
+                                <a href="#usuarios" >usuarios</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#agregarUsuario" >agregarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#editarUsuario" >editarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarUsuario" >eliminarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#guardarUsuario" >guardarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#limpiarFormulario" >limpiarFormulario</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFormulario" >toggleFormulario</a>
+                            </li>
+                            <li>
+                                <a href="#validarContrasenasIguales" >validarContrasenasIguales</a>
+                            </li>
+                            <li>
+                                <a href="#validarEdadMinima" >validarEdadMinima</a>
+                            </li>
+                            <li>
+                                <a href="#validarFechaNacimiento" >validarFechaNacimiento</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, http: HttpClient, fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarUsuario"></a>
+                    <span class="name">
+                        <span ><b>agregarUsuario</b></span>
+                        <a href="#agregarUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarUsuario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarUsuario"></a>
+                    <span class="name">
+                        <span ><b>editarUsuario</b></span>
+                        <a href="#editarUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarUsuario(usuario: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarUsuario"></a>
+                    <span class="name">
+                        <span ><b>eliminarUsuario</b></span>
+                        <a href="#eliminarUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarUsuario(usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarUsuario"></a>
+                    <span class="name">
+                        <span ><b>guardarUsuario</b></span>
+                        <a href="#guardarUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarUsuario(usuario: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="limpiarFormulario"></a>
+                    <span class="name">
+                        <span ><b>limpiarFormulario</b></span>
+                        <a href="#limpiarFormulario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>limpiarFormulario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:157</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFormulario"></a>
+                    <span class="name">
+                        <span ><b>toggleFormulario</b></span>
+                        <a href="#toggleFormulario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFormulario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validarContrasenasIguales"></a>
+                    <span class="name">
+                        <span ><b>validarContrasenasIguales</b></span>
+                        <a href="#validarContrasenasIguales"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validarContrasenasIguales(formGroup: FormGroup)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>formGroup</td>
+                                            <td>
+                                                        <code>FormGroup</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ contrasenasNoCoinciden: boolean; }</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validarEdadMinima"></a>
+                    <span class="name">
+                        <span ><b>validarEdadMinima</b></span>
+                        <a href="#validarEdadMinima"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validarEdadMinima(control: AbstractControl)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>control</td>
+                                            <td>
+                                                        <code>AbstractControl</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type | null</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validarFechaNacimiento"></a>
+                    <span class="name">
+                        <span ><b>validarFechaNacimiento</b></span>
+                        <a href="#validarFechaNacimiento"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validarFechaNacimiento()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ValidatorFn</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mensajeExitoso"></a>
+                    <span class="name">
+                        <span ><b>mensajeExitoso</b></span>
+                        <a href="#mensajeExitoso"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mostrarFormulario"></a>
+                    <span class="name">
+                        <span ><b>mostrarFormulario</b></span>
+                        <a href="#mostrarFormulario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nuevoUsuario"></a>
+                    <span class="name">
+                        <span ><b>nuevoUsuario</b></span>
+                        <a href="#nuevoUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    rol: &#x27;&#x27;,
+    username: &#x27;&#x27;,
+    contrasena: &#x27;&#x27;,
+    nombres: &#x27;&#x27;,
+    apellidos: &#x27;&#x27;,
+    correo: &#x27;&#x27;,
+    fecha_nacimiento: &#x27;&#x27;,
+    domicilio: &#x27;&#x27;,
+    enEdicion: false,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitted"></a>
+                    <span class="name">
+                        <span ><b>submitted</b></span>
+                        <a href="#submitted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioForm"></a>
+                    <span class="name">
+                        <span ><b>usuarioForm</b></span>
+                        <a href="#usuarioForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarios"></a>
+                    <span class="name">
+                        <span ><b>usuarios</b></span>
+                        <a href="#usuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/administracion/gestion-usuarios/gestion-usuarios.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NavComponent } from &quot;../../nav/nav.component&quot;;
+import { AuthService } from &#x27;../../../services/auth/auth.service&#x27;;
+import { Usuario } from &#x27;../../../models/interfaces&#x27;;
+import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule, AbstractControl, ValidatorFn, ValidationErrors} from &#x27;@angular/forms&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+@Component({
+  selector: &#x27;app-gestion-usuarios&#x27;,
+  standalone: true,
+  imports: [NavComponent, CommonModule, FormsModule, ReactiveFormsModule],
+  templateUrl: &#x27;./gestion-usuarios.component.html&#x27;,
+  styleUrl: &#x27;./gestion-usuarios.component.css&#x27;,
+  providers: [
+    AuthService
+  ],
+})
+export class GestionUsuariosComponent {
+
+  usuarios: Usuario[] &#x3D; [];
+  usuarioForm!: FormGroup;
+  submitted &#x3D; false;
+  // Creación de un usuario nuevo
+  nuevoUsuario: Usuario &#x3D; {
+    rol: &#x27;&#x27;,
+    username: &#x27;&#x27;,
+    contrasena: &#x27;&#x27;,
+    nombres: &#x27;&#x27;,
+    apellidos: &#x27;&#x27;,
+    correo: &#x27;&#x27;,
+    fecha_nacimiento: &#x27;&#x27;,
+    domicilio: &#x27;&#x27;,
+    enEdicion: false,
+  };
+
+  mostrarFormulario: boolean &#x3D; false;
+  mensajeExitoso &#x3D; false;
+
+  constructor(private authService: AuthService, private http: HttpClient, private fb: FormBuilder) {
+    this.usuarioForm &#x3D; this.fb.group({
+      username: [&#x27;&#x27;, Validators.required],
+      rol: [&#x27;&#x27;, Validators.required],
+      nombres: [&#x27;&#x27;, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
+      apellidos: [&#x27;&#x27;, [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],
+      correo: [&#x27;&#x27;, [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/)]],
+      fecha_nacimiento: [&#x27;&#x27;, [Validators.required, this.validarEdadMinima, this.validarFechaNacimiento()]],
+      domicilio: [&#x27;&#x27;],
+      contrasena1: [
+        &#x27;&#x27;,
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(18),
+          Validators.pattern(/^(?&#x3D;.*[A-Z])(?&#x3D;.*\d).+$/)
+        ]
+      ],
+      contrasena2: [&#x27;&#x27;, Validators.required]
+    }, { validator: this.validarContrasenasIguales });
+  }
+
+  editarUsuario(usuario: any): void {
+    usuario.enEdicion &#x3D; true;
+  }
+
+  guardarUsuario(usuario: any): void {
+    usuario.enEdicion &#x3D; false;
+  }
+
+  agregarUsuario(): void {
+    this.submitted &#x3D; true;
+    if (this.usuarioForm.invalid) {
+      return;
+    }
+
+    const nuevoUsuario: Usuario &#x3D; {
+      ...this.usuarioForm.value,
+      contrasena: this.usuarioForm.value.contrasena1,
+    };
+
+    this.authService.crearUsuario(nuevoUsuario).subscribe({
+      next: (usuarios) &#x3D;&gt; {
+        this.mensajeExitoso &#x3D; true;
+        console.log(&#x27;Usuario agregado correctamente:&#x27;, usuarios);
+        this.usuarioForm.reset();
+        this.submitted &#x3D; false;
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error al agregar el usuario:&#x27;, error);
+      },
+    });
+  }
+
+  eliminarUsuario(usuario: Usuario) {
+    if (confirm(&#x60;¿Está seguro de que desea eliminar al usuario ${usuario.username}?&#x60;)) {
+      this.authService.eliminarUsuario(usuario.username).subscribe({
+        next: () &#x3D;&gt; {
+          this.usuarios &#x3D; this.usuarios.filter(u &#x3D;&gt; u.username !&#x3D;&#x3D; usuario.username);
+          alert(&#x27;Usuario eliminado exitosamente&#x27;);
+        },
+        error: () &#x3D;&gt; alert(&#x27;Error al eliminar el usuario&#x27;)
+      });
+    }
+  }
+
+
+  limpiarFormulario(): void {
+    this.nuevoUsuario &#x3D; {
+      rol: &#x27;&#x27;,
+      username: &#x27;&#x27;,
+      contrasena: &#x27;&#x27;,
+      nombres: &#x27;&#x27;,
+      apellidos: &#x27;&#x27;,
+      correo: &#x27;&#x27;,
+      fecha_nacimiento: &#x27;&#x27;,
+      domicilio: &#x27;&#x27;,
+      enEdicion: false,
+    };
+  }
+
+  toggleFormulario(): void {
+    this.mostrarFormulario &#x3D; !this.mostrarFormulario;
+    this.mensajeExitoso &#x3D; false; // Resetear mensaje
+  }
+
+  validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
+    const fechaNacimiento &#x3D; new Date(control.value);
+    const hoy &#x3D; new Date();
+    const edadMinima &#x3D; new Date(hoy.getFullYear() - 13, hoy.getMonth(), hoy.getDate());
+
+    return fechaNacimiento &gt; edadMinima ? { menorDeEdad: true } : null;
+  }
+
+  validarFechaNacimiento(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+      if (!control.value) return null;
+      
+      const fechaIngresada &#x3D; new Date(control.value);
+      const year &#x3D; fechaIngresada.getFullYear();
+      const yearActual &#x3D; new Date().getFullYear();
+      
+      if (year &lt; 1900 || year &gt; yearActual) {
+        return { fechaInvalida: true };
+      }
+      
+      return null;
+    };
+  }
+
+  validarContrasenasIguales(formGroup: FormGroup) {
+    const contrasena1 &#x3D; formGroup.get(&#x27;contrasena1&#x27;)?.value;
+    const contrasena2 &#x3D; formGroup.get(&#x27;contrasena2&#x27;)?.value;
+    return contrasena1 &#x3D;&#x3D;&#x3D; contrasena2 ? null : { contrasenasNoCoinciden: true };
+  }
+
+  ngOnInit() {
+    this.authService.obtenerUsuarios().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.usuarios &#x3D; data;
+        console.log(&quot;Resultados usuarios: &quot;, this.usuarios);
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error al obtener los usuarios:&#x27;, error);
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;d-flex flex-column min-vh-100&quot;&gt;
+    &lt;app-nav&gt;&lt;/app-nav&gt;
+    &lt;div class&#x3D;&quot;container-fluid&quot; style&#x3D;&quot;margin-top: 20px;&quot;&gt;
+        &lt;div class&#x3D;&quot;row align-items-center&quot;&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;div class&#x3D;&quot;line&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-auto&quot;&gt;
+                &lt;div class&#x3D;&quot;title-recomendados&quot; style&#x3D;&quot;text-align: center; font-size: 40px; margin-top: 25px;&quot;&gt;Usuarios&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col&quot;&gt;
+                &lt;div class&#x3D;&quot;line&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class&#x3D;&quot;container&quot;&gt;
+      &lt;div style&#x3D;&quot;display: flex; justify-content: center; margin-top: 10px;&quot;&gt;
+        &lt;button class&#x3D;&quot;btn btn-success mb-3&quot; (click)&#x3D;&quot;toggleFormulario()&quot;&gt;Agregar Usuario&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;mostrarFormulario&quot;&gt;
+        &lt;h2 style&#x3D;&quot;text-align: center; font-weight: 500;&quot;&gt;Agregar Usuario&lt;/h2&gt;
+        &lt;form [formGroup]&#x3D;&quot;usuarioForm&quot; (ngSubmit)&#x3D;&quot;agregarUsuario()&quot;&gt;
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 20px;&quot;&gt;
+            &lt;label for&#x3D;&quot;username&quot;&gt;Username&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;text&quot; 
+              id&#x3D;&quot;username&quot; 
+              formControlName&#x3D;&quot;username&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;username&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;username&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Username es obligatorio.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;rol&quot;&gt;Rol&lt;/label&gt;
+            &lt;select 
+              id&#x3D;&quot;rol&quot; 
+              formControlName&#x3D;&quot;rol&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;rol&#x27;].invalid}&quot;&gt;
+              &lt;option value&#x3D;&quot;&quot;&gt;Seleccione un rol&lt;/option&gt;
+              &lt;option value&#x3D;&quot;admin&quot;&gt;Admin&lt;/option&gt;
+              &lt;option value&#x3D;&quot;cliente&quot;&gt;Cliente&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;rol&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Seleccione un rol.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;nombres&quot;&gt;Nombres&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;text&quot; 
+              id&#x3D;&quot;nombres&quot; 
+              formControlName&#x3D;&quot;nombres&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;nombres&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;nombres&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Nombres son obligatorios.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;apellidos&quot;&gt;Apellidos&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;text&quot; 
+              id&#x3D;&quot;apellidos&quot; 
+              formControlName&#x3D;&quot;apellidos&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;apellidos&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;apellidos&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Apellidos son obligatorios.
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- Contraseña 1 --&gt;
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;contrasena1&quot;&gt;Contraseña&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;password&quot; 
+              id&#x3D;&quot;contrasena1&quot; 
+              formControlName&#x3D;&quot;contrasena1&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;contrasena1&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;contrasena1&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              La contraseña debe tener entre 6 y 18 caracteres, incluir al menos una mayúscula y un número.
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- Contraseña 2 --&gt;
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;contrasena2&quot;&gt;Confirmar Contraseña&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;password&quot; 
+              id&#x3D;&quot;contrasena2&quot; 
+              formControlName&#x3D;&quot;contrasena2&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; (usuarioForm.controls[&#x27;contrasena2&#x27;].invalid || usuarioForm.hasError(&#x27;contrasenasNoCoinciden&#x27;))}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;contrasena2&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Debe confirmar la contraseña.
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.hasError(&#x27;contrasenasNoCoinciden&#x27;) &amp;&amp; usuarioForm.controls[&#x27;contrasena2&#x27;].touched&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Las contraseñas no coinciden.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;correo&quot;&gt;Correo&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;email&quot; 
+              id&#x3D;&quot;correo&quot; 
+              formControlName&#x3D;&quot;correo&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;correo&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;correo&#x27;].invalid&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Correo válido es obligatorio.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;fecha_nacimiento&quot;&gt;Fecha de Nacimiento&lt;/label&gt;
+            &lt;input 
+              type&#x3D;&quot;date&quot; 
+              id&#x3D;&quot;fecha_nacimiento&quot; 
+              formControlName&#x3D;&quot;fecha_nacimiento&quot; 
+              class&#x3D;&quot;form-control&quot;
+              [ngClass]&#x3D;&quot;{&#x27;is-invalid&#x27;: submitted &amp;&amp; usuarioForm.controls[&#x27;fecha_nacimiento&#x27;].invalid}&quot; 
+            /&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;fecha_nacimiento&#x27;].errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              Fecha de nacimiento es obligatoria.
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; usuarioForm.controls[&#x27;fecha_nacimiento&#x27;].errors?.[&#x27;fechaInvalida&#x27;]&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              El año debe estar entre 1900 y el año actual.
+            &lt;/div&gt;
+          &lt;/div&gt;
+    
+          &lt;div class&#x3D;&quot;form-group&quot; style&#x3D;&quot;margin-top: 10px;&quot;&gt;
+            &lt;label for&#x3D;&quot;domicilio&quot;&gt;Domicilio (Opcional)&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;domicilio&quot; formControlName&#x3D;&quot;domicilio&quot; class&#x3D;&quot;form-control&quot; /&gt;
+          &lt;/div&gt;
+          &lt;div style&#x3D;&quot;display: flex; justify-content: center; margin-top: 10px;&quot;&gt;
+            &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Crear&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/form&gt;
+    
+        &lt;div *ngIf&#x3D;&quot;mensajeExitoso&quot; class&#x3D;&quot;alert alert-success mt-3&quot; style&#x3D;&quot;display: flex; justify-content: center;&quot;&gt;
+          Usuario creado exitosamente.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+        &lt;!-- Tabla de usuarios --&gt;
+        &lt;div class&#x3D;&quot;table-responsive mt-4&quot;&gt;
+            &lt;table class&#x3D;&quot;table&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;#&lt;/th&gt;
+                        &lt;th&gt;Rol&lt;/th&gt;
+                        &lt;th&gt;Username&lt;/th&gt;
+                        &lt;th&gt;Nombres&lt;/th&gt;
+                        &lt;th&gt;Apellidos&lt;/th&gt;
+                        &lt;th&gt;Correo&lt;/th&gt;
+                        &lt;th&gt;Fecha Nacimiento&lt;/th&gt;
+                        &lt;th&gt;Domicilio&lt;/th&gt;
+                        &lt;th&gt;Acciones&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr *ngFor&#x3D;&quot;let usuario of usuarios; let i &#x3D; index&quot;&gt;
+                        &lt;th&gt;{{ i + 1 }}&lt;/th&gt;
+                        &lt;td&gt;{{ usuario.rol }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.username }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.nombres }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.apellidos }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.correo }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.fecha_nacimiento }}&lt;/td&gt;
+                        &lt;td&gt;{{ usuario.domicilio }}&lt;/td&gt;
+                        &lt;td&gt;
+                          &lt;button class&#x3D;&quot;btn btn-primary btn-sm&quot; (click)&#x3D;&quot;editarUsuario(usuario)&quot;&gt;Editar&lt;/button&gt;
+                          &lt;button class&#x3D;&quot;btn btn-danger btn-sm ms-2&quot; (click)&#x3D;&quot;eliminarUsuario(usuario)&quot;&gt;Eliminar&lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+    
+
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 40px; margin-top: 25px;">Usuarios</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>        <div class="container">      <div style="display: flex; justify-content: center; margin-top: 10px;">        <button class="btn btn-success mb-3" (click)="toggleFormulario()">Agregar Usuario</button>      </div>      <div *ngIf="mostrarFormulario">        <h2 style="text-align: center; font-weight: 500;">Agregar Usuario</h2>        <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">          <div class="form-group" style="margin-top: 20px;">            <label for="username">Username</label>            <input               type="text"               id="username"               formControlName="username"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'username\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'username\'].invalid" class="invalid-feedback">              Username es obligatorio.            </div>          </div>              <div class="form-group" style="margin-top: 10px;">            <label for="rol">Rol</label>            <select               id="rol"               formControlName="rol"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'rol\'].invalid}">              <option value="">Seleccione un rol</option>              <option value="admin">Admin</option>              <option value="cliente">Cliente</option>            </select>            <div *ngIf="submitted && usuarioForm.controls[\'rol\'].invalid" class="invalid-feedback">              Seleccione un rol.            </div>          </div>              <div class="form-group" style="margin-top: 10px;">            <label for="nombres">Nombres</label>            <input               type="text"               id="nombres"               formControlName="nombres"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'nombres\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'nombres\'].invalid" class="invalid-feedback">              Nombres son obligatorios.            </div>          </div>              <div class="form-group" style="margin-top: 10px;">            <label for="apellidos">Apellidos</label>            <input               type="text"               id="apellidos"               formControlName="apellidos"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'apellidos\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'apellidos\'].invalid" class="invalid-feedback">              Apellidos son obligatorios.            </div>          </div>          <!-- Contraseña 1 -->          <div class="form-group" style="margin-top: 10px;">            <label for="contrasena1">Contraseña</label>            <input               type="password"               id="contrasena1"               formControlName="contrasena1"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'contrasena1\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'contrasena1\'].invalid" class="invalid-feedback">              La contraseña debe tener entre 6 y 18 caracteres, incluir al menos una mayúscula y un número.            </div>          </div>          <!-- Contraseña 2 -->          <div class="form-group" style="margin-top: 10px;">            <label for="contrasena2">Confirmar Contraseña</label>            <input               type="password"               id="contrasena2"               formControlName="contrasena2"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && (usuarioForm.controls[\'contrasena2\'].invalid || usuarioForm.hasError(\'contrasenasNoCoinciden\'))}"             />            <div *ngIf="submitted && usuarioForm.controls[\'contrasena2\'].invalid" class="invalid-feedback">              Debe confirmar la contraseña.            </div>            <div *ngIf="submitted && usuarioForm.hasError(\'contrasenasNoCoinciden\') && usuarioForm.controls[\'contrasena2\'].touched" class="invalid-feedback">              Las contraseñas no coinciden.            </div>          </div>              <div class="form-group" style="margin-top: 10px;">            <label for="correo">Correo</label>            <input               type="email"               id="correo"               formControlName="correo"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'correo\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'correo\'].invalid" class="invalid-feedback">              Correo válido es obligatorio.            </div>          </div>              <div class="form-group">            <label for="fecha_nacimiento">Fecha de Nacimiento</label>            <input               type="date"               id="fecha_nacimiento"               formControlName="fecha_nacimiento"               class="form-control"              [ngClass]="{\'is-invalid\': submitted && usuarioForm.controls[\'fecha_nacimiento\'].invalid}"             />            <div *ngIf="submitted && usuarioForm.controls[\'fecha_nacimiento\'].errors?.[\'required\']" class="invalid-feedback">              Fecha de nacimiento es obligatoria.            </div>            <div *ngIf="submitted && usuarioForm.controls[\'fecha_nacimiento\'].errors?.[\'fechaInvalida\']" class="invalid-feedback">              El año debe estar entre 1900 y el año actual.            </div>          </div>              <div class="form-group" style="margin-top: 10px;">            <label for="domicilio">Domicilio (Opcional)</label>            <input type="text" id="domicilio" formControlName="domicilio" class="form-control" />          </div>          <div style="display: flex; justify-content: center; margin-top: 10px;">            <button type="submit" class="btn btn-primary">Crear</button>          </div>        </form>            <div *ngIf="mensajeExitoso" class="alert alert-success mt-3" style="display: flex; justify-content: center;">          Usuario creado exitosamente.        </div>      </div>    </div>        <!-- Tabla de usuarios -->        <div class="table-responsive mt-4">            <table class="table">                <thead>                    <tr>                        <th>#</th>                        <th>Rol</th>                        <th>Username</th>                        <th>Nombres</th>                        <th>Apellidos</th>                        <th>Correo</th>                        <th>Fecha Nacimiento</th>                        <th>Domicilio</th>                        <th>Acciones</th>                    </tr>                </thead>                <tbody>                    <tr *ngFor="let usuario of usuarios; let i = index">                        <th>{{ i + 1 }}</th>                        <td>{{ usuario.rol }}</td>                        <td>{{ usuario.username }}</td>                        <td>{{ usuario.nombres }}</td>                        <td>{{ usuario.apellidos }}</td>                        <td>{{ usuario.correo }}</td>                        <td>{{ usuario.fecha_nacimiento }}</td>                        <td>{{ usuario.domicilio }}</td>                        <td>                          <button class="btn btn-primary btn-sm" (click)="editarUsuario(usuario)">Editar</button>                          <button class="btn btn-danger btn-sm ms-2" (click)="eliminarUsuario(usuario)">Eliminar</button>                        </td>                    </tr>                </tbody>            </table>        </div>            </div>    </div>'
+    var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GestionUsuariosComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestionUsuariosComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

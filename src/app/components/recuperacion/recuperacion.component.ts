@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class RecuperacionComponent {
 
   correo: string = '';
+  correoValido: boolean = true;
   correoTouched: boolean = false;
   mensajeError: string = '';
 
@@ -49,6 +50,28 @@ export class RecuperacionComponent {
   //     this.mostrarMensajeError('Hubo un problema al validar el correo. Intente nuevamente.');
   //   });
   // }
+
+  onSubmit(): void {
+    const correo = this.formularioRecuperacion.get('correo')?.value;
+  
+    this.authService.validarCorreo(correo).subscribe({
+      next: (existe) => {
+        this.correoValido = existe;
+        if (existe) {
+          console.log('Correo válido, el usuario existe.');
+          this.router.navigate(['restablecer-contrasena'], {
+            queryParams: { correo },
+          });
+
+        } else {
+          console.error('Correo inválido, no se encuentra en la base de datos.');
+        }
+      },
+      error: (err) => {
+        console.error('Error al validar el correo:', err);
+      }
+    });
+  }
 
   validarCampo(campo: string): boolean {
     return !!this.formularioRecuperacion.get(campo)?.invalid && 

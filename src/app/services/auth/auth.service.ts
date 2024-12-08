@@ -57,17 +57,37 @@ export class AuthService {
     return this.http.get<Usuario[]>(this.jsonUrl).pipe(
       catchError(error => {
         console.error('Error al obtener usuarios', error);
-        return []; // Retorna un array vacío en caso de error
+        return [];
       })
     );
   }
 
-  crearUsuario(usuario: Usuario): Observable<Usuario[]> {
+  crearUsuario(usuario: Partial<Usuario>): Observable<Usuario[]> {
     return this.obtenerUsuarios().pipe(
-      // Aplanamos el Observable con switchMap
       switchMap((usuarios: Usuario[]) => {
-        const usuariosActualizados = [...usuarios, usuario];
+        // Crear un nuevo objeto que cumpla estrictamente con la interfaz Usuario
+        const nuevoUsuario: Usuario = {
+          rol: usuario.rol || 'cliente', // Valor predeterminado si no se proporciona
+          username: usuario.username!,
+          contrasena: usuario.contrasena!,
+          nombres: usuario.nombres!,
+          apellidos: usuario.apellidos!,
+          correo: usuario.correo!,
+          fecha_nacimiento: usuario.fecha_nacimiento!,
+          domicilio: usuario.domicilio!,
+          puntos: usuario.puntos || 0, // Asigna 0 si no se proporciona
+          enEdicion: false, // Por defecto en falso
+        };
+  
+        // Agregar el nuevo usuario al array de usuarios
+        const usuariosActualizados = [...usuarios, nuevoUsuario];
+  
+        // Actualizar el archivo JSON en el servidor
         return this.actualizarUsuarios(usuariosActualizados);
+      }),
+      catchError((error) => {
+        console.error('Error al crear el usuario:', error);
+        return of([]); // Devuelve un arreglo vacío si ocurre un error
       })
     );
   }
@@ -81,6 +101,20 @@ export class AuthService {
       })
     );
   }
+
+  editarUsuarioActualizado(usuarioActualizado: Usuario): Observable<any> {
+    return this.obtenerUsuarios().pipe(
+      switchMap((usuarios) => {
+        const usuariosActualizados = usuarios.map((u) =>
+          u.username === usuarioActualizado.username ? usuarioActualizado : u
+        );
+        return this.http.put(this.jsonUrl, usuariosActualizados, {
+          headers: { 'Content-Type': 'application/json' },
+        });
+      })
+    );
+  }
+
 
   eliminarUsuario(username: string): Observable<any> {
     // Carga el archivo JSON, filtra el usuario y reescribe el archivo.
@@ -129,8 +163,41 @@ export class AuthService {
     } // Emite el nuevo estado del usuario
   }
 
-  // validarCorreo(correo: string): Observable<boolean> {
-  //   const existeCorreo = this.usuarios.some((usuario) => usuario.correo === correo);
-  //   return of(existeCorreo);
-  // }
+  validarCorreo(correo: string): Observable<boolean> {
+    return this.obtenerUsuarios().pipe(
+      map((usuarios: Usuario[]) => usuarios.some(usuario => usuario.correo === correo)),
+      catchError(error => {
+        console.error('Error al validar correo', error);
+        return of(false); // Devuelve `false` si hay un error
+      })
+    );
+  }
+
+  cambiarContrasena(correo: string, nuevaContrasena: string): Observable<any> {
+    return this.obtenerUsuarios().pipe(
+      switchMap((usuarios) => {
+        // Buscar al usuario por correo
+        const usuario = usuarios.find((u) => u.correo === correo);
+        if (!usuario) {
+          throw new Error('El usuario no fue encontrado');
+        }
+  
+        // Actualizar la contraseña
+        usuario.contrasena = nuevaContrasena;
+  
+        // Subir los usuarios actualizados al bucket S3
+        return this.actualizarUsuarios(usuarios).pipe(
+          map(() => true), // Devuelve `true` si todo salió bien
+          catchError((err) => {
+            console.error('Error al actualizar los usuarios en S3:', err);
+            return of(false); // Devuelve `false` si hay un error al subir
+          })
+        );
+      }),
+      catchError((error) => {
+        console.error('Error al cambiar la contraseña:', error);
+        return of(false);
+      })
+    );
+  }
 }

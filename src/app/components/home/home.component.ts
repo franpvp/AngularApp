@@ -1,8 +1,11 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, LOCALE_ID, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { registerLocaleData } from '@angular/common';
+import localeEsCL from '@angular/common/locales/es-CL';
 
 // Injección de Servicios
 import { LibrosService } from '../../services/libros/libros.service';
@@ -15,6 +18,8 @@ import { Libro } from '../../models/interfaces';
 import { NavComponent } from "../nav/nav.component";
 import { EncuestaComponent } from "../encuesta/encuesta.component";
 
+registerLocaleData(localeEsCL, 'es-CL');
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,7 +28,8 @@ import { EncuestaComponent } from "../encuesta/encuesta.component";
   styleUrl: './home.component.css',
   providers: [
     LibrosService,
-    AuthService
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class HomeComponent {

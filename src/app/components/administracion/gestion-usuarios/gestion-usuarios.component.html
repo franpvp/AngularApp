@@ -102,12 +102,12 @@
               id="contrasena2" 
               formControlName="contrasena2" 
               class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['contrasena2'].invalid}" 
+              [ngClass]="{'is-invalid': submitted && (usuarioForm.controls['contrasena2'].invalid || usuarioForm.hasError('contrasenasNoCoinciden'))}" 
             />
             <div *ngIf="submitted && usuarioForm.controls['contrasena2'].invalid" class="invalid-feedback">
               Debe confirmar la contraseña.
             </div>
-            <div *ngIf="submitted && usuarioForm.hasError('contrasenasNoCoinciden')" class="invalid-feedback">
+            <div *ngIf="submitted && usuarioForm.hasError('contrasenasNoCoinciden') && usuarioForm.controls['contrasena2'].touched" class="invalid-feedback">
               Las contraseñas no coinciden.
             </div>
           </div>
@@ -135,8 +135,11 @@
               class="form-control"
               [ngClass]="{'is-invalid': submitted && usuarioForm.controls['fecha_nacimiento'].invalid}" 
             />
-            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].invalid" class="invalid-feedback">
+            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['required']" class="invalid-feedback">
               Fecha de nacimiento es obligatoria.
+            </div>
+            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['fechaInvalida']" class="invalid-feedback">
+              El año debe estar entre 1900 y el año actual.
             </div>
           </div>
     
