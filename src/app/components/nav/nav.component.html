@@ -72,11 +72,11 @@
                             <div class="carrito-items">
                                 <div class="text-align" *ngFor="let producto of productosEnCarrito">
                                     <img [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                                    <p>{{ producto.titulo }} - {{ producto.precio | currency }}</p>
+                                    <p>{{ producto.titulo }} - ${{ producto.precio | number:'1.0-0' }}</p>
                                 </div>
                             </div>
                             <div class="carrito-total text-center mt-4" *ngIf="calcularTotal() !== 0">
-                                <strong>Total: {{ calcularTotal() | currency }}</strong>
+                                <strong>Total: {{ calcularTotal() | number:'1.0-0' }}</strong>
                             </div>
                             <div class="carrito-total text-center mt-4 mb-4" *ngIf="calcularTotal() === 0">
                                 <strong>No hay productos</strong>

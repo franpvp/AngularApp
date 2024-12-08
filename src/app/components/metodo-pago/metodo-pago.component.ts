@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,8 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrl: './metodo-pago.component.css',
   providers: [
     LibrosService,
-    AuthService
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class MetodoPagoComponent {

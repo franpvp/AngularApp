@@ -45,7 +45,7 @@
                         Forma de Pago: <strong>Crédito</strong>
                     </div>
                     <div id="total" class="total text-center mt-4 mb-3" style="font-size: 22px; color: brown;">
-                        <strong>Total: {{ calcularTotal() | currency}}</strong>
+                        <strong>Total: {{ calcularTotal() | number:'1.0-0'}}</strong>
                     </div>
                 </div>
             </div>

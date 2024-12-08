@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavComponent } from "../../nav/nav.component";
@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './auto-ayuda.component.html',
   styleUrl: './auto-ayuda.component.css',
   providers: [
-    LibrosService
+    LibrosService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class AutoAyudaComponent {

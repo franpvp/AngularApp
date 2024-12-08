@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './literatura.component.html',
   styleUrl: './literatura.component.css',
   providers: [
-    LibrosService
+    LibrosService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class LiteraturaComponent {

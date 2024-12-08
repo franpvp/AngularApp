@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from "../nav/nav.component";
 import { Router } from '@angular/router';
@@ -14,7 +14,8 @@ import { LibrosService } from '../../services/libros/libros.service';
   styleUrl: './pago-exitoso.component.css',
   providers: [
     LibrosService,
-    AuthService
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class PagoExitosoComponent {

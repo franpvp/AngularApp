@@ -20,10 +20,10 @@
                         <div style="margin-bottom: 10px;"><strong>Detalles:</strong></div>
                         <div class="text-center" *ngFor="let producto of productosEnCarrito">
                             <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                            <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>
+                            <p style="text-align: center;">{{ producto.titulo }} - ${{ producto.precio | number:'1.0-0' }}</p>
                         </div>
                         <div class="carrito-total text-center mt-4">
-                            <strong>Total: {{ calcularTotal() | currency }}</strong>
+                            <strong>Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
                         </div>
                     </div>
                 </div>

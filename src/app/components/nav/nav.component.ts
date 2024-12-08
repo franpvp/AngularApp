@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
@@ -19,7 +19,8 @@ import { Libro, Usuario } from '../../models/interfaces';
   styleUrl: './nav.component.css',
   providers: [
     LibrosService,
-    AuthService
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'es-CL' }
   ],
 })
 export class NavComponent {
