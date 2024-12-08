@@ -76,7 +76,6 @@ export class AuthService {
           fecha_nacimiento: usuario.fecha_nacimiento!,
           domicilio: usuario.domicilio!,
           puntos: usuario.puntos || 0, // Asigna 0 si no se proporciona
-          enEdicion: false, // Por defecto en falso
         };
   
         // Agregar el nuevo usuario al array de usuarios

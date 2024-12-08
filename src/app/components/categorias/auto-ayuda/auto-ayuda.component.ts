@@ -60,7 +60,7 @@ export class AutoAyudaComponent {
     //   this.filtrarPorCategoria(this.categoriaSeleccionada);
     // })
     // Libros obtenidos mediante servidor
-    this.librosService.obtenerLibrosJson().subscribe(
+    this.librosService.obtenerLibros().subscribe(
       (data: Libro[]) => {
         this.librosJson = data;
         this.filtrarPorCategoria(this.categoriaSeleccionada);

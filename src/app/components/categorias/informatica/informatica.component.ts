@@ -52,7 +52,7 @@ export class InformaticaComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibrosJson().subscribe(
+    this.librosService.obtenerLibros().subscribe(
       (data) => {
         this.libros = data;
         this.filtrarPorCategoria(this.categoriaSeleccionada);

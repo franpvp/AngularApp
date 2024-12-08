@@ -23,132 +23,151 @@
       <div *ngIf="mostrarFormulario">
         <h2 style="text-align: center; font-weight: 500;">Agregar Usuario</h2>
         <form [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()">
-          <div class="form-group" style="margin-top: 20px;">
-            <label for="username">Username</label>
-            <input 
-              type="text" 
-              id="username" 
-              formControlName="username" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['username'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['username'].invalid" class="invalid-feedback">
-              Username es obligatorio.
+          <div class="row">
+            <div class="col-md-6 col-12 form-group" style="margin-top: 20px;">
+              <label for="rol">Rol</label>
+              <select 
+                id="rol" 
+                formControlName="rol" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['rol'].invalid}">
+                <option value="">Seleccione un rol</option>
+                <option value="admin">Admin</option>
+                <option value="cliente">Cliente</option>
+              </select>
+              <div *ngIf="submitted && usuarioForm.controls['rol'].invalid" class="invalid-feedback">
+                Seleccione un rol.
+              </div>
+            </div>
+            <div class="col-md-6 col-12 form-group" style="margin-top: 20px;">
+              <label for="username">Username</label>
+              <input 
+                type="text" 
+                id="username" 
+                formControlName="username" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['username'].invalid}" 
+              />
+              <div *ngIf="submitted && usuarioForm.controls['username'].invalid" class="invalid-feedback">
+                Username es obligatorio.
+              </div>
             </div>
           </div>
     
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="rol">Rol</label>
-            <select 
-              id="rol" 
-              formControlName="rol" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['rol'].invalid}">
-              <option value="">Seleccione un rol</option>
-              <option value="admin">Admin</option>
-              <option value="cliente">Cliente</option>
-            </select>
-            <div *ngIf="submitted && usuarioForm.controls['rol'].invalid" class="invalid-feedback">
-              Seleccione un rol.
+          <div class="row">
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="nombres">Nombres</label>
+              <input 
+                type="text" 
+                id="nombres" 
+                formControlName="nombres" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['nombres'].invalid}" 
+              />
+              <div *ngIf="submitted && usuarioForm.controls['nombres'].invalid" class="invalid-feedback">
+                Nombres son obligatorios.
+              </div>
+            </div>
+    
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="apellidos">Apellidos</label>
+              <input 
+                type="text" 
+                id="apellidos" 
+                formControlName="apellidos" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['apellidos'].invalid}" 
+              />
+              <div *ngIf="submitted && usuarioForm.controls['apellidos'].invalid" class="invalid-feedback">
+                Apellidos son obligatorios.
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="correo">Correo</label>
+              <input 
+                type="email" 
+                id="correo" 
+                formControlName="correo" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['correo'].invalid}" 
+              />
+              <div *ngIf="submitted && usuarioForm.controls['correo'].invalid" class="invalid-feedback">
+                Correo válido es obligatorio.
+              </div>
+            </div>
+    
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+              <input 
+                type="date" 
+                id="fecha_nacimiento" 
+                formControlName="fecha_nacimiento" 
+                class="form-control"
+                [ngClass]="{'is-invalid': submitted && usuarioForm.controls['fecha_nacimiento'].invalid}" 
+              />
+              <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['required']" class="invalid-feedback">
+                Fecha de nacimiento es obligatoria.
+              </div>
+              <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['fechaInvalida']" class="invalid-feedback">
+                El año debe estar entre 1900 y el año actual.
+              </div>
             </div>
           </div>
     
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="nombres">Nombres</label>
-            <input 
-              type="text" 
-              id="nombres" 
-              formControlName="nombres" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['nombres'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['nombres'].invalid" class="invalid-feedback">
-              Nombres son obligatorios.
+          <div class="row">
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="contrasena1">Contraseña</label>
+              <div class="input-group">
+                <input 
+                  [type]="mostrarContrasena1 ? 'text' : 'password'" 
+                  id="contrasena1" 
+                  formControlName="contrasena1" 
+                  class="form-control"
+                  [ngClass]="{'is-invalid': submitted && usuarioForm.controls['contrasena1'].invalid}" 
+                />
+                <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena1 = !mostrarContrasena1">
+                  <i class="bi" [ngClass]="mostrarContrasena1 ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+              </div>
+              <div *ngIf="submitted && usuarioForm.controls['contrasena1'].invalid" class="invalid-feedback">
+                La contraseña debe tener entre 6 y 18 caracteres, incluir al menos una mayúscula y un número.
+              </div>
+            </div>
+          
+            <div class="col-md-6 col-12 form-group" style="margin-top: 10px;">
+              <label for="contrasena2">Confirmar Contraseña</label>
+              <div class="input-group">
+                <input 
+                  [type]="mostrarContrasena2 ? 'text' : 'password'" 
+                  id="contrasena2" 
+                  formControlName="contrasena2" 
+                  class="form-control"
+                  [ngClass]="{'is-invalid': submitted && (usuarioForm.controls['contrasena2'].invalid || usuarioForm.hasError('contrasenasNoCoinciden'))}" 
+                />
+                <button type="button" class="btn btn-outline-secondary" (click)="mostrarContrasena2 = !mostrarContrasena2">
+                  <i class="bi" [ngClass]="mostrarContrasena2 ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+              </div>
+              <div *ngIf="submitted && usuarioForm.controls['contrasena2'].invalid" class="invalid-feedback">
+                Debe confirmar la contraseña.
+              </div>
+              <div *ngIf="submitted && usuarioForm.hasError('contrasenasNoCoinciden') && usuarioForm.controls['contrasena2'].touched" class="invalid-feedback">
+                Las contraseñas no coinciden.
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group" style="margin-top: 10px;">
+              <label for="domicilio">Domicilio (Opcional)</label>
+              <input type="text" id="domicilio" formControlName="domicilio" class="form-control" />
             </div>
           </div>
     
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="apellidos">Apellidos</label>
-            <input 
-              type="text" 
-              id="apellidos" 
-              formControlName="apellidos" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['apellidos'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['apellidos'].invalid" class="invalid-feedback">
-              Apellidos son obligatorios.
-            </div>
-          </div>
-          <!-- Contraseña 1 -->
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="contrasena1">Contraseña</label>
-            <input 
-              type="password" 
-              id="contrasena1" 
-              formControlName="contrasena1" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['contrasena1'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['contrasena1'].invalid" class="invalid-feedback">
-              La contraseña debe tener entre 6 y 18 caracteres, incluir al menos una mayúscula y un número.
-            </div>
-          </div>
-          <!-- Contraseña 2 -->
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="contrasena2">Confirmar Contraseña</label>
-            <input 
-              type="password" 
-              id="contrasena2" 
-              formControlName="contrasena2" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && (usuarioForm.controls['contrasena2'].invalid || usuarioForm.hasError('contrasenasNoCoinciden'))}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['contrasena2'].invalid" class="invalid-feedback">
-              Debe confirmar la contraseña.
-            </div>
-            <div *ngIf="submitted && usuarioForm.hasError('contrasenasNoCoinciden') && usuarioForm.controls['contrasena2'].touched" class="invalid-feedback">
-              Las contraseñas no coinciden.
-            </div>
-          </div>
-    
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="correo">Correo</label>
-            <input 
-              type="email" 
-              id="correo" 
-              formControlName="correo" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['correo'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['correo'].invalid" class="invalid-feedback">
-              Correo válido es obligatorio.
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-            <input 
-              type="date" 
-              id="fecha_nacimiento" 
-              formControlName="fecha_nacimiento" 
-              class="form-control"
-              [ngClass]="{'is-invalid': submitted && usuarioForm.controls['fecha_nacimiento'].invalid}" 
-            />
-            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['required']" class="invalid-feedback">
-              Fecha de nacimiento es obligatoria.
-            </div>
-            <div *ngIf="submitted && usuarioForm.controls['fecha_nacimiento'].errors?.['fechaInvalida']" class="invalid-feedback">
-              El año debe estar entre 1900 y el año actual.
-            </div>
-          </div>
-    
-          <div class="form-group" style="margin-top: 10px;">
-            <label for="domicilio">Domicilio (Opcional)</label>
-            <input type="text" id="domicilio" formControlName="domicilio" class="form-control" />
-          </div>
-          <div style="display: flex; justify-content: center; margin-top: 10px;">
-            <button type="submit" class="btn btn-primary">Crear</button>
+          <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <button type="submit" class="btn btn-primary">Confirmar</button>
           </div>
         </form>
     

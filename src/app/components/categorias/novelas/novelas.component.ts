@@ -53,13 +53,13 @@ export class NovelasComponent {
   }
 
   ngOnInit() {
-    this.librosService.obtenerLibrosJson().subscribe(
-      (data) => {
+    this.librosService.obtenerLibros().subscribe(
+      (data: Libro[]) => {
         this.libros = data;
         this.filtrarPorCategoria(this.categoriaSeleccionada);
         console.log(this.libros);
       },
-      (error) => {
+      (error: any) => {
         console.error('Error al cargar los datos', error);
       }
     );

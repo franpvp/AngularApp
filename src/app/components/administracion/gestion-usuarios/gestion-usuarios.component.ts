@@ -20,6 +20,8 @@ import { Observable } from 'rxjs';
 export class GestionUsuariosComponent {
 
   usuarios: Usuario[] = [];
+  mostrarContrasena1: boolean = false;
+  mostrarContrasena2: boolean = false;
   usuarioEnEdicion: Usuario | null = null;
   usuarioForm: FormGroup;
   edicionUsuarioForm!: FormGroup;
@@ -33,8 +35,7 @@ export class GestionUsuariosComponent {
     apellidos: '',
     correo: '',
     fecha_nacimiento: '',
-    domicilio: '',
-    enEdicion: false,
+    domicilio: ''
   };
 
   mostrarFormulario: boolean = false;
@@ -102,6 +103,16 @@ export class GestionUsuariosComponent {
   cancelarEdicion(): void {
     this.usuarioEnEdicion = null;
     this.edicionUsuarioForm.reset();
+  }
+
+  editarUsuario(usuario: Usuario): void {
+    if (this.usuarioEnEdicion && this.usuarioEnEdicion.username === usuario.username) {
+      this.guardarCambios();
+      return;
+    }
+
+    this.usuarioEnEdicion = usuario;
+    this.edicionUsuarioForm.patchValue(usuario);
   }
 
   agregarUsuario(): void {
@@ -175,15 +186,7 @@ export class GestionUsuariosComponent {
     return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
   }
 
-  editarUsuario(usuario: Usuario): void {
-    if (this.usuarioEnEdicion && this.usuarioEnEdicion.username === usuario.username) {
-      this.guardarCambios();
-      return;
-    }
-
-    this.usuarioEnEdicion = usuario;
-    this.edicionUsuarioForm.patchValue(usuario);
-  }
+  
 
   ngOnInit() {
     this.obtenerUsuarios();

@@ -4,6 +4,7 @@ import { Router, RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// Librerias para formateo de precios
 import { registerLocaleData } from '@angular/common';
 import localeEsCL from '@angular/common/locales/es-CL';
 
@@ -110,12 +111,12 @@ export class HomeComponent {
     //   this.libros = libros;
     // });
 
-    this.librosService.obtenerLibrosJson().subscribe(
+    this.librosService.obtenerLibros().subscribe(
       (data) => {
         this.librosJson = data;
         console.log(this.librosJson);
       },
-      (error) => {
+      (error: any) => {
         console.error('Error al cargar los datos', error);
       }
     );

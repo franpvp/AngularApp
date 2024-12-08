@@ -8,7 +8,6 @@ export interface Usuario {
     fecha_nacimiento: string;
     domicilio: string;
     puntos?: number;
-    enEdicion: boolean;
 }
 
 export interface Libro {
@@ -27,6 +26,5 @@ export interface Libro {
     };
     stock: number;
     imagen: string;
-    enEdicion: boolean;
     enPromo: boolean;
 }

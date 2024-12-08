@@ -35,7 +35,7 @@ export class PromocionesComponent {
   } 
 
   ngOnInit(): void {
-    this.librosService.obtenerLibrosJson().subscribe((data: Libro[]) => {
+    this.librosService.obtenerLibros().subscribe((data: Libro[]) => {
       // Filtrar los libros que tienen enPromo = true
       this.libros = data.filter(libro => libro.enPromo);
     });
