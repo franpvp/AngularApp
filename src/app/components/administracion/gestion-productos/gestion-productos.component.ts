@@ -8,6 +8,7 @@ import { Libro } from '../../../models/interfaces';
 
 import { registerLocaleData } from '@angular/common';
 import localeEsCL from '@angular/common/locales/es-CL';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -26,15 +27,22 @@ export class GestionProductosComponent {
 
   libros: Libro[] = [];
   productosForm!: FormGroup;
+  crearLibrosForm!: FormGroup;
   libroEnEdicion: Libro | null = null;
+  mostrarFormulario: boolean = false;
+  mensajeExitoso = false;
+  submitted = false;
 
-  constructor(private librosService: LibrosService, private fb: FormBuilder) {
+  constructor(private librosService: LibrosService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
     this.productosForm = this.fb.group({
       titulo: [''],
+      resena: [''],
       autor: [''],
       editorial: [''],
+      categoria: [''],
       precio: ['']
     });
+    
   }
 
   obtenerLibros(): void {
@@ -43,6 +51,42 @@ export class GestionProductosComponent {
         this.libros = libros;
       } else {
         console.error("Los datos no son un array");
+      }
+    });
+  }
+
+  agregarLibro(): void {
+    this.submitted = true;
+  
+    if (this.crearLibrosForm.invalid) {
+      return;
+    }
+  
+    const nuevoLibro: Partial<Libro> = {
+      titulo: this.crearLibrosForm.value.titulo,
+      autor: this.crearLibrosForm.value.autor,
+      editorial: this.crearLibrosForm.value.editorial,
+      precio: this.crearLibrosForm.value.precio,
+      resena: this.crearLibrosForm.value.resena,
+      especificaciones: {
+        categoria: this.crearLibrosForm.value.categoria
+      }
+    };
+  
+    this.librosService.crearLibro(nuevoLibro).subscribe({
+      next: () => {
+        this.mensajeExitoso = true;
+  
+        // Forzar detección de cambios
+        this.cdr.detectChanges();
+        alert('Libro creado exitosamente');
+  
+        this.crearLibrosForm.reset();
+        this.submitted = false;
+        this.mostrarFormulario = false;
+      },
+      error: (error) => {
+        console.error('Error al agregar libro:', error);
       }
     });
   }
@@ -99,8 +143,20 @@ export class GestionProductosComponent {
     }
   }
 
+  toggleFormulario(): void {
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
   ngOnInit() {
     this.obtenerLibros();
+    this.crearLibrosForm = this.fb.group({
+      titulo: ['', Validators.required],
+      resena: ['', Validators.required],
+      autor: ['', Validators.required],
+      editorial: ['', Validators.required],
+      categoria: ['', Validators.required],
+      precio: [0, [Validators.required, Validators.min(1)]]
+    });
   }
 
 }

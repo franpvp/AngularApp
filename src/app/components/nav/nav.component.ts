@@ -10,6 +10,7 @@ import { LibrosService } from '../../services/libros/libros.service';
 
 // Interfaces
 import { Libro, Usuario } from '../../models/interfaces';
+import { CarritoService } from '../../services/carrito/carrito.service';
 
 @Component({
   selector: 'app-nav',
@@ -31,12 +32,8 @@ export class NavComponent {
   libros: Libro[] = [];
   librosJson: Libro[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private cd: ChangeDetectorRef, private authService: AuthService) {
+  constructor(private carritoService: CarritoService, private router: Router, private route: ActivatedRoute, private cd: ChangeDetectorRef, private authService: AuthService) {
     
-  }
-
-  goToPerfil(): void {
-    this.router.navigate(['perfil']);
   }
 
   goToHome(): void {
@@ -70,8 +67,7 @@ export class NavComponent {
   }
 
   limpiarCarrito(): void {
-    this.productosEnCarrito = [];
-    localStorage.removeItem('productosEnCarrito');
+    this.carritoService.limpiarCarrito();
   }
 
   goToCarrito(): void {
@@ -79,16 +75,30 @@ export class NavComponent {
   }
 
   cargarCarrito(): void {
-    // Obtener los productos del carrito desde localStorage
     const carritoData = localStorage.getItem('productosEnCarrito');
     if (carritoData) {
       this.productosEnCarrito = JSON.parse(carritoData);
-      this.calcularTotal();
     }
   }
 
+  obtenerCarritoAgrupado(): { libro: Libro, cantidad: number }[] {
+    const agrupado: { [id: number]: { libro: Libro, cantidad: number } } = {};
+  
+    // Agrupar por ID de producto y contar cantidades
+    this.productosEnCarrito.forEach(libro => {
+      if (agrupado[libro.id]) {
+        agrupado[libro.id].cantidad++;
+      } else {
+        agrupado[libro.id] = { libro, cantidad: 1 };
+      }
+    });
+  
+    return Object.values(agrupado);
+  }
+
   calcularTotal(): number {
-    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
+    const agrupado = this.obtenerCarritoAgrupado();
+    return agrupado.reduce((acc, item) => acc + (item.libro.precio * item.cantidad), 0);
   }
 
   // Enlaces Categorías
@@ -130,7 +140,13 @@ export class NavComponent {
       // Parsear el usuario si existe
       this.usuario = JSON.parse(usuarioGuardado);
     }
-    this.cargarCarrito();
+
+    this.carritoService.carrito$.subscribe((productos) => {
+      this.productosEnCarrito = productos;
+      this.totalCarrito = this.carritoService.calcularTotal();
+    });
+
+    // this.cargarCarrito();
   }
 
 }

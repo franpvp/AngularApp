@@ -22,37 +22,47 @@ export class LibrosService {
         );
       }
 
-    // crearLibro(libro: Partial<Libro>): Observable<Libro[]> {
-    //     return this.obtenerLibros().pipe(
-    //     switchMap((libros: Libro[]) => {
-    //         const nuevoLibro: Libro = {
-    //             id: libro.id!,
-    //             titulo: libro.titulo!,
-    //             autor: libro.autor!,
-    //             editorial: libro.editorial!,
-    //             precio: libro.precio!,
-    //             resena: '',
-    //             especificaciones: {
-    //                 categoria: '',
-    //                 sub_categoria: '',
-    //                 idioma: '',
-    //                 formato: '',
-    //                 paginas: 0
-    //             },
-    //             stock: 0,
-    //             imagen: '',
-    //             enPromo: false
-    //         };
+      crearLibro(libro: Partial<Libro>): Observable<Libro[]> {
+        return this.obtenerLibros().pipe(
+          switchMap((libros: Libro[]) => {
+            const nuevoId = libros.length > 0 ? Math.max(...libros.map(lib => lib.id)) + 1 : 1;
+            const nuevoLibro: Libro = {
+              id: nuevoId,
+              titulo: libro.titulo!,
+              autor: libro.autor!,
+              editorial: libro.editorial!,
+              precio: libro.precio!,
+              resena: libro.resena || '',
+              especificaciones: {
+                categoria: libro.especificaciones?.categoria || '',
+                sub_categoria: libro.especificaciones?.sub_categoria || '',
+                idioma: libro.especificaciones?.idioma || '',
+                formato: libro.especificaciones?.formato || '',
+                paginas: libro.especificaciones?.paginas || 0
+              },
+              stock: libro.stock || 0,
+              imagen: libro.imagen || '',
+              enPromo: libro.enPromo || false
+            };
+      
+            const librosActualizados = [...libros, nuevoLibro];
+            return this.actualizarLibros(librosActualizados);
+          }),
+          catchError((error) => {
+            console.error('Error al crear el libro:', error);
+            return throwError(error);
+          })
+        );
+      }
 
-    //         const librosActualizados = [...libros, nuevoLibro];
-    //         return this.actualizarLibros(librosActualizados);
-    //     }),
-    //     catchError((error) => {
-    //         console.error('Error al crear el libro:', error);
-    //         return of([]); // Devuelve un arreglo vacío si ocurre un error
-    //     })
-    //     );
-    // }
+    private actualizarLibros(libros: Libro[]): Observable<Libro[]> {
+      return this.http.put<Libro[]>(this.jsonUrl, libros).pipe(
+        catchError(error => {
+          console.error('Error al actualizar libros', error);
+          return [];
+        })
+      );
+    }
 
     obtenerLibroPorId(id: number): Observable<Libro | undefined> {
         return this.obtenerLibros().pipe(

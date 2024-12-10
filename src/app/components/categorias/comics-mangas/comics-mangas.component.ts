@@ -7,6 +7,7 @@ import { Libro } from '../../../models/interfaces';
 import { LibrosService } from '../../../services/libros/libros.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CarritoService } from '../../../services/carrito/carrito.service';
 
 @Component({
   selector: 'app-comics-mangas',
@@ -27,7 +28,7 @@ export class ComicsMangasComponent {
 
   productosEnCarrito: Libro[] = [];
   
-  constructor(private router: Router, private librosService: LibrosService) {
+  constructor(private router: Router, private librosService: LibrosService, private carritoService: CarritoService) {
     
   }
 
@@ -35,10 +36,14 @@ export class ComicsMangasComponent {
     this.router.navigate(['home']);
   }
 
+  // agregarAlCarrito(libro: Libro): void {
+  //   this.productosEnCarrito.push(libro);
+  //   localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
+  // } 
+
   agregarAlCarrito(libro: Libro): void {
-    this.productosEnCarrito.push(libro);
-    localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
-  } 
+    this.carritoService.agregarAlCarrito(libro);
+  }
 
   calcularTotal(): number {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;

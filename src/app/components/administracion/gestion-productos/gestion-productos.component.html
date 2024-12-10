@@ -15,6 +15,121 @@
             </div>
         </div>
     </div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div style="width: 100%; max-width: 600px;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <button class="btn btn-success mb-3" (click)="toggleFormulario()">Agregar Libro</button>
+          </div>
+          <div *ngIf="mostrarFormulario" class="card p-4 shadow w-100">
+            <h2 class="text-center mb-4">Agregar Libro</h2>
+            <form [formGroup]="crearLibrosForm" (ngSubmit)="agregarLibro()">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  id="titulo"
+                  formControlName="titulo"
+                  class="form-control"
+                  placeholder="Título"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['titulo'].invalid}"
+                />
+                <label for="titulo">Título</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['titulo'].invalid" class="invalid-feedback">
+                  El título es obligatorio.
+                </div>
+              </div>
+      
+              <div class="form-floating mb-3">
+                <textarea
+                  id="resena"
+                  formControlName="resena"
+                  class="form-control"
+                  placeholder="Reseña"
+                  style="height: 100px;"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['resena'].invalid}"
+                ></textarea>
+                <label for="resena">Reseña</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['resena'].invalid" class="invalid-feedback">
+                  La reseña es obligatoria.
+                </div>
+              </div>
+      
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  id="autor"
+                  formControlName="autor"
+                  class="form-control"
+                  placeholder="Autor"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['autor'].invalid}"
+                />
+                <label for="autor">Autor</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['autor'].invalid" class="invalid-feedback">
+                  El campo de Autor es obligatorio.
+                </div>
+              </div>
+      
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  id="editorial"
+                  formControlName="editorial"
+                  class="form-control"
+                  placeholder="Editorial"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['editorial'].invalid}"
+                />
+                <label for="editorial">Editorial</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['editorial'].invalid" class="invalid-feedback">
+                  El campo editorial es obligatorio.
+                </div>
+              </div>
+      
+              <div class="form-floating mb-3">
+                <select
+                  id="categoria"
+                  formControlName="categoria"
+                  class="form-control"
+                  placeholder="Categoría"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['categoria'].invalid}"
+                >
+                  <option value="" disabled>Seleccione una categoría</option>
+                  <option value="Autoayuda">Auto Ayuda</option>
+                  <option value="Comics y Manga">Comics y Mangas</option>
+                  <option value="Informatica">Informática</option>
+                  <option value="Literatura">Literatura</option>
+                  <option value="Novela">Novela</option>
+                </select>
+                <label for="categoria">Categoría</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['categoria'].invalid" class="invalid-feedback">
+                  Seleccione una categoría.
+                </div>
+              </div>
+      
+              <div class="form-floating mb-3">
+                <input
+                  id="precio"
+                  formControlName="precio"
+                  type="number"
+                  class="form-control"
+                  placeholder="Precio"
+                  [ngClass]="{'is-invalid': submitted && crearLibrosForm.controls['precio'].invalid}"
+                />
+                <label for="precio">Precio</label>
+                <div *ngIf="submitted && crearLibrosForm.controls['precio'].invalid" class="invalid-feedback">
+                  El precio debe ser mayor a 0.
+                </div>
+              </div>
+      
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+              </div>
+            </form>
+      
+            <div *ngIf="mensajeExitoso" class="alert alert-success mt-3 text-center">
+              Libro creado exitosamente.
+            </div>
+          </div>
+        </div>
+      </div>
     <form [formGroup]="productosForm">
         <div class="table-responsive flex-grow-1">
             <table class="table">
@@ -22,8 +137,10 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Título</th>
+                    <th scope="col">Reseña</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Editorial</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -32,40 +149,60 @@
                 <tr *ngFor="let libro of libros">
                     <td>{{ libro.id }}</td>
                     <td>
-                    <input 
-                        *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
-                        formControlName="titulo" 
-                        type="text" 
-                        class="form-control" 
-                    />
-                    <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.titulo }}</span>
+                        <input 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="titulo" 
+                            type="text" 
+                            class="form-control" 
+                        />
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.titulo }}</span>
                     </td>
                     <td>
-                    <input 
-                        *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
-                        formControlName="autor" 
-                        type="text" 
-                        class="form-control" 
-                    />
-                    <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.autor }}</span>
+                        <textarea 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="resena" 
+                            class="form-control" 
+                            rows="3">
+                        </textarea>
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">
+                            {{ libro.resena }}
+                        </span>
+                        </td>
+                    <td>
+                        <input 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="autor" 
+                            type="text" 
+                            class="form-control" 
+                        />
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.autor }}</span>
                     </td>
                     <td>
-                    <input 
-                        *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
-                        formControlName="editorial" 
-                        type="text" 
-                        class="form-control" 
-                    />
-                    <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.editorial }}</span>
+                        <input 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="editorial" 
+                            type="text" 
+                            class="form-control" 
+                        />
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.editorial }}</span>
                     </td>
                     <td>
-                    <input 
-                        *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
-                        formControlName="precio" 
-                        type="number" 
-                        class="form-control" 
-                    />
-                    <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.precio | number:'1.0-0' }}</span>
+                        <input 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="categoria" 
+                            type="text" 
+                            class="form-control" 
+                        />
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.especificaciones.categoria }}</span>
+                    </td>
+                    <td>
+                        <input 
+                            *ngIf="libroEnEdicion && libroEnEdicion.id === libro.id" 
+                            formControlName="precio" 
+                            type="number" 
+                            class="form-control" 
+                        />
+                        <span *ngIf="!libroEnEdicion || libroEnEdicion.id !== libro.id">{{ libro.precio | number:'1.0-0' }}</span>
                     </td>
                     <td>
                         <div class="d-flex justify-content-center">

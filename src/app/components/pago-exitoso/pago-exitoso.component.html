@@ -27,10 +27,11 @@
                     </div>
                     <hr>
                     <div class="fecha-pedido">
-                         Fecha: <strong>4 Noviembre, 2024</strong> 
+                        Fecha de pago: <strong> {{ fechaActual | date:'shortDate' }}</strong>
                     </div>
                     <hr>
                     <div class="detalle-items">
+                        
                     </div>
                     <div class="envio" id="envio" *ngIf="calcularTotal() >= 35000; else envioGratis">
                         Envio: <strong>$3.990</strong>

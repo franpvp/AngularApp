@@ -7,6 +7,7 @@ import { NavComponent } from "../nav/nav.component";
 import { Libro } from '../../models/interfaces';
 import { LibrosService } from '../../services/libros/libros.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { CarritoService } from '../../services/carrito/carrito.service';
 
 @Component({
   selector: 'app-metodo-pago',
@@ -24,6 +25,7 @@ export class MetodoPagoComponent {
 
   username: string | null = localStorage.getItem('username');
   productosEnCarrito: Libro[] = [];
+  totalCarrito: number = 0;
 
   nombre_titular: string = '';
   digitos_tarjeta: string = '';
@@ -32,7 +34,7 @@ export class MetodoPagoComponent {
 
   formularioPago!: FormGroup;
 
-  constructor(private router: Router, route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private carritoService: CarritoService, private router: Router, route: ActivatedRoute, private fb: FormBuilder) {
 
   }
 
@@ -63,7 +65,8 @@ export class MetodoPagoComponent {
   }
 
   calcularTotal(): number {
-    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
+    const agrupado = this.obtenerCarritoAgrupado();
+    return agrupado.reduce((acc, item) => acc + (item.libro.precio * item.cantidad), 0);
   }
 
   cargarCarrito(): void {
@@ -142,10 +145,31 @@ export class MetodoPagoComponent {
     }
   }
 
+  obtenerCarritoAgrupado(): { libro: Libro, cantidad: number }[] {
+    const agrupado: { [id: number]: { libro: Libro, cantidad: number } } = {};
+  
+    // Agrupar por ID de producto y contar cantidades
+    this.productosEnCarrito.forEach(libro => {
+      if (agrupado[libro.id]) {
+        agrupado[libro.id].cantidad++;
+      } else {
+        agrupado[libro.id] = { libro, cantidad: 1 };
+      }
+    });
+  
+    return Object.values(agrupado);
+  }
+  
+
   ngOnInit(): void {
-    const carritoData = localStorage.getItem('productosEnCarrito');
-    this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
-    this.cargarCarrito();
+    // const carritoData = localStorage.getItem('productosEnCarrito');
+    // this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
+
+    this.carritoService.carrito$.subscribe((productos) => {
+      this.productosEnCarrito = productos;
+      this.totalCarrito = this.carritoService.calcularTotal();
+    });
+    // this.cargarCarrito();
   }
 
 }

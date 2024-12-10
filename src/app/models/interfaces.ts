@@ -19,10 +19,10 @@ export interface Libro {
     resena: string;
     especificaciones: {
         categoria: string;
-        sub_categoria: string;
-        idioma: string;
-        formato: string;
-        paginas: number;
+        sub_categoria?: string;
+        idioma?: string;
+        formato?: string;
+        paginas?: number;
     };
     stock: number;
     imagen: string;

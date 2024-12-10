@@ -18,6 +18,7 @@ import { Libro } from '../../models/interfaces';
 // Componentes
 import { NavComponent } from "../nav/nav.component";
 import { EncuestaComponent } from "../encuesta/encuesta.component";
+import { CarritoService } from '../../services/carrito/carrito.service';
 
 registerLocaleData(localeEsCL, 'es-CL');
 
@@ -42,15 +43,20 @@ export class HomeComponent {
   productosEnCarrito: Libro[] = [];
   encuestaVisible: boolean = false;
   intentosActuales: number = 0;
+  totalCarrito: number = 0;
 
-  constructor(private router: Router, private librosService: LibrosService) {
+  constructor(private router: Router, private librosService: LibrosService, private carritoService: CarritoService) {
     
   }
 
+  // agregarAlCarrito(libro: Libro): void {
+  //   this.productosEnCarrito.push(libro);
+  //   localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
+  // } 
+
   agregarAlCarrito(libro: Libro): void {
-    this.productosEnCarrito.push(libro);
-    localStorage.setItem('productosEnCarrito', JSON.stringify(this.productosEnCarrito));
-  } 
+    this.carritoService.agregarAlCarrito(libro);
+  }
 
   calcularTotal(): number {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
@@ -72,26 +78,6 @@ export class HomeComponent {
     this.router.navigate(['contacto']);
   }
 
-  // Enlaces Categorías
-  goToCateAutoAyuda(): void {
-    this.router.navigate(['auto-ayuda']);
-  }
-
-  goToCateNovelas(): void {
-    this.router.navigate(['novelas']);
-  }
-
-  goToCateLiteratura(): void {
-    this.router.navigate(['literatura']);
-  }
-
-  goToCateComicsMangas(): void {
-    this.router.navigate(['comics-mangas']);
-  }
-
-  goToCateInformatica(): void {
-    this.router.navigate(['informatica']);
-  }
 
   verDetalles(libroId: number) {
     this.router.navigate(['/producto', libroId]);
@@ -107,10 +93,6 @@ export class HomeComponent {
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
 
-    // this.librosService.obtenerLibros().subscribe(libros => {
-    //   this.libros = libros;
-    // });
-
     this.librosService.obtenerLibros().subscribe(
       (data) => {
         this.librosJson = data;
@@ -121,4 +103,6 @@ export class HomeComponent {
       }
     );
   }
+
+  
 }

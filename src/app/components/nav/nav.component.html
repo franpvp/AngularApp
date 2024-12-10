@@ -51,7 +51,7 @@
                         <a class="nav-link btn-registro" (click)="goToRegistro()">Registro</a>
                     </li>
                       <li *ngIf="usuario?.username != null" class="nav-item" style="background: none !important;">
-                        <a class="nav-link" id="nombre-usuario" (click)="goToPerfil()">{{ usuario?.username }}</a>
+                        <a href="perfil" class="nav-link" id="nombre-usuario">{{ usuario?.username }}</a>
                     </li>
                     <a class="nav-carrito" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/assets/img/nav/avatar.png" alt="LoginLogo" width="30" height="30">
@@ -65,27 +65,40 @@
                         <li><a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="cerrarSesion()">Cerrar Sesión</a></li>
                     </ul>
                     <li class="nav-item dropdown-carrito" *ngIf="usuario?.rol === 'cliente' || usuario === null">
+                        <!-- Botón del carrito -->
                         <a class="nav-carrito" style="cursor: pointer;" (click)="goToCarrito()">
-                            <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
+                          <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
                         </a>
+                      
+                        <!-- Contenido del dropdown -->
                         <div class="dropdown-content">
+                          <!-- Lista de productos en el carrito -->
                             <div class="carrito-items">
-                                <div class="text-align" *ngFor="let producto of productosEnCarrito">
-                                    <img [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                                    <p>{{ producto.titulo }} - ${{ producto.precio | number:'1.0-0' }}</p>
+                                <div class="text-align" *ngFor="let producto of obtenerCarritoAgrupado()">
+                                <!-- Imagen del producto -->
+                                <img [src]="producto.libro.imagen" [alt]="producto.libro.titulo" width="100px" height="100px">
+                                <!-- Detalles del producto -->
+                                <p>{{ producto.libro.titulo }} - ${{ producto.libro.precio | number:'1.0-0' }}</p>
+                                <span>Cantidad: {{ producto.cantidad }}</span>
+                                <!-- <span>Subtotal: ${{ producto.libro.precio * producto.cantidad | number:'1.0-0' }}</span> -->
                                 </div>
                             </div>
+                      
+                            <!-- Total del carrito -->
                             <div class="carrito-total text-center mt-4" *ngIf="calcularTotal() !== 0">
-                                <strong>Total: {{ calcularTotal() | number:'1.0-0' }}</strong>
+                                <strong>Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
                             </div>
                             <div class="carrito-total text-center mt-4 mb-4" *ngIf="calcularTotal() === 0">
                                 <strong>No hay productos</strong>
                             </div>
-                            
-                            <button class="btn-limpiar-carrito" (click)="limpiarCarrito()">Limpiar Carrito</button>
-                            <button class="btn-ver-carrito" (click)="goToPago()">Ir a Pagar</button>
+                          
+                          <!-- Botones de acción -->
+                            <div class="text-center">
+                                <button class="btn-limpiar-carrito" (click)="limpiarCarrito()">Limpiar Carrito</button>
+                                <button class="btn-ver-carrito" (click)="goToPago()">Ir a Pagar</button>
+                            </div>
                         </div>
-                    </li>
+                      </li>
                 </ul>
             </div>
         </div>

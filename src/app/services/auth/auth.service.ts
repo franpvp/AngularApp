@@ -11,45 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 
   private jsonUrl = 'https://bucketangulartest.s3.us-east-1.amazonaws.com/usuarios.json';
-
-  // private usuarios: Usuario[] = [
-  //   {
-  //     rol: "admin",
-  //     username: "fr.valdiviap",
-  //     contrasena: "Prueba123",
-  //     nombres: "Francisca Patricia",
-  //     apellidos: "Valdivia Palma",
-  //     correo: "fr.valdiviap@gmail.com",
-  //     fecha_nacimiento: "1998-03-30",
-  //     domicilio: "",
-  //     enEdicion: false
-  //   },
-  //   {
-  //     rol: "cliente",
-  //     username: "jperez",
-  //     contrasena: "Contraseña456",
-  //     nombres: "Juan",
-  //     apellidos: "Pérez González",
-  //     correo: "jperez@example.com",
-  //     fecha_nacimiento: "1980-11-12",
-  //     domicilio: "",
-  //     puntos: 0,
-  //     enEdicion: false
-  //   },
-  //   {
-  //     rol: "cliente",
-  //     username: "mgarcia",
-  //     contrasena: "Pass789",
-  //     nombres: "María",
-  //     apellidos: "García López",
-  //     correo: "mgarcia@example.com",
-  //     fecha_nacimiento: "1993-05-12",
-  //     domicilio: "",
-  //     puntos: 0,
-  //     enEdicion: false
-  //   }
-  // ];
-
+  
   constructor(private http: HttpClient) { }
 
   // Método para obtener lista de usuarios
@@ -67,7 +29,7 @@ export class AuthService {
       switchMap((usuarios: Usuario[]) => {
         // Crear un nuevo objeto que cumpla estrictamente con la interfaz Usuario
         const nuevoUsuario: Usuario = {
-          rol: usuario.rol || 'cliente', // Valor predeterminado si no se proporciona
+          rol: usuario.rol || 'cliente',
           username: usuario.username!,
           contrasena: usuario.contrasena!,
           nombres: usuario.nombres!,
@@ -75,7 +37,7 @@ export class AuthService {
           correo: usuario.correo!,
           fecha_nacimiento: usuario.fecha_nacimiento!,
           domicilio: usuario.domicilio!,
-          puntos: usuario.puntos || 0, // Asigna 0 si no se proporciona
+          puntos: usuario.puntos || 0,
         };
   
         // Agregar el nuevo usuario al array de usuarios
@@ -90,7 +52,6 @@ export class AuthService {
       })
     );
   }
-
 
   private actualizarUsuarios(usuarios: Usuario[]): Observable<Usuario[]> {
     return this.http.put<Usuario[]>(this.jsonUrl, usuarios).pipe(

@@ -15,27 +15,45 @@
         <!-- Mostrar productos si el total es distinto de cero -->
         <div class="container-fluid" *ngIf="productosEnCarrito.length > 0; else carritoVacio">
             <div class="row justify-content-center">
-                <div class="col-auto m-4">
-                    <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">
-                        <div style="margin-bottom: 10px;"><strong>Detalles:</strong></div>
-                        <div class="text-center" *ngFor="let producto of productosEnCarrito">
-                            <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                            <p style="text-align: center;">{{ producto.titulo }} - ${{ producto.precio | number:'1.0-0' }}</p>
-                        </div>
-                        <div class="carrito-total text-center mt-4">
-                            <strong>Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-3">
+              <div class="col-12 col-md-10 col-lg-8">
+                <div class="contenedor-carrito table-responsive" style="margin: 20px; padding: 20px;">
+                  <div style="margin-bottom: 10px;"><strong>Detalles del Carrito:</strong></div>
+                  <table class="table table-bordered table-striped text-center">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th></th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let producto of obtenerCarritoAgrupado()">
+                        <td>
+                          <img [src]="producto.libro.imagen" [alt]="producto.libro.titulo" width="80px" height="80px">
+                        </td>
+                        <td>{{ producto.libro.titulo }}</td>
+                        <td>${{ producto.libro.precio | number:'1.0-0' }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td>${{ producto.libro.precio * producto.cantidad | number:'1.0-0' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="carrito-total text-center mt-3" style="font-size: 20px;">
+                    <strong>Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
+                  </div>
+                  <div class="text-center mt-4">
                     <button 
-                        class="btn-ver-carrito add-to-cart-btn col-xs-4 col-sm-6 col-md-4 col-lg-4 mx-auto"
-                        (click)="goToPago()">
-                        Continuar Pago
+                      class="btn btn-primary col-xs-12 col-sm-6 col-md-4 col-lg-4 mx-auto"
+                      (click)="goToPago()">
+                      Continuar Pago
                     </button>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
         <!-- Mostrar mensaje si no hay productos en el carrito -->
         <ng-template #carritoVacio>
             <div class="container-fluid">

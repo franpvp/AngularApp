@@ -4,6 +4,7 @@ import { Libro } from '../../models/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavComponent } from "../nav/nav.component";
 import { LibrosService } from '../../services/libros/libros.service';
+import { CarritoService } from '../../services/carrito/carrito.service';
 
 @Component({
   selector: 'app-carrito',
@@ -23,7 +24,7 @@ export class CarritoComponent {
   totalCarrito: number = 0;
   libros: Libro[] = [];
 
-  constructor(private router: Router, private librosService: LibrosService) {
+  constructor(private carritoService: CarritoService, private router: Router, private librosService: LibrosService) {
   }
 
   goToPago(): void {
@@ -31,7 +32,8 @@ export class CarritoComponent {
   }
 
   calcularTotal(): number {
-    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
+    const agrupado = this.obtenerCarritoAgrupado();
+    return agrupado.reduce((acc, item) => acc + (item.libro.precio * item.cantidad), 0);
   }
 
   cargarCarrito(): void {
@@ -43,7 +45,28 @@ export class CarritoComponent {
     }
   }
 
+  obtenerCarritoAgrupado(): { libro: Libro, cantidad: number }[] {
+    const agrupado: { [id: number]: { libro: Libro, cantidad: number } } = {};
+  
+    // Agrupar por ID de producto y contar cantidades
+    this.productosEnCarrito.forEach(libro => {
+      if (agrupado[libro.id]) {
+        agrupado[libro.id].cantidad++;
+      } else {
+        agrupado[libro.id] = { libro, cantidad: 1 };
+      }
+    });
+  
+    return Object.values(agrupado);
+  }
+
   ngOnInit(): void {
-    this.cargarCarrito();
+
+    this.carritoService.carrito$.subscribe((productos) => {
+      this.productosEnCarrito = productos;
+      this.totalCarrito = this.carritoService.calcularTotal();
+    });
+
+    // this.cargarCarrito();
   }
 }

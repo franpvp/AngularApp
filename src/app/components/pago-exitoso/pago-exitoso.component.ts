@@ -6,6 +6,11 @@ import { Libro } from '../../models/interfaces';
 import { AuthService } from '../../services/auth/auth.service';
 import { LibrosService } from '../../services/libros/libros.service';
 
+import { registerLocaleData } from '@angular/common';
+import localeEsCL from '@angular/common/locales/es-CL';
+
+registerLocaleData(localeEsCL);
+
 @Component({
   selector: 'app-pago-exitoso',
   standalone: true,
@@ -21,8 +26,14 @@ import { LibrosService } from '../../services/libros/libros.service';
 export class PagoExitosoComponent {
 
   productosEnCarrito: Libro[] = [];
+  fechaActual: Date = new Date();
+  idPedido: number = 1;
 
   constructor(private router: Router) {
+
+  }
+
+  guardarPedido(): void {
 
   }
 

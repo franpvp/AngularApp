@@ -70,23 +70,35 @@
                 <div class="contenedor-detalle-compra">
                     <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;">Resumen Carrito</h1>
                     <div class="row justify-content-center">
-                        <div class="col-auto">
-                            <div class="text-center" *ngFor="let producto of productosEnCarrito">
-                                <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">
-                                <p style="text-align: center;">{{ producto.titulo }} - ${{ producto.precio | number:'1.0-0' }}</p>
+                        <div class="col-12 col-md-10 col-lg-8">
+                
+                            <table class="table table-bordered table-striped text-center">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th></th>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let producto of obtenerCarritoAgrupado()">
+                                    <td>
+                                    <img [src]="producto.libro.imagen" [alt]="producto.libro.titulo" width="80px" height="80px">
+                                    </td>
+                                    <td>{{ producto.libro.titulo }}</td>
+                                    <td>${{ producto.libro.precio | number:'1.0-0' }}</td>
+                                    <td>{{ producto.cantidad }}</td>
+                                    <td>${{ producto.libro.precio * producto.cantidad | number:'1.0-0' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="carrito-total text-center mt-3" style="font-size: 20px;">
+                                <strong>Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
                             </div>
-                            <div class="envio" id="envio" *ngIf="calcularTotal() >= 35000">
-                                <strong>Envio: $3.990</strong>
                             </div>
-                            <div class="envio text-center" id="envio" *ngIf="calcularTotal() < 35000">
-                                <strong style="color: brown;">Envio: Gratis</strong>
-                            </div>
-                            <div class="carrito-total text-center mt-4">
-                                <strong style="text-align: center;">Total: ${{ calcularTotal() | number:'1.0-0' }}</strong>
-                            </div>
-                        </div>
                     </div>
-                    
                 </div>
             </div>
             
