@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from "../../nav/nav.component";
 import { AuthService } from '../../../services/auth/auth.service';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-admin-home',
@@ -18,15 +16,7 @@ import { Router } from '@angular/router';
 })
 export class AdminHomeComponent {
 
-  constructor(private router: Router ,private authService: AuthService) {
+  constructor() {
 
-  }
-
-  goToGestionUsuario(): void {
-    this.router.navigate(['gestion-usuarios']);
-  } 
-
-  goToGestionProductos(): void {
-    this.router.navigate(['gestion-productos']);
   }
 }

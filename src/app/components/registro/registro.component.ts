@@ -22,74 +22,141 @@ import { Usuario } from '../../models/interfaces';
 })
 export class RegistroComponent {
 
+  /**
+   * @property usuarios
+   * @description Lista de usuarios para almacenar los datos de usuarios registrados.
+   */
   usuarios: Usuario[] = [];
+  /**
+     * @property nombres
+     * @description Almacena el nombre ingresado por el usuario en el formulario.
+     */
   nombres: string = '';
+
+  /**
+   * @property apellidos
+   * @description Almacena los apellidos ingresados por el usuario en el formulario.
+   */
   apellidos: string = '';
+
+  /**
+   * @property username
+   * @description Almacena el nombre de usuario ingresado por el usuario en el formulario.
+   */
   username: string = '';
+
+  /**
+   * @property correo
+   * @description Almacena el correo electrónico ingresado por el usuario en el formulario.
+   */
   correo: string = '';
+
+  /**
+   * @property fecha_nacimiento
+   * @description Almacena la fecha de nacimiento ingresada por el usuario en el formulario.
+   */
   fecha_nacimiento: string = '';
+
+  /**
+   * @property domicilio
+   * @description Almacena la dirección del usuario en el formulario.
+   */
   domicilio: string = '';
+
+  /**
+   * @property contrasena1
+   * @description Almacena la contraseña ingresada por el usuario en el formulario.
+   */
   contrasena1: string = '';
+
+  /**
+   * @property contrasena2
+   * @description Almacena la confirmación de la contraseña ingresada por el 
+   * usuario en el formulario.
+   */
   contrasena2: string = '';
+
+  /**
+   * @property mensajeError
+   * @description Almacena el mensaje de error a mostrar cuando el registro falla.
+   */
   mensajeError: string = '';
+
+  /**
+   * @property mensajeExitoso
+   * @description Indica si el registro fue exitoso, para mostrar un mensaje de éxito.
+   */
   mensajeExitoso: boolean = false;
+
+  /**
+   * @property submitted
+   * @description Indica si el formulario fue enviado.
+   */
   submitted = false;
+
+  /**
+   * @property mostrarFormulario
+   * @description Controla la visibilidad del formulario de registro.
+   */
   mostrarFormulario = false;
 
+  /**
+   * @property nombreTouched
+   * @description Indica si el campo de nombre ha sido tocado por el usuario.
+   */
   nombreTouched: boolean = false;
+
+  /**
+   * @property apellidosTouched
+   * @description Indica si el campo de apellidos ha sido tocado por el usuario.
+   */
   apellidosTouched: boolean = false;
+
+  /**
+   * @property usernameTouched
+   * @description Indica si el campo de username ha sido tocado por el usuario.
+   */
   usernameTouched: boolean = false;
+
+  /**
+   * @property correoTouched
+   * @description Indica si el campo de correo ha sido tocado por el usuario.
+   */
   correoTouched: boolean = false;
+
+  /**
+   * @property contrasenaTouched
+   * @description Indica si el campo de contraseña ha sido tocado por el usuario.
+   */
   contrasenaTouched: boolean = false;
+
+  /**
+   * @property contrasena2Touched
+   * @description Indica si el campo de confirmación de contraseña ha sido tocado 
+   * por el usuario.
+   */
   contrasena2Touched: boolean = false;
-
+  /**
+   * @property formularioRegistro
+   * @description Formulario reactivo para gestionar el registro de un nuevo usuario.
+   */
   formularioRegistro!: FormGroup;
-
+  /**
+   * @constructor
+   * @description Inicializa el formulario reactivo y los servicios necesarios 
+   * para el registro de usuarios.
+   * @param {Router} router Servicio de navegación entre rutas.
+   * @param {FormBuilder} fb Servicio para la construcción del formulario reactivo.
+   * @param {HttpClient} http Servicio HTTP para la comunicación con el backend.
+   * @param {AuthService} authService Servicio para la autenticación y creación de usuarios.
+   */
   constructor(private router: Router, private fb: FormBuilder, private http: HttpClient, private authService: AuthService) {
 
   }
-
-  goToPerfil(): void {
-    this.router.navigate(['perfil']);
-  }
-
-  goToHome(): void {
-    this.router.navigate(['home']);
-  }
-
-  goToLogin():void {
-    this.router.navigate(['login']);
-  }
-
-  goToRegistro():void {
-    this.router.navigate(['registro']);
-  }
-
-  goToContacto(): void {
-    this.router.navigate(['contacto']);
-  }
-
-  // Validar campos
-  isNombreInvalido(): boolean {
-    const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)?$/;
-    return !namePattern.test(this.nombres.trim()) && this.nombreTouched;
-  }
-
-  isApellidoInvalido(): boolean {
-    const namePattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)?$/;
-    return !namePattern.test(this.apellidos.trim()) && this.apellidosTouched;
-  }
-
-  isCorreoInvalido(): boolean {
-    const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|cl)$/;
-    return !regexCorreo.test(this.correo.trim()) && this.correoTouched;
-  }
-
-  isContrasenaInvalida(): boolean {
-    const regexContrasena = /^(?=.*[A-Z])(?=.*\d)/;
-    return !regexContrasena.test(this.contrasena1.trim()) && this.contrasenaTouched;
-  }
-
+  /**
+   * @method validarContrasenas
+   * @description Verifica si las contraseñas ingresadas coinciden.
+   */
   validarContrasenas(): void {
     const inputContrasena = this.contrasena1;
     const inputContrasena2 = this.contrasena2;
@@ -98,8 +165,13 @@ export class RegistroComponent {
       console.log("Las constraseñas no coinciden")
     }
   }
-
-  // Validación para edad mínima de 13 años
+  /**
+   * @method validarEdadMinima
+   * @description Valida que el usuario tenga al menos 13 años.
+   * @param {AbstractControl} control El control de formulario que contiene 
+   * la fecha de nacimiento.
+   * @returns {object|null} Devuelve un error si el usuario es menor de 13 años.
+   */
   validarEdadMinima(control: AbstractControl): { [key: string]: any } | null {
     const fechaNacimiento = new Date(control.value);
     const hoy = new Date();
@@ -108,19 +180,34 @@ export class RegistroComponent {
     return fechaNacimiento > edadMinima ? { menorDeEdad: true } : null;
   }
 
-  // Validación para contraseñas iguales
+  /**
+   * @method validarContrasenasIguales
+   * @description Valida si las contraseñas ingresadas coinciden en el formulario.
+   * @param {FormGroup} formGroup El formulario reactivo que contiene las contraseñas.
+   * @returns {object|null} Devuelve un error si las contraseñas no coinciden.
+   */
   validarContrasenasIguales(formGroup: FormGroup) {
     const contrasena1 = formGroup.get('contrasena1')?.value;
     const contrasena2 = formGroup.get('contrasena2')?.value;
     return contrasena1 === contrasena2 ? null : { contrasenasNoCoinciden: true };
   }
 
-  // Métodos de validación individuales para simplificar en la plantilla
+  /**
+   * @method validarCampo
+   * @description Valida si un campo específico del formulario es inválido y 
+   * ha sido tocado por el usuario.
+   * @param {string} campo El nombre del campo que se desea validar.
+   * @returns {boolean} Indica si el campo es inválido y ha sido tocado.
+   */
   validarCampo(campo: string): boolean {
     return !!this.formularioRegistro.get(campo)?.invalid && 
         (this.formularioRegistro.get(campo)?.touched || false);
   } 
-
+  /**
+   * @method submitForm
+   * @description Envía el formulario de registro, crea un nuevo usuario y 
+   * lo guarda mediante el servicio de autenticación.
+   */
   submitForm() {
     if (this.formularioRegistro.valid) {
       const nuevoUsuario: Usuario = {
@@ -148,18 +235,31 @@ export class RegistroComponent {
       this.mostrarMensajeError('Debe ingresar campos obligatorios.');
     }
   }
-
+  /**
+   * @method limpiarFormulario
+   * @description Resetea los campos del formulario reactivo.
+   */
   limpiarFormulario(): void {
     this.formularioRegistro.reset();
   }
-
+  /**
+   * @method mostrarMensajeError
+   * @description Método que muestra mensaje de error al usuario.
+   * @param mensaje Mensaje de error.
+   */
   mostrarMensajeError(mensaje: string): void {
     this.mensajeError = mensaje;
     setTimeout(() => {
       this.mensajeError = '';
     }, 3000);
   }
-
+  /**
+   * @method agregarUsuario
+   * @description Método para registrar un usuario nuevo utilizando el 
+   * formulario reactivo junto
+   * con el servicio.
+   * @param mensaje Mensaje de error.
+   */
   agregarUsuario() {
     this.submitted = true;
     if (this.formularioRegistro.invalid) return;
@@ -173,7 +273,11 @@ export class RegistroComponent {
       error: () => console.error('Error al crear el usuario')
     });
   }
-
+  /**
+   * @method ngOnInit
+   * @description Inicializa el formulario reactivo y establece las validaciones 
+   * necesarias para lso campos del formulario de registro.
+   */
   ngOnInit(): void {
     this.formularioRegistro = this.fb.group({
       nombres: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]+$/), Validators.minLength(3)]],

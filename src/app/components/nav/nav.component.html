@@ -11,22 +11,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item" *ngIf="usuario?.rol === 'cliente' || usuario === null">
-                        <a class="nav-link" (click)="goToHome()">Inicio</a>
+                        <a href="home" class="nav-link">Inicio</a>
                     </li>
                     <li class="nav-item dropdown" *ngIf="usuario?.rol === 'cliente' || usuario === null">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categorías
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
-                            <li (click)="goToCateLiteratura()"><a class="dropdown-item">Literatura</a></li>
-                            <li (click)="goToCateAutoAyuda()"><a class="dropdown-item">Auto Ayuda</a></li>
-                            <li (click)="goToCateComicsMangas()"><a class="dropdown-item">Comics y Mangas</a></li>
-                            <li (click)="goToCateInformatica()"><a class="dropdown-item">Informática</a></li>
-                            <li (click)="goToCateNovelas()"><a class="dropdown-item">Novelas</a></li>
+                            <li><a href="literatura" class="dropdown-item">Literatura</a></li>
+                            <li><a href="auto-ayuda" class="dropdown-item">Auto Ayuda</a></li>
+                            <li><a href="comics-mangas" class="dropdown-item">Comics y Mangas</a></li>
+                            <li><a href="informatica" class="dropdown-item">Informática</a></li>
+                            <li><a href="novelas" class="dropdown-item">Novelas</a></li>
                         </ul>
                     </li>
                     <li class="nav-item" *ngIf="usuario?.rol === 'admin' ">
-                        <a class="nav-link" (click)="goToAdminHome()">Inicio</a>
+                        <a href="admin-home" class="nav-link">Inicio</a>
                     </li>
                     <!-- Dropdown Admin -->
                     <li class="nav-item dropdown" *ngIf="usuario?.rol === 'admin'">
@@ -34,21 +34,21 @@
                             Categorías
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-center" aria-labelledby="navbarDropdown">
-                            <li (click)="goToGestionUsuario()"><a class="dropdown-item">Gestión Usuarios</a></li>
-                            <li (click)="goToGestionProductos()"><a class="dropdown-item">Gestión Productos</a></li>
+                            <li><a href="gestion-usuarios" class="dropdown-item">Gestión Usuarios</a></li>
+                            <li><a  href="gestion-productos" class="dropdown-item">Gestión Productos</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item" *ngIf="usuario?.rol === 'cliente' || usuario === null">
-                        <a class="nav-link" (click)="goToPromociones()">Promociones</a>
+                        <a href="promociones" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item" *ngIf="usuario?.rol === 'cliente' || usuario === null">
-                        <a class="nav-link" (click)="goToContacto()">Contacto</a>
+                        <a href="contacto" class="nav-link">Contacto</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item" *ngIf="usuario?.username == null">
-                        <a class="nav-link btn-registro" (click)="goToRegistro()">Registro</a>
+                        <a href="registro" class="nav-link btn-registro">Registro</a>
                     </li>
                       <li *ngIf="usuario?.username != null" class="nav-item" style="background: none !important;">
                         <a href="perfil" class="nav-link" id="nombre-usuario">{{ usuario?.username }}</a>
@@ -58,7 +58,7 @@
                     </a>
                     <ul *ngIf="usuario?.username == null" class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
                         <li>
-                            <a class="dropdown-item" style="font-size: 15px; color: black !important;" (click)="goToLogin()">Iniciar sesión</a>
+                            <a href="login" class="dropdown-item" style="font-size: 15px; color: black !important;">Iniciar sesión</a>
                         </li>
                     </ul>
                     <ul *ngIf="usuario?.username != null" class="dropdown-menu dropdown-menu-end text-center" style="color: white;" aria-labelledby="avatarDropdown">
@@ -66,7 +66,7 @@
                     </ul>
                     <li class="nav-item dropdown-carrito" *ngIf="usuario?.rol === 'cliente' || usuario === null">
                         <!-- Botón del carrito -->
-                        <a class="nav-carrito" style="cursor: pointer;" (click)="goToCarrito()">
+                        <a href="carrito" class="nav-carrito" style="cursor: pointer;">
                           <img src="/assets/img/nav/carro-de-la-compra.png" alt="Carrito" width="30" height="30">
                         </a>
                       

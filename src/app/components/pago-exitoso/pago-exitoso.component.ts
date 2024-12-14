@@ -25,22 +25,37 @@ registerLocaleData(localeEsCL);
 })
 export class PagoExitosoComponent {
 
+  /**
+   * @property productosEnCarrito
+   * @description Arreglo que almacena los productos que están en el carrito de compras.
+   */
   productosEnCarrito: Libro[] = [];
+
+  /**
+   * @property fechaActual
+   * @description Fecha actual que se muestra en el componente.
+   */
   fechaActual: Date = new Date();
-  idPedido: number = 1;
 
-  constructor(private router: Router) {
+  /**
+   * @constructor
+   * @description Constructor del componente, actualmente vacío.
+   */
+  constructor() { }
 
-  }
-
-  guardarPedido(): void {
-
-  }
-
+  /**
+   * @method calcularTotal
+   * @description Método para calcular el total de la compra, sumando los precios de todos los productos en el carrito.
+   * @returns {number} El total calculado de los productos en el carrito.
+   */
   calcularTotal(): number {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) => acc + prod.precio, 0) : 0;
   }
 
+  /**
+   * @method cargarCarrito
+   * @description Método para cargar los productos del carrito desde localStorage y recalcular el total.
+   */
   cargarCarrito(): void {
     // Obtener los productos del carrito desde localStorage
     const carritoData = localStorage.getItem('productosEnCarrito');
@@ -50,6 +65,11 @@ export class PagoExitosoComponent {
     }
   }
 
+  /**
+   * @method ngOnInit
+   * @description Método del ciclo de vida de Angular que se ejecuta al inicializar el componente. 
+   * Carga los productos del carrito desde localStorage si están disponibles.
+   */
   ngOnInit(): void {
     const carritoData = localStorage.getItem('productosEnCarrito');
     this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];

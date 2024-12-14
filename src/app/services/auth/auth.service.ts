@@ -114,13 +114,19 @@ export class AuthService {
     );
   }
 
+  getUsuarioLogeado(username: string): Observable<Usuario | undefined> {
+    return this.obtenerUsuarios().pipe(
+      map((usuarios) => usuarios.find(usuario => usuario.username === username)) // Filtramos el usuario por username
+    );
+  }
+
   // Método para actualizar el usuario
   setUsuario(usuario: Usuario | null): void {
     if (usuario) {
       localStorage.setItem("usuario", JSON.stringify(usuario));  // Guarda en localStorage
     } else {
       localStorage.removeItem("usuario");  // Elimina el usuario de localStorage
-    } // Emite el nuevo estado del usuario
+    }
   }
 
   validarCorreo(correo: string): Observable<boolean> {

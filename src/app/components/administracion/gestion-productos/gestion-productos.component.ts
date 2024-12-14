@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { LibrosService } from '../../../services/libros/libros.service';
 import { Libro } from '../../../models/interfaces';
 
-import { registerLocaleData } from '@angular/common';
-import localeEsCL from '@angular/common/locales/es-CL';
 import { ChangeDetectorRef } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
+/**
+ * @component GestionProductosComponent
+ * @description Componente para la gestión de productos (libros). Permite listar, crear, editar y eliminar libros utilizando el servicio `LibrosService`.
+ */
 @Component({
   selector: 'app-gestion-productos',
   standalone: true,
@@ -24,15 +26,55 @@ import { HttpClientModule } from '@angular/common/http';
   ],
 })
 export class GestionProductosComponent {
-
+  /**
+   * @property libros
+   * @description Lista de libros obtenida desde el servicio.
+   */
   libros: Libro[] = [];
+
+  /**
+   * @property productosForm
+   * @description Formulario reactivo para editar libros.
+   */
   productosForm!: FormGroup;
+
+  /**
+   * @property crearLibrosForm
+   * @description Formulario reactivo para crear nuevos libros.
+   */
   crearLibrosForm!: FormGroup;
+
+  /**
+   * @property libroEnEdicion
+   * @description Almacena el libro que se está editando actualmente.
+   */
   libroEnEdicion: Libro | null = null;
+
+  /**
+   * @property mostrarFormulario
+   * @description Indica si se debe mostrar el formulario para agregar un nuevo libro.
+   */
   mostrarFormulario: boolean = false;
+
+  /**
+   * @property mensajeExitoso
+   * @description Indica si se debe mostrar un mensaje de éxito tras alguna acción.
+   */
   mensajeExitoso = false;
+
+  /**
+   * @property submitted
+   * @description Indica si el formulario de creación de libros ha sido enviado.
+   */
   submitted = false;
 
+  /**
+   * @constructor
+   * @description Inicializa los formularios y servicios necesarios.
+   * @param librosService Servicio para manejar las operaciones de libros.
+   * @param fb Servicio para crear formularios reactivos.
+   * @param cdr Servicio para detección de cambios manual.
+   */
   constructor(private librosService: LibrosService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
     this.productosForm = this.fb.group({
       titulo: [''],
@@ -42,9 +84,12 @@ export class GestionProductosComponent {
       categoria: [''],
       precio: ['']
     });
-    
   }
 
+  /**
+   * @method obtenerLibros
+   * @description Obtiene la lista de libros desde el servicio `LibrosService`.
+   */
   obtenerLibros(): void {
     this.librosService.obtenerLibros().subscribe(libros => {
       if (Array.isArray(libros)) {
@@ -55,6 +100,10 @@ export class GestionProductosComponent {
     });
   }
 
+  /**
+   * @method agregarLibro
+   * @description Crea un nuevo libro utilizando los datos del formulario.
+   */
   agregarLibro(): void {
     this.submitted = true;
   
@@ -76,11 +125,8 @@ export class GestionProductosComponent {
     this.librosService.crearLibro(nuevoLibro).subscribe({
       next: () => {
         this.mensajeExitoso = true;
-  
-        // Forzar detección de cambios
         this.cdr.detectChanges();
         alert('Libro creado exitosamente');
-  
         this.crearLibrosForm.reset();
         this.submitted = false;
         this.mostrarFormulario = false;
@@ -91,32 +137,53 @@ export class GestionProductosComponent {
     });
   }
 
+  /**
+   * @method editarLibro
+   * @description Inicia el modo de edición para un libro específico.
+   * @param libro Libro seleccionado para editar.
+   */
   editarLibro(libro: Libro): void {
     if (this.libroEnEdicion && this.libroEnEdicion.id === libro.id) {
-      this.guardarCambios(); // Si ya se está editando este libro, guarda los cambios
+      this.guardarCambios();
       return;
     }
   
-    this.libroEnEdicion = libro; // Establece el libro actual como libro en edición
-    this.productosForm.patchValue(libro);
+    this.libroEnEdicion = libro;
+    this.productosForm.patchValue({
+      titulo: libro.titulo,
+      resena: libro.resena,
+      autor: libro.autor,
+      editorial: libro.editorial,
+      categoria: libro.especificaciones.categoria,  
+      precio: libro.precio
+    });
   }
 
+  /**
+   * @method guardarCambios
+   * @description Guarda los cambios realizados en el libro en edición.
+   */
   guardarCambios(): void {
     if (this.productosForm.invalid || !this.libroEnEdicion) {
       console.log('Formulario inválido o libro no seleccionado');
       return;
     }
   
+    // Actualizamos solo la categoría dentro de especificaciones
     const libroActualizado = {
       ...this.libroEnEdicion,
-      ...this.productosForm.value
+      especificaciones: {
+        ...this.libroEnEdicion.especificaciones,
+        categoria: this.productosForm.value.categoria,  // Actualizamos solo la categoría
+      },
+      ...this.productosForm.value,  // Mantener otros campos
     };
   
     this.librosService.editarLibroActualizado(libroActualizado).subscribe({
       next: (actualizado) => {
         console.log('Libro actualizado correctamente', actualizado);
-        this.libroEnEdicion = null; // Limpiar la edición
-        this.obtenerLibros(); // Refrescar la lista de libros
+        this.libroEnEdicion = null;
+        this.obtenerLibros();
       },
       error: (error) => {
         console.error('Error al actualizar libro:', error);
@@ -125,12 +192,20 @@ export class GestionProductosComponent {
     });
   }
 
-
+  /**
+   * @method cancelarEdicion
+   * @description Cancela el modo de edición y limpia el formulario.
+   */
   cancelarEdicion(): void {
     this.libroEnEdicion = null;
     this.productosForm.reset();
   }
 
+  /**
+   * @method eliminarLibro
+   * @description Elimina un libro seleccionado después de confirmar la acción.
+   * @param libro Libro a eliminar.
+   */
   eliminarLibro(libro: Libro): void {
     if (confirm(`¿Está seguro de que desea eliminar el libro ${libro.titulo}?`)) {
       this.librosService.eliminarLibro(libro.id).subscribe({
@@ -143,11 +218,19 @@ export class GestionProductosComponent {
     }
   }
 
+  /**
+   * @method toggleFormulario
+   * @description Alterna la visibilidad del formulario para agregar un libro.
+   */
   toggleFormulario(): void {
     this.mostrarFormulario = !this.mostrarFormulario;
   }
 
-  ngOnInit() {
+  /**
+   * @method ngOnInit
+   * @description Inicializa los datos y los formularios del componente.
+   */
+  ngOnInit(): void {
     this.obtenerLibros();
     this.crearLibrosForm = this.fb.group({
       titulo: ['', Validators.required],
@@ -158,5 +241,4 @@ export class GestionProductosComponent {
       precio: [0, [Validators.required, Validators.min(1)]]
     });
   }
-
 }

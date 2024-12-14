@@ -7,6 +7,10 @@ import { NavComponent } from "../nav/nav.component";
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../services/auth/auth.service';
 
+/**
+ * @component
+ * @description Componente para el restablecimiento de contraseña de un usuario.
+ */
 @Component({
   selector: 'app-restablecer-contrasena',
   standalone: true,
@@ -18,23 +22,79 @@ import { AuthService } from '../../services/auth/auth.service';
   ],
 })
 export class RestablecerContrasenaComponent {
-
-  
+  /**
+   * @property correo
+   * @description Almacena el correo electrónico del usuario que solicita el restablecimiento de la contraseña.
+   */
   correo: string | null = null;
+
+  /**
+   * @property correoTouched
+   * @description Indica si el campo de correo ha sido tocado por el usuario.
+   */
   correoTouched: boolean = false;
+
+  /**
+   * @property nuevaContrasena
+   * @description Almacena la nueva contraseña ingresada por el usuario.
+   */
   nuevaContrasena: string | null = null;
+
+  /**
+   * @property nuevaContrasenaTouched
+   * @description Indica si el campo de nueva contraseña ha sido tocado por el usuario.
+   */
   nuevaContrasenaTouched: boolean = false;
+
+  /**
+   * @property confirmarContrasena
+   * @description Almacena la confirmación de la nueva contraseña ingresada por el usuario.
+   */
   confirmarContrasena: string | null = null;
+
+  /**
+   * @property confirmarContrasenaTouched
+   * @description Indica si el campo de confirmación de contraseña ha sido tocado por el usuario.
+   */
   confirmarContrasenaTouched: boolean = false;
+
+  /**
+   * @property mensajeError
+   * @description Almacena el mensaje de error a mostrar cuando el restablecimiento falla.
+   */
   mensajeError: string = '';
+
+  /**
+   * @property mensajeExitoso
+   * @description Indica si el restablecimiento de la contraseña fue exitoso, para mostrar un mensaje de éxito.
+   */
   mensajeExitoso: boolean = false;
 
+  /**
+   * @property formularioNuevaContrasena
+   * @description Formulario reactivo para gestionar el restablecimiento de la contraseña.
+   */
   formularioNuevaContrasena!: FormGroup;
 
-  constructor( private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private authService: AuthService) {
-    
-  }
+  /**
+   * @constructor
+   * @description Inicializa los servicios y el formulario necesario para el restablecimiento de la contraseña.
+   * @param {ActivatedRoute} route Servicio para obtener parámetros de la ruta activa.
+   * @param {FormBuilder} fb Servicio para construir formularios reactivos.
+   * @param {Router} router Servicio para la navegación entre rutas.
+   * @param {AuthService} authService Servicio para la autenticación y gestión de contraseñas.
+   */
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
+  /**
+   * @method submitForm
+   * @description Envía el formulario para restablecer la contraseña del usuario si el formulario es válido.
+   */
   submitForm(): void {
     if (this.formularioNuevaContrasena.valid && this.correo) {
       const nuevaContrasena = this.formularioNuevaContrasena.get('nuevaContrasena')?.value;
@@ -57,11 +117,22 @@ export class RestablecerContrasenaComponent {
     }
   }
 
+  /**
+   * @method validarCampo
+   * @description Valida si un campo específico del formulario es inválido y ha sido tocado por el usuario.
+   * @param {string} campo El nombre del campo que se desea validar.
+   * @returns {boolean} Indica si el campo es inválido y ha sido tocado.
+   */
   validarCampo(campo: string): boolean {
     return !!this.formularioNuevaContrasena.get(campo)?.invalid && 
         (this.formularioNuevaContrasena.get(campo)?.touched || false);
   }
 
+  /**
+   * @method mostrarMensajeError
+   * @description Muestra un mensaje de error cuando la operación de restablecimiento falla.
+   * @param {string} mensaje El mensaje de error a mostrar.
+   */
   mostrarMensajeError(mensaje: string): void {
     this.mensajeError = mensaje;
     setTimeout(() => {
@@ -69,18 +140,31 @@ export class RestablecerContrasenaComponent {
     }, 3000);
   }
 
-  // Validador personalizado para comparar contraseñas
+  /**
+   * @method validarContrasenasIguales
+   * @description Valida que las contraseñas ingresadas coincidan.
+   * @param {FormGroup} group El grupo de formulario que contiene las contraseñas.
+   * @returns {object | null} Devuelve un error si las contraseñas no coinciden, o null si coinciden.
+   */
   validarContrasenasIguales(group: FormGroup): { [key: string]: boolean } | null {
     const nuevaContrasena = group.get('nuevaContrasena')?.value;
     const confirmarContrasena = group.get('confirmarContrasena')?.value;
     return nuevaContrasena === confirmarContrasena ? null : { noCoinciden: true };
   }
 
+  /**
+   * @method obtenerErrorContrasenas
+   * @description Verifica si las contraseñas no coinciden en el formulario.
+   * @returns {boolean} Devuelve true si las contraseñas no coinciden.
+   */
   obtenerErrorContrasenas(): boolean {
     return !!this.formularioNuevaContrasena.hasError('noCoinciden');
   }
 
-
+  /**
+   * @method ngOnInit
+   * @description Inicializa el formulario y obtiene el correo del usuario desde los query parameters.
+   */
   ngOnInit(): void {
     // Obtener el correo desde los queryParams
     this.route.queryParams.subscribe((params) => {

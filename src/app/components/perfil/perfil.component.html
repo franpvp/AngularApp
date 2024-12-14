@@ -17,92 +17,92 @@
                 <div id="username" class="txt-username"><strong>{{ usuarioLogeado?.username }}</strong></div>
             </div>
         </div>
-    
-        <div class="text-center my-3">
-            <!-- <button class="btn btn-primary" (click)="toggleEditar()">
-                {{ editando ? 'Guardar Cambios' : 'Editar Perfil' }}
-            </button> -->
-            <button class="btn btn-secondary ms-2" *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>
-        </div>
-    
-        <div class="container contenedor-perfil">
-            <div class="row g-3 justify-content-center">
-                <div class="col-auto">
+        <form [formGroup]="edicionUsuarioForm">
+            <div class="container">
+                <div class="row g-3 justify-content-center">
+                    <!-- Nombres -->
+                    <div class="col-xs-12 col-md-10 col-lg-5">
                     <p style="font-weight: 500;">Nombres</p>
                     <div id="nombres-usuario" class="campos-perfil">
                         <strong *ngIf="!editando">{{ usuarioLogeado?.nombres }}</strong>
-                        <input
-                            *ngIf="editando && usuarioLogeado"
-                            type="text"
-                            [(ngModel)]="usuarioLogeado.nombres"
-                            class="form-control"
-                        />
+                        <input *ngIf="editando" type="text" formControlName="nombres" class="form-control" />
                     </div>
-                </div>
-                <div class="col-auto">
-                    <p>Apellidos</p>
+                    </div>
+
+                    <!-- Apellidos -->
+                    <div class="col-xs-12 col-md-10 col-lg-5">
+                        <p>Apellidos</p>
                     <div id="apellidos-usuario" class="campos-perfil">
                         <strong *ngIf="!editando">{{ usuarioLogeado?.apellidos }}</strong>
-                        <input
-                            *ngIf="editando && usuarioLogeado"
-                            type="text"
-                            [(ngModel)]="usuarioLogeado.apellidos"
-                            class="form-control"
-                        />
+                        <input *ngIf="editando" type="text" formControlName="apellidos" class="form-control" />
+                    </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class="row g-3 justify-content-center">
-                <div class="col-auto">
+
+                <div class="row g-3 justify-content-center">
+                    <!-- Correo -->
+                    <div class="col-xs-12 col-md-10 col-lg-5">
                     <p>Correo</p>
                     <div id="correo" class="campos-perfil">
                         <strong *ngIf="!editando">{{ usuarioLogeado?.correo }}</strong>
-                        <input
-                            *ngIf="editando && usuarioLogeado"
-                            type="email"
-                            [(ngModel)]="usuarioLogeado.correo"
-                            class="form-control"
-                        />
+                        <input *ngIf="editando" type="email" formControlName="correo" class="form-control" />
                     </div>
-                </div>
-                <div class="col-auto">
+                    </div>
+            
+                    <!-- Fecha de Nacimiento -->
+                    <div class="col-xs-12 col-md-10 col-lg-5">
                     <p>Fecha Nacimiento</p>
                     <div id="fecha-nacimiento" class="campos-perfil">
                         <strong *ngIf="!editando">{{ usuarioLogeado?.fecha_nacimiento }}</strong>
-                        <input
-                            *ngIf="editando && usuarioLogeado"
-                            type="date"
-                            [(ngModel)]="usuarioLogeado.fecha_nacimiento"
-                            class="form-control"
-                        />
+                        <input *ngIf="editando" type="date" formControlName="fecha_nacimiento" class="form-control" />
                     </div>
-                </div>
-                <div class="col-auto" *ngIf="usuarioLogeado?.domicilio != ''">
+                    </div>
+            
+                    <!-- Domicilio -->
+                    <div class="col-xs-12 col-md-10 col-lg-5" *ngIf="usuarioLogeado?.domicilio">
                     <p>Domicilio</p>
                     <div id="domicilio" class="campos-perfil">
                         <strong *ngIf="!editando">{{ usuarioLogeado?.domicilio }}</strong>
-                        <input
-                            *ngIf="editando && usuarioLogeado"
-                            type="text"
-                            [(ngModel)]="usuarioLogeado.domicilio"
-                            class="form-control"
-                        />
+                        <input *ngIf="editando" type="text" formControlName="domicilio" class="form-control" />
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-auto">
-                <div
-                    class="alert alert-success text-center"
-                    role="alert"
-                    *ngIf="mensajeExitoso"
-                >
-                    Guardado Exitoso
+            <!-- Botón para editar y guardar cambios -->
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="d-flex justify-content-center mb-4 mt-4">
+                        <button
+                            *ngIf="!editando"
+                            class="btn btn-warning"
+                            (click)="editarUsuario()"
+                            [disabled]="!usuarioLogeado"
+                        >
+                        Editar
+                        </button>
+                        <button
+                            *ngIf="editando"
+                            class="btn btn-success"
+                            (click)="guardarCambios()"
+                        >
+                        Guardar
+                        </button>
+                        <button
+                            *ngIf="editando"
+                            class="btn btn-secondary ms-2"
+                            (click)="cancelarEdicion()"
+                        >
+                        Cancelar
+                        </button>
+                    </div>
                 </div>
+                
             </div>
-        </div>
+            <!-- Mensaje de éxito -->
+            <div *ngIf="mensajeExitoso" class="alert alert-success mt-3">
+                Cambios guardados exitosamente.
+            </div>
+        </form>
     </div>
     <footer class="footer">Todos los derechos reservados</footer>
 </div>

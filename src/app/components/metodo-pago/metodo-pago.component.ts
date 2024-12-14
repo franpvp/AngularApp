@@ -23,54 +23,83 @@ import { CarritoService } from '../../services/carrito/carrito.service';
 })
 export class MetodoPagoComponent {
 
+  /**
+   * @property username
+   * @description Nombre de usuario obtenido desde localStorage, utilizado para mostrar el usuario actual.
+   */
   username: string | null = localStorage.getItem('username');
+
+  /**
+   * @property productosEnCarrito
+   * @description Lista de productos (libros) que están en el carrito de compras.
+   */
   productosEnCarrito: Libro[] = [];
+
+  /**
+   * @property totalCarrito
+   * @description Total calculado del carrito de compras.
+   */
   totalCarrito: number = 0;
 
+  /**
+   * @property nombre_titular
+   * @description Nombre del titular de la tarjeta de crédito.
+   */
   nombre_titular: string = '';
+
+  /**
+   * @property digitos_tarjeta
+   * @description Los números de la tarjeta de crédito ingresados por el usuario.
+   */
   digitos_tarjeta: string = '';
+
+  /**
+   * @property fecha_vencimiento
+   * @description Fecha de vencimiento de la tarjeta de crédito (MM/YY).
+   */
   fecha_vencimiento: string = '';
+
+  /**
+   * @property digitos_cvc
+   * @description El código CVC de la tarjeta de crédito.
+   */
   digitos_cvc: string = '';
 
+  /**
+   * @property formularioPago
+   * @description El formulario de pago utilizado para enviar la información al backend.
+   */
   formularioPago!: FormGroup;
 
-  constructor(private carritoService: CarritoService, private router: Router, route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private carritoService: CarritoService, private router: Router) {}
 
-  }
-
-  goToPerfil(): void {
-    this.router.navigate(['perfil']);
-  }
-
-  goToHome(): void {
-    this.router.navigate(['home']);
-  }
-
-  goToLogin():void {
-    this.router.navigate(['login']);
-  }
-
-  goToRegistro():void {
-    this.router.navigate(['registro']);
-  }
-
-  goToContacto(): void {
-    this.router.navigate(['contacto']);
-  }
-
-  cerrarSesion():void {
+  /**
+   * @method cerrarSesion
+   * @description Método para cerrar sesión del usuario, eliminando su nombre de usuario del localStorage
+   * y navegando a la página principal.
+   */
+  cerrarSesion(): void {
     this.username = null;
     this.router.navigate(['home']);
-    localStorage.removeItem('username')
+    localStorage.removeItem('username');
   }
 
+  /**
+   * @method calcularTotal
+   * @description Método para calcular el total del carrito de compras.
+   * Agrupa los productos y calcula el precio total.
+   * @returns {number} El total calculado del carrito.
+   */
   calcularTotal(): number {
     const agrupado = this.obtenerCarritoAgrupado();
     return agrupado.reduce((acc, item) => acc + (item.libro.precio * item.cantidad), 0);
   }
 
+  /**
+   * @method cargarCarrito
+   * @description Método para cargar los productos del carrito desde localStorage y recalcular el total.
+   */
   cargarCarrito(): void {
-    // Obtener los productos del carrito desde localStorage
     const carritoData = localStorage.getItem('productosEnCarrito');
     if (carritoData) {
       this.productosEnCarrito = JSON.parse(carritoData);
@@ -78,6 +107,12 @@ export class MetodoPagoComponent {
     }
   }
 
+  /**
+   * @method validarNombreTitular
+   * @description Método que valida que el nombre del titular contenga solo letras y espacios.
+   * Previne la entrada de caracteres no válidos.
+   * @param event El evento de teclado.
+   */
   validarNombreTitular(event: KeyboardEvent): void {
     const regex = /^[a-zA-Z\s]*$/;
     const key = String.fromCharCode(event.keyCode);
@@ -86,6 +121,12 @@ export class MetodoPagoComponent {
     }
   }
 
+  /**
+   * @method formatoDigitosTarjeta
+   * @description Formatea los dígitos de la tarjeta agregando espacios automáticamente
+   * después de cada bloque de 4 dígitos. Solo permite números.
+   * @param event El evento de teclado.
+   */
   formatoDigitosTarjeta(event: KeyboardEvent): void {
     const regex = /^[0-9]*$/;
     const key = String.fromCharCode(event.keyCode);
@@ -93,9 +134,9 @@ export class MetodoPagoComponent {
       event.preventDefault();
     }
 
-    // Remueve cualquier caracter no numérico
+    // Remueve cualquier carácter no numérico
     this.digitos_tarjeta = this.digitos_tarjeta.replace(/\D/g, '');
-    // Añadir espacio cada 4 digitos
+    // Añadir espacio cada 4 dígitos
     if (this.digitos_tarjeta.length >= 4) {
       this.digitos_tarjeta = this.digitos_tarjeta.slice(0, 4) + ' ' + this.digitos_tarjeta.slice(4, 8) + ' ' + this.digitos_tarjeta.slice(8, 12) + ' ' + this.digitos_tarjeta.slice(12, 16);
     }
@@ -105,13 +146,19 @@ export class MetodoPagoComponent {
     }
   }
 
+  /**
+   * @method formatoFechaVencimiento
+   * @description Formatea la fecha de vencimiento de la tarjeta de crédito en el formato MM/YY,
+   * permitiendo solo números y añadiendo '/' después de los dos primeros dígitos.
+   * @param event El evento de teclado.
+   */
   formatoFechaVencimiento(event: KeyboardEvent): void {
     const regex = /^[0-9]*$/;
     const key = String.fromCharCode(event.keyCode);
     if (!regex.test(key)) {
       event.preventDefault();
     }
-    // Remueve cualquier caracter no numérico
+    // Remueve cualquier carácter no numérico
     this.fecha_vencimiento = this.fecha_vencimiento.replace(/\D/g, '');
 
     // Agrega '/' automáticamente después de los primeros dos dígitos
@@ -125,6 +172,11 @@ export class MetodoPagoComponent {
     }
   }
 
+  /**
+   * @method validarCVC
+   * @description Valida que el código CVC contenga solo números y tenga una longitud máxima de 4 caracteres.
+   * @param event El evento de teclado.
+   */
   validarCVC(event: KeyboardEvent): void {
     const regex = /^[0-9]*$/;
     const key = String.fromCharCode(event.keyCode);
@@ -139,15 +191,25 @@ export class MetodoPagoComponent {
     }
   }
 
+  /**
+   * @method submitForm
+   * @description Método que se ejecuta al enviar el formulario. Si todos los campos están completos,
+   * redirige a la página de pago exitoso.
+   */
   submitForm(): void {
     if (this.nombre_titular && this.digitos_tarjeta && this.fecha_vencimiento && this.digitos_cvc) {
       this.router.navigate(['pago-exitoso']);
     }
   }
 
+  /**
+   * @method obtenerCarritoAgrupado
+   * @description Método que agrupa los productos del carrito por su ID y calcula la cantidad de cada uno.
+   * @returns {Array} Arreglo de objetos con los libros agrupados y la cantidad.
+   */
   obtenerCarritoAgrupado(): { libro: Libro, cantidad: number }[] {
     const agrupado: { [id: number]: { libro: Libro, cantidad: number } } = {};
-  
+
     // Agrupar por ID de producto y contar cantidades
     this.productosEnCarrito.forEach(libro => {
       if (agrupado[libro.id]) {
@@ -156,20 +218,19 @@ export class MetodoPagoComponent {
         agrupado[libro.id] = { libro, cantidad: 1 };
       }
     });
-  
+
     return Object.values(agrupado);
   }
-  
 
+  /**
+   * @method ngOnInit
+   * @description Método del ciclo de vida de Angular. Se ejecuta al inicializar el componente
+   * y se suscribe al carritoService para recibir los productos y el total actualizado.
+   */
   ngOnInit(): void {
-    // const carritoData = localStorage.getItem('productosEnCarrito');
-    // this.productosEnCarrito = carritoData ? JSON.parse(carritoData) : [];
-
     this.carritoService.carrito$.subscribe((productos) => {
       this.productosEnCarrito = productos;
       this.totalCarrito = this.carritoService.calcularTotal();
     });
-    // this.cargarCarrito();
   }
-
 }
