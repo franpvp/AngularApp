@@ -80,47 +80,6 @@ export class LoginComponent {
    * @param fb Servicio para crear formularios reactivos.
    */
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) {}
-
-  /**
-   * @method goToHome
-   * @description Navega a la ruta 'home'.
-   */
-  goToHome(): void {
-    this.router.navigate(['home']);
-  }
-
-  /**
-   * @method goToLogin
-   * @description Navega a la ruta 'login'.
-   */
-  goToLogin(): void {
-    this.router.navigate(['login']);
-  }
-
-  /**
-   * @method goToRegistro
-   * @description Navega a la ruta 'registro'.
-   */
-  goToRegistro(): void {
-    this.router.navigate(['registro']);
-  }
-
-  /**
-   * @method goToContacto
-   * @description Navega a la ruta 'contacto'.
-   */
-  goToContacto(): void {
-    this.router.navigate(['contacto']);
-  }
-
-  /**
-   * @method goToRecuperacion
-   * @description Navega a la ruta 'recuperacion'.
-   */
-  goToRecuperacion(): void {
-    this.router.navigate(['recuperacion']);
-  }
-
   /**
    * @method login
    * @description Inicia sesión con las credenciales proporcionadas en el formulario. Redirige al usuario según su rol.
