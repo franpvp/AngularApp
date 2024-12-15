@@ -8,8 +8,6 @@ import { Libro } from '../../../models/interfaces';
 
 import { ChangeDetectorRef } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
-
 /**
  * @component GestionProductosComponent
  * @description Componente para la gestión de productos (libros). Permite listar, crear, editar y eliminar libros utilizando el servicio `LibrosService`.

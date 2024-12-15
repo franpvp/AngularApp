@@ -142,6 +142,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                                 <code><a href="../injectables/LibrosService.html" target="_self" >LibrosService</a></code>
+                            <code>{ provide: LOCALE_ID, useValue:  }</code>
                 </td>
             </tr>
 
@@ -250,7 +251,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/promociones/promociones.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/promociones/promociones.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -264,6 +265,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +280,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para la navegación entre rutas.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>librosService</td>
@@ -290,6 +296,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio encargado de obtener la lista de libros desde el backend o API.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -329,8 +339,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -347,6 +357,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -361,6 +372,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El libro que se desea agregar al carrito.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -396,14 +411,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:70</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la lista de libros desde el servicio <code>librosService</code> y filtra aquellos que están en promoción.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -433,8 +450,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/components/promociones/promociones.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -451,6 +468,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -465,6 +483,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El ID del libro cuyo detalle se desea ver.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -510,7 +532,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/promociones/promociones.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/promociones/promociones.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -541,7 +563,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/promociones/promociones.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/promociones/promociones.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -554,7 +576,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, LOCALE_ID } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NavComponent } from &quot;../nav/nav.component&quot;;
 import { Router } from &#x27;@angular/router&#x27;;
@@ -569,38 +591,67 @@ import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
   templateUrl: &#x27;./promociones.component.html&#x27;,
   styleUrl: &#x27;./promociones.component.css&#x27;,
   providers: [
-    LibrosService
+    LibrosService,
+    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
   ],
 })
+/**
+ * @component PromocionesComponent
+ * @description Componente que gestiona la visualización de libros en promoción y su adición al carrito de compras.
+ */
 export class PromocionesComponent {
 
+  /**
+   * @property libros
+   * @description Lista de libros que están en promoción. Es actualizada desde el servicio &#x60;librosService&#x60;.
+   */
   libros: Libro[] &#x3D; [];
+
+  /**
+   * @property productosEnCarrito
+   * @description Lista de productos (libros) que están actualmente en el carrito de compras.
+   */
   productosEnCarrito: Libro[] &#x3D; [];
 
-  constructor(private router: Router, private librosService: LibrosService){
+  /**
+   * @constructor
+   * @description Inicializa los servicios necesarios para navegar y obtener la lista de libros.
+   * @param {Router} router Servicio para la navegación entre rutas.
+   * @param {LibrosService} librosService Servicio encargado de obtener la lista de libros desde el backend o API.
+   */
+  constructor(private router: Router, private librosService: LibrosService) {}
 
-  }
-
+  /**
+   * @method verDetalles
+   * @description Navega a la página de detalles de un libro específico, utilizando su ID.
+   * @param {number} libroId El ID del libro cuyo detalle se desea ver.
+   */
   verDetalles(libroId: number) {
     this.router.navigate([&#x27;/producto&#x27;, libroId]);
   }
 
+  /**
+   * @method agregarAlCarrito
+   * @description Agrega un libro al carrito de compras y guarda la información en &#x60;localStorage&#x60;.
+   * @param {Libro} libro El libro que se desea agregar al carrito.
+   */
   agregarAlCarrito(libro: Libro): void {
     this.productosEnCarrito.push(libro);
     localStorage.setItem(&#x27;productosEnCarrito&#x27;, JSON.stringify(this.productosEnCarrito));
-  } 
+  }
 
+  /**
+   * @method ngOnInit
+   * @description Método del ciclo de vida de Angular que se ejecuta al inicializar el componente.
+   * Obtiene la lista de libros desde el servicio &#x60;librosService&#x60; y filtra aquellos que están en promoción.
+   */
   ngOnInit(): void {
-    this.librosService.obtenerLibrosJson().subscribe((data: Libro[]) &#x3D;&gt; {
+    this.librosService.obtenerLibros().subscribe((data: Libro[]) &#x3D;&gt; {
       // Filtrar los libros que tienen enPromo &#x3D; true
       this.libros &#x3D; data.filter(libro &#x3D;&gt; libro.enPromo);
     });
   }
-
-
-
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -631,7 +682,7 @@ export class PromocionesComponent {
             &lt;/a&gt;
             &lt;div class&#x3D;&quot;card-content&quot;&gt;
                 &lt;h3 class&#x3D;&quot;card-title&quot;&gt;{{ libro.titulo }}&lt;/h3&gt;
-                &lt;p class&#x3D;&quot;card-price&quot;&gt;Precio: {{ libro.precio | currency }}&lt;/p&gt;
+                &lt;p class&#x3D;&quot;card-price&quot;&gt;Precio: {{ libro.precio |  number:&#x27;1.0-0&#x27; }}&lt;/p&gt;
                 &lt;button class&#x3D;&quot;add-to-cart-btn&quot; (click)&#x3D;&quot;agregarAlCarrito(libro)&quot;&gt;Agregar al Carrito&lt;/button&gt;
             &lt;/div&gt;
         &lt;/div&gt;
@@ -671,7 +722,7 @@ export class PromocionesComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 45px; margin-top: 30px;">Promociones</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>        <div class="contenedor flex-grow-1">        <div *ngFor="let libro of libros" class="card">            <a (click)="verDetalles(libro.id)" style="cursor: pointer;">                <div class="box-1">                    <img [src]="libro.imagen" alt="{{ libro.titulo }}">                </div>            </a>            <div class="card-content">                <h3 class="card-title">{{ libro.titulo }}</h3>                <p class="card-price">Precio: {{ libro.precio | currency }}</p>                <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>            </div>        </div>    </div>        <footer class="footer">Todos los derechos reservados</footer>    </div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 45px; margin-top: 30px;">Promociones</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>        <div class="contenedor flex-grow-1">        <div *ngFor="let libro of libros" class="card">            <a (click)="verDetalles(libro.id)" style="cursor: pointer;">                <div class="box-1">                    <img [src]="libro.imagen" alt="{{ libro.titulo }}">                </div>            </a>            <div class="card-content">                <h3 class="card-title">{{ libro.titulo }}</h3>                <p class="card-price">Precio: {{ libro.precio |  number:\'1.0-0\' }}</p>                <button class="add-to-cart-btn" (click)="agregarAlCarrito(libro)">Agregar al Carrito</button>            </div>        </div>    </div>        <footer class="footer">Todos los derechos reservados</footer>    </div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PromocionesComponent'};

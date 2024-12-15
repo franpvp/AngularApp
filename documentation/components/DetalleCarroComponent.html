@@ -120,6 +120,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar los detalles de un libro y agregarlo al carrito de compras.</p>
+
+    </p>
 
 
 
@@ -142,6 +149,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                                 <code><a href="../injectables/LibrosService.html" target="_self" >LibrosService</a></code>
+                            <code>{ provide: LOCALE_ID, useValue:  }</code>
                 </td>
             </tr>
 
@@ -248,12 +256,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:39</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente DetalleCarroComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -262,6 +272,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -276,6 +287,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Instancia de ActivatedRoute para acceder a los parámetros de la URL.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>librosService</td>
@@ -288,6 +303,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para obtener los detalles de los libros.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -327,14 +346,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para agregar un libro al carrito de compras.
+Este método agrega el libro seleccionado al carrito de compras y actualiza el localStorage.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -345,6 +367,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -359,6 +382,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>El libro que se va a agregar al carrito.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -394,14 +421,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:69</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta cuando el componente es inicializado.
+Este método obtiene el ID del libro desde la ruta, luego llama al servicio <code>librosService</code>
+para obtener los detalles del libro y asignarlos a la propiedad <code>libro</code>.
+Además, carga los productos del carrito desde el localStorage.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -436,10 +468,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Objeto que representa el libro seleccionado para mostrar sus detalles.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -467,10 +505,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/detalle-carro/detalle-carro.component.ts:39</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de productos (libros) que el usuario ha agregado al carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -480,9 +524,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, LOCALE_ID } from &#x27;@angular/core&#x27;;
 import { NavComponent } from &quot;../nav/nav.component&quot;;
-import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
@@ -491,6 +535,10 @@ import { LibrosService } from &#x27;../../services/libros/libros.service&#x27;;
 import { Libro } from &#x27;../../models/interfaces&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 
+/**
+ * @description
+ * Componente para mostrar los detalles de un libro y agregarlo al carrito de compras.
+ */
 @Component({
   selector: &#x27;app-detalle-carro&#x27;,
   standalone: true,
@@ -498,34 +546,62 @@ import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
   templateUrl: &#x27;./detalle-carro.component.html&#x27;,
   styleUrl: &#x27;./detalle-carro.component.css&#x27;,
   providers: [
-    LibrosService
+    LibrosService,
+    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
   ],
 })
 export class DetalleCarroComponent {
 
+  /**
+   * @description
+   * Objeto que representa el libro seleccionado para mostrar sus detalles.
+   */
   libro: Libro | undefined;
+
+  /**
+   * @description
+   * Lista de productos (libros) que el usuario ha agregado al carrito.
+   */
   productosEnCarrito: Libro[] &#x3D; [];
 
-  constructor(private route: ActivatedRoute, private librosService: LibrosService) {
-  }
+  /**
+   * @constructor
+   * Constructor del componente DetalleCarroComponent.
+   * @param route Instancia de ActivatedRoute para acceder a los parámetros de la URL.
+   * @param librosService Servicio para obtener los detalles de los libros.
+   */
+  constructor(private route: ActivatedRoute, private librosService: LibrosService) { }
 
+  /**
+   * @method
+   * Método para agregar un libro al carrito de compras.
+   * @param libro El libro que se va a agregar al carrito.
+   * @description
+   * Este método agrega el libro seleccionado al carrito de compras y actualiza el localStorage.
+   */
   agregarAlCarrito(libro: Libro): void {
     this.productosEnCarrito.push(libro);
     localStorage.setItem(&#x27;productosEnCarrito&#x27;, JSON.stringify(this.productosEnCarrito));
   }
 
+  /**
+   * @method
+   * Método que se ejecuta cuando el componente es inicializado.
+   * @description
+   * Este método obtiene el ID del libro desde la ruta, luego llama al servicio &#x60;librosService&#x60;
+   * para obtener los detalles del libro y asignarlos a la propiedad &#x60;libro&#x60;.
+   * Además, carga los productos del carrito desde el localStorage.
+   */
   ngOnInit(): void {
     const id &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;));
     this.librosService.obtenerLibroPorId(id).subscribe((libro) &#x3D;&gt; {
       this.libro &#x3D; libro;
-  });
+    });
 
-  const carritoData &#x3D; localStorage.getItem(&#x27;productosEnCarrito&#x27;);
-  this.productosEnCarrito &#x3D; carritoData ? JSON.parse(carritoData) : [];
-
+    const carritoData &#x3D; localStorage.getItem(&#x27;productosEnCarrito&#x27;);
+    this.productosEnCarrito &#x3D; carritoData ? JSON.parse(carritoData) : [];
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -541,7 +617,7 @@ export class DetalleCarroComponent {
             &lt;div class&#x3D;&quot;col-auto&quot;&gt;
                 &lt;div class&#x3D;&quot;contenedor-detalles text-center&quot;&gt;
                     &lt;h3 id&#x3D;&quot;detalle-titulo&quot;&gt;{{ libro.titulo }}&lt;/h3&gt;
-                    &lt;p id&#x3D;&quot;detalle-precio&quot;&gt;Precio: {{ libro.precio | currency }}&lt;/p&gt;
+                    &lt;p id&#x3D;&quot;detalle-precio&quot;&gt;Precio: {{ libro.precio | number:&#x27;1.0-0&#x27; }}&lt;/p&gt;
                     &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
                         &lt;div class&#x3D;&quot;col-sm-10 col-md-8 col-lg-6&quot;&gt;
                             &lt;div style&#x3D;&quot;font-size: 25px; margin-bottom: 20px;&quot;&gt;Descripción&lt;/div&gt;
@@ -596,7 +672,7 @@ export class DetalleCarroComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div *ngIf="libro" class="container-fluid flex-grow-1 p-4">        <div class="row justify-content-center" style="margin-bottom: 150px;">            <div class="col-auto mt-4 mb-4">                <div id="detalle-libro" style="display: flex; justify-content: center;">                    <img [src]="libro.imagen" [alt]="libro.titulo" width="400px" height="400px">                </div>            </div>            <div class="col-auto">                <div class="contenedor-detalles text-center">                    <h3 id="detalle-titulo">{{ libro.titulo }}</h3>                    <p id="detalle-precio">Precio: {{ libro.precio | currency }}</p>                    <div class="row justify-content-center">                        <div class="col-sm-10 col-md-8 col-lg-6">                            <div style="font-size: 25px; margin-bottom: 20px;">Descripción</div>                            <p id="detalle-resena" style="text-align: justify;">{{ libro.resena }}</p>                        </div>                    </div>                    <p id="detalle-idioma">Idioma: {{ libro.especificaciones.idioma }}</p>                    <p *ngIf="libro.stock > 0; else sinStock">Stock: {{ libro.stock }}</p>                    <ng-template #sinStock><p>No hay Stock</p></ng-template>                </div>                <div class="text-center mt-3">                    <button                         class="btn-ver-carrito add-to-cart-btn col-md-4 mx-auto"                         (click)="agregarAlCarrito(libro)">                        Agregar al carrito                    </button>                </div>            </div>        </div>    </div>        <footer class="footer">Todos los derechos reservados</footer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div *ngIf="libro" class="container-fluid flex-grow-1 p-4">        <div class="row justify-content-center" style="margin-bottom: 150px;">            <div class="col-auto mt-4 mb-4">                <div id="detalle-libro" style="display: flex; justify-content: center;">                    <img [src]="libro.imagen" [alt]="libro.titulo" width="400px" height="400px">                </div>            </div>            <div class="col-auto">                <div class="contenedor-detalles text-center">                    <h3 id="detalle-titulo">{{ libro.titulo }}</h3>                    <p id="detalle-precio">Precio: {{ libro.precio | number:\'1.0-0\' }}</p>                    <div class="row justify-content-center">                        <div class="col-sm-10 col-md-8 col-lg-6">                            <div style="font-size: 25px; margin-bottom: 20px;">Descripción</div>                            <p id="detalle-resena" style="text-align: justify;">{{ libro.resena }}</p>                        </div>                    </div>                    <p id="detalle-idioma">Idioma: {{ libro.especificaciones.idioma }}</p>                    <p *ngIf="libro.stock > 0; else sinStock">Stock: {{ libro.stock }}</p>                    <ng-template #sinStock><p>No hay Stock</p></ng-template>                </div>                <div class="text-center mt-3">                    <button                         class="btn-ver-carrito add-to-cart-btn col-md-4 mx-auto"                         (click)="agregarAlCarrito(libro)">                        Agregar al carrito                    </button>                </div>            </div>        </div>    </div>        <footer class="footer">Todos los derechos reservados</footer></div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DetalleCarroComponent'};

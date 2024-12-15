@@ -188,36 +188,6 @@
     </table>
 </section>
 
-    <section data-compodoc="block-index">
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#goToGestionProductos" >goToGestionProductos</a>
-                            </li>
-                            <li>
-                                <a href="#goToGestionUsuario" >goToGestionUsuario</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
@@ -225,57 +195,15 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/administracion/admin-home/admin-home.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/administracion/admin-home/admin-home.component.ts:17</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                    <code>Router</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>authService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
@@ -284,86 +212,7 @@
 
 
 
-    <section data-compodoc="block-methods">
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="goToGestionProductos"></a>
-                    <span class="name">
-                        <span ><b>goToGestionProductos</b></span>
-                        <a href="#goToGestionProductos"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>goToGestionProductos()</code>
-                </td>
-            </tr>
 
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/components/administracion/admin-home/admin-home.component.ts:29</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="goToGestionUsuario"></a>
-                    <span class="name">
-                        <span ><b>goToGestionUsuario</b></span>
-                        <a href="#goToGestionUsuario"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>goToGestionUsuario()</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/components/administracion/admin-home/admin-home.component.ts:25</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                        </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
@@ -374,8 +223,6 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { NavComponent } from &quot;../../nav/nav.component&quot;;
 import { AuthService } from &#x27;../../../services/auth/auth.service&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
-
 
 @Component({
   selector: &#x27;app-admin-home&#x27;,
@@ -389,16 +236,8 @@ import { Router } from &#x27;@angular/router&#x27;;
 })
 export class AdminHomeComponent {
 
-  constructor(private router: Router ,private authService: AuthService) {
+  constructor() {
 
-  }
-
-  goToGestionUsuario(): void {
-    this.router.navigate([&#x27;gestion-usuarios&#x27;]);
-  } 
-
-  goToGestionProductos(): void {
-    this.router.navigate([&#x27;gestion-productos&#x27;]);
   }
 }
 </code></pre>
@@ -426,13 +265,13 @@ export class AdminHomeComponent {
     &lt;div class&#x3D;&quot;container-fluid flex-grow-1 p-4&quot;&gt;
         &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
             &lt;div class&#x3D;&quot;col-lg-5 text-center&quot;&gt;
-                &lt;a style&#x3D;&quot;cursor: pointer;&quot; (click)&#x3D;&quot;goToGestionUsuario()&quot;&gt;
+                &lt;a href&#x3D;&quot;gestion-usuarios&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;
                     &lt;img src&#x3D;&quot;/assets/img/img-categorias/gestion-usuario.jpeg&quot; alt&#x3D;&quot;gestion-usuario&quot; class&#x3D;&quot;img-fluid imagen-promocion&quot;&gt;
                 &lt;/a&gt;
                 &lt;div style&#x3D;&quot;font-size: 30px;&quot;&gt;Gestion Usuarios&lt;/div&gt;
             &lt;/div&gt;
             &lt;div class&#x3D;&quot;col-lg-5 text-center&quot;&gt;
-                &lt;a style&#x3D;&quot;cursor: pointer;&quot; (click)&#x3D;&quot;goToGestionProductos()&quot;&gt;
+                &lt;a href&#x3D;&quot;gestion-productos&quot; style&#x3D;&quot;cursor: pointer;&quot;&gt;
                     &lt;img src&#x3D;&quot;/assets/img/img-categorias/gestion-productos.jpg&quot; alt&#x3D;&quot;gestion-productos&quot; class&#x3D;&quot;img-fluid imagen-promocion&quot;&gt;
                 &lt;/a&gt;
                 &lt;div style&#x3D;&quot;font-size: 30px;&quot;&gt;Gestion Productos&lt;/div&gt;
@@ -471,7 +310,7 @@ export class AdminHomeComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 50px; margin-top: 30px; margin-bottom: 30px;">Administración</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>    <!-- Gestión Administrador -->    <div class="container-fluid flex-grow-1 p-4">        <div class="row justify-content-center">            <div class="col-lg-5 text-center">                <a style="cursor: pointer;" (click)="goToGestionUsuario()">                    <img src="/assets/img/img-categorias/gestion-usuario.jpeg" alt="gestion-usuario" class="img-fluid imagen-promocion">                </a>                <div style="font-size: 30px;">Gestion Usuarios</div>            </div>            <div class="col-lg-5 text-center">                <a style="cursor: pointer;" (click)="goToGestionProductos()">                    <img src="/assets/img/img-categorias/gestion-productos.jpg" alt="gestion-productos" class="img-fluid imagen-promocion">                </a>                <div style="font-size: 30px;">Gestion Productos</div>            </div>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 50px; margin-top: 30px; margin-bottom: 30px;">Administración</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>    <!-- Gestión Administrador -->    <div class="container-fluid flex-grow-1 p-4">        <div class="row justify-content-center">            <div class="col-lg-5 text-center">                <a href="gestion-usuarios" style="cursor: pointer;">                    <img src="/assets/img/img-categorias/gestion-usuario.jpeg" alt="gestion-usuario" class="img-fluid imagen-promocion">                </a>                <div style="font-size: 30px;">Gestion Usuarios</div>            </div>            <div class="col-lg-5 text-center">                <a href="gestion-productos" style="cursor: pointer;">                    <img src="/assets/img/img-categorias/gestion-productos.jpg" alt="gestion-productos" class="img-fluid imagen-promocion">                </a>                <div style="font-size: 30px;">Gestion Productos</div>            </div>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AdminHomeComponent'};

@@ -7,6 +7,18 @@ import { NavComponent } from "../nav/nav.component";
 import { AuthService } from '../../services/auth/auth.service';
 import { Usuario } from '../../models/interfaces';
 
+/**
+ * @Component
+ * Componente que gestiona el perfil del usuario en la aplicación. 
+ * Permite ver, editar y guardar información del perfil, como nombres, apellidos, correo, fecha de nacimiento y domicilio.
+ *
+ * @selector app-perfil
+ * @standalone true
+ * @imports [CommonModule, FormsModule, NavComponent, ReactiveFormsModule]
+ * @templateUrl ./perfil.component.html
+ * @styleUrls ./perfil.component.css
+ * @providers [AuthService]
+ */
 @Component({
   selector: 'app-perfil',
   standalone: true,
@@ -18,16 +30,57 @@ import { Usuario } from '../../models/interfaces';
   ],
 })
 export class PerfilComponent {
-
+  
+  /**
+   * @property {Usuario[]} usuarios
+   * Lista de usuarios disponibles, obtenida desde el servicio AuthService.
+   */
   usuarios: Usuario[] = [];
+
+  /**
+   * @property {Usuario | null} usuario
+   * Usuario seleccionado (en uso para potenciales operaciones).
+   */
   usuario: Usuario | null = null;
+
+  /**
+   * @property {Usuario | undefined} usuarioLogeado
+   * Información del usuario actualmente logeado, cargada desde `localStorage` y validada en el backend.
+   */
   usuarioLogeado: Usuario | undefined;
+
+  /**
+   * @property {Usuario | null} usuarioEnEdicion
+   * Usuario que actualmente está siendo editado en el formulario.
+   */
   usuarioEnEdicion: Usuario | null = null;
+
+  /**
+   * @property {boolean} editando
+   * Indica si el formulario está en modo de edición.
+   */
   editando: boolean = false;
+
+  /**
+   * @property {boolean} mensajeExitoso
+   * Muestra un mensaje de éxito cuando se guardan los cambios correctamente.
+   */
   mensajeExitoso: boolean = false;
+
+  /**
+   * @property {FormGroup} edicionUsuarioForm
+   * Formulario reactivo utilizado para gestionar la edición de los datos del perfil.
+   */
   edicionUsuarioForm!: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
+  /**
+   * @constructor
+   * Crea una instancia del `PerfilComponent` y configura el formulario reactivo.
+   * 
+   * @param {AuthService} authService Servicio de autenticación para obtener y actualizar usuarios.
+   * @param {FormBuilder} fb Constructor de formularios reactivos.
+   */
+  constructor(private authService: AuthService, private fb: FormBuilder) {
     this.edicionUsuarioForm = this.fb.group({
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -37,58 +90,65 @@ export class PerfilComponent {
     });
   }
 
+  /**
+   * @method guardarCambios
+   * Guarda los cambios realizados en el perfil del usuario.
+   * Llama al servicio `AuthService` para actualizar los datos en el backend.
+   */
   guardarCambios(): void {
     if (this.edicionUsuarioForm.invalid || !this.usuarioLogeado) {
       console.error('Formulario inválido o usuario no definido');
       return;
     }
-  
-    // Mezclar los cambios con los datos originales del usuario
+
     const usuarioActualizado: Usuario = {
       ...this.usuarioLogeado,
       ...this.edicionUsuarioForm.value,
     };
-  
-    // Llamar a tu servicio para actualizar el usuario
+
     this.authService.editarUsuarioActualizado(usuarioActualizado).subscribe({
       next: () => {
         console.log('Usuario actualizado correctamente');
         this.mensajeExitoso = true;
-        this.usuarioLogeado = usuarioActualizado; // Actualizar local
-        this.usuarioEnEdicion = null; // Desactivar modo edición
+        this.usuarioLogeado = usuarioActualizado;
+        this.usuarioEnEdicion = null;
         this.editando = false;
       },
       error: (error) => console.error('Error al actualizar usuario:', error),
     });
   }
 
+  /**
+   * @method cancelarEdicion
+   * Cancela el proceso de edición y restaura los valores originales del formulario.
+   */
   cancelarEdicion(): void {
     if (this.usuarioLogeado) {
-      this.edicionUsuarioForm.reset(this.usuarioLogeado); // Restaurar los datos originales
+      this.edicionUsuarioForm.reset(this.usuarioLogeado);
     }
     this.usuarioEnEdicion = null;
     this.editando = false;
   }
 
-
+  /**
+   * @method editarUsuario
+   * Activa el modo de edición para el usuario logeado.
+   */
   editarUsuario(): void {
     if (!this.usuarioLogeado) {
       console.error('Usuario no está logeado');
       return;
     }
 
-    // Si ya estamos editando al mismo usuario, simplemente guardamos los cambios
-    if (this.usuarioEnEdicion && this.usuarioEnEdicion.username === this.usuarioLogeado?.username) {
-      this.guardarCambios();
-      return;
-    }
-
-    // Si no, empezamos a editar el usuario logeado
     this.usuarioEnEdicion = this.usuarioLogeado;
     this.edicionUsuarioForm.patchValue(this.usuarioLogeado);
-    this.editando = true;  // Cambiar a true para que el botón de "Guardar" se muestre
+    this.editando = true;
   }
 
+  /**
+   * @method obtenerUsuarios
+   * Obtiene la lista de usuarios del servicio AuthService y los almacena en la propiedad `usuarios`.
+   */
   obtenerUsuarios(): void {
     this.authService.obtenerUsuarios().subscribe({
       next: (data) => {
@@ -101,27 +161,34 @@ export class PerfilComponent {
     });
   }
 
+  /**
+   * @method inicializarFormulario
+   * Inicializa el formulario reactivo con los valores del usuario proporcionado.
+   * 
+   * @param {Usuario} usuario El usuario cuyos datos se utilizarán para inicializar el formulario.
+   */
   inicializarFormulario(usuario: Usuario): void {
-    this.edicionUsuarioForm.patchValue({
-      nombres: usuario.nombres,
-      apellidos: usuario.apellidos,
-      correo: usuario.correo,
-      fecha_nacimiento: usuario.fecha_nacimiento,
-      domicilio: usuario.domicilio,
-    });
+    this.edicionUsuarioForm.patchValue(usuario);
   }
 
+  /**
+   * @method activarEdicion
+   * Activa el modo de edición del formulario.
+   */
   activarEdicion(): void {
     this.editando = true;
   }
-  
+
+  /**
+   * @method ngOnInit
+   * Método del ciclo de vida que se ejecuta al inicializar el componente.
+   * Carga el usuario logeado desde el localStorage y valida su existencia en el backend.
+   */
   ngOnInit(): void {
     const usuarioGuardado = localStorage.getItem('usuario');
     if (usuarioGuardado) {
-      // Parsear el usuario si existe
       this.usuarioLogeado = JSON.parse(usuarioGuardado);
 
-      // Si el usuario está logeado, lo obtenemos de los usuarios
       if (this.usuarioLogeado?.username) {
         this.authService.obtenerUsuarios().subscribe({
           next: (usuarios: Usuario[]) => {

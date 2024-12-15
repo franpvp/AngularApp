@@ -143,6 +143,7 @@
                 <td class="col-md-9">
                                 <code><a href="../injectables/LibrosService.html" target="_self" >LibrosService</a></code>
                                 <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                            <code>{ provide: LOCALE_ID, useValue:  }</code>
                 </td>
             </tr>
 
@@ -201,6 +202,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#fechaActual" >fechaActual</a>
+                            </li>
+                            <li>
                                 <a href="#productosEnCarrito" >productosEnCarrito</a>
                             </li>
                         </ul>
@@ -242,43 +246,17 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:38</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                    <code>Router</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
                     </td>
                 </tr>
             </tbody>
@@ -314,8 +292,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -327,6 +305,10 @@
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>El total calculado de los productos en el carrito.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -351,8 +333,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -388,14 +370,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carga los productos del carrito desde localStorage si están disponibles.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -411,6 +395,37 @@
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fechaActual"></a>
+                    <span class="name">
+                        <span ><b>fechaActual</b></span>
+                        <a href="#fechaActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Date()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -435,7 +450,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/pago-exitoso/pago-exitoso.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -448,13 +463,18 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, LOCALE_ID } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NavComponent } from &quot;../nav/nav.component&quot;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { Libro } from &#x27;../../models/interfaces&#x27;;
 import { AuthService } from &#x27;../../services/auth/auth.service&#x27;;
 import { LibrosService } from &#x27;../../services/libros/libros.service&#x27;;
+
+import { registerLocaleData } from &#x27;@angular/common&#x27;;
+import localeEsCL from &#x27;@angular/common/locales/es-CL&#x27;;
+
+registerLocaleData(localeEsCL);
 
 @Component({
   selector: &#x27;app-pago-exitoso&#x27;,
@@ -464,21 +484,43 @@ import { LibrosService } from &#x27;../../services/libros/libros.service&#x27;;
   styleUrl: &#x27;./pago-exitoso.component.css&#x27;,
   providers: [
     LibrosService,
-    AuthService
+    AuthService,
+    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
   ],
 })
 export class PagoExitosoComponent {
 
+  /**
+   * @property productosEnCarrito
+   * @description Arreglo que almacena los productos que están en el carrito de compras.
+   */
   productosEnCarrito: Libro[] &#x3D; [];
 
-  constructor(private router: Router) {
+  /**
+   * @property fechaActual
+   * @description Fecha actual que se muestra en el componente.
+   */
+  fechaActual: Date &#x3D; new Date();
 
-  }
+  /**
+   * @constructor
+   * @description Constructor del componente, actualmente vacío.
+   */
+  constructor() { }
 
+  /**
+   * @method calcularTotal
+   * @description Método para calcular el total de la compra, sumando los precios de todos los productos en el carrito.
+   * @returns {number} El total calculado de los productos en el carrito.
+   */
   calcularTotal(): number {
     return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) &#x3D;&gt; acc + prod.precio, 0) : 0;
   }
 
+  /**
+   * @method cargarCarrito
+   * @description Método para cargar los productos del carrito desde localStorage y recalcular el total.
+   */
   cargarCarrito(): void {
     // Obtener los productos del carrito desde localStorage
     const carritoData &#x3D; localStorage.getItem(&#x27;productosEnCarrito&#x27;);
@@ -488,13 +530,17 @@ export class PagoExitosoComponent {
     }
   }
 
+  /**
+   * @method ngOnInit
+   * @description Método del ciclo de vida de Angular que se ejecuta al inicializar el componente. 
+   * Carga los productos del carrito desde localStorage si están disponibles.
+   */
   ngOnInit(): void {
     const carritoData &#x3D; localStorage.getItem(&#x27;productosEnCarrito&#x27;);
     this.productosEnCarrito &#x3D; carritoData ? JSON.parse(carritoData) : [];
     this.cargarCarrito();
   }
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -527,10 +573,11 @@ export class PagoExitosoComponent {
                     &lt;/div&gt;
                     &lt;hr&gt;
                     &lt;div class&#x3D;&quot;fecha-pedido&quot;&gt;
-                         Fecha: &lt;strong&gt;4 Noviembre, 2024&lt;/strong&gt; 
+                        Fecha de pago: &lt;strong&gt; {{ fechaActual | date:&#x27;shortDate&#x27; }}&lt;/strong&gt;
                     &lt;/div&gt;
                     &lt;hr&gt;
                     &lt;div class&#x3D;&quot;detalle-items&quot;&gt;
+                        
                     &lt;/div&gt;
                     &lt;div class&#x3D;&quot;envio&quot; id&#x3D;&quot;envio&quot; *ngIf&#x3D;&quot;calcularTotal() &gt;&#x3D; 35000; else envioGratis&quot;&gt;
                         Envio: &lt;strong&gt;$3.990&lt;/strong&gt;
@@ -545,7 +592,7 @@ export class PagoExitosoComponent {
                         Forma de Pago: &lt;strong&gt;Crédito&lt;/strong&gt;
                     &lt;/div&gt;
                     &lt;div id&#x3D;&quot;total&quot; class&#x3D;&quot;total text-center mt-4 mb-3&quot; style&#x3D;&quot;font-size: 22px; color: brown;&quot;&gt;
-                        &lt;strong&gt;Total: {{ calcularTotal() | currency}}&lt;/strong&gt;
+                        &lt;strong&gt;Total: {{ calcularTotal() | number:&#x27;1.0-0&#x27;}}&lt;/strong&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
@@ -584,7 +631,7 @@ export class PagoExitosoComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 40px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Pago Exitoso</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>        <div class="container flex-grow-1">        <!-- Detalle de la compra -->        <div class="contenedor-detalle-compra">            <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;"><strong>Detalles del pedido</strong></h1>            <div class="row justify-content-center">                <div class="col-md-6 col-lg-4">                    <div class="numero-pedido">                        Pedido Número: <strong>1</strong>                    </div>                    <hr>                    <div class="fecha-pedido">                         Fecha: <strong>4 Noviembre, 2024</strong>                     </div>                    <hr>                    <div class="detalle-items">                    </div>                    <div class="envio" id="envio" *ngIf="calcularTotal() >= 35000; else envioGratis">                        Envio: <strong>$3.990</strong>                    </div>                    <hr>                    <ng-template #envioGratis>                        <div class="col-auto">                            Envio: <strong>Gratis</strong>                        </div>                    </ng-template>                    <div class="forma-pago">                        Forma de Pago: <strong>Crédito</strong>                    </div>                    <div id="total" class="total text-center mt-4 mb-3" style="font-size: 22px; color: brown;">                        <strong>Total: {{ calcularTotal() | currency}}</strong>                    </div>                </div>            </div>                </div>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 40px;">        <div class="row align-items-center">            <div class="col">                <div class="line">                </div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Pago Exitoso</div>            </div>            <div class="col">                <div class="line">                </div>            </div>        </div>    </div>        <div class="container flex-grow-1">        <!-- Detalle de la compra -->        <div class="contenedor-detalle-compra">            <h1 class="text-center" style="font-size: 25px; margin-top: 20px; margin-bottom: 20px;"><strong>Detalles del pedido</strong></h1>            <div class="row justify-content-center">                <div class="col-md-6 col-lg-4">                    <div class="numero-pedido">                        Pedido Número: <strong>1</strong>                    </div>                    <hr>                    <div class="fecha-pedido">                        Fecha de pago: <strong> {{ fechaActual | date:\'shortDate\' }}</strong>                    </div>                    <hr>                    <div class="detalle-items">                                            </div>                    <div class="envio" id="envio" *ngIf="calcularTotal() >= 35000; else envioGratis">                        Envio: <strong>$3.990</strong>                    </div>                    <hr>                    <ng-template #envioGratis>                        <div class="col-auto">                            Envio: <strong>Gratis</strong>                        </div>                    </ng-template>                    <div class="forma-pago">                        Forma de Pago: <strong>Crédito</strong>                    </div>                    <div id="total" class="total text-center mt-4 mb-3" style="font-size: 22px; color: brown;">                        <strong>Total: {{ calcularTotal() | number:\'1.0-0\'}}</strong>                    </div>                </div>            </div>                </div>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PagoExitosoComponent'};

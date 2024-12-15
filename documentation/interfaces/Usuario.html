@@ -165,12 +165,6 @@
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#enEdicion" 
->
-                                            enEdicion
-                                        </a>
-                                </li>
-                                <li>
                                         <a href="#fecha_nacimiento" 
 >
                                             fecha_nacimiento
@@ -334,39 +328,6 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <a name="enEdicion"></a>
-                                        <span class="name "><b>enEdicion</b>
-                                            <a href="#enEdicion">
-                                                <span class="icon ion-ios-link"></span>
-                                            </a>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <code>enEdicion:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-</code>
-                                    </td>
-                                </tr>
-
-
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                                         </td>
                                     </tr>
@@ -562,7 +523,6 @@
     fecha_nacimiento: string;
     domicilio: string;
     puntos?: number;
-    enEdicion: boolean;
 }
 
 export interface Libro {
@@ -574,14 +534,13 @@ export interface Libro {
     resena: string;
     especificaciones: {
         categoria: string;
-        sub_categoria: string;
-        idioma: string;
-        formato: string;
-        paginas: number;
+        sub_categoria?: string;
+        idioma?: string;
+        formato?: string;
+        paginas?: number;
     };
     stock: number;
     imagen: string;
-    enEdicion: boolean;
     enPromo: boolean;
 }</code></pre>
     </div>
