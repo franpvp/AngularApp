@@ -198,7 +198,6 @@ export class MetodoPagoComponent {
    */
   submitForm(): void {
     if (this.nombre_titular && this.digitos_tarjeta && this.fecha_vencimiento && this.digitos_cvc) {
-      this.carritoService.limpiarCarrito();
       this.router.navigate(['pago-exitoso']);
     }
   }

@@ -158,16 +158,28 @@
                                 <a href="#authenticateJson" >authenticateJson</a>
                             </li>
                             <li>
+                                <a href="#cambiarContrasena" >cambiarContrasena</a>
+                            </li>
+                            <li>
                                 <a href="#crearUsuario" >crearUsuario</a>
                             </li>
                             <li>
+                                <a href="#editarUsuarioActualizado" >editarUsuarioActualizado</a>
+                            </li>
+                            <li>
                                 <a href="#eliminarUsuario" >eliminarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#getUsuarioLogeado" >getUsuarioLogeado</a>
                             </li>
                             <li>
                                 <a href="#obtenerUsuarios" >obtenerUsuarios</a>
                             </li>
                             <li>
                                 <a href="#setUsuario" >setUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#validarCorreo" >validarCorreo</a>
                             </li>
                         </ul>
                     </td>
@@ -192,7 +204,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth/auth.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/auth/auth.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -257,8 +269,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -275,6 +287,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -289,6 +302,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista actualizada de usuarios.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -298,7 +315,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable con la lista actualizada de usuarios.</p>
+
                             </div>
                 </td>
             </tr>
@@ -324,8 +342,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="104"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:104</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:131</a></div>
                         </td>
                     </tr>
 
@@ -342,6 +360,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -356,6 +375,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nombre de usuario.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>contrasena</td>
@@ -368,6 +391,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Contraseña del usuario.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -377,7 +404,97 @@
 
                         </div>
                             <div class="io-description">
+                                <p>Observable con el usuario autenticado o <code>null</code> si no existe.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cambiarContrasena"></a>
+                    <span class="name">
+                        <span ><b>cambiarContrasena</b></span>
+                        <a href="#cambiarContrasena"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cambiarContrasena(correo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, nuevaContrasena: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>correo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Correo del usuario.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>nuevaContrasena</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nueva contraseña.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable indicando el éxito de la operación.</p>
+
                             </div>
                 </td>
             </tr>
@@ -396,15 +513,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>crearUsuario(usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+<code>crearUsuario(usuario: <a href="../interfaces/Usuario.html" target="_self">Partial&lt;Usuario&gt;</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -421,13 +538,14 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                                 <td>usuario</td>
                                             <td>
-                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Partial&lt;Usuario&gt;</a></code>
                                             </td>
 
                                             <td>
@@ -435,6 +553,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Datos del nuevo usuario.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -444,7 +566,81 @@
 
                         </div>
                             <div class="io-description">
+                                <p>Observable con la lista actualizada de usuarios.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarUsuarioActualizado"></a>
+                    <span class="name">
+                        <span ><b>editarUsuarioActualizado</b></span>
+                        <a href="#editarUsuarioActualizado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarUsuarioActualizado(usuarioActualizado: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuarioActualizado</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Datos actualizados del usuario.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable indicando el éxito de la operación.</p>
+
                             </div>
                 </td>
             </tr>
@@ -470,8 +666,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="85"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:85</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="106"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -488,6 +684,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -502,6 +699,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Identificador único del usuario.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -511,7 +712,81 @@
 
                         </div>
                             <div class="io-description">
+                                <p>Observable indicando el éxito de la operación.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsuarioLogeado"></a>
+                    <span class="name">
+                        <span ><b>getUsuarioLogeado</b></span>
+                        <a href="#getUsuarioLogeado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUsuarioLogeado(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:149</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>username</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Identificador único del usuario.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Usuario.html" target="_self" >Observable&lt;Usuario | undefined&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable con el usuario encontrado o <code>undefined</code> si no existe.</p>
+
                             </div>
                 </td>
             </tr>
@@ -537,8 +812,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -550,6 +825,10 @@
                             <b>Returns : </b>        <code><a href="../interfaces/Usuario.html" target="_self" >Observable&lt;Usuario[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable con un arreglo de usuarios.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -574,8 +853,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="124"
-                                    class="link-to-prism">src/app/services/auth/auth.service.ts:124</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:160</a></div>
                         </td>
                     </tr>
 
@@ -592,6 +871,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -606,6 +886,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Usuario a guardar o <code>null</code> para eliminarlo.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -616,6 +900,79 @@
                         </div>
                             <div class="io-description">
                                 
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validarCorreo"></a>
+                    <span class="name">
+                        <span ><b>validarCorreo</b></span>
+                        <a href="#validarCorreo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validarCorreo(correo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/services/auth/auth.service.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>correo</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Correo a validar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;boolean&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable con un valor booleano indicando si el correo ya existe.</p>
+
                             </div>
                 </td>
             </tr>
@@ -652,10 +1009,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth/auth.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/services/auth/auth.service.ts:17</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL del archivo JSON que contiene la lista de usuarios.
+Puede ser reemplazada por una API o base de datos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -677,69 +1041,65 @@ import { HttpClient } from &#x27;@angular/common/http&#x27;;
 })
 export class AuthService {
 
+  /**
+   * URL del archivo JSON que contiene la lista de usuarios.
+   * Puede ser reemplazada por una API o base de datos.
+   */
   private jsonUrl &#x3D; &#x27;https://bucketangulartest.s3.us-east-1.amazonaws.com/usuarios.json&#x27;;
-
-  // private usuarios: Usuario[] &#x3D; [
-  //   {
-  //     rol: &quot;admin&quot;,
-  //     username: &quot;fr.valdiviap&quot;,
-  //     contrasena: &quot;Prueba123&quot;,
-  //     nombres: &quot;Francisca Patricia&quot;,
-  //     apellidos: &quot;Valdivia Palma&quot;,
-  //     correo: &quot;fr.valdiviap@gmail.com&quot;,
-  //     fecha_nacimiento: &quot;1998-03-30&quot;,
-  //     domicilio: &quot;&quot;,
-  //     enEdicion: false
-  //   },
-  //   {
-  //     rol: &quot;cliente&quot;,
-  //     username: &quot;jperez&quot;,
-  //     contrasena: &quot;Contraseña456&quot;,
-  //     nombres: &quot;Juan&quot;,
-  //     apellidos: &quot;Pérez González&quot;,
-  //     correo: &quot;jperez@example.com&quot;,
-  //     fecha_nacimiento: &quot;1980-11-12&quot;,
-  //     domicilio: &quot;&quot;,
-  //     puntos: 0,
-  //     enEdicion: false
-  //   },
-  //   {
-  //     rol: &quot;cliente&quot;,
-  //     username: &quot;mgarcia&quot;,
-  //     contrasena: &quot;Pass789&quot;,
-  //     nombres: &quot;María&quot;,
-  //     apellidos: &quot;García López&quot;,
-  //     correo: &quot;mgarcia@example.com&quot;,
-  //     fecha_nacimiento: &quot;1993-05-12&quot;,
-  //     domicilio: &quot;&quot;,
-  //     puntos: 0,
-  //     enEdicion: false
-  //   }
-  // ];
-
+  
   constructor(private http: HttpClient) { }
 
-  // Método para obtener lista de usuarios
+  /**
+   * @method obtenerUsuarios 
+   * @description Obtiene la lista completa de usuarios desde el archivo JSON.
+   * @returns Observable con un arreglo de usuarios.
+   */
   obtenerUsuarios(): Observable&lt;Usuario[]&gt; {
     return this.http.get&lt;Usuario[]&gt;(this.jsonUrl).pipe(
       catchError(error &#x3D;&gt; {
         console.error(&#x27;Error al obtener usuarios&#x27;, error);
-        return []; // Retorna un array vacío en caso de error
+        return [];
       })
     );
   }
 
-  crearUsuario(usuario: Usuario): Observable&lt;Usuario[]&gt; {
+  /**
+   * @method crearUsuario 
+   * @description Crea un nuevo usuario y lo guarda en el archivo JSON.
+   * @param usuario Datos del nuevo usuario.
+   * @returns Observable con la lista actualizada de usuarios.
+   */
+  crearUsuario(usuario: Partial&lt;Usuario&gt;): Observable&lt;Usuario[]&gt; {
     return this.obtenerUsuarios().pipe(
-      // Aplanamos el Observable con switchMap
       switchMap((usuarios: Usuario[]) &#x3D;&gt; {
-        const usuariosActualizados &#x3D; [...usuarios, usuario];
+        const nuevoUsuario: Usuario &#x3D; {
+          rol: usuario.rol || &#x27;cliente&#x27;,
+          username: usuario.username!,
+          contrasena: usuario.contrasena!,
+          nombres: usuario.nombres!,
+          apellidos: usuario.apellidos!,
+          correo: usuario.correo!,
+          fecha_nacimiento: usuario.fecha_nacimiento!,
+          domicilio: usuario.domicilio!,
+          puntos: usuario.puntos || 0,
+        };
+
+        const usuariosActualizados &#x3D; [...usuarios, nuevoUsuario];
         return this.actualizarUsuarios(usuariosActualizados);
+      }),
+      catchError(error &#x3D;&gt; {
+        console.error(&#x27;Error al crear el usuario:&#x27;, error);
+        return of([]);
       })
     );
   }
 
-
+  /**
+   * @method actualizarUsuarios 
+   * @description Actualiza la lista de usuarios en el archivo JSON.
+   * @param usuarios Lista actualizada de usuarios.
+   * @returns Observable con la lista actualizada de usuarios.
+   */
   private actualizarUsuarios(usuarios: Usuario[]): Observable&lt;Usuario[]&gt; {
     return this.http.put&lt;Usuario[]&gt;(this.jsonUrl, usuarios).pipe(
       catchError(error &#x3D;&gt; {
@@ -749,37 +1109,61 @@ export class AuthService {
     );
   }
 
+  /**
+   * @method editarUsuarioActualizado 
+   * @description Actualiza los datos de un usuario específico.
+   * @param usuarioActualizado Datos actualizados del usuario.
+   * @returns Observable indicando el éxito de la operación.
+   */
+  editarUsuarioActualizado(usuarioActualizado: Usuario): Observable&lt;any&gt; {
+    return this.obtenerUsuarios().pipe(
+      switchMap(usuarios &#x3D;&gt; {
+        const usuariosActualizados &#x3D; usuarios.map(u &#x3D;&gt; 
+          u.username &#x3D;&#x3D;&#x3D; usuarioActualizado.username ? usuarioActualizado : u
+        );
+        return this.http.put(this.jsonUrl, usuariosActualizados, {
+          headers: { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; },
+        });
+      })
+    );
+  }
+
+  /**
+   * @method eliminarUsuario 
+   * @description Elimina un usuario por su username.
+   * @param username Identificador único del usuario.
+   * @returns Observable indicando el éxito de la operación.
+   */
   eliminarUsuario(username: string): Observable&lt;any&gt; {
-    // Carga el archivo JSON, filtra el usuario y reescribe el archivo.
     return new Observable(observer &#x3D;&gt; {
       this.obtenerUsuarios().subscribe({
-        next: (usuarios) &#x3D;&gt; {
+        next: usuarios &#x3D;&gt; {
           const usuariosActualizados &#x3D; usuarios.filter(user &#x3D;&gt; user.username !&#x3D;&#x3D; username);
           this.http.put(this.jsonUrl, usuariosActualizados).subscribe({
             next: () &#x3D;&gt; {
               observer.next();
               observer.complete();
             },
-            error: (err) &#x3D;&gt; observer.error(err)
+            error: err &#x3D;&gt; observer.error(err),
           });
         },
-        error: (err) &#x3D;&gt; observer.error(err)
+        error: err &#x3D;&gt; observer.error(err),
       });
     });
   }
 
+  /**
+   * @method authenticateJson 
+   * @description Autentica a un usuario con su username y contraseña.
+   * @param username Nombre de usuario.
+   * @param contrasena Contraseña del usuario.
+   * @returns Observable con el usuario autenticado o &#x60;null&#x60; si no existe.
+   */
   authenticateJson(username: string, contrasena: string): Observable&lt;Usuario | null&gt; {
     return this.obtenerUsuarios().pipe(
-      map((usuarios: Usuario[]) &#x3D;&gt; {
-        console.log(&#x27;Usuarios obtenidos:&#x27;, usuarios);
-        const usuarioEncontrado &#x3D; usuarios.find(
-          usuario &#x3D;&gt; usuario.username &#x3D;&#x3D;&#x3D; username &amp;&amp; usuario.contrasena &#x3D;&#x3D;&#x3D; contrasena
-        );
-        if (usuarioEncontrado) {
-          return usuarioEncontrado;
-        }
-        return null;
-      }),
+      map(usuarios &#x3D;&gt; usuarios.find(usuario &#x3D;&gt; 
+        usuario.username &#x3D;&#x3D;&#x3D; username &amp;&amp; usuario.contrasena &#x3D;&#x3D;&#x3D; contrasena) || null
+      ),
       catchError(error &#x3D;&gt; {
         console.error(&#x27;Error al autenticar usuario:&#x27;, error);
         return of(null);
@@ -787,21 +1171,77 @@ export class AuthService {
     );
   }
 
-  // Método para actualizar el usuario
-  setUsuario(usuario: Usuario | null): void {
-    if (usuario) {
-      localStorage.setItem(&quot;usuario&quot;, JSON.stringify(usuario));  // Guarda en localStorage
-    } else {
-      localStorage.removeItem(&quot;usuario&quot;);  // Elimina el usuario de localStorage
-    } // Emite el nuevo estado del usuario
+  /**
+   * @method getUsuarioLogeado 
+   * @description Busca un usuario específico por su username.
+   * @param username Identificador único del usuario.
+   * @returns Observable con el usuario encontrado o &#x60;undefined&#x60; si no existe.
+   */
+  getUsuarioLogeado(username: string): Observable&lt;Usuario | undefined&gt; {
+    return this.obtenerUsuarios().pipe(
+      map(usuarios &#x3D;&gt; usuarios.find(usuario &#x3D;&gt; usuario.username &#x3D;&#x3D;&#x3D; username))
+    );
   }
 
-  // validarCorreo(correo: string): Observable&lt;boolean&gt; {
-  //   const existeCorreo &#x3D; this.usuarios.some((usuario) &#x3D;&gt; usuario.correo &#x3D;&#x3D;&#x3D; correo);
-  //   return of(existeCorreo);
-  // }
-}
-</code></pre>
+  /**
+   * @method setUsuario 
+   * @description Almacena el usuario logeado en localStorage.
+   * @param usuario Usuario a guardar o &#x60;null&#x60; para eliminarlo.
+   */
+  setUsuario(usuario: Usuario | null): void {
+    if (usuario) {
+      localStorage.setItem(&#x27;usuario&#x27;, JSON.stringify(usuario));
+    } else {
+      localStorage.removeItem(&#x27;usuario&#x27;);
+    }
+  }
+
+  /**
+   * @method validarCorreo 
+   * @description Valida si un correo electrónico ya está registrado.
+   * @param correo Correo a validar.
+   * @returns Observable con un valor booleano indicando si el correo ya existe.
+   */
+  validarCorreo(correo: string): Observable&lt;boolean&gt; {
+    return this.obtenerUsuarios().pipe(
+      map(usuarios &#x3D;&gt; usuarios.some(usuario &#x3D;&gt; usuario.correo &#x3D;&#x3D;&#x3D; correo)),
+      catchError(error &#x3D;&gt; {
+        console.error(&#x27;Error al validar correo&#x27;, error);
+        return of(false);
+      })
+    );
+  }
+
+  /**
+   * @method cambiarContrasena 
+   * @description Cambia la contraseña de un usuario identificado por su correo.
+   * @param correo Correo del usuario.
+   * @param nuevaContrasena Nueva contraseña.
+   * @returns Observable indicando el éxito de la operación.
+   */
+  cambiarContrasena(correo: string, nuevaContrasena: string): Observable&lt;any&gt; {
+    return this.obtenerUsuarios().pipe(
+      switchMap(usuarios &#x3D;&gt; {
+        const usuario &#x3D; usuarios.find(u &#x3D;&gt; u.correo &#x3D;&#x3D;&#x3D; correo);
+        if (!usuario) {
+          throw new Error(&#x27;El usuario no fue encontrado&#x27;);
+        }
+        usuario.contrasena &#x3D; nuevaContrasena;
+        return this.actualizarUsuarios(usuarios).pipe(
+          map(() &#x3D;&gt; true),
+          catchError(err &#x3D;&gt; {
+            console.error(&#x27;Error al actualizar los usuarios en S3:&#x27;, err);
+            return of(false);
+          })
+        );
+      }),
+      catchError(error &#x3D;&gt; {
+        console.error(&#x27;Error al cambiar la contraseña:&#x27;, error);
+        return of(false);
+      })
+    );
+  }
+}</code></pre>
     </div>
 
 </div>

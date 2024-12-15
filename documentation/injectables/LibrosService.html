@@ -151,10 +151,23 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#actualizarLibros" >actualizarLibros</a>
+                            </li>
+                            <li>
+                                <a href="#crearLibro" >crearLibro</a>
+                            </li>
+                            <li>
+                                <a href="#editarLibroActualizado" >editarLibroActualizado</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarLibro" >eliminarLibro</a>
+                            </li>
+                            <li>
                                 <a href="#obtenerLibroPorId" >obtenerLibroPorId</a>
                             </li>
                             <li>
-                                <a href="#obtenerLibrosJson" >obtenerLibrosJson</a>
+                                <a href="#obtenerLibros" >obtenerLibros</a>
                             </li>
                         </ul>
                     </td>
@@ -179,7 +192,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/libros/libros.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/libros/libros.service.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -193,6 +206,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -207,6 +221,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio para hacer peticiones HTTP.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -222,6 +240,300 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualizarLibros"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>actualizarLibros</b></span>
+                        <a href="#actualizarLibros"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>actualizarLibros(libros: <a href="../interfaces/Libro.html" target="_self">Libro[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>libros</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Libro.html" target="_self" >Libro[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista actualizada de libros.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Libro.html" target="_self" >Observable&lt;Libro[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Devuelve un observable con la lista de libros actualizada.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crearLibro"></a>
+                    <span class="name">
+                        <span ><b>crearLibro</b></span>
+                        <a href="#crearLibro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>crearLibro(libro: <a href="../interfaces/Libro.html" target="_self">Partial&lt;Libro&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>libro</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Libro.html" target="_self" >Partial&lt;Libro&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Datos del nuevo libro a crear.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/Libro.html" target="_self" >Observable&lt;Libro[]&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Devuelve un observable con la lista actualizada de libros.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarLibroActualizado"></a>
+                    <span class="name">
+                        <span ><b>editarLibroActualizado</b></span>
+                        <a href="#editarLibroActualizado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarLibroActualizado(libroActualizado: <a href="../interfaces/Libro.html" target="_self">Libro</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>libroActualizado</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Libro.html" target="_self" >Libro</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El libro con los cambios.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Devuelve un observable con el resultado de la actualización.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarLibro"></a>
+                    <span class="name">
+                        <span ><b>eliminarLibro</b></span>
+                        <a href="#eliminarLibro"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarLibro(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>ID del libro a eliminar.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Devuelve un observable con el resultado de la eliminación.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -242,8 +554,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/services/libros/libros.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -260,6 +572,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -274,6 +587,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>ID del libro que se desea obtener.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -283,7 +600,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Devuelve un observable con el libro correspondiente o undefined si no se encuentra.</p>
+
                             </div>
                 </td>
             </tr>
@@ -293,24 +611,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="obtenerLibrosJson"></a>
+                    <a name="obtenerLibros"></a>
                     <span class="name">
-                        <span ><b>obtenerLibrosJson</b></span>
-                        <a href="#obtenerLibrosJson"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>obtenerLibros</b></span>
+                        <a href="#obtenerLibros"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>obtenerLibrosJson()</code>
+<code>obtenerLibros()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/services/libros/libros.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/services/libros/libros.service.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -322,6 +640,10 @@
                             <b>Returns : </b>        <code><a href="../interfaces/Libro.html" target="_self" >Observable&lt;Libro[]&gt;</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Devuelve un observable con la lista de libros.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -357,7 +679,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/services/libros/libros.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/services/libros/libros.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -372,37 +694,150 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Libro } from &#x27;../../models/interfaces&#x27;;
-import { catchError, map, Observable, of, throwError } from &#x27;rxjs&#x27;;
+import { catchError, map, Observable, of, switchMap, tap, throwError } from &#x27;rxjs&#x27;;
 import { HttpClient, HttpErrorResponse, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 
 @Injectable({
-    providedIn: &#x27;root&#x27;
+  providedIn: &#x27;root&#x27;
 })
 export class LibrosService {
 
-    private jsonUrl &#x3D; &#x27;https://bucketangulartest.s3.us-east-1.amazonaws.com/libros.json&#x27;;
+  /**
+   * @property jsonUrl
+   * @description URL donde se encuentra el archivo JSON con la información de los libros.
+   */
+  private jsonUrl &#x3D; &#x27;https://bucketangulartest.s3.us-east-1.amazonaws.com/libros.json&#x27;;
 
-    constructor(private http: HttpClient) { }
+  /**
+   * @constructor
+   * @description Constructor del servicio. Inicializa el servicio HttpClient.
+   * @param {HttpClient} http Servicio para hacer peticiones HTTP.
+   */
+  constructor(private http: HttpClient) { }
 
-    // obtenerLibros(): Observable&lt;Libro[]&gt; {
-    //     return of(this.libros);
-    // }
+  /**
+   * @method obtenerLibros
+   * @description Método para obtener la lista de libros desde el archivo JSON en AWS S3.
+   * @returns {Observable&lt;Libro[]&gt;} Devuelve un observable con la lista de libros.
+   */
+  obtenerLibros(): Observable&lt;Libro[]&gt; {
+    return this.http.get&lt;Libro[]&gt;(this.jsonUrl).pipe(
+      catchError(error &#x3D;&gt; {
+        console.error(&#x27;Error al obtener libros&#x27;, error);
+        return of([]);
+      })
+    );
+  }
 
-    // Obtener desde AWS S3
-    obtenerLibrosJson(): Observable&lt;Libro[]&gt; {
-        return this.http.get&lt;{ libros: Libro[] }&gt;(this.jsonUrl)
-        .pipe(map(response &#x3D;&gt; response.libros));
-    }
+  /**
+   * @method crearLibro
+   * @description Método para crear un nuevo libro y agregarlo a la lista.
+   * @param {Partial&lt;Libro&gt;} libro Datos del nuevo libro a crear.
+   * @returns {Observable&lt;Libro[]&gt;} Devuelve un observable con la lista actualizada de libros.
+   */
+  crearLibro(libro: Partial&lt;Libro&gt;): Observable&lt;Libro[]&gt; {
+    return this.obtenerLibros().pipe(
+      switchMap((libros: Libro[]) &#x3D;&gt; {
+        const nuevoId &#x3D; libros.length &gt; 0 ? Math.max(...libros.map(lib &#x3D;&gt; lib.id)) + 1 : 1;
+        const nuevoLibro: Libro &#x3D; {
+          id: nuevoId,
+          titulo: libro.titulo!,
+          autor: libro.autor!,
+          editorial: libro.editorial!,
+          precio: libro.precio!,
+          resena: libro.resena || &#x27;&#x27;,
+          especificaciones: {
+            categoria: libro.especificaciones?.categoria || &#x27;&#x27;,
+            sub_categoria: libro.especificaciones?.sub_categoria || &#x27;&#x27;,
+            idioma: libro.especificaciones?.idioma || &#x27;&#x27;,
+            formato: libro.especificaciones?.formato || &#x27;&#x27;,
+            paginas: libro.especificaciones?.paginas || 0
+          },
+          stock: libro.stock || 0,
+          imagen: libro.imagen || &#x27;&#x27;,
+          enPromo: libro.enPromo || false
+        };
 
-    obtenerLibroPorId(id: number): Observable&lt;Libro | undefined&gt; {
-        return this.obtenerLibrosJson().pipe(
-            map(libros &#x3D;&gt; libros.find(libro &#x3D;&gt; libro.id &#x3D;&#x3D;&#x3D; id))
+        const librosActualizados &#x3D; [...libros, nuevoLibro];
+        return this.actualizarLibros(librosActualizados);
+      }),
+      catchError((error) &#x3D;&gt; {
+        console.error(&#x27;Error al crear el libro:&#x27;, error);
+        return throwError(error);
+      })
+    );
+  }
+
+  /**
+   * @method actualizarLibros
+   * @description Método para actualizar la lista de libros en el backend o S3 simulado.
+   * @param {Libro[]} libros Lista actualizada de libros.
+   * @returns {Observable&lt;Libro[]&gt;} Devuelve un observable con la lista de libros actualizada.
+   */
+  private actualizarLibros(libros: Libro[]): Observable&lt;Libro[]&gt; {
+    return this.http.put&lt;Libro[]&gt;(this.jsonUrl, libros).pipe(
+      catchError(error &#x3D;&gt; {
+        console.error(&#x27;Error al actualizar libros&#x27;, error);
+        return [];
+      })
+    );
+  }
+
+  /**
+   * @method obtenerLibroPorId
+   * @description Método para obtener un libro específico por su ID.
+   * @param {number} id ID del libro que se desea obtener.
+   * @returns {Observable&lt;Libro | undefined&gt;} Devuelve un observable con el libro correspondiente o undefined si no se encuentra.
+   */
+  obtenerLibroPorId(id: number): Observable&lt;Libro | undefined&gt; {
+    return this.obtenerLibros().pipe(
+      map(libros &#x3D;&gt; libros.find(libro &#x3D;&gt; libro.id &#x3D;&#x3D;&#x3D; id))
+    );
+  }
+
+  /**
+   * @method editarLibroActualizado
+   * @description Método para editar un libro existente en la lista.
+   * @param {Libro} libroActualizado El libro con los cambios.
+   * @returns {Observable&lt;any&gt;} Devuelve un observable con el resultado de la actualización.
+   */
+  editarLibroActualizado(libroActualizado: Libro): Observable&lt;any&gt; {
+    return this.obtenerLibros().pipe(
+      switchMap((libros) &#x3D;&gt; {
+        const librosActualizados &#x3D; libros.map((libro) &#x3D;&gt;
+          libro.id &#x3D;&#x3D;&#x3D; libroActualizado.id ? libroActualizado : libro
         );
-    }
+        return this.http.put(this.jsonUrl, librosActualizados, {
+          headers: { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; }
+        });
+      })
+    );
+  }
 
-
-}
-</code></pre>
+  /**
+   * @method eliminarLibro
+   * @description Método para eliminar un libro de la lista.
+   * @param {number} id ID del libro a eliminar.
+   * @returns {Observable&lt;any&gt;} Devuelve un observable con el resultado de la eliminación.
+   */
+  eliminarLibro(id: number): Observable&lt;any&gt; {
+    return new Observable(observer &#x3D;&gt; {
+      this.obtenerLibros().subscribe({
+        next: (libros) &#x3D;&gt; {
+          const librosActualizados &#x3D; libros.filter(libro &#x3D;&gt; libro.id !&#x3D;&#x3D; id);
+          this.http.put(this.jsonUrl, librosActualizados).subscribe({
+            next: () &#x3D;&gt; {
+              observer.next();
+              observer.complete();
+            },
+            error: (err) &#x3D;&gt; observer.error(err)
+          });
+        },
+        error: (err) &#x3D;&gt; observer.error(err)
+      });
+    });
+  }
+}</code></pre>
     </div>
 
 </div>

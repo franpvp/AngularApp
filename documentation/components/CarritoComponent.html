@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para gestionar el carrito de compras. Permite visualizar los productos agregados al carrito,
+calcular el total de la compra y navegar a la página de pago.</p>
+
+    </p>
 
 
 
@@ -142,6 +150,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                                 <code><a href="../injectables/LibrosService.html" target="_self" >LibrosService</a></code>
+                            <code>{ provide: LOCALE_ID, useValue:  }</code>
                 </td>
             </tr>
 
@@ -235,6 +244,9 @@
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
+                            <li>
+                                <a href="#obtenerCarritoAgrupado" >obtenerCarritoAgrupado</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -253,17 +265,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: Router, librosService: <a href="../injectables/LibrosService.html" target="_self">LibrosService</a>)</code>
+<code>constructor(carritoService: <a href="../injectables/CarritoService.html" target="_self">CarritoService</a>, router: Router)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/carrito/carrito.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/carrito/carrito.component.ts:49</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente CarritoComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -272,9 +286,26 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                                <tr>
+                                                        <td>carritoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CarritoService.html" target="_self" >CarritoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio encargado de gestionar el carrito de compras.</p>
+
+                                                        </td>
+                                                </tr>
                                                 <tr>
                                                         <td>router</td>
                                                   
@@ -286,18 +317,10 @@
                                                             No
                                                     </td>
                                                     
-                                                </tr>
-                                                <tr>
-                                                        <td>librosService</td>
-                                                  
                                                         <td>
-                                                                        <code><a href="../injectables/LibrosService.html" target="_self" >LibrosService</a></code>
+                                                                <p>Instancia de Router para la navegación a la página de pago.</p>
+
                                                         </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -337,19 +360,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:77</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para calcular el total de la compra en el carrito.
+Este método calcula el total de los productos en el carrito agrupados por producto,
+multiplicando el precio por la cantidad de cada uno.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>El total calculado del carrito de compras.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -374,14 +405,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:89</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para cargar los productos del carrito desde localStorage.
+Obtiene los productos guardados en localStorage y los asigna a la propiedad productosEnCarrito.
+Luego, se calcula el total del carrito.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -411,14 +446,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para navegar a la página de pago (metodo-pago).
+Redirige al usuario a la ruta de la página de pago donde podrá completar la compra.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -448,19 +486,67 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:127</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta cuando el componente es inicializado.
+Este método se suscribe al observable de carritoService para obtener los productos
+en el carrito y actualizar el total en el carrito.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="obtenerCarritoAgrupado"></a>
+                    <span class="name">
+                        <span ><b>obtenerCarritoAgrupado</b></span>
+                        <a href="#obtenerCarritoAgrupado"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>obtenerCarritoAgrupado()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/components/carrito/carrito.component.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método para obtener el carrito agrupado por producto.
+Este método agrupa los productos por ID y cuenta la cantidad de veces que aparece cada producto en el carrito.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un arreglo de objetos con los libros agrupados por ID y su cantidad.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -495,10 +581,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/carrito/carrito.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/carrito/carrito.component.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de libros disponibles en el sistema, no necesariamente los que están en el carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -526,10 +618,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/carrito/carrito.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/carrito/carrito.component.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de productos (libros) que el usuario ha agregado al carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -557,10 +655,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/carrito/carrito.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/carrito/carrito.component.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total de la compra calculado a partir de los productos en el carrito.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -588,10 +692,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/carrito/carrito.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/carrito/carrito.component.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Nombre de usuario que tiene el carrito, si está logueado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -601,13 +711,19 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, LOCALE_ID } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { Libro } from &#x27;../../models/interfaces&#x27;;
 import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { NavComponent } from &quot;../nav/nav.component&quot;;
 import { LibrosService } from &#x27;../../services/libros/libros.service&#x27;;
+import { CarritoService } from &#x27;../../services/carrito/carrito.service&#x27;;
 
+/**
+ * @description
+ * Componente para gestionar el carrito de compras. Permite visualizar los productos agregados al carrito,
+ * calcular el total de la compra y navegar a la página de pago.
+ */
 @Component({
   selector: &#x27;app-carrito&#x27;,
   standalone: true,
@@ -615,27 +731,74 @@ import { LibrosService } from &#x27;../../services/libros/libros.service&#x27;;
   templateUrl: &#x27;./carrito.component.html&#x27;,
   styleUrl: &#x27;./carrito.component.css&#x27;,
   providers: [
-    LibrosService
+    LibrosService,
+    { provide: LOCALE_ID, useValue: &#x27;es-CL&#x27; }
   ],
 })
 export class CarritoComponent {
 
+  /**
+   * @description
+   * Nombre de usuario que tiene el carrito, si está logueado.
+   */
   username: string | null &#x3D; null;
+
+  /**
+   * @description
+   * Lista de productos (libros) que el usuario ha agregado al carrito.
+   */
   productosEnCarrito: Libro[] &#x3D; [];
+
+  /**
+   * @description
+   * Total de la compra calculado a partir de los productos en el carrito.
+   */
   totalCarrito: number &#x3D; 0;
+
+  /**
+   * @description
+   * Lista de libros disponibles en el sistema, no necesariamente los que están en el carrito.
+   */
   libros: Libro[] &#x3D; [];
 
-  constructor(private router: Router, private librosService: LibrosService) {
-  }
+  /**
+   * @constructor
+   * Constructor del componente CarritoComponent.
+   * @param carritoService Servicio encargado de gestionar el carrito de compras.
+   * @param router Instancia de Router para la navegación a la página de pago.
+   */
+  constructor(private carritoService: CarritoService, private router: Router) { }
 
+  /**
+   * @method
+   * Método para navegar a la página de pago (metodo-pago).
+   * @description
+   * Redirige al usuario a la ruta de la página de pago donde podrá completar la compra.
+   */
   goToPago(): void {
     this.router.navigate([&#x27;metodo-pago&#x27;]);
   }
 
+  /**
+   * @method
+   * Método para calcular el total de la compra en el carrito.
+   * @returns El total calculado del carrito de compras.
+   * @description
+   * Este método calcula el total de los productos en el carrito agrupados por producto,
+   * multiplicando el precio por la cantidad de cada uno.
+   */
   calcularTotal(): number {
-    return this.productosEnCarrito ? this.productosEnCarrito.reduce((acc, prod) &#x3D;&gt; acc + prod.precio, 0) : 0;
+    const agrupado &#x3D; this.obtenerCarritoAgrupado();
+    return agrupado.reduce((acc, item) &#x3D;&gt; acc + (item.libro.precio * item.cantidad), 0);
   }
 
+  /**
+   * @method
+   * Método para cargar los productos del carrito desde localStorage.
+   * @description
+   * Obtiene los productos guardados en localStorage y los asigna a la propiedad productosEnCarrito.
+   * Luego, se calcula el total del carrito.
+   */
   cargarCarrito(): void {
     // Obtener los productos del carrito desde localStorage
     const carritoData &#x3D; localStorage.getItem(&#x27;productosEnCarrito&#x27;);
@@ -645,11 +808,42 @@ export class CarritoComponent {
     }
   }
 
-  ngOnInit(): void {
-    this.cargarCarrito();
+  /**
+   * @method
+   * Método para obtener el carrito agrupado por producto.
+   * @returns Un arreglo de objetos con los libros agrupados por ID y su cantidad.
+   * @description
+   * Este método agrupa los productos por ID y cuenta la cantidad de veces que aparece cada producto en el carrito.
+   */
+  obtenerCarritoAgrupado(): { libro: Libro, cantidad: number }[] {
+    const agrupado: { [id: number]: { libro: Libro, cantidad: number } } &#x3D; {};
+  
+    // Agrupar por ID de producto y contar cantidades
+    this.productosEnCarrito.forEach(libro &#x3D;&gt; {
+      if (agrupado[libro.id]) {
+        agrupado[libro.id].cantidad++;
+      } else {
+        agrupado[libro.id] &#x3D; { libro, cantidad: 1 };
+      }
+    });
+  
+    return Object.values(agrupado);
   }
-}
-</code></pre>
+
+  /**
+   * @method
+   * Método que se ejecuta cuando el componente es inicializado.
+   * @description
+   * Este método se suscribe al observable de carritoService para obtener los productos
+   * en el carrito y actualizar el total en el carrito.
+   */
+  ngOnInit(): void {
+    this.carritoService.carrito$.subscribe((productos) &#x3D;&gt; {
+      this.productosEnCarrito &#x3D; productos;
+      this.totalCarrito &#x3D; this.carritoService.calcularTotal();
+    });
+  }
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -670,27 +864,45 @@ export class CarritoComponent {
         &lt;!-- Mostrar productos si el total es distinto de cero --&gt;
         &lt;div class&#x3D;&quot;container-fluid&quot; *ngIf&#x3D;&quot;productosEnCarrito.length &gt; 0; else carritoVacio&quot;&gt;
             &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
-                &lt;div class&#x3D;&quot;col-auto m-4&quot;&gt;
-                    &lt;div class&#x3D;&quot;contenedor-carrito&quot; style&#x3D;&quot;margin: 20px; padding: 40px;&quot;&gt;
-                        &lt;div style&#x3D;&quot;margin-bottom: 10px;&quot;&gt;&lt;strong&gt;Detalles:&lt;/strong&gt;&lt;/div&gt;
-                        &lt;div class&#x3D;&quot;text-center&quot; *ngFor&#x3D;&quot;let producto of productosEnCarrito&quot;&gt;
-                            &lt;img class&#x3D;&quot;mb-3&quot; [src]&#x3D;&quot;producto.imagen&quot; [alt]&#x3D;&quot;producto.titulo&quot; width&#x3D;&quot;100px&quot; height&#x3D;&quot;100px&quot;&gt;
-                            &lt;p style&#x3D;&quot;text-align: center;&quot;&gt;{{ producto.titulo }} - {{ producto.precio | currency }}&lt;/p&gt;
-                        &lt;/div&gt;
-                        &lt;div class&#x3D;&quot;carrito-total text-center mt-4&quot;&gt;
-                            &lt;strong&gt;Total: {{ calcularTotal() | currency }}&lt;/strong&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class&#x3D;&quot;text-center mt-3&quot;&gt;
+              &lt;div class&#x3D;&quot;col-12 col-md-10 col-lg-8&quot;&gt;
+                &lt;div class&#x3D;&quot;contenedor-carrito table-responsive&quot; style&#x3D;&quot;margin: 20px; padding: 20px;&quot;&gt;
+                  &lt;div style&#x3D;&quot;margin-bottom: 10px;&quot;&gt;&lt;strong&gt;Detalles del Carrito:&lt;/strong&gt;&lt;/div&gt;
+                  &lt;table class&#x3D;&quot;table table-bordered table-striped text-center&quot;&gt;
+                    &lt;thead class&#x3D;&quot;thead-dark&quot;&gt;
+                      &lt;tr&gt;
+                        &lt;th&gt;&lt;/th&gt;
+                        &lt;th&gt;Producto&lt;/th&gt;
+                        &lt;th&gt;Precio&lt;/th&gt;
+                        &lt;th&gt;Cantidad&lt;/th&gt;
+                        &lt;th&gt;Subtotal&lt;/th&gt;
+                      &lt;/tr&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                      &lt;tr *ngFor&#x3D;&quot;let producto of obtenerCarritoAgrupado()&quot;&gt;
+                        &lt;td&gt;
+                          &lt;img [src]&#x3D;&quot;producto.libro.imagen&quot; [alt]&#x3D;&quot;producto.libro.titulo&quot; width&#x3D;&quot;80px&quot; height&#x3D;&quot;80px&quot;&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;{{ producto.libro.titulo }}&lt;/td&gt;
+                        &lt;td&gt;${{ producto.libro.precio | number:&#x27;1.0-0&#x27; }}&lt;/td&gt;
+                        &lt;td&gt;{{ producto.cantidad }}&lt;/td&gt;
+                        &lt;td&gt;${{ producto.libro.precio * producto.cantidad | number:&#x27;1.0-0&#x27; }}&lt;/td&gt;
+                      &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                  &lt;/table&gt;
+                  &lt;div class&#x3D;&quot;carrito-total text-center mt-3&quot; style&#x3D;&quot;font-size: 20px;&quot;&gt;
+                    &lt;strong&gt;Total: ${{ calcularTotal() | number:&#x27;1.0-0&#x27; }}&lt;/strong&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;text-center mt-4&quot;&gt;
                     &lt;button 
-                        class&#x3D;&quot;btn-ver-carrito add-to-cart-btn col-xs-4 col-sm-6 col-md-4 col-lg-4 mx-auto&quot;
-                        (click)&#x3D;&quot;goToPago()&quot;&gt;
-                        Continuar Pago
+                      class&#x3D;&quot;btn btn-primary col-xs-12 col-sm-6 col-md-4 col-lg-4 mx-auto&quot;
+                      (click)&#x3D;&quot;goToPago()&quot;&gt;
+                      Continuar Pago
                     &lt;/button&gt;
+                  &lt;/div&gt;
                 &lt;/div&gt;
+              &lt;/div&gt;
             &lt;/div&gt;
-        &lt;/div&gt;
+          &lt;/div&gt;
         &lt;!-- Mostrar mensaje si no hay productos en el carrito --&gt;
         &lt;ng-template #carritoVacio&gt;
             &lt;div class&#x3D;&quot;container-fluid&quot;&gt;
@@ -734,7 +946,7 @@ export class CarritoComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 40px;">        <div class="row align-items-center">            <div class="col">                <div class="line"></div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Carrito de Compras</div>            </div>            <div class="col">                <div class="line"></div>            </div>        </div>        <!-- Mostrar productos si el total es distinto de cero -->        <div class="container-fluid" *ngIf="productosEnCarrito.length > 0; else carritoVacio">            <div class="row justify-content-center">                <div class="col-auto m-4">                    <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">                        <div style="margin-bottom: 10px;"><strong>Detalles:</strong></div>                        <div class="text-center" *ngFor="let producto of productosEnCarrito">                            <img class="mb-3" [src]="producto.imagen" [alt]="producto.titulo" width="100px" height="100px">                            <p style="text-align: center;">{{ producto.titulo }} - {{ producto.precio | currency }}</p>                        </div>                        <div class="carrito-total text-center mt-4">                            <strong>Total: {{ calcularTotal() | currency }}</strong>                        </div>                    </div>                </div>                <div class="text-center mt-3">                    <button                         class="btn-ver-carrito add-to-cart-btn col-xs-4 col-sm-6 col-md-4 col-lg-4 mx-auto"                        (click)="goToPago()">                        Continuar Pago                    </button>                </div>            </div>        </div>        <!-- Mostrar mensaje si no hay productos en el carrito -->        <ng-template #carritoVacio>            <div class="container-fluid">                <div class="row justify-content-center">                    <div class="col-auto m-4">                        <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">                            <strong class="text-center">No hay productos en el carrito</strong>                        </div>                    </div>                </div>            </div>        </ng-template>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 40px;">        <div class="row align-items-center">            <div class="col">                <div class="line"></div>            </div>            <div class="col-auto">                <div class="title-recomendados" style="text-align: center; font-size: 40px;">Carrito de Compras</div>            </div>            <div class="col">                <div class="line"></div>            </div>        </div>        <!-- Mostrar productos si el total es distinto de cero -->        <div class="container-fluid" *ngIf="productosEnCarrito.length > 0; else carritoVacio">            <div class="row justify-content-center">              <div class="col-12 col-md-10 col-lg-8">                <div class="contenedor-carrito table-responsive" style="margin: 20px; padding: 20px;">                  <div style="margin-bottom: 10px;"><strong>Detalles del Carrito:</strong></div>                  <table class="table table-bordered table-striped text-center">                    <thead class="thead-dark">                      <tr>                        <th></th>                        <th>Producto</th>                        <th>Precio</th>                        <th>Cantidad</th>                        <th>Subtotal</th>                      </tr>                    </thead>                    <tbody>                      <tr *ngFor="let producto of obtenerCarritoAgrupado()">                        <td>                          <img [src]="producto.libro.imagen" [alt]="producto.libro.titulo" width="80px" height="80px">                        </td>                        <td>{{ producto.libro.titulo }}</td>                        <td>${{ producto.libro.precio | number:\'1.0-0\' }}</td>                        <td>{{ producto.cantidad }}</td>                        <td>${{ producto.libro.precio * producto.cantidad | number:\'1.0-0\' }}</td>                      </tr>                    </tbody>                  </table>                  <div class="carrito-total text-center mt-3" style="font-size: 20px;">                    <strong>Total: ${{ calcularTotal() | number:\'1.0-0\' }}</strong>                  </div>                  <div class="text-center mt-4">                    <button                       class="btn btn-primary col-xs-12 col-sm-6 col-md-4 col-lg-4 mx-auto"                      (click)="goToPago()">                      Continuar Pago                    </button>                  </div>                </div>              </div>            </div>          </div>        <!-- Mostrar mensaje si no hay productos en el carrito -->        <ng-template #carritoVacio>            <div class="container-fluid">                <div class="row justify-content-center">                    <div class="col-auto m-4">                        <div class="contenedor-carrito" style="margin: 20px; padding: 40px;">                            <strong class="text-center">No hay productos en el carrito</strong>                        </div>                    </div>                </div>            </div>        </ng-template>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CarritoComponent'};

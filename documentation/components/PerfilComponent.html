@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que gestiona el perfil del usuario en la aplicación.
+Permite ver, editar y guardar información del perfil, como nombres, apellidos, correo, fecha de nacimiento y domicilio.</p>
+
+    </p>
 
 
 
@@ -162,6 +170,7 @@
                             <code>CommonModule</code>
                             <code>FormsModule</code>
                                 <code><a href="../components/NavComponent.html" target="_self" >NavComponent</a></code>
+                            <code>ReactiveFormsModule</code>
                 </td>
             </tr>
 
@@ -201,13 +210,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#edicionUsuarioForm" >edicionUsuarioForm</a>
+                            </li>
+                            <li>
                                 <a href="#editando" >editando</a>
                             </li>
                             <li>
                                 <a href="#mensajeExitoso" >mensajeExitoso</a>
                             </li>
                             <li>
+                                <a href="#usuario" >usuario</a>
+                            </li>
+                            <li>
+                                <a href="#usuarioEnEdicion" >usuarioEnEdicion</a>
+                            </li>
+                            <li>
                                 <a href="#usuarioLogeado" >usuarioLogeado</a>
+                            </li>
+                            <li>
+                                <a href="#usuarios" >usuarios</a>
                             </li>
                         </ul>
                     </td>
@@ -222,10 +243,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#activarEdicion" >activarEdicion</a>
+                            </li>
+                            <li>
                                 <a href="#cancelarEdicion" >cancelarEdicion</a>
                             </li>
                             <li>
+                                <a href="#editarUsuario" >editarUsuario</a>
+                            </li>
+                            <li>
+                                <a href="#guardarCambios" >guardarCambios</a>
+                            </li>
+                            <li>
+                                <a href="#inicializarFormulario" >inicializarFormulario</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#obtenerUsuarios" >obtenerUsuarios</a>
                             </li>
                         </ul>
                     </td>
@@ -245,17 +281,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, fb: FormBuilder)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/perfil/perfil.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/perfil/perfil.component.ts:74</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Crea una instancia del <code>PerfilComponent</code> y configura el formulario reactivo.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -264,6 +302,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +317,26 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de autenticación para obtener y actualizar usuarios.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Constructor de formularios reactivos.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -301,6 +360,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="activarEdicion"></a>
+                    <span class="name">
+                        <span ><b>activarEdicion</b></span>
+                        <a href="#activarEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>activarEdicion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:178</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Activa el modo de edición del formulario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="cancelarEdicion"></a>
                     <span class="name">
                         <span ><b>cancelarEdicion</b></span>
@@ -317,19 +415,174 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="125"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:125</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Cancela el proceso de edición y restaura los valores originales del formulario.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarUsuario"></a>
+                    <span class="name">
+                        <span ><b>editarUsuario</b></span>
+                        <a href="#editarUsuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarUsuario()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Activa el modo de edición para el usuario logeado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarCambios"></a>
+                    <span class="name">
+                        <span ><b>guardarCambios</b></span>
+                        <a href="#guardarCambios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarCambios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda los cambios realizados en el perfil del usuario.
+Llama al servicio <code>AuthService</code> para actualizar los datos en el backend.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializarFormulario"></a>
+                    <span class="name">
+                        <span ><b>inicializarFormulario</b></span>
+                        <a href="#inicializarFormulario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>inicializarFormulario(usuario: <a href="../interfaces/Usuario.html" target="_self">Usuario</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:170</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el formulario reactivo con los valores del usuario proporcionado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>usuario</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Usuario.html" target="_self" >Usuario</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El usuario cuyos datos se utilizarán para inicializar el formulario.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -354,14 +607,56 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:187</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método del ciclo de vida que se ejecuta al inicializar el componente.
+Carga el usuario logeado desde el localStorage y valida su existencia en el backend.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="obtenerUsuarios"></a>
+                    <span class="name">
+                        <span ><b>obtenerUsuarios</b></span>
+                        <a href="#obtenerUsuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>obtenerUsuarios()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/components/perfil/perfil.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la lista de usuarios del servicio AuthService y los almacena en la propiedad <code>usuarios</code>.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -377,6 +672,38 @@
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edicionUsuarioForm"></a>
+                    <span class="name">
+                        <span ><b>edicionUsuarioForm</b></span>
+                        <a href="#edicionUsuarioForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/perfil/perfil.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario reactivo utilizado para gestionar la edición de los datos del perfil.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -401,10 +728,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/perfil/perfil.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/perfil/perfil.component.ts:62</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el formulario está en modo de edición.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -432,10 +765,90 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/perfil/perfil.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/perfil/perfil.component.ts:68</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Muestra un mensaje de éxito cuando se guardan los cambios correctamente.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuario"></a>
+                    <span class="name">
+                        <span ><b>usuario</b></span>
+                        <a href="#usuario"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/perfil/perfil.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario seleccionado (en uso para potenciales operaciones).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioEnEdicion"></a>
+                    <span class="name">
+                        <span ><b>usuarioEnEdicion</b></span>
+                        <a href="#usuarioEnEdicion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario | null</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/perfil/perfil.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuario que actualmente está siendo editado en el formulario.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -458,10 +871,53 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/perfil/perfil.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/perfil/perfil.component.ts:50</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Información del usuario actualmente logeado, cargada desde <code>localStorage</code> y validada en el backend.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarios"></a>
+                    <span class="name">
+                        <span ><b>usuarios</b></span>
+                        <a href="#usuarios"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Usuario.html" target="_self" >Usuario[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/perfil/perfil.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de usuarios disponibles, obtenida desde el servicio AuthService.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -471,19 +927,31 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectorRef, Component } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
-import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from &#x27;@angular/forms&#x27;;
 
 // Componentes
 import { NavComponent } from &quot;../nav/nav.component&quot;;
 import { AuthService } from &#x27;../../services/auth/auth.service&#x27;;
 import { Usuario } from &#x27;../../models/interfaces&#x27;;
 
+/**
+ * @Component
+ * Componente que gestiona el perfil del usuario en la aplicación. 
+ * Permite ver, editar y guardar información del perfil, como nombres, apellidos, correo, fecha de nacimiento y domicilio.
+ *
+ * @selector app-perfil
+ * @standalone true
+ * @imports [CommonModule, FormsModule, NavComponent, ReactiveFormsModule]
+ * @templateUrl ./perfil.component.html
+ * @styleUrls ./perfil.component.css
+ * @providers [AuthService]
+ */
 @Component({
   selector: &#x27;app-perfil&#x27;,
   standalone: true,
-  imports: [CommonModule, FormsModule, NavComponent],
+  imports: [CommonModule, FormsModule, NavComponent, ReactiveFormsModule],
   templateUrl: &#x27;./perfil.component.html&#x27;,
   styleUrl: &#x27;./perfil.component.css&#x27;,
   providers: [
@@ -491,70 +959,182 @@ import { Usuario } from &#x27;../../models/interfaces&#x27;;
   ],
 })
 export class PerfilComponent {
+  
+  /**
+   * @property {Usuario[]} usuarios
+   * Lista de usuarios disponibles, obtenida desde el servicio AuthService.
+   */
+  usuarios: Usuario[] &#x3D; [];
 
+  /**
+   * @property {Usuario | null} usuario
+   * Usuario seleccionado (en uso para potenciales operaciones).
+   */
+  usuario: Usuario | null &#x3D; null;
+
+  /**
+   * @property {Usuario | undefined} usuarioLogeado
+   * Información del usuario actualmente logeado, cargada desde &#x60;localStorage&#x60; y validada en el backend.
+   */
   usuarioLogeado: Usuario | undefined;
+
+  /**
+   * @property {Usuario | null} usuarioEnEdicion
+   * Usuario que actualmente está siendo editado en el formulario.
+   */
+  usuarioEnEdicion: Usuario | null &#x3D; null;
+
+  /**
+   * @property {boolean} editando
+   * Indica si el formulario está en modo de edición.
+   */
   editando: boolean &#x3D; false;
+
+  /**
+   * @property {boolean} mensajeExitoso
+   * Muestra un mensaje de éxito cuando se guardan los cambios correctamente.
+   */
   mensajeExitoso: boolean &#x3D; false;
 
-  constructor(private authService: AuthService) {
-    
+  /**
+   * @property {FormGroup} edicionUsuarioForm
+   * Formulario reactivo utilizado para gestionar la edición de los datos del perfil.
+   */
+  edicionUsuarioForm!: FormGroup;
+
+  /**
+   * @constructor
+   * Crea una instancia del &#x60;PerfilComponent&#x60; y configura el formulario reactivo.
+   * 
+   * @param {AuthService} authService Servicio de autenticación para obtener y actualizar usuarios.
+   * @param {FormBuilder} fb Constructor de formularios reactivos.
+   */
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    this.edicionUsuarioForm &#x3D; this.fb.group({
+      nombres: [&#x27;&#x27;, Validators.required],
+      apellidos: [&#x27;&#x27;, Validators.required],
+      correo: [&#x27;&#x27;, [Validators.required, Validators.email]],
+      fecha_nacimiento: [&#x27;&#x27;, Validators.required],
+      domicilio: [&#x27;&#x27;],
+    });
   }
 
- // toggleEditar(): void {
-  //   if (this.editando &amp;&amp; this.usuarioLogeado) {
-  //     // Guardar cambios
-  //     this.authService.actualizarUsuario(this.usuarioLogeado).subscribe((resultado) &#x3D;&gt; {
-  //       if (resultado) {
-  //         this.mensajeExitoso &#x3D; true;
-  //         setTimeout(() &#x3D;&gt; {
-  //           this.mensajeExitoso &#x3D; false;
-  //         }, 3000);
-  //       } else {
-  //         alert(&#x27;No se pudo actualizar el perfil&#x27;);
-  //       }
-  //     });
-  //   }
-  //   this.editando &#x3D; !this.editando;
-  // } 
+  /**
+   * @method guardarCambios
+   * Guarda los cambios realizados en el perfil del usuario.
+   * Llama al servicio &#x60;AuthService&#x60; para actualizar los datos en el backend.
+   */
+  guardarCambios(): void {
+    if (this.edicionUsuarioForm.invalid || !this.usuarioLogeado) {
+      console.error(&#x27;Formulario inválido o usuario no definido&#x27;);
+      return;
+    }
 
-  // cancelarEdicion(): void {
-  //   const username &#x3D; localStorage.getItem(&#x27;username&#x27;);
-  //   if (username) {
-  //     // Revertir los cambios
-  //     this.authService.obtenerUsuariosJson().subscribe((usuarios) &#x3D;&gt; {
-  //       this.usuarioLogeado &#x3D; usuarios.find((user) &#x3D;&gt; user.username &#x3D;&#x3D;&#x3D; username);
-  //       this.editando &#x3D; false;
-  //     });
-  //   }
-  // }
+    const usuarioActualizado: Usuario &#x3D; {
+      ...this.usuarioLogeado,
+      ...this.edicionUsuarioForm.value,
+    };
 
+    this.authService.editarUsuarioActualizado(usuarioActualizado).subscribe({
+      next: () &#x3D;&gt; {
+        console.log(&#x27;Usuario actualizado correctamente&#x27;);
+        this.mensajeExitoso &#x3D; true;
+        this.usuarioLogeado &#x3D; usuarioActualizado;
+        this.usuarioEnEdicion &#x3D; null;
+        this.editando &#x3D; false;
+      },
+      error: (error) &#x3D;&gt; console.error(&#x27;Error al actualizar usuario:&#x27;, error),
+    });
+  }
 
+  /**
+   * @method cancelarEdicion
+   * Cancela el proceso de edición y restaura los valores originales del formulario.
+   */
   cancelarEdicion(): void {
+    if (this.usuarioLogeado) {
+      this.edicionUsuarioForm.reset(this.usuarioLogeado);
+    }
+    this.usuarioEnEdicion &#x3D; null;
     this.editando &#x3D; false;
-    this.ngOnInit();  // Recargar los datos del usuario para cancelar cualquier cambio
   }
-  
-  ngOnInit(): void {
-    const usuarioLogeado &#x3D; localStorage.getItem(&#x27;usuario&#x27;);
 
-    if (usuarioLogeado) {
-      this.authService.obtenerUsuarios().subscribe(usuarios &#x3D;&gt; {
-        const usuario &#x3D; usuarios.find(user &#x3D;&gt; user.username &#x3D;&#x3D;&#x3D; JSON.parse(usuarioLogeado)?.username);
-        if (usuario) {
-          this.usuarioLogeado &#x3D; usuario;
-        } else {
-          console.error(&#x27;Usuario no encontrado en la lista de usuarios.&#x27;);
-        }
-      }, error &#x3D;&gt; {
-        console.error(&#x27;Error al obtener usuarios:&#x27;, error);
-      });
-    } else {
-      console.log(&#x27;No hay usuario logeado en el localStorage.&#x27;);
+  /**
+   * @method editarUsuario
+   * Activa el modo de edición para el usuario logeado.
+   */
+  editarUsuario(): void {
+    if (!this.usuarioLogeado) {
+      console.error(&#x27;Usuario no está logeado&#x27;);
+      return;
+    }
+
+    this.usuarioEnEdicion &#x3D; this.usuarioLogeado;
+    this.edicionUsuarioForm.patchValue(this.usuarioLogeado);
+    this.editando &#x3D; true;
+  }
+
+  /**
+   * @method obtenerUsuarios
+   * Obtiene la lista de usuarios del servicio AuthService y los almacena en la propiedad &#x60;usuarios&#x60;.
+   */
+  obtenerUsuarios(): void {
+    this.authService.obtenerUsuarios().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.usuarios &#x3D; data;
+        console.log(&quot;Resultados usuarios: &quot;, this.usuarios);
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error al obtener los usuarios:&#x27;, error);
+      },
+    });
+  }
+
+  /**
+   * @method inicializarFormulario
+   * Inicializa el formulario reactivo con los valores del usuario proporcionado.
+   * 
+   * @param {Usuario} usuario El usuario cuyos datos se utilizarán para inicializar el formulario.
+   */
+  inicializarFormulario(usuario: Usuario): void {
+    this.edicionUsuarioForm.patchValue(usuario);
+  }
+
+  /**
+   * @method activarEdicion
+   * Activa el modo de edición del formulario.
+   */
+  activarEdicion(): void {
+    this.editando &#x3D; true;
+  }
+
+  /**
+   * @method ngOnInit
+   * Método del ciclo de vida que se ejecuta al inicializar el componente.
+   * Carga el usuario logeado desde el localStorage y valida su existencia en el backend.
+   */
+  ngOnInit(): void {
+    const usuarioGuardado &#x3D; localStorage.getItem(&#x27;usuario&#x27;);
+    if (usuarioGuardado) {
+      this.usuarioLogeado &#x3D; JSON.parse(usuarioGuardado);
+
+      if (this.usuarioLogeado?.username) {
+        this.authService.obtenerUsuarios().subscribe({
+          next: (usuarios: Usuario[]) &#x3D;&gt; {
+            const usuarioEncontrado &#x3D; usuarios.find(u &#x3D;&gt; u.username &#x3D;&#x3D;&#x3D; this.usuarioLogeado?.username);
+            if (usuarioEncontrado) {
+              this.usuarioLogeado &#x3D; usuarioEncontrado;
+              this.inicializarFormulario(usuarioEncontrado);
+            } else {
+              console.error(&#x27;Usuario no encontrado en el sistema&#x27;);
+            }
+          },
+          error: (error) &#x3D;&gt; console.error(&#x27;Error al obtener usuarios:&#x27;, error),
+        });
+      }
     }
   }
-  
-}
-</code></pre>
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
@@ -577,92 +1157,92 @@ export class PerfilComponent {
                 &lt;div id&#x3D;&quot;username&quot; class&#x3D;&quot;txt-username&quot;&gt;&lt;strong&gt;{{ usuarioLogeado?.username }}&lt;/strong&gt;&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-    
-        &lt;div class&#x3D;&quot;text-center my-3&quot;&gt;
-            &lt;!-- &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;toggleEditar()&quot;&gt;
-                {{ editando ? &#x27;Guardar Cambios&#x27; : &#x27;Editar Perfil&#x27; }}
-            &lt;/button&gt; --&gt;
-            &lt;button class&#x3D;&quot;btn btn-secondary ms-2&quot; *ngIf&#x3D;&quot;editando&quot; (click)&#x3D;&quot;cancelarEdicion()&quot;&gt;Cancelar&lt;/button&gt;
-        &lt;/div&gt;
-    
-        &lt;div class&#x3D;&quot;container contenedor-perfil&quot;&gt;
-            &lt;div class&#x3D;&quot;row g-3 justify-content-center&quot;&gt;
-                &lt;div class&#x3D;&quot;col-auto&quot;&gt;
+        &lt;form [formGroup]&#x3D;&quot;edicionUsuarioForm&quot;&gt;
+            &lt;div class&#x3D;&quot;container&quot;&gt;
+                &lt;div class&#x3D;&quot;row g-3 justify-content-center&quot;&gt;
+                    &lt;!-- Nombres --&gt;
+                    &lt;div class&#x3D;&quot;col-xs-12 col-md-10 col-lg-5&quot;&gt;
                     &lt;p style&#x3D;&quot;font-weight: 500;&quot;&gt;Nombres&lt;/p&gt;
                     &lt;div id&#x3D;&quot;nombres-usuario&quot; class&#x3D;&quot;campos-perfil&quot;&gt;
                         &lt;strong *ngIf&#x3D;&quot;!editando&quot;&gt;{{ usuarioLogeado?.nombres }}&lt;/strong&gt;
-                        &lt;input
-                            *ngIf&#x3D;&quot;editando &amp;&amp; usuarioLogeado&quot;
-                            type&#x3D;&quot;text&quot;
-                            [(ngModel)]&#x3D;&quot;usuarioLogeado.nombres&quot;
-                            class&#x3D;&quot;form-control&quot;
-                        /&gt;
+                        &lt;input *ngIf&#x3D;&quot;editando&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;nombres&quot; class&#x3D;&quot;form-control&quot; /&gt;
                     &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-auto&quot;&gt;
-                    &lt;p&gt;Apellidos&lt;/p&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Apellidos --&gt;
+                    &lt;div class&#x3D;&quot;col-xs-12 col-md-10 col-lg-5&quot;&gt;
+                        &lt;p&gt;Apellidos&lt;/p&gt;
                     &lt;div id&#x3D;&quot;apellidos-usuario&quot; class&#x3D;&quot;campos-perfil&quot;&gt;
                         &lt;strong *ngIf&#x3D;&quot;!editando&quot;&gt;{{ usuarioLogeado?.apellidos }}&lt;/strong&gt;
-                        &lt;input
-                            *ngIf&#x3D;&quot;editando &amp;&amp; usuarioLogeado&quot;
-                            type&#x3D;&quot;text&quot;
-                            [(ngModel)]&#x3D;&quot;usuarioLogeado.apellidos&quot;
-                            class&#x3D;&quot;form-control&quot;
-                        /&gt;
+                        &lt;input *ngIf&#x3D;&quot;editando&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;apellidos&quot; class&#x3D;&quot;form-control&quot; /&gt;
+                    &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
-            &lt;/div&gt;
-    
-            &lt;div class&#x3D;&quot;row g-3 justify-content-center&quot;&gt;
-                &lt;div class&#x3D;&quot;col-auto&quot;&gt;
+
+                &lt;div class&#x3D;&quot;row g-3 justify-content-center&quot;&gt;
+                    &lt;!-- Correo --&gt;
+                    &lt;div class&#x3D;&quot;col-xs-12 col-md-10 col-lg-5&quot;&gt;
                     &lt;p&gt;Correo&lt;/p&gt;
                     &lt;div id&#x3D;&quot;correo&quot; class&#x3D;&quot;campos-perfil&quot;&gt;
                         &lt;strong *ngIf&#x3D;&quot;!editando&quot;&gt;{{ usuarioLogeado?.correo }}&lt;/strong&gt;
-                        &lt;input
-                            *ngIf&#x3D;&quot;editando &amp;&amp; usuarioLogeado&quot;
-                            type&#x3D;&quot;email&quot;
-                            [(ngModel)]&#x3D;&quot;usuarioLogeado.correo&quot;
-                            class&#x3D;&quot;form-control&quot;
-                        /&gt;
+                        &lt;input *ngIf&#x3D;&quot;editando&quot; type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;correo&quot; class&#x3D;&quot;form-control&quot; /&gt;
                     &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-auto&quot;&gt;
+                    &lt;/div&gt;
+            
+                    &lt;!-- Fecha de Nacimiento --&gt;
+                    &lt;div class&#x3D;&quot;col-xs-12 col-md-10 col-lg-5&quot;&gt;
                     &lt;p&gt;Fecha Nacimiento&lt;/p&gt;
                     &lt;div id&#x3D;&quot;fecha-nacimiento&quot; class&#x3D;&quot;campos-perfil&quot;&gt;
                         &lt;strong *ngIf&#x3D;&quot;!editando&quot;&gt;{{ usuarioLogeado?.fecha_nacimiento }}&lt;/strong&gt;
-                        &lt;input
-                            *ngIf&#x3D;&quot;editando &amp;&amp; usuarioLogeado&quot;
-                            type&#x3D;&quot;date&quot;
-                            [(ngModel)]&#x3D;&quot;usuarioLogeado.fecha_nacimiento&quot;
-                            class&#x3D;&quot;form-control&quot;
-                        /&gt;
+                        &lt;input *ngIf&#x3D;&quot;editando&quot; type&#x3D;&quot;date&quot; formControlName&#x3D;&quot;fecha_nacimiento&quot; class&#x3D;&quot;form-control&quot; /&gt;
                     &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-auto&quot; *ngIf&#x3D;&quot;usuarioLogeado?.domicilio !&#x3D; &#x27;&#x27;&quot;&gt;
+                    &lt;/div&gt;
+            
+                    &lt;!-- Domicilio --&gt;
+                    &lt;div class&#x3D;&quot;col-xs-12 col-md-10 col-lg-5&quot; *ngIf&#x3D;&quot;usuarioLogeado?.domicilio&quot;&gt;
                     &lt;p&gt;Domicilio&lt;/p&gt;
                     &lt;div id&#x3D;&quot;domicilio&quot; class&#x3D;&quot;campos-perfil&quot;&gt;
                         &lt;strong *ngIf&#x3D;&quot;!editando&quot;&gt;{{ usuarioLogeado?.domicilio }}&lt;/strong&gt;
-                        &lt;input
-                            *ngIf&#x3D;&quot;editando &amp;&amp; usuarioLogeado&quot;
-                            type&#x3D;&quot;text&quot;
-                            [(ngModel)]&#x3D;&quot;usuarioLogeado.domicilio&quot;
-                            class&#x3D;&quot;form-control&quot;
-                        /&gt;
+                        &lt;input *ngIf&#x3D;&quot;editando&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;domicilio&quot; class&#x3D;&quot;form-control&quot; /&gt;
+                    &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
-            &lt;div class&#x3D;&quot;col-auto&quot;&gt;
-                &lt;div
-                    class&#x3D;&quot;alert alert-success text-center&quot;
-                    role&#x3D;&quot;alert&quot;
-                    *ngIf&#x3D;&quot;mensajeExitoso&quot;
-                &gt;
-                    Guardado Exitoso
+            &lt;!-- Botón para editar y guardar cambios --&gt;
+            &lt;div class&#x3D;&quot;row justify-content-center&quot;&gt;
+                &lt;div class&#x3D;&quot;col&quot;&gt;
+                    &lt;div class&#x3D;&quot;d-flex justify-content-center mb-4 mt-4&quot;&gt;
+                        &lt;button
+                            *ngIf&#x3D;&quot;!editando&quot;
+                            class&#x3D;&quot;btn btn-warning&quot;
+                            (click)&#x3D;&quot;editarUsuario()&quot;
+                            [disabled]&#x3D;&quot;!usuarioLogeado&quot;
+                        &gt;
+                        Editar
+                        &lt;/button&gt;
+                        &lt;button
+                            *ngIf&#x3D;&quot;editando&quot;
+                            class&#x3D;&quot;btn btn-success&quot;
+                            (click)&#x3D;&quot;guardarCambios()&quot;
+                        &gt;
+                        Guardar
+                        &lt;/button&gt;
+                        &lt;button
+                            *ngIf&#x3D;&quot;editando&quot;
+                            class&#x3D;&quot;btn btn-secondary ms-2&quot;
+                            (click)&#x3D;&quot;cancelarEdicion()&quot;
+                        &gt;
+                        Cancelar
+                        &lt;/button&gt;
+                    &lt;/div&gt;
                 &lt;/div&gt;
+                
             &lt;/div&gt;
-        &lt;/div&gt;
+            &lt;!-- Mensaje de éxito --&gt;
+            &lt;div *ngIf&#x3D;&quot;mensajeExitoso&quot; class&#x3D;&quot;alert alert-success mt-3&quot;&gt;
+                Cambios guardados exitosamente.
+            &lt;/div&gt;
+        &lt;/form&gt;
     &lt;/div&gt;
     &lt;footer class&#x3D;&quot;footer&quot;&gt;Todos los derechos reservados&lt;/footer&gt;
 &lt;/div&gt;
@@ -697,7 +1277,7 @@ export class PerfilComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col text-center">                <div class="title-recomendados" style="text-align: center; font-size: 50px; margin-top: 30px;">Mi perfil</div>            </div>        </div>    </div>        <div class="container-fluid flex-grow-1">        <div class="row justify-content-center align-items-center">            <div class="col-auto">                <div class="logo-perfil">                    <img src="assets/img/nav/usuario.png" alt="perfil-logo">                </div>                <div id="username" class="txt-username"><strong>{{ usuarioLogeado?.username }}</strong></div>            </div>        </div>            <div class="text-center my-3">            <!-- <button class="btn btn-primary" (click)="toggleEditar()">                {{ editando ? \'Guardar Cambios\' : \'Editar Perfil\' }}            </button> -->            <button class="btn btn-secondary ms-2" *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>        </div>            <div class="container contenedor-perfil">            <div class="row g-3 justify-content-center">                <div class="col-auto">                    <p style="font-weight: 500;">Nombres</p>                    <div id="nombres-usuario" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.nombres }}</strong>                        <input                            *ngIf="editando && usuarioLogeado"                            type="text"                            [(ngModel)]="usuarioLogeado.nombres"                            class="form-control"                        />                    </div>                </div>                <div class="col-auto">                    <p>Apellidos</p>                    <div id="apellidos-usuario" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.apellidos }}</strong>                        <input                            *ngIf="editando && usuarioLogeado"                            type="text"                            [(ngModel)]="usuarioLogeado.apellidos"                            class="form-control"                        />                    </div>                </div>            </div>                <div class="row g-3 justify-content-center">                <div class="col-auto">                    <p>Correo</p>                    <div id="correo" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.correo }}</strong>                        <input                            *ngIf="editando && usuarioLogeado"                            type="email"                            [(ngModel)]="usuarioLogeado.correo"                            class="form-control"                        />                    </div>                </div>                <div class="col-auto">                    <p>Fecha Nacimiento</p>                    <div id="fecha-nacimiento" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.fecha_nacimiento }}</strong>                        <input                            *ngIf="editando && usuarioLogeado"                            type="date"                            [(ngModel)]="usuarioLogeado.fecha_nacimiento"                            class="form-control"                        />                    </div>                </div>                <div class="col-auto" *ngIf="usuarioLogeado?.domicilio != \'\'">                    <p>Domicilio</p>                    <div id="domicilio" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.domicilio }}</strong>                        <input                            *ngIf="editando && usuarioLogeado"                            type="text"                            [(ngModel)]="usuarioLogeado.domicilio"                            class="form-control"                        />                    </div>                </div>            </div>        </div>        <div class="row justify-content-center">            <div class="col-auto">                <div                    class="alert alert-success text-center"                    role="alert"                    *ngIf="mensajeExitoso"                >                    Guardado Exitoso                </div>            </div>        </div>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex flex-column min-vh-100">    <app-nav></app-nav>    <div class="container-fluid flex-grow-1" style="margin-top: 20px;">        <div class="row align-items-center">            <div class="col text-center">                <div class="title-recomendados" style="text-align: center; font-size: 50px; margin-top: 30px;">Mi perfil</div>            </div>        </div>    </div>        <div class="container-fluid flex-grow-1">        <div class="row justify-content-center align-items-center">            <div class="col-auto">                <div class="logo-perfil">                    <img src="assets/img/nav/usuario.png" alt="perfil-logo">                </div>                <div id="username" class="txt-username"><strong>{{ usuarioLogeado?.username }}</strong></div>            </div>        </div>        <form [formGroup]="edicionUsuarioForm">            <div class="container">                <div class="row g-3 justify-content-center">                    <!-- Nombres -->                    <div class="col-xs-12 col-md-10 col-lg-5">                    <p style="font-weight: 500;">Nombres</p>                    <div id="nombres-usuario" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.nombres }}</strong>                        <input *ngIf="editando" type="text" formControlName="nombres" class="form-control" />                    </div>                    </div>                    <!-- Apellidos -->                    <div class="col-xs-12 col-md-10 col-lg-5">                        <p>Apellidos</p>                    <div id="apellidos-usuario" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.apellidos }}</strong>                        <input *ngIf="editando" type="text" formControlName="apellidos" class="form-control" />                    </div>                    </div>                </div>                <div class="row g-3 justify-content-center">                    <!-- Correo -->                    <div class="col-xs-12 col-md-10 col-lg-5">                    <p>Correo</p>                    <div id="correo" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.correo }}</strong>                        <input *ngIf="editando" type="email" formControlName="correo" class="form-control" />                    </div>                    </div>                                <!-- Fecha de Nacimiento -->                    <div class="col-xs-12 col-md-10 col-lg-5">                    <p>Fecha Nacimiento</p>                    <div id="fecha-nacimiento" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.fecha_nacimiento }}</strong>                        <input *ngIf="editando" type="date" formControlName="fecha_nacimiento" class="form-control" />                    </div>                    </div>                                <!-- Domicilio -->                    <div class="col-xs-12 col-md-10 col-lg-5" *ngIf="usuarioLogeado?.domicilio">                    <p>Domicilio</p>                    <div id="domicilio" class="campos-perfil">                        <strong *ngIf="!editando">{{ usuarioLogeado?.domicilio }}</strong>                        <input *ngIf="editando" type="text" formControlName="domicilio" class="form-control" />                    </div>                    </div>                </div>            </div>            <!-- Botón para editar y guardar cambios -->            <div class="row justify-content-center">                <div class="col">                    <div class="d-flex justify-content-center mb-4 mt-4">                        <button                            *ngIf="!editando"                            class="btn btn-warning"                            (click)="editarUsuario()"                            [disabled]="!usuarioLogeado"                        >                        Editar                        </button>                        <button                            *ngIf="editando"                            class="btn btn-success"                            (click)="guardarCambios()"                        >                        Guardar                        </button>                        <button                            *ngIf="editando"                            class="btn btn-secondary ms-2"                            (click)="cancelarEdicion()"                        >                        Cancelar                        </button>                    </div>                </div>                            </div>            <!-- Mensaje de éxito -->            <div *ngIf="mensajeExitoso" class="alert alert-success mt-3">                Cambios guardados exitosamente.            </div>        </form>    </div>    <footer class="footer">Todos los derechos reservados</footer></div></div>'
     var COMPONENTS = [{'name': 'AdminHomeComponent', 'selector': 'app-admin-home'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AutoAyudaComponent', 'selector': 'app-auto-ayuda'},{'name': 'CarritoComponent', 'selector': 'app-carrito'},{'name': 'ComicsMangasComponent', 'selector': 'app-comics-mangas'},{'name': 'ContactoComponent', 'selector': 'app-contacto'},{'name': 'DetalleCarroComponent', 'selector': 'app-detalle-carro'},{'name': 'EncuestaComponent', 'selector': 'app-encuesta'},{'name': 'GestionProductosComponent', 'selector': 'app-gestion-productos'},{'name': 'GestionUsuariosComponent', 'selector': 'app-gestion-usuarios'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InformaticaComponent', 'selector': 'app-informatica'},{'name': 'LiteraturaComponent', 'selector': 'app-literatura'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MetodoPagoComponent', 'selector': 'app-metodo-pago'},{'name': 'NavComponent', 'selector': 'app-nav'},{'name': 'NovelasComponent', 'selector': 'app-novelas'},{'name': 'PagoExitosoComponent', 'selector': 'app-pago-exitoso'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'PromocionesComponent', 'selector': 'app-promociones'},{'name': 'RecuperacionComponent', 'selector': 'app-recuperacion'},{'name': 'RegistroComponent', 'selector': 'app-registro'},{'name': 'RestablecerContrasenaComponent', 'selector': 'app-restablecer-contrasena'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PerfilComponent'};
