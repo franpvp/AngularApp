@@ -12,7 +12,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, LoginComponent], // Aquí se importa el componente standalone
+      imports: [ReactiveFormsModule, LoginComponent],
     })
     .compileComponents();
     
@@ -23,15 +23,15 @@ describe('LoginComponent', () => {
     submitButton = fixture.debugElement.query(By.css('button[type="submit"]'));
   });
 
-  it('should create the component', () => {
+  it('debe crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a disabled submit button if the form is invalid', () => {
+  it('debe tener un botón de envío deshabilitado si el formulario no es válido', () => {
     expect(submitButton.nativeElement.disabled).toBeTrue();
   });
 
-  it('should enable submit button when form is valid', () => {
+  it('debe habilitar el botón enviar cuando el formulario sea válido', () => {
     component.formularioLogin.controls['username'].setValue('testuser');
     component.formularioLogin.controls['contrasena'].setValue('password123');
     
@@ -40,7 +40,7 @@ describe('LoginComponent', () => {
     expect(submitButton.nativeElement.disabled).toBeFalse();
   });
 
-  it('should display an error message for the username field when it is empty and touched', () => {
+  it('debería mostrar un mensaje de error para el campo de nombre de usuario cuando está vacío y es seleccionado', () => {
     const usernameField = component.formularioLogin.get('username');
     usernameField?.markAsTouched();
     
@@ -50,7 +50,7 @@ describe('LoginComponent', () => {
     expect(errorMessage.nativeElement.textContent).toContain('Nombre de usuario es obligatorio.');
   });
 
-  it('should display an error message for the password field when it is empty and touched', () => {
+  it('debería mostrar un mensaje de error para el campo de contraseña cuando está vacío y es seleccionado', () => {
     const passwordField = component.formularioLogin.get('contrasena');
     passwordField?.markAsTouched();
     
@@ -60,7 +60,7 @@ describe('LoginComponent', () => {
     expect(errorMessage.nativeElement.textContent).toContain('Contraseña es obligatoria.');
   });
 
-  it('should call login() when the form is submitted with valid data', () => {
+  it('debe llamar a login() cuando el formulario se envía con datos válidos', () => {
     // Espiar el método login
     spyOn(component, 'login');
 
@@ -76,7 +76,7 @@ describe('LoginComponent', () => {
     expect(component.login).toHaveBeenCalled();
   });
 
-  it('should display an error message if login fails', () => {
+  it('debería mostrar un mensaje de error si falla el inicio de sesión', () => {
     component.mensajeError = 'Credenciales incorrectas';
     fixture.detectChanges();
     
